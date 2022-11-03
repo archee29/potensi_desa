@@ -1,5 +1,6 @@
 @extends('layouts.user.user-layout')
 @include('layouts.user.user-navbar')
+
 @section('content')
     <div class="container-xxl bg-white p-0">
 
