@@ -1,9 +1,7 @@
 @extends('layouts.user.user-layout')
-
+@include('layouts.user.user-navbar')
 @section('content')
     <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
-
 
         <div class="modal fade" id="searchModal" tabindex="-1">
             <div class="modal-dialog modal-fullscreen">
@@ -23,25 +21,25 @@
             </div>
         </div>
 
-        <div class="container-xxl py-5">
+        <div id="tentang-desa" class="container-xxl py-5">
             <div class="container px-lg-5">
                 <div class="row g-5">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="section-title position-relative mb-4 pb-2">
-                            <h6 class="position-relative text-primary ps-4">About Us</h6>
-                            <h2 class="mt-2">The best SEO solution with 10 years of experience</h2>
+                            <h6 class="position-relative text-primary ps-4">About</h6>
+                            <h2 class="mt-2">Tentang Desa</h2>
                         </div>
                         <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
                             amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit.
                             Sanctus clita duo justo et tempor eirmod magna dolore erat amet</p>
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Award Winning</h6>
-                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Professional Staff</h6>
+                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Text 1</h6>
+                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Text 2</h6>
                             </div>
                             <div class="col-sm-6">
-                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>24/7 Support</h6>
-                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Fair Prices</h6>
+                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Text 3</h6>
+                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Text 4</h6>
                             </div>
                         </div>
                         <div class="d-flex align-items-center mt-4">
@@ -57,7 +55,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/about.jpg">
+                        <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="user-rsc/img/about.jpg">
                     </div>
                 </div>
             </div>
@@ -77,17 +75,18 @@
                         </div>
                     </div>
                     <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                        <img class="img-fluid mt-5" style="height: 250px;" src="img/newsletter.png">
+                        <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container-xxl py-5">
+        <div id="profile-desa" class="container-xxl py-5">
+
             <div class="container px-lg-5">
                 <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="position-relative d-inline text-primary ps-4">Our Services</h6>
-                    <h2 class="mt-2">What Solutions We Provide</h2>
+                    <h6 class="position-relative d-inline text-primary ps-4">Profile</h6>
+                    <h2 class="mt-2">Profile Desa</h2>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
@@ -95,7 +94,7 @@
                             <div class="service-icon flex-shrink-0">
                                 <i class="fa fa-home fa-2x"></i>
                             </div>
-                            <h5 class="mb-3">SEO Optimization</h5>
+                            <h5 class="mb-3">Aparatur Desa</h5>
                             <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
                                 lorem.</p>
                             <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
@@ -106,7 +105,7 @@
                             <div class="service-icon flex-shrink-0">
                                 <i class="fa fa-home fa-2x"></i>
                             </div>
-                            <h5 class="mb-3">Web Design</h5>
+                            <h5 class="mb-3">Berita Desa</h5>
                             <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
                                 lorem.</p>
                             <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
@@ -117,70 +116,132 @@
                             <div class="service-icon flex-shrink-0">
                                 <i class="fa fa-home fa-2x"></i>
                             </div>
-                            <h5 class="mb-3">Social Media Marketing</h5>
+                            <h5 class="mb-3">Peta Desa</h5>
                             <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
                                 lorem.</p>
                             <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-home fa-2x"></i>
+
+                </div>
+            </div>
+
+            <div id="poto-kades" class="container-xxl py-5">
+                <div class="container px-lg-5">
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                        style="width: 75px;">
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-twitter"></i></a>
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-instagram"></i></a>
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    <img class="img-fluid rounded w-100" src="user-rsc/img/team-1.jpg" alt="">
+                                </div>
+                                <div class="px-4 py-3">
+                                    <h5 class="fw-bold m-0">Nama Kepala Desa</h5>
+                                    <small>Kepala Desa</small>
+                                </div>
                             </div>
-                            <h5 class="mb-3">Email Marketing</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                                lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-home fa-2x"></i>
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="team-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                        style="width: 75px;">
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-twitter"></i></a>
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-instagram"></i></a>
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    <img class="img-fluid rounded w-100" src="user-rsc/img/team-2.jpg" alt="">
+                                </div>
+                                <div class="px-4 py-3">
+                                    <h5 class="fw-bold m-0">Nama Sekretaris Desa</h5>
+                                    <small>Sekretaris Desa</small>
+                                </div>
                             </div>
-                            <h5 class="mb-3">PPC Advertising</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                                lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-home fa-2x"></i>
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                            <div class="team-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                        style="width: 75px;">
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-twitter"></i></a>
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-instagram"></i></a>
+                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                                class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    <img class="img-fluid rounded w-100" src="user-rsc/img/team-3.jpg" alt="">
+                                </div>
+                                <div class="px-4 py-3">
+                                    <h5 class="fw-bold m-0">Nama Ketua Badan Permusyawaratan Desa</h5>
+                                    <small>Ketua Badan Permusyawaratan Desa</small>
+                                </div>
                             </div>
-                            <h5 class="mb-3">App Development</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                                lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container-xxl py-5">
+        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container px-lg-5">
+                <div class="row align-items-center" style="height: 250px;">
+                    <div class="col-12 col-md-6">
+                        <h3 class="text-white">Ready to get started</h3>
+                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
+                        <div class="position-relative w-100 mt-3">
+                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                                placeholder="Enter Your Email" style="height: 48px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                        <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pemerintahan-desa" class="container-xxl py-5">
             <div class="container px-lg-5">
                 <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="position-relative d-inline text-primary ps-4">Our Projects</h6>
-                    <h2 class="mt-2">Recently Launched Projects</h2>
+                    <h6 class="position-relative d-inline text-primary ps-4">Pemerintahan</h6>
+                    <h2 class="mt-2">Pemerintahan Desa</h2>
                 </div>
                 <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="col-12 text-center">
                         <ul class="list-inline mb-5" id="portfolio-flters">
-                            <li class="btn px-3 pe-4 active" data-filter="*">All</li>
-                            <li class="btn px-3 pe-4" data-filter=".first">Design</li>
-                            <li class="btn px-3 pe-4" data-filter=".second">Development</li>
+                            <li class="btn px-3 pe-4 active" data-filter="*">Semua</li>
+                            <li class="btn px-3 pe-4" data-filter=".first">Aparatur Desa</li>
+                            <li class="btn px-3 pe-4" data-filter=".second">Badan Permusyawaratan Desa</li>
+                            <li class="btn px-3 pe-4" data-filter=".three">Visi dan Misi</li>
                         </ul>
                     </div>
                 </div>
                 <div class="row g-4 portfolio-container">
                     <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.1s">
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-1.jpg" alt="">
+                            <img class="img-fluid w-100" src="user-rsc/img/portfolio-1.jpg" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/portfolio-1.jpg" data-lightbox="portfolio"><i
+                                <a class="btn btn-light" href="user-rsc/img/portfolio-1.jpg" data-lightbox="portfolio"><i
                                         class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
@@ -191,9 +252,9 @@
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.3s">
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-2.jpg" alt="">
+                            <img class="img-fluid w-100" src="user-rsc/img/portfolio-2.jpg" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/portfolio-2.jpg" data-lightbox="portfolio"><i
+                                <a class="btn btn-light" href="user-rsc/img/portfolio-2.jpg" data-lightbox="portfolio"><i
                                         class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
@@ -204,9 +265,9 @@
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.6s">
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-3.jpg" alt="">
+                            <img class="img-fluid w-100" src="user-rsc/img/portfolio-3.jpg" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/portfolio-3.jpg" data-lightbox="portfolio"><i
+                                <a class="btn btn-light" href="user-rsc/img/portfolio-3.jpg" data-lightbox="portfolio"><i
                                         class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
@@ -217,9 +278,9 @@
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.1s">
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-4.jpg" alt="">
+                            <img class="img-fluid w-100" src="user-rsc/img/portfolio-4.jpg" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/portfolio-4.jpg" data-lightbox="portfolio"><i
+                                <a class="btn btn-light" href="user-rsc/img/portfolio-4.jpg" data-lightbox="portfolio"><i
                                         class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
@@ -230,9 +291,9 @@
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.3s">
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-5.jpg" alt="">
+                            <img class="img-fluid w-100" src="user-rsc/img/portfolio-5.jpg" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/portfolio-5.jpg" data-lightbox="portfolio"><i
+                                <a class="btn btn-light" href="user-rsc/img/portfolio-5.jpg" data-lightbox="portfolio"><i
                                         class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
@@ -243,9 +304,9 @@
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.6s">
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="img/portfolio-6.jpg" alt="">
+                            <img class="img-fluid w-100" src="user-rsc/img/portfolio-6.jpg" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/portfolio-6.jpg" data-lightbox="portfolio"><i
+                                <a class="btn btn-light" href="user-rsc/img/portfolio-6.jpg" data-lightbox="portfolio"><i
                                         class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
@@ -255,18 +316,217 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="container-xxl bg-primary testimonial three py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="container py-5 px-lg-5">
+                        <div class="owl-carousel testimonial-carousel">
+                            <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                                <i class="fa fa-quote-left fa-2x mb-3"></i>
+                                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                                    labore diam
+                                </p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid flex-shrink-0 rounded-circle"
+                                        src="user-rsc/img/testimonial-1.jpg" style="width: 50px; height: 50px;">
+                                    <div class="ps-3">
+                                        <h6 class="text-white mb-1">Client Name</h6>
+                                        <small>Profession</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                                <i class="fa fa-quote-left fa-2x mb-3"></i>
+                                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                                    labore diam
+                                </p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid flex-shrink-0 rounded-circle"
+                                        src="user-rsc/img/testimonial-2.jpg" style="width: 50px; height: 50px;">
+                                    <div class="ps-3">
+                                        <h6 class="text-white mb-1">Client Name</h6>
+                                        <small>Profession</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                                <i class="fa fa-quote-left fa-2x mb-3"></i>
+                                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                                    labore diam
+                                </p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid flex-shrink-0 rounded-circle"
+                                        src="user-rsc/img/testimonial-3.jpg" style="width: 50px; height: 50px;">
+                                    <div class="ps-3">
+                                        <h6 class="text-white mb-1">Client Name</h6>
+                                        <small>Profession</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                                <i class="fa fa-quote-left fa-2x mb-3"></i>
+                                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                                    labore diam
+                                </p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid flex-shrink-0 rounded-circle"
+                                        src="user-rsc/img/testimonial-4.jpg" style="width: 50px; height: 50px;">
+                                    <div class="ps-3">
+                                        <h6 class="text-white mb-1">Client Name</h6>
+                                        <small>Profession</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="container-xxl bg-primary testimonial py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container px-lg-5">
+                <div class="row align-items-center" style="height: 250px;">
+                    <div class="col-12 col-md-6">
+                        <h3 class="text-white">Ready to get started</h3>
+                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
+                        <div class="position-relative w-100 mt-3">
+                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                                placeholder="Enter Your Email" style="height: 48px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                        <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="data-desa" class="container-xxl py-5">
+            <div class="container px-lg-5">
+                <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="position-relative d-inline text-primary ps-4">Data Desa</h6>
+                    <h2 class="mt-2">Statistik Kependudukan</h2>
+                </div>
+            </div>
+
+            <div class="container px-lg-5">
+                <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                    <h2 class="mt-2">APBDes 2022</h2>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container px-lg-5">
+                <div class="row align-items-center" style="height: 250px;">
+                    <div class="col-12 col-md-6">
+                        <h3 class="text-white">Ready to get started</h3>
+                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
+                        <div class="position-relative w-100 mt-3">
+                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                                placeholder="Enter Your Email" style="height: 48px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                        <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact" class="container-xxl py-5">
+            <div class="container px-lg-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp"
+                            data-wow-delay="0.1s">
+                            <h6 class="position-relative d-inline text-primary ps-4">Hubungi Kami</h6>
+                            <h2 class="mt-2">Silahkan Tuliskan Kritik & Saran</h2>
+                        </div>
+                        <div class="wow fadeInUp" data-wow-delay="0.3s">
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="name"
+                                                placeholder="Your Name">
+                                            <label for="name">Nama</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Your Email">
+                                            <label for="email">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="subject"
+                                                placeholder="Subject">
+                                            <label for="subject">Subject</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
+                                            <label for="message">Tuliskan Pesan</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Kirim</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container px-lg-5">
+                <div class="row align-items-center" style="height: 250px;">
+                    <div class="col-12 col-md-6">
+                        <h3 class="text-white">Ready to get started</h3>
+                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
+                        <div class="position-relative w-100 mt-3">
+                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                                placeholder="Enter Your Email" style="height: 48px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                        <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="peta-desa" class="container-xxl py-5">
+            <div class="container px-lg-5">
+                <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="position-relative d-inline text-primary ps-4">Peta</h6>
+                    <h2 class="mt-2">Peta Desa</h2>
+                </div>
+            </div>
+        </div>
+
+        {{-- <div class="container-xxl bg-primary testimonial three py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container py-5 px-lg-5">
                 <div class="owl-carousel testimonial-carousel">
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                            labore diam
                         </p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg"
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="user-rsc/img/testimonial-1.jpg"
                                 style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1">Client Name</h6>
@@ -276,10 +536,11 @@
                     </div>
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                            labore diam
                         </p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg"
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="user-rsc/img/testimonial-2.jpg"
                                 style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1">Client Name</h6>
@@ -289,10 +550,11 @@
                     </div>
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                            labore diam
                         </p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg"
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="user-rsc/img/testimonial-3.jpg"
                                 style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1">Client Name</h6>
@@ -302,10 +564,11 @@
                     </div>
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                            labore diam
                         </p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-4.jpg"
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="user-rsc/img/testimonial-4.jpg"
                                 style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1">Client Name</h6>
@@ -315,83 +578,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="container-xxl py-5">
-            <div class="container px-lg-5">
-                <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="position-relative d-inline text-primary ps-4">Our Team</h6>
-                    <h2 class="mt-2">Meet Our Team Members</h2>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
-                                    style="width: 75px;">
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="img/team-1.jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">Jhon Doe</h5>
-                                <small>CEO</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
-                                    style="width: 75px;">
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="img/team-2.jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">Emma William</h5>
-                                <small>Manager</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
-                                    style="width: 75px;">
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="img/team-3.jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">Noah Michael</h5>
-                                <small>Designer</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection

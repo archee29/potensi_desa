@@ -9,28 +9,30 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
               <div class="navbar-nav ms-auto py-0">
-                  <a href="index.html" class="nav-item nav-link active">Home</a>
-                  <a href="about.html" class="nav-item nav-link">Tentang Desa</a>
-                  <a href="service.html" class="nav-item nav-link">Profile Desa</a>
+                  <a href="/" class="nav-item nav-link active">Home</a>
+                  <a href="#tentang-desa" class="nav-item nav-link">Tentang Desa</a>
+                  <a href="#profile-desa" class="nav-item nav-link">Profile Desa</a>
                   <div class="nav-item dropdown">
-                      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Data Desa</a>
+                      <a href="#pemerintahan" class="nav-link dropdown-toggle"
+                          data-bs-toggle="dropdown">Pemerintahan</a>
                       <div class="dropdown-menu m-0">
-                          <a href="team.html" class="dropdown-item">Statistik Kependudukan</a>
-                          <a href="testimonial.html" class="dropdown-item">APBDes 2022</a>
+                          <a href="#pemerintahan-desa" class="dropdown-item">Pemerintahan Desa</a>
+                          <a href="#pemerintahan-desa" class="dropdown-item">Visi dan Misi</a>
                       </div>
                   </div>
                   <div class="nav-item dropdown">
-                      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pemerintahan</a>
+                      <a href="#data-desa" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Data Desa</a>
                       <div class="dropdown-menu m-0">
-                          <a href="team.html" class="dropdown-item">Visi dan Misi</a>
-                          <a href="testimonial.html" class="dropdown-item">Pemerintahan Desa</a>
+                          <a href="#data-desa" class="dropdown-item">Statistik Kependudukan</a>
+                          <a href="#data-desa" class="dropdown-item">APBDes 2022</a>
                       </div>
                   </div>
-                  <a href="contact.html" class="nav-item nav-link">Hubungi Kami</a>
+
+                  <a href="#contact" class="nav-item nav-link">Hubungi Kami</a>
               </div>
               <butaton type="button" class="btn text-secondary ms-3" data-bs-toggle="modal"
                   data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-              <a href="/" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Peta Desa</a>
+              <a href="/peta" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Peta Desa</a>
           </div>
       </nav>
 
@@ -38,19 +40,19 @@
           <div class="container my-5 py-5 px-lg-5">
               <div class="row g-5 py-5">
                   <div class="col-lg-6 text-center text-lg-start">
-                      <h1 class="text-white mb-4 animated zoomIn">All in one SEO tool need to grow your business
-                          rapidly</h1>
+                      <h1 class="text-white mb-4 animated zoomIn">Selamat Datang di
+                          Website Desa Kalimas</h1>
                       <p class="text-white pb-3 animated zoomIn">Tempor rebum no at dolore lorem clita rebum rebum
                           ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo
                           amet ipsum vero ipsum clita lorem</p>
-                      <a href=""
-                          class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Free Quote</a>
-                      <a href=""
-                          class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact
-                          Us</a>
+                      <a href="/potensi"
+                          class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Potensi Desa</a>
+                      <a href="/peta"
+                          class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Peta
+                          Desa</a>
                   </div>
                   <div class="col-lg-6 text-center text-lg-start">
-                      <img class="img-fluid" src="img/hero.png" alt="">
+                      <img class="img-fluid" src="user-rsc/img/hero.png" alt="">
                   </div>
               </div>
           </div>

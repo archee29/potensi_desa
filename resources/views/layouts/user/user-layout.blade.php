@@ -38,7 +38,7 @@
 
 <body>
 
-    @include('layouts.user.user-navbar')
+
     @yield('content')
     <div class="container-xxl bg-white p-0">
         <div id="spinner"
@@ -47,6 +47,7 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
+
         <div class="container-fluid bg-primary text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5 px-lg-5">
                 <div class="row g-5">
@@ -78,30 +79,30 @@
                         <a class="btn btn-link" href="">Career</a>
                     </div>
                     <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Project Gallery</h5>
+                        <h5 class="text-white mb-4">Iklan Desa</h5>
                         <div class="row g-2">
                             <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-1.jpg" alt="Image">
+                                <img class="img-fluid" src="user-rsc/img/portfolio-1.jpg" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-2.jpg" alt="Image">
+                                <img class="img-fluid" src="user-rsc/img/portfolio-2.jpg" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-3.jpg" alt="Image">
+                                <img class="img-fluid" src="user-rsc/img/portfolio-3.jpg" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-4.jpg" alt="Image">
+                                <img class="img-fluid" src="user-rsc/img/portfolio-4.jpg" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-5.jpg" alt="Image">
+                                <img class="img-fluid" src="user-rsc/img/portfolio-5.jpg" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="img/portfolio-6.jpg" alt="Image">
+                                <img class="img-fluid" src="user-rsc/img/portfolio-6.jpg" alt="Image">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Newsletter</h5>
+                        <h5 class="text-white mb-4">Kritik & Saran</h5>
                         <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit
                             non vulpu</p>
                         <div class="position-relative w-100 mt-3">
@@ -121,11 +122,11 @@
                             All Right Reserved.
                             <br>
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed by <a class="border-bottom" href="https://htmlcodex.com"> MBKM Smart
+                            Designed by <a class="border-bottom" href="#"> MBKM Smart
                                 Villagee
                                 Tanjungpura</a>
-                            <br>Distributed By: <a class="border-bottom" href="https://themewagon.com"
-                                target="_blank">Kominfo</a>
+                            <br>Distributed By: <a class="border-bottom" href="https://www.kuburayakab.go.id/"
+                                target="_blank">Pemerintahan Kabupaten Kubu Raya</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
@@ -139,7 +140,9 @@
                 </div>
             </div>
         </div>
+
     </div>
+
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i
             class="bi bi-arrow-up"></i></a>
 
