@@ -72,10 +72,11 @@
                             </div>
 
                             <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                <div class="col-md-8 offset-md-4">
+                                    <button type="submit" class="btn btn-outline-success">
                                         {{ __('Register') }}
                                     </button>
+                                    <a class="btn btn-outline-danger" href="/login">{{ __('Back') }}</a>
                                 </div>
                             </div>
                         </form>
