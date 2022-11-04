@@ -110,7 +110,7 @@
                             id="inline-full-name" name="created_at" type="datetime-local" value="">
                     </div>
                     <div class="m-n2">
-                        <button type="button" class="btn btn-outline-success m-2">Edit Data Artikel</button>
+                        <button type="button" class="btn btn-outline-success m-2">Edit Data</button>
                         <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                             aria-label="readonly input example" readonly>
                     </div>
                     <div class="form md:w-2/3 mb-3">
-                        <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
+                        <label for="formFile" class="form-label mt-3">Tanggal Upload</label>
                         <input
                             class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                             aria-label="readonnly input example" id="inline-full-name" name="created_at"
