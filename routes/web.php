@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/lokasi', [App\Http\Controllers\HomeController::class, 'lokasi'])->name('lokasi');
-Route::get('/artikel', [App\Http\Controllers\HomeController::class, 'artikel'])->name('artikel');
-Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
-Route::get('/pemerintahan', [App\Http\Controllers\HomeController::class, 'pemerintahan'])->name('pemerintahan');
-Route::get('/data', [App\Http\Controllers\HomeController::class, 'data'])->name('data');
+Route::get('/home', [App\Http\Controllers\admin\HomeController::class, 'index'])->name('home');
+Route::get('/lokasi', [App\Http\Controllers\admin\HomeController::class, 'lokasi'])->name('lokasi');
+Route::get('/artikel', [App\Http\Controllers\admin\HomeController::class, 'artikel'])->name('artikel');
+Route::get('/profile', [App\Http\Controllers\admin\HomeController::class, 'profile'])->name('profile');
+Route::get('/pemerintahan', [App\Http\Controllers\admin\HomeController::class, 'pemerintahan'])->name('pemerintahan');
+Route::get('/data', [App\Http\Controllers\admin\HomeController::class, 'data'])->name('data');
