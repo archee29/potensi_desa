@@ -19,9 +19,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+//dashboard
 Route::get('/home', [App\Http\Controllers\admin\HomeController::class, 'index'])->name('home');
-Route::get('/lokasi', [App\Http\Controllers\admin\HomeController::class, 'lokasi'])->name('lokasi');
-Route::get('/artikel', [App\Http\Controllers\admin\HomeController::class, 'artikel'])->name('artikel');
-Route::get('/profile', [App\Http\Controllers\admin\HomeController::class, 'profile'])->name('profile');
-Route::get('/pemerintahan', [App\Http\Controllers\admin\HomeController::class, 'pemerintahan'])->name('pemerintahan');
-Route::get('/data', [App\Http\Controllers\admin\HomeController::class, 'data'])->name('data');
+
+//lokasi
+Route::get('/lokasi', [App\Http\Controllers\admin\LokasiController::class, 'index'])->name('lokasi');
+
+//potensi
+Route::get('/rumah-ibadah', [App\Http\Controllers\admin\RumahIbadahController::class, 'index'])->name('rumah-ibadah');
+Route::get('/wisata', [App\Http\Controllers\admin\TempatWisataController::class, 'index'])->name('wisata');
+Route::get('/sekolah', [App\Http\Controllers\admin\SekolahController::class, 'index'])->name('sekolah');
+Route::get('/pasar', [App\Http\Controllers\admin\PasarController::class, 'index'])->name('pasar');
+
+//desa
+Route::get('/artikel', [App\Http\Controllers\admin\ArtikelController::class, 'index'])->name('artikel');
+Route::get('/profile', [App\Http\Controllers\admin\ProfileController::class, 'index'])->name('profile');
+Route::get('/pemerintahan', [App\Http\Controllers\admin\PemerintahanController::class, 'index'])->name('pemerintahan');
+Route::get('/data', [App\Http\Controllers\admin\DataController::class, 'index'])->name('data');

@@ -7,5 +7,29 @@ use Illuminate\Http\Request;
 
 class DataDesaController extends Controller
 {
-    //
+    public function index(){
+        return view('admin.data');
+    }
+    public function create(){
+
+    }
+    public function store(){
+
+    }
+
+    public function show(){
+
+    }
+
+    public function edit(){
+
+    }
+
+    public function update (){
+
+    }
+
+    public function destroy(){
+
+    }
 }

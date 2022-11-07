@@ -7,6 +7,13 @@
 @section('content')
     <div class="container-fluid pt-4 px-4">
         <div class="col-lg-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Home</li>
+                    <li class="breadcrumb-item"><a href="/"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                </ol>
+            </nav>
+
             <div class="card border-opacity-100 border-1">
                 <div class="card-header border-info">
                     <h6 class="mt-2">Peta Potensi Desa Keseluruhan</h6>
@@ -21,7 +28,7 @@
     </div>
 
 
-    <div class="container-fluid pt-4 px-4">
+    {{-- <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h6 class="mb-0">Recent Salse</h6>
@@ -90,7 +97,7 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 {{-- <div class="container-fluid">

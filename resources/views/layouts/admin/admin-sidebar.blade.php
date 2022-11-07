@@ -27,9 +27,9 @@
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="/rumah-ibadah" class="dropdown-item nav-link"><i class="fa fa-place-of-worship"></i>Rumah
                         Ibadah</a>
-                    <a href="/sekolah" class="dropdown-item nav-link"><i class="fa fa-school"></i>Sekolah</a>
                     <a href="/wisata" class="dropdown-item nav-link"><i class="fa fa-globe-asia"></i>Tempat
                         Wisata</a>
+                    <a href="/sekolah" class="dropdown-item nav-link"><i class="fa fa-school"></i>Sekolah</a>
                     <a href="/pasar" class="dropdown-item nav-link"><i class="fa fa-store-alt"></i>Pasar</a>
                 </div>
             </div>
