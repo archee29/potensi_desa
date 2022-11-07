@@ -6,12 +6,20 @@
 
 @section('content')
     <div class="container-fluid pt-4 px-4">
-        <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-            <div class="col-md-6 text-center">
-                <h3>Dashboard</h3>
+        <div class="col-lg-12">
+            <div class="card border-opacity-100 border-1">
+                <div class="card-header border-info">
+                    <h6 class="mt-2">Peta Potensi Desa Keseluruhan</h6>
+                </div>
+                <div class="card-body">
+                    <div id="map">
+                        <h1>MAP</h1>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
