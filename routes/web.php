@@ -36,4 +36,4 @@ Route::get('/pasar', [App\Http\Controllers\admin\PasarController::class, 'index'
 Route::get('/artikel', [App\Http\Controllers\admin\ArtikelController::class, 'index'])->name('artikel');
 Route::get('/profile', [App\Http\Controllers\admin\ProfileController::class, 'index'])->name('profile');
 Route::get('/pemerintahan', [App\Http\Controllers\admin\PemerintahanController::class, 'index'])->name('pemerintahan');
-Route::get('/data', [App\Http\Controllers\admin\DataController::class, 'index'])->name('data');
+Route::get('/data', [App\Http\Controllers\admin\DataDesaController::class, 'index'])->name('data');

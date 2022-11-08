@@ -20,18 +20,19 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-
     <link href="{{ asset('user-rsc/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('user-rsc/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('user-rsc/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-
-
     <link href="{{ asset('user-rsc/css/bootstrap.min.css') }}" rel="stylesheet">
-
-
     <link href="{{ asset('user-rsc/css/style.css') }}" rel="stylesheet">
 
+    {{-- leaflet --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    @yield('add_css');
 </head>
 
 <body>
@@ -138,10 +139,10 @@
         </div>
 
     </div>
-
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i
             class="bi bi-arrow-up"></i></a>
 
+    @yield('leaflet_script');
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('user-rsc/lib/wow/wow.min.js') }}"></script>

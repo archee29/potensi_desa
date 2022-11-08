@@ -9,26 +9,37 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
               <div class="navbar-nav ms-auto py-0">
-                  <a href="/" class="nav-item nav-link active">Home</a>
-                  <a href="#tentang-desa" class="nav-item nav-link">Tentang Desa</a>
-                  <a href="#profile-desa" class="nav-item nav-link">Profile Desa</a>
+                  <a href="/" class="nav-item nav-link {{ Request::path() == '/' ? 'active' : '' }}">Home</a>
+                  <a href="#tentang-desa"
+                      class="nav-item nav-link {{ Request::path() == 'tentang-desa' ? 'active' : '' }}">Tentang Desa</a>
+                  <a href="#profile-desa"
+                      class="nav-item nav-link {{ Request::path() == 'profile-desa' ? 'active' : '' }}">Profile Desa</a>
                   <div class="nav-item dropdown">
                       <a href="#pemerintahan" class="nav-link dropdown-toggle"
                           data-bs-toggle="dropdown">Pemerintahan</a>
                       <div class="dropdown-menu m-0">
-                          <a href="#pemerintahan-desa" class="dropdown-item">Pemerintahan Desa</a>
-                          <a href="#pemerintahan-desa" class="dropdown-item">Visi dan Misi</a>
+                          <a href="#pemerintahan-desa"
+                              class="dropdown-item {{ Request::path() == 'pemerintahan-desa' ? 'active' : '' }}">Pemerintahan
+                              Desa</a>
+                          <a href="#pemerintahan-desa"
+                              class="dropdown-item {{ Request::path() == 'pemerintahan-desa' ? 'active' : '' }}">Visi
+                              dan Misi</a>
                       </div>
                   </div>
                   <div class="nav-item dropdown">
-                      <a href="#data-desa" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Data Desa</a>
+                      <a href="#data-desa" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">Data Desa</a>
                       <div class="dropdown-menu m-0">
-                          <a href="#data-desa" class="dropdown-item">Statistik Kependudukan</a>
-                          <a href="#data-desa" class="dropdown-item">APBDes 2022</a>
+                          <a href="#data-desa"
+                              class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">Statistik
+                              Kependudukan</a>
+                          <a href="#data-desa"
+                              class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">APBDes 2022</a>
                       </div>
                   </div>
 
-                  <a href="#contact" class="nav-item nav-link">Hubungi Kami</a>
+                  <a href="#contact"
+                      class="nav-item nav-link {{ Request::path() == 'contact' ? 'active' : '' }}">Hubungi
+                      Kami</a>
               </div>
               <butaton type="button" class="btn text-secondary ms-3" data-bs-toggle="modal"
                   data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>

@@ -18,25 +18,42 @@
             </div>
         </div>
 
+
+
         <div class="navbar-nav w-100">
-            <a href="/home" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-            <a href="/lokasi" class="nav-item nav-link"><i class="fa fa-map-marker-alt"></i>Lokasi</a>
+            <a href="/home" class="nav-item nav-link {{ Request::path() == 'home' ? 'active' : '' }}"><i
+                    class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="/lokasi" class="nav-item nav-link {{ Request::path() == 'lokasi' ? 'active' : '' }}"><i
+                    class="fa fa-map-marker-alt"></i>Lokasi</a>
+
             <div class="nav-item dropdown">
                 <a href="/potensi" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                         class="fa fa-chart-line"></i>Potensi</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="/rumah-ibadah" class="dropdown-item nav-link"><i class="fa fa-place-of-worship"></i>Rumah
+                    <a href="/rumah-ibadah"
+                        class="dropdown-item nav-link {{ Request::path() == 'rumah-ibadah' ? 'active' : '' }}"><i
+                            class="fa fa-place-of-worship"></i>Rumah
                         Ibadah</a>
-                    <a href="/wisata" class="dropdown-item nav-link"><i class="fa fa-globe-asia"></i>Tempat
+                    <a href="/wisata"
+                        class="dropdown-item nav-link {{ Request::path() == 'wisata' ? 'active' : '' }}"><i
+                            class="fa fa-globe-asia"></i>Tempat
                         Wisata</a>
-                    <a href="/sekolah" class="dropdown-item nav-link"><i class="fa fa-school"></i>Sekolah</a>
-                    <a href="/pasar" class="dropdown-item nav-link"><i class="fa fa-store-alt"></i>Pasar</a>
+                    <a href="/sekolah"
+                        class="dropdown-item nav-link {{ Request::path() == 'sekolah' ? 'active' : '' }}"><i
+                            class="fa fa-school"></i>Sekolah</a>
+                    <a href="/pasar" class="dropdown-item nav-link {{ Request::path() == 'pasar' ? 'active' : '' }}"><i
+                            class="fa fa-store-alt"></i>Pasar</a>
                 </div>
             </div>
-            <a href="/artikel" class="nav-item nav-link"><i class="fa fa-newspaper"></i>Artikel</a>
-            <a href="/profile" class="nav-item nav-link"><i class="fa fa-users"></i>Profile</a>
-            <a href="/pemerintahan" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Pemerintahan</a>
-            <a href="/data" class="nav-item nav-link"><i class="fa fa-database"></i>Data Desa</a>
+
+            <a href="/artikel" class="nav-item nav-link {{ Request::path() == 'artikel' ? 'active' : '' }}"><i
+                    class="fa fa-newspaper"></i>Artikel</a>
+            <a href="/profile" class="nav-item nav-link {{ Request::path() == 'profile' ? 'active' : '' }}"><i
+                    class="fa fa-users"></i>Profile</a>
+            <a href="/pemerintahan" class="nav-item nav-link {{ Request::path() == 'pemerintahan' ? 'active' : '' }}"><i
+                    class="fa fa-table me-2"></i>Pemerintahan</a>
+            <a href="/data" class="nav-item nav-link {{ Request::path() == 'data' ? 'active' : '' }}"><i
+                    class="fa fa-database"></i>Data Desa</a>
         </div>
 
     </nav>
