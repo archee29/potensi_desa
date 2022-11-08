@@ -1,3 +1,11 @@
+api_token = pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw
+
+'pk.eyJ1IjoiY3Jlc2hlcmJsYWNrIiwiYSI6ImNraTF6Y3p0bjBqNG0ydG56Y2s5MWFiMJIifQ.l56cqZXIaxvl_laQfzf6iw'
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v.1.12.0/mapbox.gl.js'></script>
+
+<link href='https://api.mapbox.com/mapbox-gl-js/v.1.12.0/mapbox.gl.css' rel="stylesheet">
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 

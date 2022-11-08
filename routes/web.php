@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\MapKaLimas;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
+Route::get('/map', [App\Http\livewire\MapKalimas::class, 'render'])->name('map-kalimas');
 //dashboard
 Route::get('/home', [App\Http\Controllers\admin\HomeController::class, 'index'])->name('home');
 

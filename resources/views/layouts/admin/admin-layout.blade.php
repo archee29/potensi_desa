@@ -17,11 +17,19 @@
     <link href="{{ asset('admin-rsc/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin-rsc/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin-rsc/css/style.css') }}" rel="stylesheet">
+
+    {{-- leaflet link --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
         integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
         integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    {{-- End --}}
 
+    {{-- Mapbox link --}}
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
+    {{-- End --}}
+
+    @livewireStyles
     @yield('add_css')
 </head>
 
@@ -37,8 +45,9 @@
         @include('layouts.admin.admin-sidebar')
         <div class="content">
             @include('layouts.admin.admin-navbar')
-
             @yield('content')
+            {{ isset($slot) ? $slot : null }}
+
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
@@ -59,8 +68,11 @@
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    @yield('leaflet_script')
+    @yield('add_script')
 
+    @livewireScripts
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+    @stack('scripts')
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

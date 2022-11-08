@@ -11,19 +11,21 @@
     </style>
 @endsection
 
-@section('leaflet_script')
+@section('add_script')
     <script>
+        // var map = L.map('map').setView([-0.08581514293429128, 109.22367233774284], 14);
+
         const cities = L.layerGroup();
 
-        const mLittleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities);
-        const mDenver = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities);
-        const mAurora = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities);
-        const mGolden = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+        const mLittleton = L.marker([-0.08409853108529625, 109.20564789434026]).bindPopup('TOKO').addTo(cities);
+        const mDenver = L.marker([-0.08817548410057909, 109.21178478816542]).bindPopup('HOME STAY').addTo(cities);
+        const mAurora = L.marker([-0.08302564864123735, 109.22504562866874]).bindPopup('SURAU').addTo(cities);
+        const mGolden = L.marker([-0.08315439453607652, 109.20594830173029]).bindPopup('MASJID').addTo(cities);
 
-        const mbAttr =
-            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
         const mbUrl =
             'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+        const mbAttr =
+            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
 
         const streets = L.tileLayer(mbUrl, {
             id: 'mapbox/streets-v11',
@@ -34,7 +36,7 @@
 
         const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            attribution: '&copy; <a href="/home">Desa Kalimas</a>'
         });
 
         const map = L.map('map', {
@@ -53,8 +55,8 @@
         };
 
         const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
-        const crownHill = L.marker([39.75, -105.09]).bindPopup('This is Crown Hill Park.');
-        const rubyHill = L.marker([39.68, -105.00]).bindPopup('This is Ruby Hill Park.');
+        const crownHill = L.marker([-0.08409853108529625, 109.20564789434026]).bindPopup('Toko');
+        const rubyHill = L.marker([-0.08817548410057909, 109.21178478816542]).bindPopup('Home Stay');
 
         const parks = L.layerGroup([crownHill, rubyHill]);
 

@@ -9,5 +9,6 @@ class Admin extends Model
 {
     use HasFactory;
     protected $table ='tb_admin';
+    public $timestamps = false;
 
 }

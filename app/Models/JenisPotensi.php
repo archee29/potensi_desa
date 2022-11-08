@@ -5,28 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lokasi extends Model
+class JenisPotensi extends Model
 {
-protected $table = 'tb_desa';
+    protected $table = 'tb_jenis_potensi';
 
     public function sekolah(){
-        return $this->hasMany(Sekolah::class, 'id');
-    }
-
-    public function tempatibadah(){
-        return $this->belongsTo(RumahIbadah::class, 'id');
+        return $this->belongsTo(Sekolah::class, 'id');
     }
     public function pasar(){
         return $this->belongsTo(Pasar::class, 'id');
     }
 
+    public function tempatibadah(){
+        return $this->belongsTo(TempatIbadah::class, 'id');
+    }
+
     public function tempatwisata(){
         return $this->belongsTo(TempatWisata::class, 'id');
     }
-
-    // public function kecamatan(){
-    //     return $this->belongsTo(Kecamatan::class, 'id_kecamatan');
-    // }
 
     use HasFactory;
 }
