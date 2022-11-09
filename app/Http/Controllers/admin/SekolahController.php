@@ -8,21 +8,23 @@ use Illuminate\Http\Request;
 class SekolahController extends Controller
 {
     public function index(){
-        return view('admin.sekolah');
+        return view('admin.potensi.sekolah.index');
     }
-    public function create(){
 
+    public function create(){
+        return view('admin.potensi.sekolah.create');
     }
+
     public function store(){
 
     }
 
     public function show(){
-
+        return view('admin.potensi.sekolah.show');
     }
 
     public function edit(){
-
+        return view('admin.potensi.sekolah.edit');
     }
 
     public function update (){

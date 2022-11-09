@@ -37,11 +37,11 @@
                                 <td>Doe</td>
                                 <td>jhon@email.com</td>
                                 <td>
-                                    <a href="/detail">
+                                    <a href="{{ route('artikel.detail') }} ">
                                         <button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i>
                                             Detail</button>
                                     </a>
-                                    <a href="/edit">
+                                    <a href="{{ route('admin/artikel/edit') }} ">
                                         <button type="button" class="btn btn-outline-dark"><i
                                                 class="fas fa-pencil-alt"></i>
                                             Edit

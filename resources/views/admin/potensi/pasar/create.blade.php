@@ -8,8 +8,9 @@
     <div class="container-fluid pt-4 px-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><a href="/lokasi"><i class="fa fa-newspaper me-2"></i>Artikel</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Pasar</li>
+                <li class="breadcrumb-item"><i class="fa fa-newspaper me-2"></i>Pasar</li>
+                <li class="breadcrumb-item"><a href="/lokasi"><i class="fas fa-plus-circle me-2"></i>Tambah Data Pasar</a></li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
