@@ -16,11 +16,12 @@
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="index" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
-                        Tambah
-                        Data Artikel</button>
-                    <h6 class="mt-3 mb-4">Index Artikel</h6>
-                    <table class="table table-bordered">
+                    <a href="/artikel/create">
+                        <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
+                            Tambah
+                            Data Artikel</button>
+                    </a>
+                    <table class="table table-bordered mt-4">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -37,11 +38,11 @@
                                 <td>Doe</td>
                                 <td>jhon@email.com</td>
                                 <td>
-                                    <a href="{{ route('artikel.detail') }} ">
+                                    <a href="/artikel/show">
                                         <button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i>
                                             Detail</button>
                                     </a>
-                                    <a href="{{ route('admin/artikel/edit') }} ">
+                                    <a href="/artikel/edit">
                                         <button type="button" class="btn btn-outline-dark"><i
                                                 class="fas fa-pencil-alt"></i>
                                             Edit

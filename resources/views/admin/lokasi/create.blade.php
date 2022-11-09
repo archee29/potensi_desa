@@ -9,8 +9,9 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><i class="fa fa-newspaper me-2"></i>lokasi</li>
-                <li class="breadcrumb-item"><a href="/lokasi"><i class="fas fa-plus-circle me-2"></i>Tambah Data lokasi</a></li>
+                <li class="breadcrumb-item"><i class="fa fa-map-marker-alt me-2"></i>Lokasi</li>
+                <li class="breadcrumb-item"><a href="/lokasi"><i class="fas fa-plus-circle me-2"></i>Tambah Data Lokasi</a>
+                </li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
@@ -42,7 +43,9 @@
                     </div>
                     <div class="m-n2">
                         <button type="button" class="btn btn-outline-success m-2">Tambah Data</button>
-                        <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                        <a href="/lokasi">
+                            <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                        </a>
                     </div>
                 </div>
             </div>

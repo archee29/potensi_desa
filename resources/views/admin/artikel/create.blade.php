@@ -43,7 +43,9 @@
                     </div>
                     <div class="m-n2">
                         <button type="button" class="btn btn-outline-success m-2">Tambah Data Artikel</button>
-                        <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                        <a href="/artikel">
+                            <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                        </a>
                     </div>
                 </div>
             </div>
