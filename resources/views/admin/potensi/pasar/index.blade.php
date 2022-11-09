@@ -9,17 +9,19 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><a href="/lokasi"><i class="fa fa-newspaper me-2"></i>Pasar</a></li>
+                <li class="breadcrumb-item"><a href="/lokasi"><i class="fa fa-store-alt me-2"></i>Pasar</a></li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="index" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
-                        Tambah
-                        Data Artikel</button>
-                    <h6 class="mt-3 mb-4">Index Artikel</h6>
-                    <table class="table table-bordered">
+                    <a href="/pasar/create">
+                        <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
+                            Tambah
+                            Data Artikel</button>
+                    </a>
+
+                    <table class="table table-bordered mt-3">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -36,11 +38,11 @@
                                 <td>Doe</td>
                                 <td>jhon@email.com</td>
                                 <td>
-                                    <a href="/detail">
+                                    <a href="/pasar/detail">
                                         <button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i>
                                             Detail</button>
                                     </a>
-                                    <a href="/edit">
+                                    <a href="/pasar/edit">
                                         <button type="button" class="btn btn-outline-dark"><i
                                                 class="fas fa-pencil-alt"></i>
                                             Edit

@@ -9,14 +9,14 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><i class="fa fa-newspaper me-2"></i>Pasar</li>
+                <li class="breadcrumb-item"><i class="fa fa-store-alt me-2"></i>Pasar</li>
                 <li class="breadcrumb-item"><a href="/lokasi"><i class="fas fa-pencil-alt me-2"></i>Edit Data Pasar</a></li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="edit" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Edit Data Artikel</h6>
+                    <h6 class="mb-4">Edit Data Pasar</h6>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control " id="floatingInput" placeholder="Author">
                         <label for="floatingInput">Author</label>
@@ -41,7 +41,9 @@
                     </div>
                     <div class="m-n2">
                         <button type="button" class="btn btn-outline-success m-2">Edit Data</button>
-                        <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                        <a href="/pasar">
+                            <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                        </a>
                     </div>
                 </div>
             </div>

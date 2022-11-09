@@ -53,11 +53,41 @@ Route::resource('home', HomeController::class);
 //lokasi
 // Route::resource('lokasi',LokasiController::class );
 
-//potensi
-Route::resource('rumah-ibadah', RumahIbadahController::class);
-Route::resource('wisata', TempatWisata::class);
-Route::resource('sekolah', SekolahController::class);
-Route::resource('pasar', PasarController::class);
+// //potensi
+// Route::resource('rumah-ibadah', RumahIbadahController::class);
+// Route::resource('wisata', TempatWisata::class);
+// Route::resource('sekolah', SekolahController::class);
+// Route::resource('pasar', PasarController::class);
+
+//pasar
+Route::controller(RumahIbadahController::class)->group(function () {
+    Route::get('/rumah-ibadah', 'index');
+    Route::get('/rumah-ibadah/create', 'create');
+    Route::get('/rumah-ibadah/edit', 'edit');
+    Route::get('/rumah-ibadah/show', 'show');
+
+});
+
+Route::controller(TempatWisataController::class)->group(function () {
+    Route::get('/wisata', 'index');
+    Route::get('/wisata/create', 'create');
+    Route::get('/wisata/edit', 'edit');
+    Route::get('/wisata/show', 'show');
+});
+
+Route::controller(SekolahController::class)->group(function () {
+    Route::get('/sekolah', 'index');
+    Route::get('/sekolah/create', 'create');
+    Route::get('/sekolah/edit', 'edit');
+    Route::get('/sekolah/show', 'show');
+});
+
+Route::controller(PasarController::class)->group(function () {
+    Route::get('/pasar', 'index');
+    Route::get('/pasar/create', 'create');
+    Route::get('/pasar/edit', 'edit');
+    Route::get('/pasar/show', 'show');
+});
 
 //desa
 // Route::resource('artikel', ArtikelController::class);
