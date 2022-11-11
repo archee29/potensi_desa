@@ -24,7 +24,7 @@ class TempatWisataController extends Controller
     }
 
     public function edit(){
-        return viwe('admin.potensi.wisata.edit');
+        return view('admin.potensi.wisata.edit');
     }
 
     public function update (){

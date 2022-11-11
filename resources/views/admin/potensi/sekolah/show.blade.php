@@ -9,14 +9,14 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><i class="fa fa-newspaper me-2"></i>Sekolah</li>
-                <li class="breadcrumb-item"><a href="/lokasi"><i class="fas fa-eye me-2"></i>Detail Data Sekolah</a></li>
+                <li class="breadcrumb-item"><i class="fa fa-school me-2"></i>Sekolah</li>
+                <li class="breadcrumb-item"><a href="/sekolah/show"><i class="fas fa-eye me-2"></i>Detail Data Sekolah</a></li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="show" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Lihat Data Artikel</h6>
+                    <h6 class="mb-4">Lihat Data Sekolah</h6>
                     <div class="form mb-3">
                         <input class="form-control" type="text" value="Author" aria-label="readonly input example"
                             readonly>
@@ -41,7 +41,9 @@
                             type="datetime-local" value="" readonly>
                     </div>
                     <div class="m-n2">
-                        <button type="button" class="btn btn-outline-primary m-2">Kembali</button>
+                        <a href="/sekolah">
+                            <button type="button" class="btn btn-outline-primary m-2">Kembali</button>
+                        </a>
                     </div>
                 </div>
             </div>

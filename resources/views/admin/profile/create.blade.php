@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
                 <li class="breadcrumb-item"><i class="fa fa-users me-2"></i>Profile</li>
-                <li class="breadcrumb-item"><a href="/lokasi"><i class="fas fa-plus-circle me-2"></i>Tambah Data Profile</a>
+                <li class="breadcrumb-item"><a href="/profile/create"><i class="fas fa-plus-circle me-2"></i>Tambah Data Profile</a>
                 </li>
             </ol>
         </nav>

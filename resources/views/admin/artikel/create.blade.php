@@ -10,7 +10,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
                 <li class="breadcrumb-item"><i class="fa fa-newspaper me-2"></i>Artikel</li>
-                <li class="breadcrumb-item"><a href="/lokasi"><i class="fas fa-plus-circle me-2"></i>Tambah Data Artikel</a>
+                <li class="breadcrumb-item"><a href="/artikel/create"><i class="fas fa-plus-circle me-2"></i>Tambah Data
+                        Artikel</a>
                 </li>
             </ol>
         </nav>

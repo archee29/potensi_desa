@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
                 <li class="breadcrumb-item"><i class="fa fa-table me-2"></i>Pemerintahan</li>
-                <li class="breadcrumb-item"><a href="/lokasi"><i class="fas fa-plus-circle me-2"></i>Tambah Data
+                <li class="breadcrumb-item"><a href="/pemerintahan/create"><i class="fas fa-plus-circle me-2"></i>Tambah Data
                         Pemerintahan</a></li>
             </ol>
         </nav>

@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
                 <li class="breadcrumb-item"><i class="fa fa-newspaper me-2"></i>Artikel</li>
-                <li class="breadcrumb-item"><a href="/lokasi"><i class="fas fa-eye me-2"></i>Detail Artikel</a></li>
+                <li class="breadcrumb-item"><a href="/artikel/show"><i class="fas fa-eye me-2"></i>Detail Artikel</a></li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">

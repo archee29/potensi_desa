@@ -9,7 +9,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><a href="/lokasi"><i class="fa fa-store-alt me-2"></i>Pasar</a></li>
+                <li class="breadcrumb-item"><a href="/pasar"><i class="fa fa-store-alt me-2"></i>Pasar</a></li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
