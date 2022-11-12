@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RumahIbadah extends Model
 {
     protected $table = 'tb_tempat_ibadah';
+    protected $guarded = [];
 
     public function lokasi(){
         return $this->belongsTo(Lokasi::class, 'id_desa');

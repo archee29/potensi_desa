@@ -13,6 +13,10 @@ use App\Http\Controllers\admin\ArtikelController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\PemerintahanController;
 use App\Http\Controllers\admin\DataDesaController;
+use App\Http\Controllers\CentreController;
+use App\Http\Controllers\SpaceController;
+use App\Http\Controllers\DataController;
+
 
 // use App\Http\Controllers\admin\AuthController;
 // use App\Http\Controllers\Controller;
@@ -34,10 +38,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/map', [App\Http\livewire\MapKalimas::class, 'render'])->name('map-kalimas');
+// aa
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/map',[App\Http\Controllers\MapController::class,'index'])->name('map.index');
+
+Route::resource('centre-point',(CentrePointController::class));
+Route::resource('space',(SpaceController::class));
+
+Route::get('/centrepoint/data',[DataController::class,'centrepoint'])->name('centre-point.data');
+Route::get('/spaces/data',[DataController::class,'spaces'])->name('data-space');
+// bb
+
+//---
+// Route::get('/map', [App\Http\livewire\MapKalimas::class, 'render'])->name('map-kalimas');
+
+
 
 //dashboard
 Route::resource('home', HomeController::class);
+Route::resource('mapDesa', HomeController::class);
 
 // Route::controller(LokasiController::class)->group(function () {
 //     Route::get('/lokasi','LokasiController@index')->name('lokasi.index');
@@ -48,6 +68,8 @@ Route::resource('home', HomeController::class);
 
 // });
 
+
+Route::get('/mapDesa', [HomeController::class, 'mapDesa'])->name('admin.mapDesa');
 
 
 //lokasi

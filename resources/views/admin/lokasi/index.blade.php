@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin-layout')
 
 @section('title')
-    lokasi
+    Lokasi
 @endsection
 
 @section('content')
@@ -17,45 +17,51 @@
                 <div class="bg-light rounded h-100 p-4">
                     <a href="/lokasi/create">
                         <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
-                            Tambah Data Lokasi</button>
+                            Tambah
+                            Data Lokasi</button>
                     </a>
-                    <table class="table table-bordered mt-3">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Author</th>
-                                <th scope="col">Judul</th>
-                                <th scope="col">Isi</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>jhon@email.com</td>
-                                <td>
-                                    <a href="/lokasi/show">
-                                        <button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i>
-                                            Detail</button>
-                                    </a>
-                                    <a href="/lokasi/edit">
-                                        <button type="button" class="btn btn-outline-dark"><i
-                                                class="fas fa-pencil-alt"></i>
-                                            Edit
+                    <div class="table-responsive">
+                        <table class="table table-bordered mt-4">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Author</th>
+                                    <th scope="col">Judul Artikel</th>
+                                    <th scope="col">Isi Artikel</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>John</td>
+                                    <td>Doe</td>
+                                    <td>jhon@email.com</td>
+                                    <td>
+                                        <a href="/lokasi/show">
+                                            <button type="button" class="btn btn-outline-primary"><i
+                                                    class="fas fa-eye"></i>
+                                                Detail</button>
+                                        </a>
+                                        <a href="/lokasi/edit">
+                                            <button type="button" class="btn btn-outline-dark"><i
+                                                    class="fas fa-pencil-alt"></i>
+                                                Edit
+                                                Data</button>
+                                        </a>
+                                        <button type="button" class="btn btn-outline-danger"><i
+                                                class="fas fa-trash-alt"></i>
+                                            Delete
                                             Data</button>
-                                    </a>
-                                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i>
-                                        Delete
-                                        Data</button>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 @endsection

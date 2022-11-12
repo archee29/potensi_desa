@@ -9,12 +9,5 @@ class Artikel extends Model
 {
     use HasFactory;
     protected $table = 'tb_artikel';
-
-
-    protected $fillable =[
-        'nama_artikel',
-        'isi_artikel',
-        'author',
-        'gambar_artikel',
-    ];
+    protected $guarded = [];
 }

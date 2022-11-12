@@ -3,7 +3,7 @@
     Dashboard
 @endsection
 
-@section('add_css')
+{{-- @section('add_css')
     <style>
         #map {
             height: 500px;
@@ -68,6 +68,74 @@
         });
         layerControl.addBaseLayer(satellite, 'Satellite');
         layerControl.addOverlay(parks, 'Parks');
+    </script>
+@endsection --}}
+
+@section('add_css')
+    <style>
+        #map {
+            height: 500px;
+        }
+    </style>
+@endsection
+
+@section('add_script')
+    <script>
+        var map = L.map('map').setView([-0.08418436167954874, 109.20590538638888], 14);
+        // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        //     maxZoom: 19,
+        //     attribution: '&copy; <a href="http://untan.ac.id">MBKM Smart Village Tanjungpura</a>',
+        // }).addTo(map);
+        L.tileLayer('http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        }).addTo(map);
+
+        var tokoIcon = L.icon({
+            iconUrl: 'images/map icon/toko.png',
+
+            iconSize: [30, 35], // size of the icon
+            shadowSize: [50, 64], // size of the shadow
+            iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62], // the same for the shadow
+            popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+        });
+        // L.marker([-0.08418436167954874, 109.20590538638888], {
+        //     icon: tokoIcon
+        // }).addTo(map).on('click', function(e) {
+        //     alert(e.latlng);
+        // });
+
+        var latlngs = [
+            [
+                -0.08571144059300195,
+                109.2300535244699
+
+            ],
+            [
+                -0.06891640675939925,
+                109.21974185824399
+            ],
+            [
+                -0.07842541139949333,
+                109.17815745975275
+            ],
+            [
+                -0.0981225228139806,
+                109.1980398341558
+            ],
+            [
+                -0.08577322662537767,
+                109.23045673401123
+            ]
+        ];
+        var polyline = L.polyline(latlngs, {
+            color: 'blue'
+        }).addTo(map);
+
+
+        // zoom the map to the polyline
+        map.fitBounds(polyline.getBounds());
     </script>
 @endsection
 
