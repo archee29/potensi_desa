@@ -16,47 +16,62 @@
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="index" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <a href="/rumah-ibadah/create">
-                        <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
-                            Tambah
-                            Data Artikel</button>
-                    </a>
+                    <div class="card">
+                        <div class="card-header">{{ __('Rumah Ibadah') }}</div>
+                        <div class="card-body">
+                            <a href="/rumah-ibadah/create" class="btn btn-outline-info btn-sm float-end mb-2"><i
+                                    class="fas fa-plus-circle"></i>
+                                Tambah Data Rumah Ibadah
+                            </a>
+                            @if (session('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            <table class="table table-responsive-lg table-bordered mt-4" id="dataLokasi">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Author</th>
+                                        <th>Judul Artikel</th>
+                                        <th>Isi Artikel</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>jhon@email.com</td>
+                                        <td>
+                                            <a href="/rumah-ibadah/show">
+                                                <button type="button" class="btn btn-outline-primary"><i
+                                                        class="fas fa-eye"></i>
+                                                    Detail</button>
+                                            </a>
+                                            <a href="/rumah-ibadah/edit">
+                                                <button type="button" class="btn btn-outline-dark"><i
+                                                        class="fas fa-pencil-alt"></i>
+                                                    Edit
+                                                    Data</button>
+                                            </a>
+                                            <button type="button" class="btn btn-outline-danger"><i
+                                                    class="fas fa-trash-alt"></i>
+                                                Delete
+                                                Data</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <form action="" method="POST" id="deleteForm">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Hapus" style="display: none">
+                            </form>
+                        </div>
 
-                    <table class="table table-bordered mt-3">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Author</th>
-                                <th scope="col">Judul Artikel</th>
-                                <th scope="col">Isi Artikel</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>jhon@email.com</td>
-                                <td>
-                                    <a href="/rumah-ibadah/show">
-                                        <button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i>
-                                            Detail</button>
-                                    </a>
-                                    <a href="/rumah-ibadah/edit">
-                                        <button type="button" class="btn btn-outline-dark"><i
-                                                class="fas fa-pencil-alt"></i>
-                                            Edit
-                                            Data</button>
-                                    </a>
-                                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i>
-                                        Delete
-                                        Data</button>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>
