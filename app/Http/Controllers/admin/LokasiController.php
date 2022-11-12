@@ -55,10 +55,11 @@ class LokasiController extends Controller
     }
 
     public function edit(Lokasi $lokasi){
-        $lokasi = Lokasi::findOrFail($lokasi->id);
-        return view ('admin.lokasi.edit',[
-            'lokasi'=>$lokasi
-        ]);
+        // $lokasi = Lokasi::findOrFail($lokasi->id);
+        // return view ('admin.lokasi.edit',[
+        //     'lokasi'=>$lokasi
+        // ]);
+        return view('admin.lokasi.edit');
     }
 
     public function update (Request $request, Lokasi $lokasi){

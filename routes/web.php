@@ -132,6 +132,7 @@ Route::controller(LokasiController::class)->group(function () {
     Route::get('/lokasi/create', 'create');
     Route::get('/lokasi/edit', 'edit');
     Route::get('/lokasi/show', 'show');
+    Route::resource('lokasi', (LokasiController::class));
 });
 
 //desa

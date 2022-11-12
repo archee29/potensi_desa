@@ -4,6 +4,10 @@
     Lokasi
 @endsection
 
+@section('add_css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+@endsection
+
 @section('content')
     <div class="container-fluid pt-4 px-4">
         <nav aria-label="breadcrumb">
@@ -15,49 +19,61 @@
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="index" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <a href="/lokasi/create">
-                        <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
-                            Tambah
-                            Data Lokasi</button>
-                    </a>
-                    <div class="table-responsive">
-                        <table class="table table-bordered mt-4">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Author</th>
-                                    <th scope="col">Judul Artikel</th>
-                                    <th scope="col">Isi Artikel</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>jhon@email.com</td>
-                                    <td>
-                                        <a href="/lokasi/show">
-                                            <button type="button" class="btn btn-outline-primary"><i
-                                                    class="fas fa-eye"></i>
-                                                Detail</button>
-                                        </a>
-                                        <a href="/lokasi/edit">
-                                            <button type="button" class="btn btn-outline-dark"><i
-                                                    class="fas fa-pencil-alt"></i>
-                                                Edit
+                    <div class="card">
+                        <div class="card-header">{{ __('Lokasi') }}</div>
+                        <div class="card-body">
+                            <a href="/lokasi/create" class="btn btn-outline-info btn-sm float-end mb-2"><i
+                                    class="fas fa-plus-circle"></i>
+                                Tambah Data Lokasi
+                            </a>
+                            @if (session('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            <table class="table table-responsive-lg table-bordered mt-4" id="dataLokasi">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Author</th>
+                                        <th>Judul Artikel</th>
+                                        <th>Isi Artikel</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>jhon@email.com</td>
+                                        <td>
+                                            <a href="/lokasi/show">
+                                                <button type="button" class="btn btn-outline-primary"><i
+                                                        class="fas fa-eye"></i>
+                                                    Detail</button>
+                                            </a>
+                                            <a href="/lokasi/edit">
+                                                <button type="button" class="btn btn-outline-dark"><i
+                                                        class="fas fa-pencil-alt"></i>
+                                                    Edit
+                                                    Data</button>
+                                            </a>
+                                            <button type="button" class="btn btn-outline-danger"><i
+                                                    class="fas fa-trash-alt"></i>
+                                                Delete
                                                 Data</button>
-                                        </a>
-                                        <button type="button" class="btn btn-outline-danger"><i
-                                                class="fas fa-trash-alt"></i>
-                                            Delete
-                                            Data</button>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <form action="" method="POST" id="deleteForm">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Hapus" style="display: none">
+                            </form>
+                        </div>
 
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -65,3 +81,34 @@
 
     </div>
 @endsection
+
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function() {
+            $('#dataSpaces').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                lengthChange: false,
+                autoWidth: false,
+
+                // Route untuk menampilkan data space
+                ajax: '{{ route('data-space') }}',
+                columns: [{
+                        data: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'lokasi'
+                    },
+                    {
+                        data: 'action'
+                    }
+                ]
+            })
+        })
+    </script>
+@endpush
