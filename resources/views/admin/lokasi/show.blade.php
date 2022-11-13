@@ -98,7 +98,6 @@
                                 </div>
 
                                 <div class="form-group mt-3">
-                                    <button type="submit" class="btn btn-outline-success m-2">Tambah Data</button>
                                     <a href="/lokasi">
                                         <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
                                     </a>

@@ -36,7 +36,7 @@
                         <div class="card-body">
                             <form action="{{ route('lokasi.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-
+                                @method('PUT')
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('desa') is-invalid @enderror"
                                         id="floatingInput" placeholder="Nama Desa">
