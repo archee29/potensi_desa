@@ -9,6 +9,7 @@ class JenisPotensi extends Model
 {
     protected $table = 'tb_jenis_potensi';
     protected $guarded = [];
+
     public function sekolah(){
         return $this->belongsTo(Sekolah::class, 'id');
     }
