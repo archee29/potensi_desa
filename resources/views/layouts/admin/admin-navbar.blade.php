@@ -8,9 +8,9 @@
         <i class="fa fa-bars"></i>
     </a>
 
-    <form class="d-none d-md-flex ms-4">
+    {{-- <form class="d-none d-md-flex ms-4">
         <input class="form-control border-0" type="search" placeholder="Search">
-    </form>
+    </form> --}}
 
     <div class="navbar-nav align-items-center ms-auto">
 
@@ -18,7 +18,7 @@
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img class="rounded-circle me-lg-2" src="admin-rsc/img/user.jpg" alt=""
                     style="width: 40px; height: 40px;">
-                <span class="d-none d-lg-inline-flex">Desa Kalimas</span>
+                <span class="d-none d-lg-inline-flex">{{ Auth::user()->name }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 @guest
@@ -39,10 +39,6 @@
                         @csrf
                     </form>
                 @endguest
-                {{-- <a href="{{ route('logout') }}" class="dropdown-item">{{ __('Log Out') }}</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form> --}}
             </div>
         </div>
     </div>

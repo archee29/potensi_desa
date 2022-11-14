@@ -13,12 +13,10 @@
                 </div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">Desa Kalmas</h6>
-                <span>Admin</span>
+                <h6 class="mb-0">Admin Dashboard</h6>
+                <span>{{ Auth::user()->name }}</span>
             </div>
         </div>
-
-
 
         <div class="navbar-nav w-100">
             <a href="/home" class="nav-item nav-link {{ Request::path() == 'home' ? 'active' : '' }}"><i
