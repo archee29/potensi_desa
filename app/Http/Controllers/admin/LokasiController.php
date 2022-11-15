@@ -91,16 +91,16 @@ class LokasiController extends Controller
             'keterangan'=>$request->keterangan,
         ]);
         if($lokasi){
-            return redirect()->route('admin.lokasi.index')->with('success','Data Berhasil Diupdate');
+            return redirect()->route('lokasi.index')->with('success','Data Berhasil Diupdate');
         }else{
-            return redirect()->route('admin.lokasi.index')->with('errors','Data Gagal Diupdate');
+            return redirect()->route('lokasi.index')->with('errors','Data Gagal Diupdate');
         }
     }
 
     public function destroy($id){
         $lokasi = Space::findOrFail($id);
-        if(File::exists("images/Poto-Kalimas".$lokasi->image)){
-            File::delete("images/Poto-Kalimas". $lokasi->image);
+        if(File::exists("images/Poto-Kalimas/desa".$lokasi->image)){
+            File::delete("images/Poto-Kalimas/desa". $lokasi->image);
         }
         $lokasi = Lokasi::findOrFail($id);
         $lokasi->delete();
