@@ -127,7 +127,7 @@
             </div>
         </div>
 
-        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container px-lg-5">
                 <div class="row align-items-center" style="height: 250px;">
                     <div class="col-12 col-md-6">
@@ -266,7 +266,7 @@
             </div>
         </div>
 
-        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container px-lg-5">
                 <div class="row align-items-center" style="height: 250px;">
                     <div class="col-12 col-md-6">
@@ -292,7 +292,8 @@
                     <h6 class="position-relative d-inline text-primary ps-4">Pemerintahan</h6>
                     <h2 class="mt-2">Pemerintahan Desa</h2>
                 </div>
-                <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.1s">
+
+                <div id="struktur" class="row mt-n2 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="col-12 text-center">
                         <ul class="list-inline mb-5" id="portfolio-flters">
                             <li class="btn px-3 pe-4 active" data-filter="*">Semua</li>
@@ -302,7 +303,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row g-4 portfolio-container">
+
+                <div id="image-card" class="row g-4 portfolio-container">
                     <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.1s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="user-rsc/img/portfolio-1.jpg" alt="">
@@ -316,6 +318,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.3s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="user-rsc/img/portfolio-2.jpg" alt="">
@@ -329,6 +332,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.6s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="user-rsc/img/portfolio-3.jpg" alt="">
@@ -342,6 +346,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.1s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="user-rsc/img/portfolio-4.jpg" alt="">
@@ -355,6 +360,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.3s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="user-rsc/img/portfolio-5.jpg" alt="">
@@ -368,6 +374,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.6s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="user-rsc/img/portfolio-6.jpg" alt="">
@@ -382,73 +389,79 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="container-xxl bg-primary testimonial three py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="container py-5 px-lg-5">
-                        <div class="owl-carousel testimonial-carousel">
-                            <div class="testimonial-item bg-transparent border rounded text-white p-4">
-                                <i class="fa fa-quote-left fa-2x mb-3"></i>
-                                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
-                                    labore diam
-                                </p>
-                                <div class="d-flex align-items-center">
-                                    <img class="img-fluid flex-shrink-0 rounded-circle"
-                                        src="user-rsc/img/testimonial-1.jpg" style="width: 50px; height: 50px;">
-                                    <div class="ps-3">
-                                        <h6 class="text-white mb-1">Client Name</h6>
-                                        <small>Profession</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-item bg-transparent border rounded text-white p-4">
-                                <i class="fa fa-quote-left fa-2x mb-3"></i>
-                                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
-                                    labore diam
-                                </p>
-                                <div class="d-flex align-items-center">
-                                    <img class="img-fluid flex-shrink-0 rounded-circle"
-                                        src="user-rsc/img/testimonial-2.jpg" style="width: 50px; height: 50px;">
-                                    <div class="ps-3">
-                                        <h6 class="text-white mb-1">Client Name</h6>
-                                        <small>Profession</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-item bg-transparent border rounded text-white p-4">
-                                <i class="fa fa-quote-left fa-2x mb-3"></i>
-                                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
-                                    labore diam
-                                </p>
-                                <div class="d-flex align-items-center">
-                                    <img class="img-fluid flex-shrink-0 rounded-circle"
-                                        src="user-rsc/img/testimonial-3.jpg" style="width: 50px; height: 50px;">
-                                    <div class="ps-3">
-                                        <h6 class="text-white mb-1">Client Name</h6>
-                                        <small>Profession</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-item bg-transparent border rounded text-white p-4">
-                                <i class="fa fa-quote-left fa-2x mb-3"></i>
-                                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
-                                    labore diam
-                                </p>
-                                <div class="d-flex align-items-center">
-                                    <img class="img-fluid flex-shrink-0 rounded-circle"
-                                        src="user-rsc/img/testimonial-4.jpg" style="width: 50px; height: 50px;">
-                                    <div class="ps-3">
-                                        <h6 class="text-white mb-1">Client Name</h6>
-                                        <small>Profession</small>
-                                    </div>
-                                </div>
+        <div id="visi-struktur" class="container-xxl bg-primary testimonial three py-5 my-5 wow fadeInUp"
+            data-wow-delay="0.1s">
+            <div class="container py-5 px-lg-5">
+                <div class="owl-carousel testimonial-carousel">
+
+                    <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                        <i class="fa fa-quote-left fa-2x mb-3"></i>
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                            labore diam
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="user-rsc/img/testimonial-1.jpg"
+                                style="width: 50px; height: 50px;">
+                            <div class="ps-3">
+                                <h6 class="text-white mb-1">Client Name</h6>
+                                <small>Profession</small>
                             </div>
                         </div>
                     </div>
+
+                    <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                        <i class="fa fa-quote-left fa-2x mb-3"></i>
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                            labore diam
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="user-rsc/img/testimonial-2.jpg"
+                                style="width: 50px; height: 50px;">
+                            <div class="ps-3">
+                                <h6 class="text-white mb-1">Client Name</h6>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                        <i class="fa fa-quote-left fa-2x mb-3"></i>
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                            labore diam
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="user-rsc/img/testimonial-3.jpg"
+                                style="width: 50px; height: 50px;">
+                            <div class="ps-3">
+                                <h6 class="text-white mb-1">Client Name</h6>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                        <i class="fa fa-quote-left fa-2x mb-3"></i>
+                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos
+                            labore diam
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="user-rsc/img/testimonial-4.jpg"
+                                style="width: 50px; height: 50px;">
+                            <div class="ps-3">
+                                <h6 class="text-white mb-1">Client Name</h6>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container px-lg-5">
                 <div class="row align-items-center" style="height: 250px;">
                     <div class="col-12 col-md-6">
@@ -520,7 +533,7 @@
 
         </div>
 
-        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container px-lg-5">
                 <div class="row align-items-center" style="height: 250px;">
                     <div class="col-12 col-md-6">
@@ -590,7 +603,7 @@
             </div>
         </div>
 
-        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container px-lg-5">
                 <div class="row align-items-center" style="height: 250px;">
                     <div class="col-12 col-md-6">
