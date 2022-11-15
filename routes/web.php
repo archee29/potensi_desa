@@ -13,9 +13,7 @@ use App\Http\Controllers\admin\ArtikelController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\PemerintahanController;
 use App\Http\Controllers\admin\DataDesaController;
-use App\Http\Controllers\CentreController;
-use App\Http\Controllers\SpaceController;
-use App\Http\Controllers\DataController;
+use App\Http\Controllers\admin\DataController;
 
 
 // use App\Http\Controllers\admin\AuthController;
@@ -41,35 +39,24 @@ Auth::routes();
 // aa
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/map',[App\Http\Controllers\MapController::class,'index'])->name('map.index');
+// Route::get('/map',[App\Http\Controllers\MapController::class,'index'])->name('map.index');
 
-Route::resource('centre-point',(CentrePointController::class));
-Route::resource('space',(SpaceController::class));
 
-Route::get('/centrepoint/data',[DataController::class,'centrepoint'])->name('centre-point.data');
-Route::get('/spaces/data',[DataController::class,'spaces'])->name('data-space');
-// bb
 
-//---
 // Route::get('/map', [App\Http\livewire\MapKalimas::class, 'render'])->name('map-kalimas');
 
 
 
 //dashboard
 Route::resource('home', HomeController::class);
-Route::resource('mapDesa', HomeController::class);
 
 // Route::controller(LokasiController::class)->group(function () {
 //     Route::get('/lokasi','LokasiController@index')->name('lokasi.index');
 //     Route::get('/lokasi/create','admin\LokasiController@create')->name('lokasi.create');
 //     Route::get('/lokasi/edit','admin\LokasiController@edit')->name('lokasi.edit');
 //     Route::get('/lokasi/show','admin\LokasiController@show')->name('lokasi.show');
-
-
 // });
 
-
-Route::get('/mapDesa', [HomeController::class, 'mapDesa'])->name('admin.mapDesa');
 
 
 //lokasi
@@ -127,7 +114,11 @@ Route::controller(PasarController::class)->group(function () {
 // Route::resource('pasar', [App\Http\Controllers\admin\PasarController::class, 'index'])->name('pasar');
 
 //lokasi
+Route::resource('data', DataController::class);
+
 Route::controller(LokasiController::class)->group(function () {
+    Route::resource('lokasi', LokasiController::class);
+    Route::get('lokasi/data', [DataController::class, 'lokasi'])->name('data-lokasi');
     Route::get('/lokasi', 'index');
     Route::get('/lokasi/create', 'create');
     Route::get('/lokasi/edit', 'edit');
