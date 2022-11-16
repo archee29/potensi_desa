@@ -34,23 +34,34 @@
                     <div class="card">
                         <div class="card-header">Edit Data Pasar</div>
                         <div class="card-body">
-                            <form action="{{ route('lokasi.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('pasar.update', $pasar) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
+                                    <input type="text" class="form-control @error('author') is-invalid @enderror"
                                         id="floatingInput" placeholder="Nama Desa">
                                     <label for="floatingInput">Author</label>
-                                    @error('desa')
+                                    @error('author')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
+                                    <input type="text" name="nama_dusun"
+                                        class="form-control @error('nama_dusun') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Desa">
+                                    <label for="floatingInput">Nama Dusun</label>
+                                    @error('nama_dusun')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="judul"
+                                        class="form-control @error('judul') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Desa">
                                     <label for="floatingInput">Judul</label>
-                                    @error('desa')
+                                    @error('judul')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -67,8 +78,10 @@
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label mt-3">Masukkan File dengan format
                                         .png/.jpg</label>
-                                    <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
+                                    <img id="previewImage" class="mb-2" src="{{ $pasar->getImage() }}" width="100%"
+                                        alt="poto_pasar">
+                                    <input class="form-control @error('image') is-invalid @enderror" name="image"
+                                        type="file" id="formFile">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -77,8 +90,9 @@
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
+                                        class="form-control @error('location') is-invalid @enderror"
+                                        value="{{ $pasar->location }}" readonly id="">
+                                    @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -113,7 +127,98 @@
         crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function(e) {
+                    $('#previewImage').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#image").change(function() {
+            readURL(this);
+        });
+
+        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            mbUrl =
+            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+        var satellite = L.tileLayer(mbUrl, {
+                id: 'mapbox/satellite-v9',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mbAttr
+            }),
+            dark = L.tileLayer(mbUrl, {
+                id: 'mapbox/dark-v10',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mbAttr
+            }),
+            streets = L.tileLayer(mbUrl, {
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mbAttr
+            });
+
+        var map = L.map('map', {
+            center: [{{ $pasar->location }}],
+            zoom: 14,
+            layers: [streets]
+        });
+
+        var baseLayers = {
+            //"Grayscale": grayscale,
+            "Streets": streets,
+            "Satellite": satellite
+        };
+
+        var overlays = {
+            "Streets": streets,
+            "Satellite": satellite,
+        };
+
+        L.control.layers(baseLayers, overlays).addTo(map);
+
+        var curLocation = [{{ $pasar->location }}];
+        map.attributionControl.setPrefix(false);
+
+        var marker = new L.marker(curLocation, {
+            draggable: 'true',
+        });
+        map.addLayer(marker);
+
+        marker.on('dragend', function(event) {
+            var location = marker.getLatLng();
+            marker.setLatLng(location, {
+                draggable: 'true',
+            }).bindPopup(location).update();
+
+            $('#location').val(location.lat + "," + location.lng).keyup()
+        });
+
+        var loc = document.querySelector("[name=location]");
+        map.on("click", function(e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+
+            if (!marker) {
+                marker = L.marker(e.latlng).addTo(map);
+            } else {
+                marker.setLatLng(e.latlng);
+            }
+            loc.value = lat + "," + lng;
+        });
+    </script>
+
+    {{--
     <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -161,96 +266,5 @@
         };
 
         L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
-
-    {{-- <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#previewImage').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#image").change(function() {
-            readURL(this);
-        });
-
-        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            mbUrl =
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-        var satellite = L.tileLayer(mbUrl, {
-                id: 'mapbox/satellite-v9',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            dark = L.tileLayer(mbUrl, {
-                id: 'mapbox/dark-v10',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            streets = L.tileLayer(mbUrl, {
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            });
-
-        var map = L.map('map', {
-            center: [{{ $space->location }}],
-            zoom: 14,
-            layers: [streets]
-        });
-
-        var baseLayers = {
-            //"Grayscale": grayscale,
-            "Streets": streets,
-            "Satellite": satellite
-        };
-
-        var overlays = {
-            "Streets": streets,
-            "Satellite": satellite,
-        };
-
-        L.control.layers(baseLayers, overlays).addTo(map);
-
-        var curLocation = [{{ $space->location }}];
-        map.attributionControl.setPrefix(false);
-
-        var marker = new L.marker(curLocation, {
-            draggable: 'true',
-        });
-        map.addLayer(marker);
-
-        marker.on('dragend', function(event) {
-            var location = marker.getLatLng();
-            marker.setLatLng(location, {
-                draggable: 'true',
-            }).bindPopup(location).update();
-
-            $('#location').val(location.lat + "," + location.lng).keyup()
-        });
-
-        var loc = document.querySelector("[name=location]");
-        map.on("click", function(e) {
-            var lat = e.latlng.lat;
-            var lng = e.latlng.lng;
-
-            if (!marker) {
-                marker = L.marker(e.latlng).addTo(map);
-            } else {
-                marker.setLatLng(e.latlng);
-            }
-            loc.value = lat + "," + lng;
-        });
     </script> --}}
 @endpush

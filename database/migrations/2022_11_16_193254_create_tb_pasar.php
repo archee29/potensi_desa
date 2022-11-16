@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('dusun');
             $table->string('nama_dusun');
             $table->string('judul');
-            $table->string('jenis_potensi');
             $table->longText('keterangan');
             $table->string('location');
             $table->string('image')->nullable();

@@ -88,8 +88,8 @@ Route::controller(SekolahController::class)->group(function () {
 });
 
 Route::controller(PasarController::class)->group(function () {
+    Route::get('/pasar/data',[DataController::class,'pasar'])->name('data-pasar');
     Route::resource('pasar',(PasarController::class));
-    Route::get('/pasar/data',[DataController::class,'pasar'])->name('pasar.data');
 });
 
 //desa
