@@ -17,7 +17,7 @@ class DataController extends Controller
     return datatables ()->of($lokasi)
     ->addColumn('action','lokasi.action')
     ->addIndexColumn()
-    ->rawColumn(['action'])
+    ->rawColumns(['action'])
     ->toJson();
  }
  public function pasar(){
@@ -25,7 +25,7 @@ class DataController extends Controller
     return datatables()->of($pasar)
     ->addColumn('action','pasar.action')
     ->addIndexColumn()
-    ->rawColumn(['action'])
+    ->rawColumns(['action'])
     ->toJson();
  }
 
@@ -34,7 +34,7 @@ class DataController extends Controller
     return datatables()->of($wisata)
     ->addColumn('action','wisata.action')
     ->addIndexColumn()
-    ->rawColumn(['action'])
+    ->rawColumns(['action'])
     ->toJson();
  }
 
@@ -43,7 +43,7 @@ class DataController extends Controller
     return datatables()->of($rumah_ibadah)
     ->addColumn('action','rumah_ibadah.action')
     ->addIndexColumn()
-    ->rawColumn(['action'])
+    ->rawColumns(['action'])
     ->toJson();
  }
 
@@ -52,7 +52,7 @@ class DataController extends Controller
     return datatables()->of($sekolah)
     ->addColumn('action','sekolah.action')
     ->addIndexColumn()
-    ->rawColumn(['action'])
+    ->rawColumns(['action'])
     ->toJson();
  }
 

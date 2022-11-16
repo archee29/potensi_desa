@@ -35,19 +35,22 @@
                         <div class="card-header">Edit Data Lokasi</div>
                         <div class="card-body">
                             {{-- {{ route('lokasi.update', $titik) }} --}}
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('lokasi.update', $lokasi->id) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
                                     <label for="floatingInput">Nama Desa</label>
-                                    @error('desa')
+                                    <input type="text" class="form-control @error('nama_desa') is-invalid @enderror"
+                                        id="floatingInput" placeholder="Nama Desa" name="nama_desa"
+                                        value="{{ $lokasi->nama_desa }}">
+
+                                    @error('nama_desa')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <div class="form-floating mb-3">
+                                {{-- <div class="form-floating mb-3">
                                     <select class="form-select @error('jenis_potensi') is-invalid @enderror"
                                         id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example">
                                         <option selected>Jenis Potensi</option>
@@ -60,12 +63,12 @@
                                     @error('jenis_potensi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="form-floating">
-                                    <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;"></textarea>
                                     <label for="floatingTextarea">Keterangan</label>
+                                    <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
+                                        id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $lokasi->keterangan }}</textarea>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -74,8 +77,8 @@
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label mt-3">Masukkan File dengan format
                                         .png/.jpg</label> <br>
-                                    {{-- <img id="previewImage" class="mb-2" src="{{ $lokasi->getImage() }}" width="100%" --}}
-                                    alt="">
+                                    <img id="previewImage" class="mb-2" src="{{ $lokasi->getImage() }}" width="100%"
+                                        alt="gambar_desa">
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
                                         id="formFile">
                                     @error('image')
@@ -85,9 +88,10 @@
 
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
-                                    <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
+                                    <input type="text" name="location" value="{{ $lokasi->location }}"
+                                        class="form-control @error('location') is-invalid @enderror" readonly
+                                        id="">
+                                    @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -123,7 +127,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
-    <script>
+    {{-- <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             mbUrl =
@@ -170,9 +174,9 @@
         };
 
         L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
+    </script> --}}
 
-    {{-- <script>
+    <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -214,7 +218,7 @@
             });
 
         var map = L.map('map', {
-            center: [{{ $space->location }}],
+            center: [{{ $lokasi->location }}],
             zoom: 14,
             layers: [streets]
         });
@@ -232,7 +236,7 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        var curLocation = [{{ $space->location }}];
+        var curLocation = [{{ $lokasi->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {
@@ -261,5 +265,5 @@
             }
             loc.value = lat + "," + lng;
         });
-    </script> --}}
+    </script>
 @endpush

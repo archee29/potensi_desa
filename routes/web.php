@@ -50,24 +50,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //dashboard
 Route::resource('home', HomeController::class);
 
-// Route::controller(LokasiController::class)->group(function () {
-//     Route::get('/lokasi','LokasiController@index')->name('lokasi.index');
-//     Route::get('/lokasi/create','admin\LokasiController@create')->name('lokasi.create');
-//     Route::get('/lokasi/edit','admin\LokasiController@edit')->name('lokasi.edit');
-//     Route::get('/lokasi/show','admin\LokasiController@show')->name('lokasi.show');
-// });
-
 
 
 //lokasi
-// Route::resource('lokasi',LokasiController::class );
+Route::controller(LokasiController::class)->group(function () {
+    Route::get('/lokasi/data', [DataController::class, 'lokasi'])->name('data-lokasi');
+    Route::resource('lokasi', (LokasiController::class));
+    Route::get('lokasi', [LokasiController::class, 'index'])->name('lokasi.index');
+    Route::post('lokasi/create', [LokasiController::class, 'create'])->name('lokasi.create');
+    Route::put('lokasi/edit/{id}', [LokasiController::class, 'edit'])->name('lokasi.edit');
+    Route::get('lokasi/show/{id}', [LokasiController::class, 'show'])->name('lokasi.show');
+});
 
-// //potensi
-// Route::resource('rumah-ibadah', RumahIbadahController::class);
-// Route::resource('wisata', TempatWisata::class);
-// Route::resource('sekolah', SekolahController::class);
-// Route::resource('pasar', PasarController::class);
 
+// Potensi
 //pasar
 Route::controller(RumahIbadahController::class)->group(function () {
     Route::get('/rumah-ibadah', 'index');
@@ -99,34 +95,6 @@ Route::controller(PasarController::class)->group(function () {
 });
 
 //desa
-// Route::resource('artikel', ArtikelController::class);
-// Route::resource('profile', ProfileController::class);
-// Route::resource('pemerintahan', PemerintahanController::class);
-// Route::resource('data', DataDesaController::class);
-
-// //lokasi
-// Route::resource('lokasi', [App\Http\Controllers\admin\LokasiController::class, 'index'])->name('lokasi');
-
-// //potensi
-// Route::resource('rumah-ibadah', [App\Http\Controllers\admin\RumahIbadahController::class, 'index'])->name('rumah-ibadah');
-// Route::resource('wisata', [App\Http\Controllers\admin\TempatWisataController::class, 'index'])->name('wisata');
-// Route::resource('sekolah', [App\Http\Controllers\admin\SekolahController::class, 'index'])->name('sekolah');
-// Route::resource('pasar', [App\Http\Controllers\admin\PasarController::class, 'index'])->name('pasar');
-
-//lokasi
-Route::resource('data', DataController::class);
-
-Route::controller(LokasiController::class)->group(function () {
-    Route::resource('lokasi', LokasiController::class);
-    Route::get('lokasi/data', [DataController::class, 'lokasi'])->name('data-lokasi');
-    Route::get('/lokasi', 'index');
-    Route::get('/lokasi/create', 'create');
-    Route::get('/lokasi/edit', 'edit');
-    Route::get('/lokasi/show', 'show');
-    Route::resource('lokasi', (LokasiController::class));
-});
-
-//desa
 Route::controller(ArtikelController::class)->group(function () {
     Route::get('/artikel', 'index');
     Route::get('/artikel/create', 'create');
@@ -154,11 +122,3 @@ Route::controller(DataDesaController::class)->group(function () {
     Route::get('/data/edit', 'edit');
     Route::get('/data/show', 'show');
 });
-
-
-
-// //desa
-// Route::resource('artikel', [App\Http\Controllers\admin\ArtikelController::class, 'index'])->name('artikel');
-// Route::resource('profile', [App\Http\Controllers\admin\ProfileController::class, 'index'])->name('profile');
-// Route::resource('pemerintahan', [App\Http\Controllers\admin\PemerintahanController::class, 'index'])->name('pemerintahan');
-// Route::resource('data', [App\Http\Controllers\admin\DataDesaController::class, 'index'])->name('data');

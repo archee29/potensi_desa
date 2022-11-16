@@ -16,26 +16,27 @@
                 <li class="breadcrumb-item"><a href="/lokasi"><i class="fa fa-map-marker-alt"></i> Lokasi</a></li>
             </ol>
         </nav>
+
         <div class="row  justify-content-center vh-80 bg-light rounded mx-0">
             <div id="index" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="card">
                         <div class="card-header">{{ __('Lokasi') }}</div>
                         <div class="card-body">
-                            <a href="{{ route('lokasi.create') }}" class="btn btn-outline-info btn-sm float-end mb-2"><i
-                                    class="fas fa-plus-circle"></i>
-                                Tambah Data Lokasi
-                            </a>
                             @if (session('success'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('success') }}
                                 </div>
                             @endif
+                            <a href="{{ route('lokasi.create') }}" class="btn btn-outline-info btn-sm float-end mb-2"><i
+                                    class="fas fa-plus-circle"></i>
+                                Tambah Data Lokasi
+                            </a>
+
                             <table class="table table-responsive-lg table-bordered mt-4" id="dataLokasi">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Author</th>
                                         <th>Nama Desa</th>
                                         <th>Opsi</th>
                                     </tr>
@@ -97,17 +98,17 @@
                 ajax: '{{ route('data-lokasi') }}',
                 columns: [{
                         data: 'DT_RowIndex',
-                        orderable: false,
-                        searchable: false
+                        orderable: true,
+                        searchable: true
                     },
                     {
                         data: 'name'
                     },
                     {
                         data: 'action'
-                    }
+                    },
                 ]
-            })
-        })
+            });
+        });
     </script>
 @endpush
