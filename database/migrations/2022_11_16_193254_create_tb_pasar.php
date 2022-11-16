@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('tb_pasar', function (Blueprint $table) {
             $table->id();
             $table->string('author');
+            $table->string('dusun');
+            $table->string('nama_dusun');
             $table->string('judul');
             $table->string('jenis_potensi');
             $table->longText('keterangan');

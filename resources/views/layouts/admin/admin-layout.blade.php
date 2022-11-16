@@ -18,6 +18,7 @@
     <link href="{{ asset('admin-rsc/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin-rsc/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin-rsc/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('js/app.js') }}">
 
     {{-- leaflet link --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
@@ -40,7 +41,6 @@
 
     {{-- end --}}
 
-    @livewireStyles
     @yield('add_css')
 </head>
 
