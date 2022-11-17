@@ -33,7 +33,7 @@
                     <div class="card">
                         <div class="card-header">Detail Data Lokasi</div>
                         <div class="card-body">
-                            <form action="{{ route('lokasi.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-floating mb-3">
@@ -45,7 +45,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-floating mb-3">
+                                {{-- <div class="form-floating mb-3">
                                     <select class="form-select @error('jenis_potensi') is-invalid @enderror"
                                         id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example">
                                         <option selected>Jenis Potensi</option>
@@ -58,7 +58,7 @@
                                     @error('jenis_potensi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"

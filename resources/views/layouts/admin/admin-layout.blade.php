@@ -18,6 +18,7 @@
     <link href="{{ asset('admin-rsc/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin-rsc/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin-rsc/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('js/app.js') }}"defer>
 
     {{-- leaflet link --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
@@ -40,7 +41,6 @@
 
     {{-- end --}}
 
-    @livewireStyles
     @yield('add_css')
 </head>
 
@@ -57,8 +57,6 @@
         <div class="content">
             @include('layouts.admin.admin-navbar')
             @yield('content')
-            {{ isset($slot) ? $slot : null }}
-
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
@@ -80,15 +78,16 @@
     </div>
 
     @yield('add_script')
-
-    @livewireScripts
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
     @stack('scripts')
-
-
-
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            })
+        }, 3000)
     </script>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('admin-rsc/lib/chart/chart.min.js') }}"></script>

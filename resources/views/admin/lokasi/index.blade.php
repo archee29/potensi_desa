@@ -16,33 +16,33 @@
                 <li class="breadcrumb-item"><a href="/lokasi"><i class="fa fa-map-marker-alt"></i> Lokasi</a></li>
             </ol>
         </nav>
-        <div class="row vh-80 bg-light rounded mx-0">
+
+        <div class="row  justify-content-center vh-80 bg-light rounded mx-0">
             <div id="index" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="card">
                         <div class="card-header">{{ __('Lokasi') }}</div>
                         <div class="card-body">
-                            <a href="/lokasi/create" class="btn btn-outline-info btn-sm float-end mb-2"><i
-                                    class="fas fa-plus-circle"></i>
-                                Tambah Data Lokasi
-                            </a>
                             @if (session('success'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('success') }}
                                 </div>
                             @endif
+                            <a href="{{ route('lokasi.create') }}" class="btn btn-outline-info btn-sm float-end mb-2"><i
+                                    class="fas fa-plus-circle"></i>
+                                Tambah Data Lokasi
+                            </a>
+
                             <table class="table table-responsive-lg table-bordered mt-4" id="dataLokasi">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Author</th>
-                                        <th>Judul Artikel</th>
-                                        <th>Isi Artikel</th>
-                                        <th>Actions</th>
+                                        <th>No</th>
+                                        <th>Nama Desa</th>
+                                        <th>Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {{-- <tr>
                                         <th scope="row">1</th>
                                         <td>John</td>
                                         <td>Doe</td>
@@ -64,7 +64,7 @@
                                                 Delete
                                                 Data</button>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                             <form action="" method="POST" id="deleteForm">
@@ -87,7 +87,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(function() {
-            $('#dataSpaces').DataTable({
+            $('#dataLokasi').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
@@ -95,20 +95,20 @@
                 autoWidth: false,
 
                 // Route untuk menampilkan data space
-                ajax: '{{ route('data-space') }}',
+                ajax: '{{ route('data-lokasi') }}',
                 columns: [{
                         data: 'DT_RowIndex',
-                        orderable: false,
-                        searchable: false
+                        orderable: true,
+                        searchable: true
                     },
                     {
-                        data: 'lokasi'
+                        data: 'name'
                     },
                     {
                         data: 'action'
-                    }
+                    },
                 ]
-            })
-        })
+            });
+        });
     </script>
 @endpush

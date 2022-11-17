@@ -39,15 +39,15 @@
                                 @csrf
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
+                                    <input type="text" class="form-control @error('nama_desa') is-invalid @enderror"
+                                        id="floatingInput" placeholder="Nama Desa" name="nama_desa">
                                     <label for="floatingInput">Nama Desa</label>
-                                    @error('desa')
+                                    @error('nama_desa')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <div class="form-floating mb-3">
+                                {{-- <div class="form-floating mb-3">
                                     <select class="form-select @error('jenis_potensi') is-invalid @enderror"
                                         id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example">
                                         <option selected>Jenis Potensi</option>
@@ -60,11 +60,11 @@
                                     @error('jenis_potensi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;"></textarea>
+                                        id="floatingTextarea" style="height: 150px;" name="keterangan"></textarea>
                                     <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -75,7 +75,7 @@
                                     <label for="formFile" class="form-label mt-3">Masukkan File dengan format
                                         .png/.jpg</label>
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
+                                        id="formFile" name="image">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -84,11 +84,12 @@
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
+                                        class="form-control @error('location') is-invalid @enderror" readonly>
+                                    @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+
                                 <div id="map"></div>
 
                                 <div class="md:w-2/3 mb-3">
@@ -121,6 +122,94 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
+        // Menambah attribut pada leaflet
+        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            mbUrl =
+            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+        // membuat beberapa layer untuk tampilan map diantaranya satelit, dark mode, street
+        var satellite = L.tileLayer(mbUrl, {
+                id: 'mapbox/satellite-v9',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mbAttr
+            }),
+            dark = L.tileLayer(mbUrl, {
+                id: 'mapbox/dark-v10',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mbAttr
+            }),
+            streets = L.tileLayer(mbUrl, {
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mbAttr
+            });
+
+        // Membuat var map untuk instance object map ke dalam tag div yang mempunyai id map
+        // menambahkan titik koordinat latitude dan longitude peta indonesia kedalam opsi center
+        // mengatur zoom map dan mengatur layer yang akan digunakan
+        var map = L.map('map', {
+            center: [-0.0837981240055652, 109.20594830173026],
+            zoom: 14,
+            layers: [streets]
+        });
+
+        var baseLayers = {
+            //"Grayscale": grayscale,
+            "Streets": streets,
+            "Satellite": satellite
+        };
+
+        var overlays = {
+            "Streets": streets,
+            "Satellite": satellite,
+        };
+
+        //Menambahkan beberapa layer ke dalam peta/map
+        L.control.layers(baseLayers, overlays).addTo(map);
+
+        // set current location / lokasi sekarang dengan koordinat peta indonesia
+        var curLocation = [-0.0837981240055652, 109.20594830173026];
+        map.attributionControl.setPrefix(false);
+
+        // set marker map agar bisa di geser
+        var marker = new L.marker(curLocation, {
+            draggable: 'true',
+        });
+        map.addLayer(marker);
+
+        // ketika marker di geser kita akan mengambil nilai latitude dan longitude
+        // kemudian memasukkan nilai tersebut ke dalam properti input text dengan name-nya location
+        marker.on('dragend', function(event) {
+            var location = marker.getLatLng();
+            marker.setLatLng(location, {
+                draggable: 'true',
+            }).bindPopup(location).update();
+
+            $('#location').val(location.lat + "," + location.lng).keyup()
+        });
+
+        // untuk fungsi di bawah akan mengambil nilai latitude dan longitudenya
+        // dengan cara klik lokasi pada map dan secara otomatis marker juga akan ikut bergeser dan nilai
+        // latitude dan longitudenya akan muncul pada input text location
+        var loc = document.querySelector("[name=location]");
+        map.on("click", function(e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+
+            if (!marker) {
+                marker = L.marker(e.latlng).addTo(map);
+            } else {
+                marker.setLatLng(e.latlng);
+            }
+            loc.value = lat + "," + lng;
+        });
+    </script>
+
+    {{-- <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             mbUrl =
@@ -167,7 +256,8 @@
         };
 
         L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
+    </script> --}}
+
     {{-- <script>
         // fungsi ini akan berjalan ketika akan menambahkan gambar dimana fungsi ini
         // akan membuat preview image sebelum kita simpan gambar tersebut.
@@ -217,7 +307,7 @@
             // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
             // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
             // centrepoint
-            center: [{{ $lokasi->titik }}],
+            center: [{{ $lokasi->location }}],
             zoom: 14,
             layers: [streets]
         });

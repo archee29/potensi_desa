@@ -17,5 +17,15 @@ class Sekolah extends Model
     public function jenispotensi(){
         return $this->hasMany(JenisPotensi::class, 'id');
     }
+
+    public function getImage(){
+        if(substr($this->image,0,5)=="https"){
+            return $this->image;
+        }
+        if($this->image){
+            return asset('/images/Poto-Kalimas/sekolah/'.$this->image);
+        }
+        return 'https://via.placeholder.com/500x500.png?text=No+Cover';
+    }
     use HasFactory;
 }

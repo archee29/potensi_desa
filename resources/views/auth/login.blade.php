@@ -56,8 +56,24 @@
 
                         <p class="text-center mb-0">Sudah Punya Akun? <a href="{{ route('register') }}">Register</a>
                         </p>
-
                     </form>
+                    <br>
+                    @if (Session::has('alert'))
+                        <div class="alert alert-danger" align="center">
+                            {{ Session::get('alert') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                    @if (Session::has('expired'))
+                        <div class="alert alert-danger" align="center">
+                            {{ Session::get('expired') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
