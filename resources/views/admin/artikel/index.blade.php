@@ -24,19 +24,22 @@
                     <table class="table table-bordered mt-4">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Image</th>
                                 <th scope="col">Author</th>
-                                <th scope="col">Judul Artikel</th>
-                                <th scope="col">Isi Artikel</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Tittle</th>
+                                <th scope="col">Content</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($artikel as $artikel)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>jhon@email.com</td>
+                                <td><img class="w-30 md:w-25 lg:w-30" src="/image/{{ $artikel->image }}" alt=""></td>
+                                <td>{{ $artikel->author }}</td>
+                                <td> {{ date('d-m-Y', strtotime($artikel->created_at))}}</td>
+                                <td>{{ $artikel->title }}</td>
+                                <td>{{ Str::limit($artikel->content, 50) }}</td>
                                 <td>
                                     <a href="/artikel/show">
                                         <button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i>
@@ -53,6 +56,10 @@
                                         Data</button>
                                 </td>
                             </tr>
+
+                            @empty
+                                       <td class="text-gray-500">Halaman Masih Kosong</td>
+                                   @endforelse
 
                         </tbody>
                     </table>
