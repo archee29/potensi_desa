@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\MapKaLimas;
 // use Illminate\Support\Facades\Auth;
 use App\Http\Controllers\admin\HomeController;
@@ -91,6 +92,8 @@ Route::controller(ArtikelController::class)->group(function () {
     Route::get('/artikel/edit', 'edit');
     Route::get('/artikel/show', 'show');
 });
+
+
 
 Route::controller(ProfileController::class)->group(function () {
     Route::get('/profile', 'index');

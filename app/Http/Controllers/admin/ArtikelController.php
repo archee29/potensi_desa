@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use id;
 use App\Models\Admin;
 use App\Models\Artikel;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 
 class ArtikelController extends Controller
@@ -22,7 +23,11 @@ class ArtikelController extends Controller
         //     $artikel = Artikel::get();
         //     return view('admin.artikel.index');
         // }
-        return view('admin.artikel.index');
+        // return view('admin.artikel.index');
+
+        $artikel = DB::table('tb_artikel') -> get();
+        // mengirim data blog ke view
+        return view('admin.artikel.index', ['artikel' => $artikel]);
     }
 
     public function create(){
@@ -37,8 +42,11 @@ class ArtikelController extends Controller
         return view ('admin.artikel.show');
     }
 
-    public function edit(){
-        return view ('admin.artikel.edit');
+    public function edit($id){
+        // return view ('admin.artikel.edit');
+        $artikel = Artikel::findOrFail($id);
+        return view('admin.artikel.edit', [
+          'artikel' => $artikel]);
     }
 
     public function update (){
