@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('tb_sekolah', function (Blueprint $table) {
             $table->id();
             $table->string('author');
-            $table->string('judul');
-            $table->string('jenis_potensi');
+            $table->string('dusun');
+            $table->string('slug');
+            $table->string('nama_sekolah');
+            $table->enum('jenis_sekolah',['PAUD','TK','SD','SMP','SMA']);
             $table->longText('keterangan');
             $table->string('location');
             $table->string('image')->nullable();

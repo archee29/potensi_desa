@@ -19,11 +19,11 @@ class Sekolah extends Model
     }
 
     public function getImage(){
-        if(substr($this->image,o,5)=="https"){
+        if(substr($this->image,0,5)=="https"){
             return $this->image;
         }
         if($this->image){
-            return asset('/images/Poto-Kalimas/pasar/'.$this->image);
+            return asset('/images/Poto-Kalimas/sekolah/'.$this->image);
         }
         return 'https://via.placeholder.com/500x500.png?text=No+Cover';
     }

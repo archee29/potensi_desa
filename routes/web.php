@@ -54,37 +54,27 @@ Route::resource('home', HomeController::class);
 
 //lokasi
 Route::controller(LokasiController::class)->group(function () {
-    Route::get('/lokasi/data', [DataController::class, 'lokasi'])->name('data-lokasi');
-    Route::resource('lokasi', (LokasiController::class));
-    Route::get('lokasi', [LokasiController::class, 'index'])->name('lokasi.index');
-    Route::post('lokasi/create', [LokasiController::class, 'create'])->name('lokasi.create');
-    Route::put('lokasi/edit/{id}', [LokasiController::class, 'edit'])->name('lokasi.edit');
-    Route::get('lokasi/show/{id}', [LokasiController::class, 'show'])->name('lokasi.show');
+    Route::get('/dataLokasi/data',[DataController::class,'dataLokasi'])->name('data-lokasi');
+    Route::resource('lokasi',(LokasiController::class));
 });
 
 
 // Potensi
 
 Route::controller(RumahIbadahController::class)->group(function () {
-    Route::get('/rumah-ibadah', 'index');
-    Route::get('/rumah-ibadah/create', 'create');
-    Route::get('/rumah-ibadah/edit', 'edit');
-    Route::get('/rumah-ibadah/show', 'show');
+    Route::get('/dataRumahIbadah/data',[DataController::class,'dataRumahIbadah'])->name('data-RumahIbadah');
+    Route::resource('rumah-ibadah',(RumahIbadahController::class));
 
 });
 
 Route::controller(TempatWisataController::class)->group(function () {
-    Route::get('/wisata', 'index');
-    Route::get('/wisata/create', 'create');
-    Route::get('/wisata/edit', 'edit');
-    Route::get('/wisata/show', 'show');
+    Route::get('/dataWisata/data',[DataController::class,'dataWisata'])->name('data-wisata');
+    Route::resource('pasar',(TempatWisataController::class));
 });
 
 Route::controller(SekolahController::class)->group(function () {
-    Route::get('/sekolah', 'index');
-    Route::get('/sekolah/create', 'create');
-    Route::get('/sekolah/edit', 'edit');
-    Route::get('/sekolah/show', 'show');
+    Route::get('/dataSekolah/data',[DataController::class,'dataSekolah'])->name('data-sekolah');
+    Route::resource('sekolah',(SekolahController::class));
 });
 
 Route::controller(PasarController::class)->group(function () {

@@ -35,44 +35,68 @@
                         <div class="card-header">Edit Data Sekolah</div>
                         <div class="card-body">
                             {{-- {{ route('lokasi.store') }} --}}
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('sekolah.update', $sekolah) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
+                                    <input type="text" name="author"
+                                        class="form-control @error('author') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Desa" value="{{ $sekolah->author }}">
                                     <label for="floatingInput">Author</label>
-                                    @error('desa')
+                                    @error('author')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
-                                    <label for="floatingInput">Judul</label>
-                                    @error('desa')
+                                    <input type="text" name="dusun" value="{{ $sekolah->dusun }}"
+                                        class="form-control @error('dusun') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Desa">
+                                    <label for="floatingInput">Dusun</label>
+                                    @error('dusun')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <select class="form-select @error('jenis_potensi') is-invalid @enderror"
-                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example">
-                                        <option selected>Sekolah</option>
-                                        <option value="1">Sekolah Dasar</option>
-                                        <option value="2">Sekolah Menengah Pertama</option>
-                                        <option value="3">Sekolah Menengah Atas</option>
+                                    <input type="text" name="nama_sekolah" value="{{ $sekolah->nama_sekolah }}"
+                                        class="form-control @error('nama_sekolah') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Desa">
+                                    <label for="floatingInput">Nama Sekolah</label>
+                                    @error('nama_sekolah')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <select class="form-select @error('jenis_sekolah') is-invalid @enderror"
+                                        id="floatingSelect" name="jenis_sekolah"
+                                        aria-label="Floating label Pilih Jenis Potensi example">
+                                        <option value=""{{ $sekolah->jenis_sekolah == null ? 'selected' : '' }}>
+                                            Sekolah
+                                        </option>
+                                        <option value="PAUD"{{ $sekolah->jenis_sekolah == 'PAUD' ? 'selected' : '' }}>PAUD
+                                        </option>
+                                        <option value="TK"{{ $sekolah->jenis_sekolah == 'TK' ? 'selected' : '' }}>TK
+                                        </option>
+                                        <option value="SD" {{ $sekolah->jenis_sekolah == 'SD' ? 'selected' : '' }}>
+                                            Sekolah
+                                            Dasar</option>
+                                        <option value="SMP"{{ $sekolah->jenis_sekolah == 'SMP' ? 'selected' : '' }}>
+                                            Sekolah Menengah Pertama</option>
+                                        <option value="SMA"{{ $sekolah->jenis_sekolah == 'SMA' ? 'selected' : '' }}>
+                                            Sekolah Menengah Atas</option>
                                     </select>
                                     <label for="floatingSelect">Silahkan Pilih</label>
-                                    @error('jenis_potensi')
+                                    @error('jenis_sekolah')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;"></textarea>
+                                        id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $sekolah->keterangan }}</textarea>
                                     <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -80,10 +104,11 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label>
+                                    <label for="formFile" class="form-label mt-3">Foto Sekolah</label> <br>
+                                    <img id="previewImage" class="mb-3 mt-2  " src="{{ $sekolah->getImage() }}"
+                                        width="20%" alt="poto_sekolah">
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
+                                        id="image" name="image">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -92,8 +117,9 @@
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
+                                        class="form-control @error('location') is-invalid @enderror" readonly id=""
+                                        value="{{ $sekolah->location }}">
+                                    @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -128,57 +154,7 @@
         crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
     <script>
-        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            mbUrl =
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-        var satellite = L.tileLayer(mbUrl, {
-                id: 'mapbox/satellite-v9',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            dark = L.tileLayer(mbUrl, {
-                id: 'mapbox/dark-v10',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            streets = L.tileLayer(mbUrl, {
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            });
-
-
-        var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [-0.0837981240055652, 109.20594830173026],
-            zoom: 14,
-            layers: [streets]
-        });
-
-        var baseLayers = {
-            //"Grayscale": grayscale,
-            "Streets": streets,
-            "Satellite": satellite
-        };
-
-        var overlays = {
-            "Streets": streets,
-            "Satellite": satellite,
-        };
-
-        L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
-
-    {{-- <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -220,7 +196,7 @@
             });
 
         var map = L.map('map', {
-            center: [{{ $space->location }}],
+            center: [{{ $sekolah->location }}],
             zoom: 14,
             layers: [streets]
         });
@@ -238,7 +214,7 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        var curLocation = [{{ $space->location }}];
+        var curLocation = [{{ $sekolah->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {
@@ -267,5 +243,5 @@
             }
             loc.value = lat + "," + lng;
         });
-    </script> --}}
+    </script>
 @endpush

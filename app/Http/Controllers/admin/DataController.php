@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class DataController extends Controller
 {
- public function lokasi (){
+ public function dataLokasi (){
     $lokasi =  Lokasi::orderBy('created_at', 'DESC');
     return datatables ()->of($lokasi)
     ->addColumn('action','lokasi.action')
@@ -29,7 +29,7 @@ class DataController extends Controller
      ->toJson();
  }
 
- public function wisata(){
+ public function dataWisata(){
     $wisata =Wisata::orderBy('created_at','DESC');
     return datatables()->of($wisata)
     ->addColumn('action','wisata.action')
@@ -38,7 +38,7 @@ class DataController extends Controller
     ->toJson();
  }
 
- public function rumah_ibadah(){
+ public function dataRumahIbadah(){
     $rumah_ibadah =RumahIbadah::orderBy('created_at','DESC');
     return datatables()->of($rumah_ibadah)
     ->addColumn('action','rumah_ibadah.action')
@@ -47,7 +47,7 @@ class DataController extends Controller
     ->toJson();
  }
 
- public function sekolah(){
+ public function dataSekolah(){
     $sekolah =Sekolah::orderBy('created_at','DESC');
     return datatables()->of($sekolah)
     ->addColumn('action','sekolah.action')
