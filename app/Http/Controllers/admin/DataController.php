@@ -30,7 +30,7 @@ class DataController extends Controller
  }
 
  public function dataWisata(){
-    $wisata =Wisata::orderBy('created_at','DESC');
+    $wisata = TempatWisata::orderBy('created_at','DESC');
     return datatables()->of($wisata)
     ->addColumn('action','wisata.action')
     ->addIndexColumn()

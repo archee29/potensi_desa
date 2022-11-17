@@ -4,6 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use App\Models\TempatWisata;
+use App\Models\Lokasi;
 
 class TempatWisataController extends Controller
 {
@@ -12,26 +16,94 @@ class TempatWisataController extends Controller
     }
 
     public function create(){
-        return view ('admin.potensi.wisata.create');
+        $lokasi = Lokasi::get()->first();
+        return view ('admin.potensi.wisata.create',[
+            'lokasi'=>$lokasi,
+        ]);
     }
 
-    public function store(){
-
+    public function store(Request $request){
+        $this->validate($request,[
+            'author'=>'required',
+            'dusun'=>'required',
+            'nama_wisata'=>'required',
+            'keterangan'=>'required',
+            'image'=>'image|mimes:png.jpg,jpeg',
+            'location'=>'required',
+        ]);
+        $wisata = new TempatWisata();
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $uploadFile = time() .'_' . $file->getClientOriginalName();
+            $file->move('images/poto-kalimas/wisata/',$uploadFile);
+            $wisata->image = $uploadFile;
+        }
+        $wisata->author = $request->input('author');
+        $wisata->dusun = $request->input('dusun');
+        $wisata->slug = Str::slug($request->dusun,'-');
+        $wisata->nama_wisata = $request->input('nama_wisata');
+        $wisata->keterangan = $request->input('keterangan');
+        $wisata->location = $request->input('location');
+        $wisata->save();
+        if($wisata){
+            return redirect()->route('wisata.index')->with('success','Data Berhasil Ditambahkan');
+        }else{
+            return redirect()->route('wisata.index')->with('error','Data Gagal Ditambakan');
+        }
     }
 
-    public function show(){
+    public function show($id){
         return view ('admin.potensi.wisata.show');
     }
 
-    public function edit(){
-        return view('admin.potensi.wisata.edit');
+    public function edit(TempatWisata $wisata){
+        $wisata = TempatWisata::findOrFail($wisata->id);
+        return view('admin.potensi.wisata.edit',[
+            'wisata'=>$wisata
+        ]);
     }
 
-    public function update (){
+    public function update (Request $request, TempatWisata $wisata){
 
+        $this->validate($request,[
+            'author'=>'required',
+            'dusun'=>'required',
+            'nama_wisata'=>'required',
+            'keterangan'=>'required',
+            'image'=>'image|mimes:png.jpg,jpeg',
+            'location'=>'required',
+        ]);
+        $wisata = TempatWisata::findOrFail($wisata->id);
+        if($request->hasFile('image')){
+            if(File::exists("images/poto-kalimas/wisata/" . $wisata->image)){
+                File::delete("images/poto-kalimas/wisata/" . $wisata->image);
+            }
+            $file = $request->file("image");
+            $uploadFile = time() . '_' . $file->getClientOriginalName();
+            $file->move('images/poto-kalimas/wisata/',$uploadFile);
+            $wisata->image = $uploadFile;
+        }
+        $wisata->update([
+            'author'=>$request->author,
+            'dusun'=>$request->dusun,
+            'slug'=>Str::slug($request->dusun,'-'),
+            'nama_wisata'=>$request->nama_wisata,
+            'keterangan'=>$request->keterangan,
+            'location'=>$request->location,
+        ]);
+        if($wisata){
+            return redirect()->route('wisata.index')->with('success','Data Berhasil Diupdate');
+        }else{
+            return redirect()->route('wisata.index')->with('error','Data Gagal Diupdate');
+        }
     }
 
-    public function destroy(){
-
+    public function destroy($id){
+        $wisata = TempatWisata::findOrFail($id);
+        if(File::exists("images/poto-kalimas/wisata/" . $wisata->image)){
+            File::delete("images/poto-kalimas/wisata/" . $wisata ->image);
+        }
+        $wisata->delete();
+        return redirect()->route('wisata.index');
     }
 }

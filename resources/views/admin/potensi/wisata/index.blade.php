@@ -18,27 +18,26 @@
                     <div class="card">
                         <div class="card-header">{{ __('Wisata') }}</div>
                         <div class="card-body">
-                            <a href="/wisata/create" class="btn btn-outline-info btn-sm float-end mb-2"><i
-                                    class="fas fa-plus-circle"></i>
-                                Tambah Data Wisata
-                            </a>
                             @if (session('success'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <table class="table table-responsive-lg table-bordered mt-4" id="dataLokasi">
+                            <a href="{{ route('wisata.create') }}" class="btn btn-outline-info btn-sm float-end mb-2"><i
+                                    class="fas fa-plus-circle"></i>
+                                Tambah Data Wisata
+                            </a>
+
+                            <table class="table table-responsive-lg table-bordered mt-4" id="data_wisata">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Author</th>
-                                        <th>Judul Artikel</th>
-                                        <th>Isi Artikel</th>
-                                        <th>Actions</th>
+                                        <th>No. </th>
+                                        <th>Author </th>
+                                        <th>Opsi </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {{-- <tr>
                                         <th scope="row">1</th>
                                         <td>John</td>
                                         <td>Doe</td>
@@ -60,7 +59,7 @@
                                                 Delete
                                                 Data</button>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                             <form action="" method="POST" id="deleteForm">
@@ -76,3 +75,34 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function() {
+            $('#data_wisata').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                lengthChange: false,
+                autoWidth: false,
+
+                // Route untuk menampilkan data space
+                ajax: '{{ route('data-wisata') }}',
+                columns: [{
+                        data: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'author'
+                    },
+                    {
+                        data: 'action'
+                    }
+                ]
+            });
+        });
+    </script>
+@endpush

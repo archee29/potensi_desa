@@ -1,5 +1,5 @@
-<a href="{{ route('lokasi.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
-<button href="{{ route('lokasi.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
+<a href="{{ route('rumah-ibadah.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
+<button href="{{ route('rumah-ibadah.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
