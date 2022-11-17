@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
 use App\Http\Controllers\Controller;
+
+// use Validator;
 use Illuminate\Http\Request;
 use App\Models\Pasar;
 use App\Models\Lokasi;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\Validator;
 
 class PasarController extends Controller
 {
@@ -29,10 +30,7 @@ class PasarController extends Controller
      */
     public function create()
     {
-        $lokasi = Lokasi::get()->first();
-        return view('admin.potensi.pasar.create',[
-            'lokasi'=>$lokasi,
-        ]);
+        return view('admin.potensi.pasar.create');
     }
 
     /**
@@ -48,19 +46,21 @@ class PasarController extends Controller
             'dusun'=>'required',
             'judul'=>'required',
             'keterangan'=>'required',
+            'image'=>'image|mimes:png,jpg,jpeg',
             'location'=>'required',
-            'image'=>'image|mime:png,jpg,jpeg',
         ]);
+
         $pasar = new Pasar();
-        if($request->hasfIlE('image')){
+
+        if($request->hasFile('image')){
             $file = $request->file('image');
-            $uploadFile = time().'_'.$file->getClientOriginalName();
+            $uploadFile = time() .'_' . $file->getClientOriginalName();
             $file->move('images/poto-kalimas/pasar/',$uploadFile);
             $pasar->image = $uploadFile;
         }
-        $pasar->author=$request->input('author');
+        $pasar->author = $request->input('author');
         $pasar->dusun = $request->input('dusun');
-        $pasar->nama_dusun= Str::nama_dusun($request->dusun,'-');
+        $pasar->slug = Str::slug($request->dusun,'-');
         $pasar->judul = $request->input('judul');
         $pasar->keterangan = $request->input('keterangan');
         $pasar->location = $request->input('location');
@@ -81,7 +81,7 @@ class PasarController extends Controller
      */
     public function show($id)
     {
-
+        return view('admin.potensi.pasar.show');
     }
 
     /**
@@ -113,24 +113,23 @@ class PasarController extends Controller
             'judul'=>'required',
             'keterangan'=>'required',
             'location'=>'required',
-            'image'=>'image|mime:png,jpg,jpeg',
+            'image'=>'image|mimes:png,jpg,jpeg',
         ]);
         $pasar = Pasar::findOrFail($pasar->id);
         if($request->hasFile('image')){
-            if(File::exists("images/poto-kalimas/pasar/".$pasar->image)){
-                File::delete("images/poto-kalimas/pasar/".$pasar->image);
+            if(File::exists("images/poto-kalimas/pasar/" . $pasar->image)){
+                File::delete("images/poto-kalimas/pasar/" . $pasar->image);
             }
             $file = $request->file("image");
-            $uploadFile = time().'_'. $file->getClientOriginalName();
+            $uploadFile = time() . '_' . $file->getClientOriginalName();
             $file->move('images/poto-kalimas/pasar/',$uploadFile);
             $pasar->image = $uploadFile;
         }
         $pasar->update([
             'author'=>$request->author,
             'dusun'=>$request->dusun,
-            'nama_dusun'=>Str::nama_dusun($request->dusun,'-'),
+            'slug'=>Str::slug($request->dusun,'-'),
             'judul'=>$request->judul,
-
             'keterangan'=>$request->keterangan,
             'location'=>$request->location,
         ]);

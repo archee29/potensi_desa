@@ -45,10 +45,11 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('nama_dusun') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Dusun">
+                                    <input type="text" name="dusun"
+                                        class="form-control @error('dusun') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Dusun">
                                     <label for="floatingInput">Nama Dusun</label>
-                                    @error('nama_dusun')
+                                    @error('dusun')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -74,7 +75,7 @@
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label mt-3">Masukkan File dengan format
                                         .png/.jpg</label>
-                                    <img id="previewImage" class="mb-2" src="#" width="100%" alt="foto_pasar">
+                                    {{-- <img id="previewImage" class="mb-2" src="#" width="100%" alt="foto_pasar"> --}}
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
                                         id="formFile" name="image">
                                     @error('image')
@@ -172,7 +173,7 @@
             // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
             // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
             // centrepoint
-            center: [{{ $pasar->location }}],
+            center: [-0.0837981240055652, 109.20594830173026],
             zoom: 14,
             layers: [streets]
         });
@@ -194,7 +195,7 @@
         // lalu kita masukkan curLocation tersebut ke dalam variabel marker untuk menampilkan marker
         // pada peta.
 
-        var curLocation = [{{ $pasar->location }}];
+        var curLocation = [-0.0837981240055652, 109.20594830173026];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {

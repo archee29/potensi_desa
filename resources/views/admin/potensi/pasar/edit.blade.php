@@ -39,7 +39,8 @@
                                 @method('PUT')
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('author') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
+                                        id="floatingInput" name="author" value="{{ $pasar->author }}"
+                                        placeholder="Nama Desa">
                                     <label for="floatingInput">Author</label>
                                     @error('author')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -47,17 +48,17 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="nama_dusun"
-                                        class="form-control @error('nama_dusun') is-invalid @enderror" id="floatingInput"
+                                    <input type="text" name="dusun" value="{{ $pasar->dusun }}"
+                                        class="form-control @error('dusun') is-invalid @enderror" id="floatingInput"
                                         placeholder="Nama Desa">
                                     <label for="floatingInput">Nama Dusun</label>
-                                    @error('nama_dusun')
+                                    @error('dusun')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="judul"
+                                    <input type="text" name="judul" value="{{ $pasar->judul }}"
                                         class="form-control @error('judul') is-invalid @enderror" id="floatingInput"
                                         placeholder="Nama Desa">
                                     <label for="floatingInput">Judul</label>
@@ -67,31 +68,32 @@
                                 </div>
 
                                 <div class="form-floating">
-                                    <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;"></textarea>
+                                    <textarea name="keterangan" class="form-control @error('keterangan') is-invalid @enderror"
+                                        placeholder="Masukkan Keterangan" id="floatingTextarea" style="height: 150px;">{{ $pasar->keterangan }}</textarea>
                                     <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label>
-                                    <img id="previewImage" class="mb-2" src="{{ $pasar->getImage() }}" width="100%"
+                                <div class="form-group mb-3">
+                                    <label for="formFile" class="form-label mt-3">Foto Pasar</label> <br>
+                                    <img id="previewImage" class="mb-3 mt-2  " src="{{ $pasar->getImage() }}" width="20%"
                                         alt="poto_pasar">
                                     <input class="form-control @error('image') is-invalid @enderror" name="image"
-                                        type="file" id="formFile">
+                                        type="file" id="image">
+
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="">Lokasi</label>
+
                                     <input type="text" name="location"
                                         class="form-control @error('location') is-invalid @enderror"
                                         value="{{ $pasar->location }}" readonly id="">
+                                    <label for="">Lokasi</label>
                                     @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -218,8 +220,8 @@
         });
     </script>
 
-    {{--
-    <script>
+
+    {{-- <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             mbUrl =

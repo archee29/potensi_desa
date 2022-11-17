@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('author');
             $table->string('dusun');
-            $table->string('nama_dusun');
+            $table->string('slug');
             $table->string('judul');
             $table->longText('keterangan');
             $table->string('location');

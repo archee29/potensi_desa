@@ -20,13 +20,13 @@ class DataController extends Controller
     ->rawColumns(['action'])
     ->toJson();
  }
- public function pasar(){
-    $pasar =Pasar::orderBy('created_at','DESC');
-    return datatables()->of($pasar)
-    ->addColumn('action','pasar.action')
-    ->addIndexColumn()
-    ->rawColumns(['action'])
-    ->toJson();
+ public function dataPasar(){
+     $pasar = Pasar::orderBy('created_at','DESC');
+     return datatables()->of($pasar)
+     ->addColumn('action','pasar.action')
+     ->addIndexColumn()
+     ->rawColumns(['action'])
+     ->toJson();
  }
 
  public function wisata(){

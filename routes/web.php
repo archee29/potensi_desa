@@ -64,7 +64,7 @@ Route::controller(LokasiController::class)->group(function () {
 
 
 // Potensi
-//pasar
+
 Route::controller(RumahIbadahController::class)->group(function () {
     Route::get('/rumah-ibadah', 'index');
     Route::get('/rumah-ibadah/create', 'create');
@@ -88,8 +88,10 @@ Route::controller(SekolahController::class)->group(function () {
 });
 
 Route::controller(PasarController::class)->group(function () {
-    Route::get('/pasar/data',[DataController::class,'pasar'])->name('data-pasar');
+    Route::get('/dataPasar/data',[DataController::class,'dataPasar'])->name('data-pasar');
     Route::resource('pasar',(PasarController::class));
+    // Route::get('pasar','App\Http\Controllers\admin\PasarController');
+
 });
 
 //desa

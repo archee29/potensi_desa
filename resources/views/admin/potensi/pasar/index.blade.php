@@ -4,6 +4,11 @@
     Pasar
 @endsection
 
+@section('add_css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+@endsection
+
 @section('content')
     <div class="container-fluid pt-4 px-4">
         <nav aria-label="breadcrumb">
@@ -29,13 +34,13 @@
                                 Tambah Data Pasar
                             </a>
 
-                            <table class="table table-responsive-lg table-bordered mt-4" id="dataPasar">
+                            <table class="table table-responsive-lg  mt-4" id="data_pasar">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Author</th>
-                                        <th>Nama Dusun</th>
-                                        <th>Actions</th>
+                                        <th>No. </th>
+                                        <th>Author </th>
+                                        <th>Nama Dusun </th>
+                                        <th>Actions </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -83,7 +88,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(function() {
-            $('#dataPasar').DataTable({
+            $('#data_pasar').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
@@ -91,7 +96,7 @@
                 autoWidth: false,
 
                 // Route untuk menampilkan data space
-                ajax: '{{ route('data-pasar') }}',
+                ajax: "{{ route('data-pasar') }}",
                 columns: [{
                         data: 'DT_RowIndex',
                         orderable: false,
