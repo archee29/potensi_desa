@@ -28,7 +28,7 @@ class TempatWisataController extends Controller
             'dusun'=>'required',
             'nama_wisata'=>'required',
             'keterangan'=>'required',
-            'image'=>'image|mimes:png.jpg,jpeg',
+            'image'=>'image|mimes:png,jpg,jpeg',
             'location'=>'required',
         ]);
         $wisata = new TempatWisata();
@@ -70,7 +70,7 @@ class TempatWisataController extends Controller
             'dusun'=>'required',
             'nama_wisata'=>'required',
             'keterangan'=>'required',
-            'image'=>'image|mimes:png.jpg,jpeg',
+            'image'=>'image|mimes:png,jpg,jpeg',
             'location'=>'required',
         ]);
         $wisata = TempatWisata::findOrFail($wisata->id);

@@ -22,7 +22,7 @@ class TempatWisata extends Model
             return $this->image;
         }
         if($this->image){
-            return asset('/images/Poto-Kalimas/pasar/' . $this->image);
+            return asset('/images/Poto-Kalimas/wisata/' . $this->image);
         }
         return 'https://via.placeholder.com/500x500.png?text=No+Cover';
     }

@@ -16,7 +16,7 @@ class Lokasi extends Model
             return $this->image;
         }
         if($this->image){
-            return asset('/images/Poto-Kalimas'.$this->image);
+            return asset('/images/Poto-Kalimas/desa/'.$this->image);
         }
         return 'https://via.placeholder.com/500x500.png?text=No+Cover';
     }

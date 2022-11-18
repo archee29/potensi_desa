@@ -40,11 +40,10 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-floating mb-3">
-                                    <label for="floatingInput">Nama Desa</label>
                                     <input type="text" class="form-control @error('nama_desa') is-invalid @enderror"
                                         id="floatingInput" placeholder="Nama Desa" name="nama_desa"
                                         value="{{ $lokasi->nama_desa }}">
-
+                                    <label for="floatingInput">Nama Desa</label>
                                     @error('nama_desa')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -66,21 +65,20 @@
                                 </div> --}}
 
                                 <div class="form-floating">
-                                    <label for="floatingTextarea">Keterangan</label>
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
                                         id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $lokasi->keterangan }}</textarea>
+                                    <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label> <br>
-                                    <img id="previewImage" class="mb-2" src="{{ $lokasi->getImage() }}" width="100%"
+                                    <label for="formFile" class="form-label mt-3">Poto Lokasi</label> <br>
+                                    <img id="previewImage" class="mb-3 mt-2" src="{{ $lokasi->getImage() }}" width="20%"
                                         alt="gambar_desa">
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
+                                        id="image">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -125,56 +123,6 @@
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-
-    {{-- <script>
-        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            mbUrl =
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-        var satellite = L.tileLayer(mbUrl, {
-                id: 'mapbox/satellite-v9',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            dark = L.tileLayer(mbUrl, {
-                id: 'mapbox/dark-v10',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            streets = L.tileLayer(mbUrl, {
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            });
-
-
-        var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [-0.0837981240055652, 109.20594830173026],
-            zoom: 14,
-            layers: [streets]
-        });
-
-        var baseLayers = {
-            //"Grayscale": grayscale,
-            "Streets": streets,
-            "Satellite": satellite
-        };
-
-        var overlays = {
-            "Streets": streets,
-            "Satellite": satellite,
-        };
-
-        L.control.layers(baseLayers, overlays).addTo(map);
-    </script> --}}
 
     <script>
         function readURL(input) {
