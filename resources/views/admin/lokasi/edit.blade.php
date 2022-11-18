@@ -49,20 +49,28 @@
                                     @enderror
                                 </div>
 
-                                {{-- <div class="form-floating mb-3">
+                                <div class="form-floating mb-3">
                                     <select class="form-select @error('jenis_potensi') is-invalid @enderror"
-                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example">
-                                        <option selected>Jenis Potensi</option>
-                                        <option value="1">Rumah Ibadah</option>
-                                        <option value="2">Sekolah</option>
-                                        <option value="3">Wisata</option>
-                                        <option value="3">Pasar</option>
+                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example"
+                                        name="jenis_potensi">
+                                        <option selected
+                                            value=""{{ $lokasi->jenis_potensi == null ? 'selected' : '' }}>Jenis
+                                            Potensi</option>
+                                        <option
+                                            value="rumah_ibadah"{{ $lokasi->jenis_potensi == 'rumah_ibadah' ? 'selected' : '' }}>
+                                            Rumah Ibadah</option>
+                                        <option value="sekolah"{{ $lokasi->jenis_potensi == 'sekolah' ? 'selected' : '' }}>
+                                            Sekolah</option>
+                                        <option value="wisata"{{ $lokasi->jenis_potensi == 'wisata' ? 'selected' : '' }}>
+                                            Wisata</option>
+                                        <option value="pasar"{{ $lokasi->jenis_potensi == 'pasar' ? 'selected' : '' }}>
+                                            Pasar</option>
                                     </select>
                                     <label for="floatingSelect">Silahkan Pilih Jenis Potensi</label>
                                     @error('jenis_potensi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                </div> --}}
+                                </div>
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
@@ -78,7 +86,7 @@
                                     <img id="previewImage" class="mb-3 mt-2" src="{{ $lokasi->getImage() }}" width="20%"
                                         alt="gambar_desa">
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="image">
+                                        id="image" name="image">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

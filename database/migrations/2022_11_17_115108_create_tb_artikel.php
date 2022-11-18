@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('author');
             $table->string('title')->unique;
-            $table->text('content');
+            $table->longText('content');
             $table->timestamps();
         });
     }

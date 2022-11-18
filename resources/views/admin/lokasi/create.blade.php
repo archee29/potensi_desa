@@ -47,20 +47,20 @@
                                     @enderror
                                 </div>
 
-                                {{-- <div class="form-floating mb-3">
+                                <div class="form-floating mb-3">
                                     <select class="form-select @error('jenis_potensi') is-invalid @enderror"
-                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example">
-                                        <option selected>Jenis Potensi</option>
-                                        <option value="1">Rumah Ibadah</option>
-                                        <option value="2">Sekolah</option>
-                                        <option value="3">Wisata</option>
-                                        <option value="3">Pasar</option>
+                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example" name="jenis_potensi">
+                                        <option selected value="">Jenis Potensi</option>
+                                        <option value="rumah_ibadah">Rumah Ibadah</option>
+                                        <option value="sekolah">Sekolah</option>
+                                        <option value="wisata">Wisata</option>
+                                        <option value="pasar">Pasar</option>
                                     </select>
                                     <label for="floatingSelect">Silahkan Pilih Jenis Potensi</label>
                                     @error('jenis_potensi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                </div> --}}
+                                </div>
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
