@@ -101,7 +101,7 @@ class LokasiController extends Controller
     }
 
     public function destroy($id){
-        $lokasi = Space::findOrFail($id);
+        $lokasi = Lokasi::findOrFail($id);
         if(File::exists("images/Poto-Kalimas/desa/".$lokasi->image)){
             File::delete("images/Poto-Kalimas/desa/". $lokasi->image);
         }

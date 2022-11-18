@@ -33,12 +33,12 @@
                                 Tambah Data Lokasi
                             </a>
 
-                            <table class="table table-responsive-lg table-bordered mt-4" id="dataLokasi">
+                            <table class="table table-responsive-lg mt-4" id="dataLokasi">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Desa</th>
-                                        <th>Opsi</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,7 +73,6 @@
                                 <input type="submit" value="Hapus" style="display: none">
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -98,14 +97,15 @@
                 ajax: '{{ route('data-lokasi') }}',
                 columns: [{
                         data: 'DT_RowIndex',
-                        orderable: true,
-                        searchable: true
+                        orderable: false,
+                        searchable: false
                     },
                     {
-                        data: 'name'
+                        data: 'nama_desa'
                     },
                     {
-                        data: 'action'
+                        data: 'action',
+                        name: 'action'
                     },
                 ]
             });

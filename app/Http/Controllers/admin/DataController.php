@@ -15,7 +15,9 @@ class DataController extends Controller
  public function dataLokasi (){
     $lokasi =  Lokasi::orderBy('created_at', 'DESC');
     return datatables ()->of($lokasi)
-    ->addColumn('action','lokasi.action')
+    ->addColumn('action',function($lokasi){
+        return view('admin.lokasi.action',compact('lokasi'))->render();
+    })
     ->addIndexColumn()
     ->rawColumns(['action'])
     ->toJson();

@@ -105,6 +105,9 @@ class PasarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function update(Request $request, Pasar $pasar)
     {
         $this->validate($request,[

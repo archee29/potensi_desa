@@ -63,7 +63,7 @@ class TempatWisataController extends Controller
         ]);
     }
 
-    public function update (Request $request, TempatWisata $wisata){
+    public function update(Request $request, TempatWisata $wisata){
 
         $this->validate($request,[
             'author'=>'required',
@@ -73,7 +73,9 @@ class TempatWisataController extends Controller
             'image'=>'image|mimes:png,jpg,jpeg',
             'location'=>'required',
         ]);
+
         $wisata = TempatWisata::findOrFail($wisata->id);
+
         if($request->hasFile('image')){
             if(File::exists("images/poto-kalimas/wisata/" . $wisata->image)){
                 File::delete("images/poto-kalimas/wisata/" . $wisata->image);
