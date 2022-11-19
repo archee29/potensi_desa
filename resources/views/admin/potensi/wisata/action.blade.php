@@ -1,5 +1,5 @@
-<a href="{{ route('wisata.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
-<button href="{{ route('wisata.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
+<a href="{{ route('wisata.edit', $wisata) }}" class="btn btn-warning btn-sm">Edit Data</a>
+<button href="{{ route('wisata.destroy', $wisata) }}" class="btn btn-danger btn-sm" id="delete">Hapus Data</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Suppport\Facades\File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use App\Models\RumahIbadah;
 use App\Models\Lokasi;

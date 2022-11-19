@@ -1,5 +1,6 @@
-<a href="{{ route('rumah-ibadah.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
-<button href="{{ route('rumah-ibadah.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
+<a href="{{ route('rumah-ibadah.edit', $rumah_ibadah) }}" class="btn btn-warning btn-sm">Edit Data</a>
+<button href="{{ route('rumah-ibadah.destroy', $rumah_ibadah) }}" class="btn btn-danger btn-sm" id="delete">Hapus
+    Data</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

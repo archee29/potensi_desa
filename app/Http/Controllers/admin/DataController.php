@@ -25,7 +25,9 @@ class DataController extends Controller
  public function dataPasar(){
      $pasar = Pasar::orderBy('created_at','DESC');
      return datatables()->of($pasar)
-     ->addColumn('action','pasar.action')
+     ->addColumn('action',function($pasar){
+      return view('admin.potensi.pasar.action',compact('pasar'))->render();
+     })
      ->addIndexColumn()
      ->rawColumns(['action'])
      ->toJson();
@@ -34,7 +36,9 @@ class DataController extends Controller
  public function dataWisata(){
     $wisata = TempatWisata::orderBy('created_at','DESC');
     return datatables()->of($wisata)
-    ->addColumn('action','wisata.action')
+    ->addColumn('action', function ($wisata){
+        return view('admin.potensi.wisata.action',compact('wisata'))->render();
+    })
     ->addIndexColumn()
     ->rawColumns(['action'])
     ->toJson();
@@ -43,7 +47,9 @@ class DataController extends Controller
  public function dataRumahIbadah(){
     $rumah_ibadah =RumahIbadah::orderBy('created_at','DESC');
     return datatables()->of($rumah_ibadah)
-    ->addColumn('action','rumah_ibadah.action')
+    ->addColumn('action', function ($rumah_ibadah){
+        return view('admin.potensi.rumah-ibadah.action',compact('rumah_ibadah'))->render();
+    })
     ->addIndexColumn()
     ->rawColumns(['action'])
     ->toJson();
@@ -52,7 +58,9 @@ class DataController extends Controller
  public function dataSekolah(){
     $sekolah =Sekolah::orderBy('created_at','DESC');
     return datatables()->of($sekolah)
-    ->addColumn('action','sekolah.action')
+    ->addColumn('action', function($sekolah){
+        return view('admin.potensi.sekolah.action',compact('sekolah'))->render();
+    })
     ->addIndexColumn()
     ->rawColumns(['action'])
     ->toJson();
