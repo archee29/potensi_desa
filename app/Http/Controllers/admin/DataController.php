@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
-use App\Http\Controllers\Controller;
-use App\Models\Lokasi;
-use App\Models\Pasar;
-use App\Models\TempatWisata;
-use App\Models\RumahIbadah;
-use App\Models\Sekolah;
 use Illuminate\Http\Request;
+use App\Models\Pasar;
+use App\Models\Lokasi;
+use App\Models\Sekolah;
+use App\Models\RumahIbadah;
+use App\Models\TempatWisata;
+use App\Http\Controllers\Controller;
 
 class DataController extends Controller
 {

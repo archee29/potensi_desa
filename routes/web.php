@@ -16,7 +16,9 @@ use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\PemerintahanController;
 use App\Http\Controllers\admin\DataDesaController;
 use App\Http\Controllers\admin\DataController;
-
+use App\Models\Artikel;
+use Database\Seeders\ArtikelSeeder;
+use Illuminate\Routing\RouteGroup;
 
 // use App\Http\Controllers\admin\AuthController;
 // use App\Http\Controllers\Controller;
@@ -42,16 +44,9 @@ Route::get('/peta/{slig}',[App\Http\Controllers\admin\MapController::class, 'sho
 Auth::routes();
 
 // aa
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/map',[App\Http\Controllers\MapController::class,'index'])->name('map.index');
-
-
-
 // Route::get('/map', [App\Http\livewire\MapKalimas::class, 'render'])->name('map-kalimas');
-
-
-
 //dashboard
 Route::resource('home', HomeController::class);
 
@@ -89,13 +84,25 @@ Route::controller(PasarController::class)->group(function () {
 
 });
 
-//desa
+//desa artikel
 Route::controller(ArtikelController::class)->group(function () {
+//     Route::get('artikel', 'index');
+//     Route::get('artikel/create', 'create');
+//     Route::get('artikel/edit', 'edit');
+//     Route::get('artikel/show', 'show');
+
     Route::get('/artikel', 'index');
-    Route::get('/artikel/create', 'create');
-    Route::get('/artikel/edit', 'edit');
-    Route::get('/artikel/show', 'show');
+    Route::get('/artikel/create','create')->name('artikel.create');
+    Route::post('/artikel','store')->name('artikel.store');
+    Route::get('/artikel/detail/{id}', 'show')->name('artikel.show');
+    Route::get('/artikel/edit/{id}', 'edit')->name('artikel.edit');
+    Route::put('/artikel/edit/{id}','update')->name('artikel.update');
+    Route::get('/artikel/delete/{id}', 'destroy')->name('artikel.destroy');
+
 });
+
+
+
 
 
 
