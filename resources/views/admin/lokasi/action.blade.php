@@ -1,6 +1,6 @@
 {{-- pada view action terdapat 2 button edit data dan hapus data --}}
-<a href="{{ route('lokasi.edit', $lokasi) }}" class="btn btn-warning btn-sm">Edit</a>
-<button href="{{ route('lokasi.destroy', $lokasi) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
+<a href="{{ route('lokasi.edit', $lokasi) }}" class="btn btn-warning btn-sm">Edit Data</a>
+<button href="{{ route('lokasi.destroy', $lokasi) }}" class="btn btn-danger btn-sm" id="delete">Hapus Data</button>
 
 {{-- pada view action kita meload cdn sweetalert 2 untuk menampilkan alert dialog dari sweet alert2 --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

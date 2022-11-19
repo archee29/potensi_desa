@@ -49,7 +49,8 @@
 
                                 <div class="form-floating mb-3">
                                     <select class="form-select @error('jenis_potensi') is-invalid @enderror"
-                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example" name="jenis_potensi">
+                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example"
+                                        name="jenis_potensi">
                                         <option selected value="">Jenis Potensi</option>
                                         <option value="rumah_ibadah">Rumah Ibadah</option>
                                         <option value="sekolah">Sekolah</option>
@@ -122,13 +123,11 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
-        // Menambah attribut pada leaflet
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             mbUrl =
             'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
 
-        // membuat beberapa layer untuk tampilan map diantaranya satelit, dark mode, street
         var satellite = L.tileLayer(mbUrl, {
                 id: 'mapbox/satellite-v9',
                 tileSize: 512,
@@ -148,9 +147,6 @@
                 attribution: mbAttr
             });
 
-        // Membuat var map untuk instance object map ke dalam tag div yang mempunyai id map
-        // menambahkan titik koordinat latitude dan longitude peta indonesia kedalam opsi center
-        // mengatur zoom map dan mengatur layer yang akan digunakan
         var map = L.map('map', {
             center: [-0.0837981240055652, 109.20594830173026],
             zoom: 14,
@@ -158,7 +154,6 @@
         });
 
         var baseLayers = {
-            //"Grayscale": grayscale,
             "Streets": streets,
             "Satellite": satellite
         };
@@ -168,21 +163,20 @@
             "Satellite": satellite,
         };
 
-        //Menambahkan beberapa layer ke dalam peta/map
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        // set current location / lokasi sekarang dengan koordinat peta indonesia
+
         var curLocation = [-0.0837981240055652, 109.20594830173026];
         map.attributionControl.setPrefix(false);
 
-        // set marker map agar bisa di geser
+
+
+
         var marker = new L.marker(curLocation, {
             draggable: 'true',
         });
         map.addLayer(marker);
 
-        // ketika marker di geser kita akan mengambil nilai latitude dan longitude
-        // kemudian memasukkan nilai tersebut ke dalam properti input text dengan name-nya location
         marker.on('dragend', function(event) {
             var location = marker.getLatLng();
             marker.setLatLng(location, {
@@ -192,9 +186,6 @@
             $('#location').val(location.lat + "," + location.lng).keyup()
         });
 
-        // untuk fungsi di bawah akan mengambil nilai latitude dan longitudenya
-        // dengan cara klik lokasi pada map dan secara otomatis marker juga akan ikut bergeser dan nilai
-        // latitude dan longitudenya akan muncul pada input text location
         var loc = document.querySelector("[name=location]");
         map.on("click", function(e) {
             var lat = e.latlng.lat;
@@ -208,155 +199,4 @@
             loc.value = lat + "," + lng;
         });
     </script>
-
-    {{-- <script>
-        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            mbUrl =
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-        var satellite = L.tileLayer(mbUrl, {
-                id: 'mapbox/satellite-v9',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            dark = L.tileLayer(mbUrl, {
-                id: 'mapbox/dark-v10',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            streets = L.tileLayer(mbUrl, {
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            });
-
-
-        var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [-0.0837981240055652, 109.20594830173026],
-            zoom: 14,
-            layers: [streets]
-        });
-
-        var baseLayers = {
-            //"Grayscale": grayscale,
-            "Streets": streets,
-            "Satellite": satellite
-        };
-
-        var overlays = {
-            "Streets": streets,
-            "Satellite": satellite,
-        };
-
-        L.control.layers(baseLayers, overlays).addTo(map);
-    </script> --}}
-
-    {{-- <script>
-        // fungsi ini akan berjalan ketika akan menambahkan gambar dimana fungsi ini
-        // akan membuat preview image sebelum kita simpan gambar tersebut.
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#previewImage').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        // Ketika tag input file denghan class image di klik akan menjalankan fungsi di atas
-        $("#image").change(function() {
-            readURL(this);
-        });
-
-        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            mbUrl =
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-        var satellite = L.tileLayer(mbUrl, {
-                id: 'mapbox/satellite-v9',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            dark = L.tileLayer(mbUrl, {
-                id: 'mapbox/dark-v10',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            streets = L.tileLayer(mbUrl, {
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            });
-
-
-        var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [{{ $lokasi->location }}],
-            zoom: 14,
-            layers: [streets]
-        });
-
-        var baseLayers = {
-            //"Grayscale": grayscale,
-            "Streets": streets,
-            "Satellite": satellite
-        };
-
-        var overlays = {
-            "Streets": streets,
-            "Satellite": satellite,
-        };
-
-        L.control.layers(baseLayers, overlays).addTo(map);
-
-        // Begitu juga dengan curLocation titik koordinatnya dari tabel centrepoint
-        // lalu kita masukkan curLocation tersebut ke dalam variabel marker untuk menampilkan marker
-        // pada peta.
-
-        var curLocation = [{{ $lokasi->titik }}];
-        map.attributionControl.setPrefix(false);
-
-        var marker = new L.marker(curLocation, {
-            draggable: 'true',
-        });
-        map.addLayer(marker);
-
-        marker.on('dragend', function(event) {
-            var titik = marker.getLatLng();
-            marker.setLatLng(titik, {
-                draggable: 'true',
-            }).bindPopup(titik).update();
-
-            $('#titik').val(titik.lat + "," + titik.lng).keyup()
-        });
-
-        var loc = document.querySelector("[desa=titik]");
-        map.on("click", function(e) {
-            var lat = e.latlng.lat;
-            var lng = e.latlng.lng;
-
-            if (!marker) {
-                marker = L.marker(e.latlng).addTo(map);
-            } else {
-                marker.setLatLng(e.latlng);
-            }
-            loc.value = lat + "," + lng;
-        });
-    </script> --}}
 @endpush

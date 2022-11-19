@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\MapKaLimas;
 // use Illminate\Support\Facades\Auth;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\MapController;
 use App\Http\Controllers\admin\LokasiController;
 use App\Http\Controllers\admin\RumahIbadahController;
 use App\Http\Controllers\admin\TempatWisataController;
@@ -34,6 +35,9 @@ use App\Http\Controllers\admin\DataController;
 Route::get('/', function () {
     return view('user.welcome');
 });
+
+Route::get('/peta',[App\Http\Controllers\admin\MapController::class,'index'])->name('peta.index');
+Route::get('/peta/{slig}',[App\Http\Controllers\admin\MapController::class, 'show'])->name('peta.show');
 
 Auth::routes();
 
