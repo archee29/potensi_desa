@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -53,7 +53,9 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
+
         @include('layouts.admin.admin-sidebar')
+
         <div class="content">
             @include('layouts.admin.admin-navbar')
             @yield('content')
@@ -78,7 +80,7 @@
     </div>
 
     @yield('add_script')
-    @stack('scripts')
+
     <script>
         window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function() {
@@ -99,5 +101,6 @@
     <script src="{{ asset('admin-rsc/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ asset('admin-rsc/js/main.js') }}"></script>
 </body>
+@stack('scripts')
 
 </html>

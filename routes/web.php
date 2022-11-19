@@ -65,7 +65,7 @@ Route::controller(RumahIbadahController::class)->group(function () {
 
 Route::controller(TempatWisataController::class)->group(function () {
     Route::get('/dataWisata/data',[DataController::class,'dataWisata'])->name('data-wisata');
-    Route::resource('pasar',(TempatWisataController::class));
+    Route::resource('wisata',(TempatWisataController::class));
 });
 
 Route::controller(SekolahController::class)->group(function () {

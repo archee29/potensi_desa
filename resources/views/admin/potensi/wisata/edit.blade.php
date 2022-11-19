@@ -32,39 +32,43 @@
                     <div class="card">
                         <div class="card-header">Edit Data Wisata</div>
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('wisata.update', $wisata) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
+                                    <input type="text" class="form-control @error('author') is-invalid @enderror"
+                                        id="floatingInput" placeholder="Nama Desa" name="author"
+                                        value="{{ $wisata->author }}">
                                     <label for="floatingInput">Author</label>
-                                    @error('desa')
+                                    @error('author')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
-                                    <label for="floatingInput">Judul</label>
-                                    @error('desa')
+                                    <input type="text" class="form-control @error('dusun') is-invalid @enderror"
+                                        id="floatingInput" placeholder="Nama Desa" name="dusun"
+                                        value="{{ $wisata->dusun }}">
+                                    <label for="floatingInput">Dusun</label>
+                                    @error('dusun')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
-                                    <label for="floatingInput">Jenis Wisata</label>
-                                    @error('desa')
+                                    <input type="text" class="form-control @error('nama_wisata') is-invalid @enderror"
+                                        id="floatingInput" placeholder="Nama Desa" name="nama_wisata"
+                                        value="{{ $wisata->nama_wisata }}">
+                                    <label for="floatingInput">Nama Wisata</label>
+                                    @error('nama_wisata')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;"></textarea>
+                                        id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $wisata->keterangan }}</textarea>
                                     <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -72,10 +76,10 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label>
-                                    <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
+                                    <label for="formFile" class="form-label mt-3">Poto Tempat Wisata</label>
+                                    <img id="previewImage" class="mb-3 mt-2  " src="{{ $wisata->getImage() }}"
+                                        width="20%" <input class="form-control @error('image') is-invalid @enderror"
+                                        type="file" id="image" name="image">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -84,8 +88,9 @@
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
+                                        class="form-control @error('location') is-invalid @enderror" readonly id=""
+                                        value="{{ $wisata->location }}">
+                                    @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -120,57 +125,7 @@
         crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
     <script>
-        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            mbUrl =
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-        var satellite = L.tileLayer(mbUrl, {
-                id: 'mapbox/satellite-v9',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            dark = L.tileLayer(mbUrl, {
-                id: 'mapbox/dark-v10',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            streets = L.tileLayer(mbUrl, {
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            });
-
-
-        var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [-0.0837981240055652, 109.20594830173026],
-            zoom: 14,
-            layers: [streets]
-        });
-
-        var baseLayers = {
-            //"Grayscale": grayscale,
-            "Streets": streets,
-            "Satellite": satellite
-        };
-
-        var overlays = {
-            "Streets": streets,
-            "Satellite": satellite,
-        };
-
-        L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
-
-    {{-- <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -212,7 +167,7 @@
             });
 
         var map = L.map('map', {
-            center: [{{ $space->location }}],
+            center: [{{ $wisata->location }}],
             zoom: 14,
             layers: [streets]
         });
@@ -230,7 +185,7 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        var curLocation = [{{ $space->location }}];
+        var curLocation = [{{ $wisata->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {
@@ -259,5 +214,5 @@
             }
             loc.value = lat + "," + lng;
         });
-    </script> --}}
+    </script>
 @endpush

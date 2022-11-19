@@ -28,45 +28,45 @@
                 </li>
             </ol>
         </nav>
+
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="create" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="card">
                         <div class="card-header">Tambah Data Wisata</div>
                         <div class="card-body">
-                            <form action="{{ route('lokasi.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('wisata.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
+                                    <input type="text" class="form-control @error('author') is-invalid @enderror"
+                                        id="floatingInput" placeholder="Nama Desa" name="author">
                                     <label for="floatingInput">Author</label>
-                                    @error('desa')
+                                    @error('author')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
-                                    <label for="floatingInput">Judul</label>
-                                    @error('desa')
+                                    <input type="text" class="form-control @error('dusun') is-invalid @enderror"
+                                        id="floatingInput" placeholder="Nama Desa" name="dusun">
+                                    <label for="floatingInput">Dusun</label>
+                                    @error('dusun')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
-                                    <label for="floatingInput">Jenis Wisata</label>
-                                    @error('desa')
+                                    <input type="text" class="form-control @error('nama_wisata') is-invalid @enderror"
+                                        id="floatingInput" placeholder="Nama Desa" name="nama_wisata">
+                                    <label for="floatingInput">Nama Wisata</label>
+                                    @error('nama_wisata')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;"></textarea>
+                                        id="floatingTextarea" style="height: 150px;" name="keterangan"></textarea>
                                     <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -77,7 +77,7 @@
                                     <label for="formFile" class="form-label mt-3">Masukkan File dengan format
                                         .png/.jpg</label>
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
+                                        id="formFile" name="image">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -86,8 +86,9 @@
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
+                                        class="form-control @error('location') is-invalid @enderror" readonly
+                                        id="">
+                                    @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -117,8 +118,31 @@
 
 @push('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script>
+        // fungsi ini akan berjalan ketika akan menambahkan gambar dimana fungsi ini
+        // akan membuat preview image sebelum kita simpan gambar tersebut.
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#previewImage').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Ketika tag input file denghan class image di klik akan menjalankan fungsi di atas
+        $("#image").change(function() {
+            readURL(this);
+        });
+
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             mbUrl =
@@ -165,31 +189,39 @@
         };
 
         L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
-    <script>
-        $(function() {
-            $('#dataSpaces').DataTable({
-                processing: true,
-                serverSide: true,
-                responsive: true,
-                lengthChange: false,
-                autoWidth: false,
 
-                // Route untuk menampilkan data space
-                ajax: '{{ route('data-space') }}',
-                columns: [{
-                        data: 'DT_RowIndex',
-                        orderable: false,
-                        searchable: false
-                    },
-                    {
-                        data: 'lokasi'
-                    },
-                    {
-                        data: 'action'
-                    }
-                ]
-            })
-        })
+        // Begitu juga dengan curLocation titik koordinatnya dari tabel centrepoint
+        // lalu kita masukkan curLocation tersebut ke dalam variabel marker untuk menampilkan marker
+        // pada peta.
+
+        var curLocation = [-0.0837981240055652, 109.20594830173026];
+        map.attributionControl.setPrefix(false);
+
+        var marker = new L.marker(curLocation, {
+            draggable: 'true',
+        });
+        map.addLayer(marker);
+
+        marker.on('dragend', function(event) {
+            var location = marker.getLatLng();
+            marker.setLatLng(location, {
+                draggable: 'true',
+            }).bindPopup(location).update();
+
+            $('#location').val(location.lat + "," + location.lng).keyup()
+        });
+
+        var loc = document.querySelector("[name=location]");
+        map.on("click", function(e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+
+            if (!marker) {
+                marker = L.marker(e.latlng).addTo(map);
+            } else {
+                marker.setLatLng(e.latlng);
+            }
+            loc.value = lat + "," + lng;
+        });
     </script>
 @endpush

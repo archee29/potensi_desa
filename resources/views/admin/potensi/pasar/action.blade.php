@@ -1,9 +1,8 @@
-<a href="{{ route('pasar.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
-<button href="{{ route('pasar.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
+<a href="{{ route('pasar.edit', $pasar) }}" class="btn btn-warning btn-sm">Edit Data</a>
+<button href="{{ route('pasar.destroy', $pasar) }}" class="btn btn-danger btn-sm" id="delete">Hapus Data</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-{{-- isi dari file view action.space sama dengan file view action.centrepoint --}}
 
 <script>
     $('button#delete').on('click', function(e) {

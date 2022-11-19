@@ -34,45 +34,66 @@
                     <div class="card">
                         <div class="card-header">Edit Data Rumah Ibadah</div>
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('rumah-ibadah.update', $rumah_ibadah) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
+                                    <input type="text" name="author"
+                                        class="form-control @error('author') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Desa" value="{{ $rumah_ibadah->author }}">
                                     <label for="floatingInput">Author</label>
-                                    @error('desa')
+                                    @error('author')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa">
-                                    <label for="floatingInput">Judul</label>
-                                    @error('desa')
+                                    <input type="text" name="dusun"
+                                        class="form-control @error('dusun') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Desa" value="{{ $rumah_ibadah->dusun }}">
+                                    <label for="floatingInput">Dusun</label>
+                                    @error('dusun')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <select class="form-select @error('jenis_potensi') is-invalid @enderror"
-                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example">
-                                        <option selected>Agama</option>
-                                        <option value="1">Islam</option>
-                                        <option value="2">Kristen</option>
-                                        <option value="3">Buddha</option>
-                                        <option value="3">Hindu</option>
+                                    <input type="text" name="nama_tempat_ibadah"
+                                        class="form-control @error('nama_tempat_ibadah') is-invalid @enderror"
+                                        id="floatingInput" placeholder="Nama Desa"
+                                        value="{{ $rumah_ibadah->nama_rumah_ibadah }}">
+                                    <label for="floatingInput">Nama Rumah Ibadah</label>
+                                    @error('nama_tempat_ibadah')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <select class="form-select @error('agama') is-invalid @enderror" id="floatingSelect"
+                                        name="agama" aria-label="Floating label Pilih Jenis Potensi example">
+                                        <option value=""{{ $rumah_ibadah->agama == null ? 'selected' : '' }}>Agama
+                                        </option>
+                                        <option value="islam"{{ $rumah_ibadah->agama == 'islam' ? 'selected' : '' }}>
+                                            Islam</option>
+                                        <option value="kristen"{{ $rumah_ibadah->agama == 'kristen' ? 'selected' : '' }}>
+                                            Kristen</option>
+                                        <option value="katolik"{{ $rumah_ibadah->agama == 'katolik' ? 'selected' : '' }}>
+                                            Katolik</option>
+                                        <option value="budha"{{ $rumah_ibadah->agama == 'budha' ? 'selected' : '' }}>
+                                            Budha</option>
+                                        <option value="hindu"{{ $rumah_ibadah->agama == 'hindu' ? 'selected' : '' }}>
+                                            Hindu</option>
                                     </select>
                                     <label for="floatingSelect">Silahkan Pilih</label>
-                                    @error('jenis_potensi')
+                                    @error('agama')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;"></textarea>
+                                        id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $rumah_ibadah->keterangan }}</textarea>
                                     <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -80,10 +101,11 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label>
+                                    <label for="formFile" class="form-label mt-3">Poto Rumah Ibadah</label><br>
+                                    <img id="previewImage" class="mb-3 mt-2  " src="{{ $rumah_ibadah->getImage() }}"
+                                        width="20%">
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
+                                        id="image" name="image">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -92,8 +114,9 @@
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
+                                        class="form-control @error('location') is-invalid @enderror" readonly id=""
+                                        value="{{ $rumah_ibadah->location }}">
+                                    @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -108,7 +131,7 @@
 
                                 <div class="form-group mt-3">
                                     <button type="submit" class="btn btn-outline-success m-2">Edit Data</button>
-                                    <a href="/rumah-ibadah">
+                                    <a href="/sekolah">
                                         <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
                                     </a>
                                 </div>
@@ -128,57 +151,7 @@
         crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
     <script>
-        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            mbUrl =
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-        var satellite = L.tileLayer(mbUrl, {
-                id: 'mapbox/satellite-v9',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            dark = L.tileLayer(mbUrl, {
-                id: 'mapbox/dark-v10',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            streets = L.tileLayer(mbUrl, {
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            });
-
-
-        var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [-0.0837981240055652, 109.20594830173026],
-            zoom: 14,
-            layers: [streets]
-        });
-
-        var baseLayers = {
-            //"Grayscale": grayscale,
-            "Streets": streets,
-            "Satellite": satellite
-        };
-
-        var overlays = {
-            "Streets": streets,
-            "Satellite": satellite,
-        };
-
-        L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
-
-    {{-- <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -220,7 +193,7 @@
             });
 
         var map = L.map('map', {
-            center: [{{ $space->location }}],
+            center: [{{ $rumah_ibadah->location }}],
             zoom: 14,
             layers: [streets]
         });
@@ -238,7 +211,7 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        var curLocation = [{{ $space->location }}];
+        var curLocation = [{{ $rumah_ibadah->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {
@@ -267,5 +240,5 @@
             }
             loc.value = lat + "," + lng;
         });
-    </script> --}}
+    </script>
 @endpush

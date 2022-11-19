@@ -13,13 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tb_lokasi', function (Blueprint $table) {
+        Schema::create('tb_rumah_ibadah', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_desa');
+            $table->string('author');
+            $table->string('dusun');
+            $table->string('slug');
+            $table->string('nama_tempat_ibadah');
+            $table->enum('agama',['islam','kristen','katolik' ,'budha','hindu']);
             $table->string('image')->nullable();
             $table->string('location');
             $table->longText('keterangan');
-
             $table->timestamps();
         });
     }
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_lokasi');
+        Schema::dropIfExists('tb_rumah_ibadah');
     }
 };
