@@ -28,7 +28,7 @@
                                 Tambah Data Wisata
                             </a>
 
-                            <table class="table table-responsive-lg table-bordered mt-4" id="data_wisata">
+                            <table class="table" id="dataWisata">
                                 <thead>
                                     <tr>
                                         <th>No. </th>
@@ -37,29 +37,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- <tr>
-                                        <th scope="row">1</th>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>jhon@email.com</td>
-                                        <td>
-                                            <a href="/wisata/show">
-                                                <button type="button" class="btn btn-outline-primary"><i
-                                                        class="fas fa-eye"></i>
-                                                    Detail</button>
-                                            </a>
-                                            <a href="/wisata/edit">
-                                                <button type="button" class="btn btn-outline-dark"><i
-                                                        class="fas fa-pencil-alt"></i>
-                                                    Edit
-                                                    Data</button>
-                                            </a>
-                                            <button type="button" class="btn btn-outline-danger"><i
-                                                    class="fas fa-trash-alt"></i>
-                                                Delete
-                                                Data</button>
-                                        </td>
-                                    </tr> --}}
                                 </tbody>
                             </table>
                             <form action="" method="POST" id="deleteForm">
@@ -81,7 +58,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(function() {
-            $('#data_wisata').DataTable({
+            $('#dataWisata').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,

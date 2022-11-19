@@ -30,7 +30,7 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <table class="table table-responsive-lg table-bordered mt-4" id="data_rumah_ibadah">
+                            <table class="table" id="data_rumah_ibadah">
                                 <thead>
                                     <tr>
                                         <th>No. </th>

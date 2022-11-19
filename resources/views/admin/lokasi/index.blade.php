@@ -33,7 +33,7 @@
                                 Tambah Data Lokasi
                             </a>
 
-                            <table class="table table-responsive-lg mt-4" id="dataLokasi">
+                            <table class="table" id="dataLokasi">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -42,29 +42,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- <tr>
-                                        <th scope="row">1</th>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>jhon@email.com</td>
-                                        <td>
-                                            <a href="/lokasi/show">
-                                                <button type="button" class="btn btn-outline-primary"><i
-                                                        class="fas fa-eye"></i>
-                                                    Detail</button>
-                                            </a>
-                                            <a href="/lokasi/edit">
-                                                <button type="button" class="btn btn-outline-dark"><i
-                                                        class="fas fa-pencil-alt"></i>
-                                                    Edit
-                                                    Data</button>
-                                            </a>
-                                            <button type="button" class="btn btn-outline-danger"><i
-                                                    class="fas fa-trash-alt"></i>
-                                                Delete
-                                                Data</button>
-                                        </td>
-                                    </tr> --}}
                                 </tbody>
                             </table>
                             <form action="" method="POST" id="deleteForm">

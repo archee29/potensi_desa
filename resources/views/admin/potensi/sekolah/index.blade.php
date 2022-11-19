@@ -28,7 +28,7 @@
                                 Tambah Data Sekolah
                             </a>
 
-                            <table class="table table-responsive-lg table-bordered mt-4" id="data_sekolah">
+                            <table class="table" id="data_sekolah">
                                 <thead>
                                     <tr>
                                         <th>No. </th>

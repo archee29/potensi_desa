@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
-use App\Models\TempatWisata;
+use App\Models\Wisata;
 use App\Models\Lokasi;
 
 class TempatWisataController extends Controller
@@ -31,7 +31,7 @@ class TempatWisataController extends Controller
             'image'=>'image|mimes:png,jpg,jpeg',
             'location'=>'required',
         ]);
-        $wisata = new TempatWisata();
+        $wisata = new Wisata();
         if($request->hasFile('image')){
             $file = $request->file('image');
             $uploadFile = time() .'_' . $file->getClientOriginalName();
@@ -56,16 +56,16 @@ class TempatWisataController extends Controller
         return view ('admin.potensi.wisata.show');
     }
 
-    public function edit(TempatWisata $wisata){
-        $wisata = TempatWisata::findOrFail($wisata->id);
+    public function edit(Wisata $wisata){
+        $wisata = Wisata::findOrFail($wisata->id);
         return view('admin.potensi.wisata.edit',[
             'wisata'=>$wisata
         ]);
+
     }
 
-    public function update(Request $request, TempatWisata $wisata){
-
-        $this->validate($request,[
+    public function update (Request $request, Wisata $wisata){
+         $this->validate($request,[
             'author'=>'required',
             'dusun'=>'required',
             'nama_wisata'=>'required',
@@ -73,9 +73,7 @@ class TempatWisataController extends Controller
             'image'=>'image|mimes:png,jpg,jpeg',
             'location'=>'required',
         ]);
-
-        $wisata = TempatWisata::findOrFail($wisata->id);
-
+        $wisata = Wisata::findOrFail($wisata->id);
         if($request->hasFile('image')){
             if(File::exists("images/poto-kalimas/wisata/" . $wisata->image)){
                 File::delete("images/poto-kalimas/wisata/" . $wisata->image);
@@ -93,7 +91,7 @@ class TempatWisataController extends Controller
             'keterangan'=>$request->keterangan,
             'location'=>$request->location,
         ]);
-        if($wisata){
+         if($wisata){
             return redirect()->route('wisata.index')->with('success','Data Berhasil Diupdate');
         }else{
             return redirect()->route('wisata.index')->with('error','Data Gagal Diupdate');
@@ -101,7 +99,7 @@ class TempatWisataController extends Controller
     }
 
     public function destroy($id){
-        $wisata = TempatWisata::findOrFail($id);
+        $wisata = Wisata::findOrFail($id);
         if(File::exists("images/poto-kalimas/wisata/" . $wisata->image)){
             File::delete("images/poto-kalimas/wisata/" . $wisata ->image);
         }

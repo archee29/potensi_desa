@@ -39,7 +39,12 @@ Route::get('/', function () {
 });
 
 Route::get('/peta',[App\Http\Controllers\admin\MapController::class,'index'])->name('peta.index');
-Route::get('/peta/{slig}',[App\Http\Controllers\admin\MapController::class, 'show'])->name('peta.show');
+Route::get('/peta/showPasar/{slug}',[App\Http\Controllers\admin\MapController::class, 'showPasar'])->name('peta.showPasar');
+Route::get('/peta/showSekolah/{slug}',[App\Http\Controllers\admin\MapController::class, 'showSekolah'])->name('peta.showSekolah');
+Route::get('/peta/showRumahIbadah/{slug}',[App\Http\Controllers\admin\MapController::class, 'showRumahIbadah'])->name('peta.showRumahIbadah');
+Route::get('/peta/wisata/{slug}',[App\Http\Controllers\admin\MapController::class, 'showWisata'])->name('peta.showWisata');
+
+// Route::resource('/peta', MapController::class);
 
 Auth::routes();
 
@@ -70,6 +75,14 @@ Route::controller(RumahIbadahController::class)->group(function () {
 Route::controller(TempatWisataController::class)->group(function () {
     Route::get('/dataWisata/data',[DataController::class,'dataWisata'])->name('data-wisata');
     Route::resource('wisata',(TempatWisataController::class));
+    // Route::get('/wisata', 'index')->name('wisata.index');
+    // Route::get('/wisata/create','create')->name('wisata.create');
+    // Route::post('/wisata','store')->name('wisata.store');
+    // Route::get('/wisata/detail/{id}', 'show')->name('wisata.show');
+    // Route::get('/wisata/edit/{id}', 'edit')->name('wisata.edit');
+    // Route::put('/wisata/edit/{id}','update')->name('wisata.update');
+    // Route::get('/wisata/delete/{id}', 'destroy')->name('wisata.destroy');
+
 });
 
 Route::controller(SekolahController::class)->group(function () {

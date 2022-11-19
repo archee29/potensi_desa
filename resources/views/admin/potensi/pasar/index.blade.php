@@ -34,29 +34,6 @@
                                 Tambah Data Pasar
                             </a>
 
-                            {{-- <tr>
-                                <th scope="row">1</th>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>jhon@email.com</td>
-                                <td>
-                                    <a href="/pasar/show">
-                                        <button type="button" class="btn btn-outline-primary"><i
-                                                class="fas fa-eye"></i>
-                                            Detail</button>
-                                    </a>
-                                    <a href="/pasar/edit">
-                                        <button type="button" class="btn btn-outline-dark"><i
-                                                class="fas fa-pencil-alt"></i>
-                                            Edit
-                                            Data</button>
-                                    </a>
-                                    <button type="button" class="btn btn-outline-danger"><i
-                                            class="fas fa-trash-alt"></i>
-                                        Delete
-                                        Data</button>
-                                </td>
-                            </tr> --}}
                             <table class="table" id="data_pasar">
                                 <thead>
                                     <tr>

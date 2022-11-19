@@ -35,7 +35,7 @@
                         <div class="card-header">Edit Data Sekolah</div>
                         <div class="card-body">
                             {{-- {{ route('lokasi.store') }} --}}
-                            <form action="{{ route('sekolah.update', $sekolah) }}" method="POST"
+                            <form action="{{ route('sekolah.DB::update('update users set votes = 100 where name = ?', ['John']);', $sekolah) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')

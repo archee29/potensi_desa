@@ -6,7 +6,7 @@ use App\Models\Pasar;
 use App\Models\Lokasi;
 use App\Models\Sekolah;
 use App\Models\RumahIbadah;
-use App\Models\TempatWisata;
+use App\Models\Wisata;
 use App\Http\Controllers\Controller;
 
 class DataController extends Controller
@@ -33,7 +33,7 @@ class DataController extends Controller
  }
 
  public function dataWisata(){
-    $wisata = TempatWisata::orderBy('created_at','DESC');
+    $wisata = Wisata::orderBy('created_at','DESC');
     return datatables()->of($wisata)
     ->addColumn('action', function ($wisata){
         return view('admin.potensi.wisata.action',compact('wisata'))->render();
