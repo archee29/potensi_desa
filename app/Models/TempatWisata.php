@@ -18,7 +18,7 @@ class TempatWisata extends Model
         return $this->hasMany(JenisPotensi::class, 'id_potensi');
     }
     public function getImage(){
-        if(substr($this->image,o,5)=="https"){
+        if(substr($this->image,5)=="https"){
             return $this->image;
         }
         if($this->image){
