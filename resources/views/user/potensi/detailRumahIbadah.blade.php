@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-6 col-xs-6 mb-2">
                 <div class="card">
-                    <div class="card-header">Detail Rummah Ibadaah</div>
+                    <div class="card-header">Detail Rumah Ibadah</div>
                     <div class="card-body">
                         <p>
                         <h4><strong>Author :</strong></h4>
@@ -107,7 +107,7 @@
         L.control.layers(baseLayers, overlays).addTo(map);
 
 
-        var curLocation = [{{ $pasar->location }}];
+        var curLocation = [{{ $rumah_ibadah->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {
