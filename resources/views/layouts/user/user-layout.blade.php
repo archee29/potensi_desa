@@ -7,7 +7,7 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <title>Desa Kalimas</title>
+    <title>Desa Kalimas | @yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
     {{-- <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -154,5 +154,7 @@
     <script src="{{ asset('user-rsc/lib/lightbox/js/lightbox.min.js') }}"></script>
     <script src="{{ asset('user-rsc/js/main.js') }}"></script>
 </body>
+
+@stack('scripts');
 
 </html>

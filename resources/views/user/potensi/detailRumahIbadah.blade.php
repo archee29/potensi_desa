@@ -1,15 +1,11 @@
 @extends('layouts.user.user-layout')
-@include('layouts.user.user-navbar')
+@include('layouts.user.map-navbar')
+
+@section('title')
+    Detail Rumah Ibadah
+@endsection
 
 @section('add_css')
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-        crossorigin="" />
-
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-        crossorigin=""></script>
-
     {{-- cdn leaflet search --}}
     <link rel="stylesheet" href="https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.css">
     <script src="https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.js"></script>
@@ -36,8 +32,7 @@
                         <h4>
                             <strong>Foto Rumah Ibadah</strong>
                         </h4>
-                        <img class="img-fluid" width="200" src="{{ $rumah_ibadah->getImage() }}"
-                            alt="gambar_rumah_ibadah">
+                        <img class="img-fluid" width="200" src="{{ $rumah_ibadah->getImage() }}" alt="gambar_rumah_ibadah">
                         </p>
                     </div>
                     <div class="card-footer">
@@ -56,6 +51,7 @@
             </div>
         </div>
     </div>
+
     <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',

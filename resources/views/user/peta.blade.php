@@ -1,18 +1,15 @@
 @extends('layouts.user.user-layout')
 @include('layouts.user.user-navbar')
 
+@section('title')
+    Peta Potensi
+@endsection
+
 @section('add_css')
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-        crossorigin="" />
-
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-        crossorigin=""></script>
-
     {{-- cdn leaflet search --}}
     <link rel="stylesheet" href="https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.css">
     <script src="https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.js"></script>
+    {{--
     <style>
         html,
         body {
@@ -36,101 +33,17 @@
 
         #map {
             height: 100%;
-            width: 100vw;
+            /* width: 100vw; */
+        }
+    </style> --}}
+    <style>
+        #map {
+            height: 500px;
         }
     </style>
 @endsection
 
-@section('content')
-    <div id="profile-desa" class="container-xxl py-5">
-
-        <div class="container px-lg-5">
-
-            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="position-relative d-inline text-primary ps-4">Peta</h6>
-                <h2 class="mt-2">Peta Desa</h2>
-            </div>
-
-            <div class="row g-4">
-
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                        <div class="service-icon flex-shrink-0">
-                            <i class="fa fa-home fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">Rumah Ibadah</h5>
-                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                            lorem.</p>
-                        <a class="btn px-3 mt-auto mx-auto" href="{{ route('peta.index') }}">Read
-                            More</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                        <div class="service-icon flex-shrink-0">
-                            <i class="fa fa-home fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">Sekolah</h5>
-                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                            lorem.</p>
-                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                        <div class="service-icon flex-shrink-0">
-                            <i class="fa fa-home fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">Pasar</h5>
-                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                            lorem.</p>
-                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                        <div class="service-icon flex-shrink-0">
-                            <i class="fa fa-home fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">Wisata</h5>
-                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                            lorem.</p>
-                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                        <div class="service-icon flex-shrink-0">
-                            <i class="fa fa-home fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">Hubungi Kami</h5>
-                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                            lorem.</p>
-                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                        <div class="service-icon flex-shrink-0">
-                            <i class="fa fa-home fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">Home</h5>
-                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                            lorem.</p>
-                        <a class="btn px-3 mt-auto mx-auto" href="/">Read More</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div id="map"></div>
+@section('leaflet_script')
     <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -359,3 +272,157 @@
         L.control.layers(baseLayers, overlays).addTo(map);
     </script>
 @endsection
+
+@section('content')
+    <div id="peta-desa" class="container-xxl py-5">
+        <div class="container px-lg-5">
+            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
+                <h2 class="mt-2">Peta Desa</h2>
+            </div>
+            <div id="peta-desa" class="container-xxl py-5">
+                <div class="container px-lg-5">
+                    <div class="card border-opacity-100 border-1 wow zoomIn" data-wow-delay="0.1s">
+                        <div class="card-header border-info ">
+                            <h4>Map Desa</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="map"></div>
+                        </div>
+                        <div class="card-footer"><a href="#detail-potensi" class="btn btn-outline-primary">Detail Potensi
+                                Desa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- <div class="row g-4">
+
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
+                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                        <div class="service-icon flex-shrink-0">
+                            <i class="fa fa-home fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">Rumah Ibadah</h5>
+                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
+                            lorem.</p>
+                        <a class="btn px-3 mt-auto mx-auto" href="{{ route('peta.index') }}">Read
+                            More</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                        <div class="service-icon flex-shrink-0">
+                            <i class="fa fa-home fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">Sekolah</h5>
+                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
+                            lorem.</p>
+                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                        <div class="service-icon flex-shrink-0">
+                            <i class="fa fa-home fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">Pasar</h5>
+                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
+                            lorem.</p>
+                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                        <div class="service-icon flex-shrink-0">
+                            <i class="fa fa-home fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">Wisata</h5>
+                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
+                            lorem.</p>
+                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                        <div class="service-icon flex-shrink-0">
+                            <i class="fa fa-home fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">Hubungi Kami</h5>
+                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
+                            lorem.</p>
+                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                        <div class="service-icon flex-shrink-0">
+                            <i class="fa fa-home fa-2x"></i>
+                        </div>
+                        <h5 class="mb-3">Home</h5>
+                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
+                            lorem.</p>
+                        <a class="btn px-3 mt-auto mx-auto" href="/">Read More</a>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+    </div>
+
+    <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container px-lg-5">
+            <div class="row align-items-center" style="height: 250px;">
+                <div class="col-12 col-md-6">
+                    <h3 class="text-white">Ready to get started</h3>
+                    <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
+                    <div class="position-relative w-100 mt-3">
+                        <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                            placeholder="Enter Your Email" style="height: 48px;">
+                        <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                                class="fa fa-paper-plane text-primary fs-4"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                    <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="detail-potensi" class="container-xxl py-5">
+        <div class="container px-lg-5">
+            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
+                <h2 class="mt-2">Detail Potensi Desa</h2>
+            </div>
+            <div id="peta-desa" class="container-xxl py-5">
+                <div class="container px-lg-5">
+                    <div class="card">
+                        <div class="card-header">{{ __('Detail Sekolah') }}</div>
+                        <div class="card-body">
+                            <table class="table" id="data_sekolah">
+                                <thead>
+                                    <tr>
+                                        <th>No. </th>
+                                        <th>Jenis Potensi </th>
+                                        <th>Opsi </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@push('scripts')
+@endpush

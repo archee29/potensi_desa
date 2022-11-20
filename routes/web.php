@@ -20,38 +20,21 @@ use App\Models\Artikel;
 use Database\Seeders\ArtikelSeeder;
 use Illuminate\Routing\RouteGroup;
 
-// use App\Http\Controllers\admin\AuthController;
-// use App\Http\Controllers\Controller;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('user.welcome');
 });
 
-Route::get('/peta',[App\Http\Controllers\admin\MapController::class,'index'])->name('peta.index');
-Route::get('/peta/showPasar/{slug}',[App\Http\Controllers\admin\MapController::class, 'showPasar'])->name('peta.showPasar');
-Route::get('/peta/showSekolah/{slug}',[App\Http\Controllers\admin\MapController::class, 'showSekolah'])->name('peta.showSekolah');
-Route::get('/peta/showRumahIbadah/{slug}',[App\Http\Controllers\admin\MapController::class, 'showRumahIbadah'])->name('peta.showRumahIbadah');
-Route::get('/peta/wisata/{slug}',[App\Http\Controllers\admin\MapController::class, 'showWisata'])->name('peta.showWisata');
-
-// Route::resource('/peta', MapController::class);
+Route::controller(MapController::class)->group(function () {
+    Route::get('/peta',[App\Http\Controllers\user\MapUserController::class,'index'])->name('peta.index');
+    Route::get('/peta/showPasar/{slug}',[App\Http\Controllers\user\MapUserController::class, 'showPasar'])->name('peta.showPasar');
+    Route::get('/peta/showSekolah/{slug}',[App\Http\Controllers\user\MapUserController::class, 'showSekolah'])->name('peta.showSekolah');
+    Route::get('/peta/showRumahIbadah/{slug}',[App\Http\Controllers\user\MapUserController::class, 'showRumahIbadah'])->name('peta.showRumahIbadah');
+    Route::get('/peta/wisata/{slug}',[App\Http\Controllers\user\MapUserController::class, 'showWisata'])->name('peta.showWisata');
+});
 
 Auth::routes();
 
-// aa
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/map',[App\Http\Controllers\MapController::class,'index'])->name('map.index');
-// Route::get('/map', [App\Http\livewire\MapKalimas::class, 'render'])->name('map-kalimas');
 //dashboard
 Route::resource('home', HomeController::class);
 
@@ -75,14 +58,6 @@ Route::controller(RumahIbadahController::class)->group(function () {
 Route::controller(TempatWisataController::class)->group(function () {
     Route::get('/dataWisata/data',[DataController::class,'dataWisata'])->name('data-wisata');
     Route::resource('wisata',(TempatWisataController::class));
-    // Route::get('/wisata', 'index')->name('wisata.index');
-    // Route::get('/wisata/create','create')->name('wisata.create');
-    // Route::post('/wisata','store')->name('wisata.store');
-    // Route::get('/wisata/detail/{id}', 'show')->name('wisata.show');
-    // Route::get('/wisata/edit/{id}', 'edit')->name('wisata.edit');
-    // Route::put('/wisata/edit/{id}','update')->name('wisata.update');
-    // Route::get('/wisata/delete/{id}', 'destroy')->name('wisata.destroy');
-
 });
 
 Route::controller(SekolahController::class)->group(function () {
@@ -93,8 +68,6 @@ Route::controller(SekolahController::class)->group(function () {
 Route::controller(PasarController::class)->group(function () {
     Route::get('/dataPasar/data',[DataController::class,'dataPasar'])->name('data-pasar');
     Route::resource('pasar',(PasarController::class));
-    // Route::get('pasar','App\Http\Controllers\admin\PasarController');
-
 });
 
 //desa artikel
