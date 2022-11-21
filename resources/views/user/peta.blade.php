@@ -9,33 +9,7 @@
     {{-- cdn leaflet search --}}
     <link rel="stylesheet" href="https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.css">
     <script src="https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.js"></script>
-    {{--
-    <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-        }
 
-        .leaflet-container {
-            height: 400px;
-            width: 600px;
-            max-width: 100%;
-            max-height: 100%;
-        }
-    </style>
-
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
-        }
-
-        #map {
-            height: 100%;
-            /* width: 100vw; */
-        }
-    </style> --}}
     <style>
         #map {
             height: 500px;

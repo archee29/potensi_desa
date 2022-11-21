@@ -97,10 +97,11 @@
                                 <div id="map"></div>
 
                                 <div class="md:w-2/3 mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
+                                    <label for="formFile" class="form-label mt-3">Masukkan Tanggal Edit</label>
                                     <input
                                         class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                        id="inline-full-name" name="created_at" type="datetime-local" value="">
+                                        id="inline-full-name" name="created_at" type="datetime-local"
+                                        value="{{ $tempat_wisata->created_at }}">
                                 </div>
 
                                 <div class="form-group mt-3">
