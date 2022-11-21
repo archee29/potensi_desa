@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use Illuminate\Http\Request;
 use App\Models\Pasar;
 use App\Models\Lokasi;
+use App\Models\Wisata;
+use App\Models\Artikel;
 use App\Models\Sekolah;
 use App\Models\RumahIbadah;
-use App\Models\Wisata;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class DataController extends Controller
@@ -53,6 +54,19 @@ class DataController extends Controller
     ->rawColumns(['action'])
     ->toJson();
  }
+
+ public function dataRumahArtikel(){
+    $data_artikel =Artikel::orderBy('created_at','DESC');
+    return datatables()->of($data_artikel)
+    ->addColumn('action', function ($data_artikel){
+        return view('admin.artikel.action',compact('artikel'))->render();
+    })
+    ->addIndexColumn()
+    ->rawColumns(['action'])
+    ->toJson();
+ }
+
+
 
  public function dataSekolah(){
     $sekolah =Sekolah::orderBy('created_at','DESC');

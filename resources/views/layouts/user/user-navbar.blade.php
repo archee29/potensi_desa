@@ -10,6 +10,7 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
               <div class="navbar-nav ms-auto py-0">
                   <a href="/" class="nav-item nav-link {{ Request::path() == '/' ? 'active' : '' }}">Home</a>
+                  <a href="/berita" class="nav-item nav-link ">Berita</a>
                   <a href="#tentang-desa"
                       class="nav-item nav-link {{ Request::path() == 'tentang-desa' ? 'active' : '' }}">Tentang Desa</a>
                   <a href="#profile-desa"

@@ -49,11 +49,7 @@ Route::controller(LokasiController::class)->group(function () {
 
 // Potensi
 
-Route::controller(RumahIbadahController::class)->group(function () {
-    Route::get('/dataRumahIbadah/data',[DataController::class,'dataRumahIbadah'])->name('data-RumahIbadah');
-    Route::resource('rumah-ibadah',(RumahIbadahController::class));
 
-});
 
 Route::controller(TempatWisataController::class)->group(function () {
     Route::get('/dataWisata/data',[DataController::class,'dataWisata'])->name('data-wisata');
@@ -70,12 +66,14 @@ Route::controller(PasarController::class)->group(function () {
     Route::resource('pasar',(PasarController::class));
 });
 
+Route::controller(RumahIbadahController::class)->group(function () {
+    Route::get('/dataRumahIbadah/data',[DataController::class,'dataRumahIbadah'])->name('data-RumahIbadah');
+    Route::resource('rumah-ibadah',(RumahIbadahController::class));
+
+});
+
 //desa artikel
 Route::controller(ArtikelController::class)->group(function () {
-//     Route::get('artikel', 'index');
-//     Route::get('artikel/create', 'create');
-//     Route::get('artikel/edit', 'edit');
-//     Route::get('artikel/show', 'show');
 
     Route::get('/artikel', 'index');
     Route::get('/artikel/create','create')->name('artikel.create');
@@ -84,6 +82,7 @@ Route::controller(ArtikelController::class)->group(function () {
     Route::get('/artikel/edit/{id}', 'edit')->name('artikel.edit');
     Route::put('/artikel/edit/{id}','update')->name('artikel.update');
     Route::get('/artikel/delete/{id}', 'destroy')->name('artikel.destroy');
+    Route::get('/berita', 'depan');
 
 });
 

@@ -7,26 +7,26 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 
 class ArtikelController extends Controller
 {
     public function index(){
-        // if (!$request->session()->has('admin')){
-        //     return redirect('/login')->with('expired', 'Session Telah Berakhir');
-        // }
-        // else{
-        //     $user = $request ->session()-> get('admin.data');
-        //     $profiledata = Admin::where('username', '=', $user["username"])->first();
-        //     $artikel = Artikel::get();
-        //     return view('admin.artikel.index');
-        // }
         // return view('admin.artikel.index');
 
-        $artikel = DB::table('tb_artikel') -> get();
         // mengirim data blog ke view
+        $artikel = DB::table('tb_artikel') -> get();
         return view('admin.artikel.index', ['artikel' => $artikel]);
+
+    }
+
+    public function depan(Artikel $artikel)
+    {
+            $count = DB::table('tb_artikel')->count();
+         $artikel = DB::table('tb_artikel') -> get();
+         return view('user.berita', ["artikel" => $artikel,"artikel" => $artikel,"count"=>$count]);
     }
 
     public function create(){
@@ -98,6 +98,7 @@ class ArtikelController extends Controller
     {
         DB::table('tb_artikel')->where('id', $id)->delete();
         return redirect()->action([ArtikelController::class, 'index']);
+
 
     }
 }

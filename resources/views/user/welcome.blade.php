@@ -9,7 +9,7 @@
     </style>
 @endsection
 
-@section('leaflet_script')
+{{-- @section('leaflet_script')
     <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -54,7 +54,7 @@
             "Satellite": satellite,
         };
 
-        // Menampilkan popup data ketika marker di klik
+        Menampilkan popup data ketika marker di klik
         @foreach ($pasar as $item)
             L.marker([{{ $item->location }}])
                 .bindPopup(
@@ -236,10 +236,10 @@
 
 
         L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
+    // </script>
 
 
-    {{-- <script>
+    <script>
         const cities = L.layerGroup();
 
         const mLittleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities);
@@ -293,8 +293,8 @@
         });
         layerControl.addBaseLayer(satellite, 'Satellite');
         layerControl.addOverlay(parks, 'Parks');
-    </script> --}}
-@endsection
+    </script>
+@endsection --}}
 
 @section('content')
     <div class="container-xxl bg-white p-0">
@@ -360,17 +360,8 @@
             <div class="container px-lg-5">
                 <div class="row align-items-center" style="height: 250px;">
                     <div class="col-12 col-md-6">
-                        <h3 class="text-white">Ready to get started</h3>
-                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
-                        <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
-                                placeholder="Enter Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                        <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
+
+
                     </div>
                 </div>
             </div>
