@@ -16,6 +16,8 @@ use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\PemerintahanController;
 use App\Http\Controllers\admin\DataDesaController;
 use App\Http\Controllers\admin\DataController;
+use App\Http\Controllers\user\UserController;
+use App\Http\Controllers\user\DataUserController;
 use App\Models\Artikel;
 use Database\Seeders\ArtikelSeeder;
 use Illuminate\Routing\RouteGroup;
@@ -25,7 +27,11 @@ Route::get('/', function () {
     return view('user.welcome');
 });
 
-Route::controller(MapController::class)->group(function () {
+Route::get('/',[App\Http\Controllers\user\DataUserController::class,'index'])->name('index');
+
+Route::get('/detailPotensi', [App\Http\Controllers\user\UserController::class,'index'])->name('detailPotensi.index');
+
+Route::controller(MapUserController::class)->group(function () {
     Route::get('/peta',[App\Http\Controllers\user\MapUserController::class,'index'])->name('peta.index');
     Route::get('/peta/showPasar/{slug}',[App\Http\Controllers\user\MapUserController::class, 'showPasar'])->name('peta.showPasar');
     Route::get('/peta/showSekolah/{slug}',[App\Http\Controllers\user\MapUserController::class, 'showSekolah'])->name('peta.showSekolah');
@@ -48,9 +54,6 @@ Route::controller(LokasiController::class)->group(function () {
 
 
 // Potensi
-
-
-
 Route::controller(TempatWisataController::class)->group(function () {
     Route::get('/dataWisata/data',[DataController::class,'dataWisata'])->name('data-wisata');
     Route::resource('wisata',(TempatWisataController::class));
