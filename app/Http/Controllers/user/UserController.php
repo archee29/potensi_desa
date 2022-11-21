@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Lokasi;
 use App\Models\Pasar;
 use App\Models\RumahIbadah;
-use App\Models\Wisata;
+use App\Models\TempatWisata;
 use App\Models\Sekolah;
 
 class UserController extends Controller
@@ -16,13 +16,13 @@ class UserController extends Controller
         $lokasi = Lokasi::get()->first();
         $pasar = Pasar::get();
         $sekolah = Sekolah::get();
-        $wisata = Wisata::get();
+        $tempat_wisata = TempatWisata::get();
         $rumah_ibadah = RumahIbadah::get();
         return view('user.detailPotensi',[
             'lokasi'=>$lokasi,
             'pasar' =>$pasar,
             'sekolah' => $sekolah,
-            'wisata' => $wisata,
+            'tempat_wisata' => $tempat_wisata,
             'rumah_ibadah' => $rumah_ibadah,
         ]);
     }

@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wisata extends Model
+class TempatWisata extends Model
 {
-     protected $table = 'tb_wisata';
+    protected $table = 'tb_tempat_wisata';
     protected $guarded=[];
 
     public function lokasi(){

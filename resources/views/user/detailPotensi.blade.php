@@ -119,7 +119,7 @@
                 ).addTo(map);
         @endforeach
 
-        @foreach ($wisata as $item)
+        @foreach ($tempat_wisata as $item)
             L.marker([{{ $item->location }}])
                 .bindPopup(
                     "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
@@ -159,7 +159,7 @@
         ];
 
         var dataWisata = [
-            @foreach ($wisata as $key => $value)
+            @foreach ($tempat_wisata as $key => $value)
                 {
                     "loc": [{{ $value->location }}],
                     "title": '{!! $value->name !!}'
@@ -257,7 +257,7 @@
             markersLayer.addLayer(marker);
 
             // melakukan looping data untuk memunculkan popup dari space yang dipilih
-            @foreach ($wisata as $item)
+            @foreach ($tempat_wisata as $item)
                 L.marker([{{ $item->location }}])
                     .bindPopup(
                         "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +

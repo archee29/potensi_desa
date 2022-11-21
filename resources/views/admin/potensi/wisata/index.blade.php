@@ -23,8 +23,8 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <a href="{{ route('wisata.create') }}" class="btn btn-outline-info btn-sm float-end mb-2"><i
-                                    class="fas fa-plus-circle"></i>
+                            <a href="{{ route('wisata.create') }}"
+                                class="btn btn-outline-info btn-sm float-end mb-2"><i class="fas fa-plus-circle"></i>
                                 Tambah Data Wisata
                             </a>
 

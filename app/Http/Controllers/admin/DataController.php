@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 use App\Models\Pasar;
 use App\Models\Lokasi;
-use App\Models\Wisata;
+use App\Models\TempatWisata;
 use App\Models\Artikel;
 use App\Models\Sekolah;
 use App\Models\RumahIbadah;
@@ -34,10 +34,10 @@ class DataController extends Controller
  }
 
  public function dataWisata(){
-    $wisata = Wisata::orderBy('created_at','DESC');
-    return datatables()->of($wisata)
-    ->addColumn('action', function ($wisata){
-        return view('admin.potensi.wisata.action',compact('wisata'))->render();
+    $tempat_wisata = TempatWisata::orderBy('created_at','DESC');
+    return datatables()->of($tempat_wisata)
+    ->addColumn('action', function ($tempat_wisata){
+        return view('admin.potensi.wisata.action',compact('tempat_wisata'))->render();
     })
     ->addIndexColumn()
     ->rawColumns(['action'])

@@ -32,14 +32,14 @@
                     <div class="card">
                         <div class="card-header">Edit Data Wisata</div>
                         <div class="card-body">
-                            <form action="{{ route('wisata.update', $wisata) }}" method="POST"
+                            <form action="{{ route('wisata.update', $tempat_wisata) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('author') is-invalid @enderror"
                                         id="floatingInput" placeholder="Nama Desa" name="author"
-                                        value="{{ $wisata->author }}">
+                                        value="{{ $tempat_wisata->author }}">
                                     <label for="floatingInput">Author</label>
                                     @error('author')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -49,7 +49,7 @@
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('dusun') is-invalid @enderror"
                                         id="floatingInput" placeholder="Nama Desa" name="dusun"
-                                        value="{{ $wisata->dusun }}">
+                                        value="{{ $tempat_wisata->dusun }}">
                                     <label for="floatingInput">Dusun</label>
                                     @error('dusun')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -59,7 +59,7 @@
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('nama_wisata') is-invalid @enderror"
                                         id="floatingInput" placeholder="Nama Desa" name="nama_wisata"
-                                        value="{{ $wisata->nama_wisata }}">
+                                        value="{{ $tempat_wisata->nama_wisata }}">
                                     <label for="floatingInput">Nama Wisata</label>
                                     @error('nama_wisata')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -68,7 +68,7 @@
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $wisata->keterangan }}</textarea>
+                                        id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $tempat_wisata->keterangan }}</textarea>
                                     <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -77,7 +77,7 @@
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label mt-3">Poto Tempat Wisata</label>
-                                    <img id="previewImage" class="mb-3 mt-2  " src="{{ $wisata->getImage() }}"
+                                    <img id="previewImage" class="mb-3 mt-2  " src="{{ $tempat_wisata->getImage() }}"
                                         width="20%" <input class="form-control @error('image') is-invalid @enderror"
                                         type="file" id="image" name="image">
                                     @error('image')
@@ -89,7 +89,7 @@
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
                                         class="form-control @error('location') is-invalid @enderror" readonly id=""
-                                        value="{{ $wisata->location }}">
+                                        value="{{ $tempat_wisata->location }}">
                                     @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -185,7 +185,7 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        var curLocation = [{{ $wisata->location }}];
+        var curLocation = [{{ $tempat_wisata->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {

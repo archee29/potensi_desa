@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\MapKaLimas;
 // use Illminate\Support\Facades\Auth;
+
+// Controller
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\MapController;
 use App\Http\Controllers\admin\LokasiController;
@@ -18,6 +20,8 @@ use App\Http\Controllers\admin\DataDesaController;
 use App\Http\Controllers\admin\DataController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\user\DataUserController;
+
+// Model
 use App\Models\Artikel;
 use Database\Seeders\ArtikelSeeder;
 use Illuminate\Routing\RouteGroup;

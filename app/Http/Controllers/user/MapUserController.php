@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Lokasi;
 use App\Models\Pasar;
 use App\Models\RumahIbadah;
-use App\Models\Wisata;
+use App\Models\TempatWisata;
 use App\Models\Sekolah;
 
 use Illuminate\Http\Request;
@@ -17,13 +17,13 @@ class MapUserController extends Controller
         $lokasi = Lokasi::get()->first();
         $pasar = Pasar::get();
         $sekolah = Sekolah::get();
-        $wisata = Wisata::get();
+        $tempat_wisata = TempatWisata::get();
         $rumah_ibadah = RumahIbadah::get();
         return view('user.peta',[
             'lokasi'=>$lokasi,
             'pasar' =>$pasar,
             'sekolah' => $sekolah,
-            'wisata' => $wisata,
+            'tempat_wisata' => $tempat_wisata,
             'rumah_ibadah' => $rumah_ibadah,
         ]);
     }
@@ -57,10 +57,10 @@ class MapUserController extends Controller
 
     public function showWisata($slug){
         $lokasi = Lokasi::get()->first();
-        $wisata = Wisata::where('slug', $slug)->first();
+        $tempat_wisata = TempatWisata::where('slug', $slug)->first();
         return view('user.potensi.detailWisata',[
             'lokasi'=>$lokasi,
-            'wisata'=>$wisata
+            'tempat_wisata'=>$tempat_wisata
         ]);
     }
 

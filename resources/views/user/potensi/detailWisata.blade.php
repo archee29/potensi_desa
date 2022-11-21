@@ -19,46 +19,7 @@
     <script src="https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.js"></script>
 @endsection
 
-@section('content')
-    <div class="container py-4 justify-content-center">
-        <div class="row">
-            <div class="col-md-6 col-xs-6 mb-2">
-                <div class="card">
-                    <div class="card-header">Detail Wisata</div>
-                    <div class="card-body">
-                        <p>
-                        <h4><strong>Author :</strong></h4>
-                        <h5>{{ $wisata->author }}</h5>
-                        </p>
-
-                        <p>
-                        <h4><strong>Keterangan :</strong></h4>
-                        <p>{{ $wisata->keterangan }}</p>
-                        </p>
-
-                        <p>
-                        <h4>
-                            <strong>Foto Wisata</strong>
-                        </h4>
-                        <img class="img-fluid" width="200" src="{{ $wisata->getImage() }}" alt="gambar_wisata">
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xs-6">
-                <div class="card">
-                    <div class="card-header">Detail Map</div>
-                    <div class="card-body">
-                        <div id="map"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{-- @section('leaflet_script')
     <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -84,38 +45,248 @@
                 attribution: mbAttr
             });
 
-
-        var data{{ $wisata->id }} = L.layerGroup()
-
         var map = L.map('map', {
-            center: [{{ $wisata->location }}],
-            zoom: 20,
-            fullscreenControl: {
-                pseudoFullscreen: false
-            },
-            layers: [streets, data{{ $wisata->id }}]
+
+            center: [{{ $lokasi->location }}],
+            zoom: 14,
+            layers: [streets]
         });
 
         var baseLayers = {
-            "Streets": streets,
+            "Grayscale": dark,
             "Satellite": satellite,
-            "Dark": dark,
+            "Streets": streets
         };
 
         var overlays = {
-            //"Streets": streets
-            "{{ $wisata->dusun }}": data{{ $wisata->id }},
+            "Streets": streets,
+            "Grayscale": dark,
+            "Satellite": satellite,
         };
 
+        // Menampilkan popup data ketika marker di klik
+        @foreach ($pasar as $item)
+            L.marker([{{ $item->location }}])
+                .bindPopup(
+                    "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                    "<div class='my-2'><strong>Nama Space:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div><a href='{{ route('peta.showPasar', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Pasar</a></div>" +
+                    "<div class='my-2'></div>"
+                ).addTo(map);
+        @endforeach
+
+        @foreach ($sekolah as $item)
+            L.marker([{{ $item->location }}])
+                .bindPopup(
+                    "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                    "<div class='my-2'><strong>Nama Space:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div><a href='{{ route('peta.showSekolah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Sekolah</a></div>" +
+                    "<div class='my-2'></div>"
+                ).addTo(map);
+        @endforeach
+
+        @foreach ($rumah_ibadah as $item)
+            L.marker([{{ $item->location }}])
+                .bindPopup(
+                    "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                    "<div class='my-2'><strong>Nama Space:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div><a href='{{ route('peta.showRumahIbadah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Rumah Ibadah</a></div>" +
+                    "<div class='my-2'></div>"
+                ).addTo(map);
+        @endforeach
+
+        @foreach ($tempat_wisata as $item)
+            L.marker([{{ $item->location }}])
+                .bindPopup(
+                    "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                    "<div class='my-2'><strong>Nama Space:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div><a href='{{ route('peta.showWisata', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Wisata</a></div>" +
+                    "<div class='my-2'></div>"
+                ).addTo(map);
+        @endforeach
+
+
+        // Membuat variable data detail potensi
+        var dataPasar = [
+            @foreach ($pasar as $key => $value)
+                {
+                    "loc": [{{ $value->location }}],
+                    "title": '{!! $value->name !!}'
+                },
+            @endforeach
+        ];
+
+        var dataSekolah = [
+            @foreach ($sekolah as $key => $value)
+                {
+                    "loc": [{{ $value->location }}],
+                    "title": '{!! $value->name !!}'
+                },
+            @endforeach
+        ];
+
+        var dataRumahIbadah = [
+            @foreach ($rumah_ibadah as $key => $value)
+                {
+                    "loc": [{{ $value->location }}],
+                    "title": '{!! $value->name !!}'
+                },
+            @endforeach
+        ];
+
+        var dataWisata = [
+            @foreach ($tempat_wisata as $key => $value)
+                {
+                    "loc": [{{ $value->location }}],
+                    "title": '{!! $value->name !!}'
+                },
+            @endforeach
+        ];
+
+        // pada koding ini kita menambahkan control pencarian data
+        var markersLayer = new L.LayerGroup();
+        map.addLayer(markersLayer);
+
+        var controlSearch = new L.Control.Search({
+            position: 'topleft',
+            layer: markersLayer,
+            initial: false,
+            zoom: 17,
+            markerLocation: true
+        })
+
+
+        //menambahkan variabel controlsearch pada addControl
+        map.addControl(controlSearch);
+
+        // looping variabel dataPasar utuk menampilkan data space ketika melakukan pencarian data
+        for (i in dataPasar) {
+
+            var title = dataPasar[i].title,
+                loc = dataPasar[i].loc,
+                marker = new L.Marker(new L.latLng(loc), {
+                    title: title
+                });
+            markersLayer.addLayer(marker);
+
+            // melakukan looping data untuk memunculkan popup dari space yang dipilih
+            @foreach ($pasar as $item)
+                L.marker([{{ $item->location }}])
+                    .bindPopup(
+                        "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<a href='{{ route('peta.showPasar', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Pasar</a></div>" +
+                        "<div class='my-2'></div>"
+                    ).addTo(map);
+            @endforeach
+        }
+
+        for (i in dataSekolah) {
+
+            var title = dataSekolah[i].title,
+                loc = dataSekolah[i].loc,
+                marker = new L.Marker(new L.latLng(loc), {
+                    title: title
+                });
+            markersLayer.addLayer(marker);
+
+            // melakukan looping data untuk memunculkan popup dari space yang dipilih
+            @foreach ($sekolah as $item)
+                L.marker([{{ $item->location }}])
+                    .bindPopup(
+                        "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<a href='{{ route('peta.showSekolah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Sekolah</a></div>" +
+                        "<div class='my-2'></div>"
+                    ).addTo(map);
+            @endforeach
+        }
+
+        for (i in dataRumahIbadah) {
+
+            var title = dataRumahIbadah[i].title,
+                loc = dataRumahIbadah[i].loc,
+                marker = new L.Marker(new L.latLng(loc), {
+                    title: title
+                });
+            markersLayer.addLayer(marker);
+
+            // melakukan looping data untuk memunculkan popup dari space yang dipilih
+            @foreach ($rumah_ibadah as $item)
+                L.marker([{{ $item->location }}])
+                    .bindPopup(
+                        "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<a href='{{ route('peta.showRumahIbadah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Rumah Ibadah</a></div>" +
+                        "<div class='my-2'></div>"
+                    ).addTo(map);
+            @endforeach
+        }
+
+        for (i in dataWisata) {
+
+            var title = dataWisata[i].title,
+                loc = dataWisata[i].loc,
+                marker = new L.Marker(new L.latLng(loc), {
+                    title: title
+                });
+            markersLayer.addLayer(marker);
+
+            // melakukan looping data untuk memunculkan popup dari space yang dipilih
+            @foreach ($tempat_wisata as $item)
+                L.marker([{{ $item->location }}])
+                    .bindPopup(
+                        "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<a href='{{ route('peta.showWisata', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Wisata</a></div>" +
+                        "<div class='my-2'></div>"
+                    ).addTo(map);
+            @endforeach
+        }
+
+
         L.control.layers(baseLayers, overlays).addTo(map);
-
-
-        var curLocation = [{{ $wisata->location }}];
-        map.attributionControl.setPrefix(false);
-
-        var marker = new L.marker(curLocation, {
-            draggable: 'false',
-        });
-        map.addLayer(marker);
     </script>
+@endsection --}}
+
+@section('content')
+    <div class="container py-4 justify-content-center">
+        <div class="row">
+            <div class="col-md-6 col-xs-6 mb-2">
+                <div class="card">
+                    <div class="card-header">Detail Wisata</div>
+                    <div class="card-body">
+                        <p>
+                        <h4><strong>Author :</strong></h4>
+                        <h5>{{ $tempat_wisata->author }}</h5>
+                        </p>
+
+                        <p>
+                        <h4><strong>Keterangan :</strong></h4>
+                        <p>{{ $tempat_wisata->keterangan }}</p>
+                        </p>
+
+                        <p>
+                        <h4>
+                            <strong>Foto Wisata</strong>
+                        </h4>
+                        <img class="img-fluid" width="200" src="{{ $tempat_wisata->getImage() }}" alt="gambar_wisata">
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xs-6">
+                <div class="card">
+                    <div class="card-header">Detail Map</div>
+                    <div class="card-body">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
