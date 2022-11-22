@@ -32,14 +32,14 @@
                     <div class="card">
                         <div class="card-header">Edit Data Wisata</div>
                         <div class="card-body">
-                            <form action="{{ route('wisata.update', $tempat_wisata) }}" method="POST"
+                            <form action="{{ route('wisata-desa.update', $wisata_desa) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('author') is-invalid @enderror"
                                         id="floatingInput" placeholder="Nama Desa" name="author"
-                                        value="{{ $tempat_wisata->author }}">
+                                        value="{{ $wisata_desa->author }}">
                                     <label for="floatingInput">Author</label>
                                     @error('author')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -49,7 +49,7 @@
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('dusun') is-invalid @enderror"
                                         id="floatingInput" placeholder="Nama Desa" name="dusun"
-                                        value="{{ $tempat_wisata->dusun }}">
+                                        value="{{ $wisata_desa->dusun }}">
                                     <label for="floatingInput">Dusun</label>
                                     @error('dusun')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -59,7 +59,7 @@
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('nama_wisata') is-invalid @enderror"
                                         id="floatingInput" placeholder="Nama Desa" name="nama_wisata"
-                                        value="{{ $tempat_wisata->nama_wisata }}">
+                                        value="{{ $wisata_desa->nama_wisata }}">
                                     <label for="floatingInput">Nama Wisata</label>
                                     @error('nama_wisata')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -68,7 +68,7 @@
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $tempat_wisata->keterangan }}</textarea>
+                                        id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $wisata_desa->keterangan }}</textarea>
                                     <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -76,10 +76,12 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Poto Tempat Wisata</label>
-                                    <img id="previewImage" class="mb-3 mt-2  " src="{{ $tempat_wisata->getImage() }}"
+                                    <label for="formFile" class="form-label mt-3">Poto Tempat Wisata</label> <br>
+                                    <img id="previewImage" class="mb-3 mt-2  " src="{{ $wisata_desa->getImage() }}"
                                         width="20%" <input class="form-control @error('image') is-invalid @enderror"
                                         type="file" id="image" name="image">
+                                    <input class="form-control @error('image') is-invalid @enderror" type="file"
+                                        id="image" name="image">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -89,7 +91,7 @@
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
                                         class="form-control @error('location') is-invalid @enderror" readonly id=""
-                                        value="{{ $tempat_wisata->location }}">
+                                        value="{{ $wisata_desa->location }}">
                                     @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -101,7 +103,7 @@
                                     <input
                                         class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                                         id="inline-full-name" name="created_at" type="datetime-local"
-                                        value="{{ $tempat_wisata->created_at }}">
+                                        value="{{ $wisata_desa->created_at }}">
                                 </div>
 
                                 <div class="form-group mt-3">
@@ -168,7 +170,7 @@
             });
 
         var map = L.map('map', {
-            center: [{{ $tempat_wisata->location }}],
+            center: [{{ $wisata_desa->location }}],
             zoom: 14,
             layers: [streets]
         });
@@ -186,7 +188,7 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        var curLocation = [{{ $tempat_wisata->location }}];
+        var curLocation = [{{ $wisata_desa->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {

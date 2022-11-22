@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TempatWisata extends Model
+class WisataDesa extends Model
 {
-    protected $table = 'tb_tempat_wisata';
+    protected $table = 'tb_wisata_desa';
     protected $guarded=[];
 
     public function lokasi(){
@@ -22,7 +22,7 @@ class TempatWisata extends Model
             return $this->image;
         }
         if($this->image){
-            return asset('/images/Poto-Kalimas/wisata/' . $this->image);
+            return asset('/images/Poto-Kalimas/wisata-desa/' . $this->image);
         }
         return 'https://via.placeholder.com/500x500.png?text=No+Cover';
     }

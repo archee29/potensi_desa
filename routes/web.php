@@ -10,7 +10,7 @@ use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\MapController;
 use App\Http\Controllers\admin\LokasiController;
 use App\Http\Controllers\admin\RumahIbadahController;
-use App\Http\Controllers\admin\TempatWisataController;
+use App\Http\Controllers\admin\WisataDesaController;
 use App\Http\Controllers\admin\SekolahController;
 use App\Http\Controllers\admin\PasarController;
 use App\Http\Controllers\admin\ArtikelController;
@@ -45,8 +45,12 @@ Route::controller(MapUserController::class)->group(function () {
 
 Auth::routes();
 
+
+
 //dashboard
 Route::resource('home', HomeController::class);
+
+
 
 
 
@@ -58,10 +62,6 @@ Route::controller(LokasiController::class)->group(function () {
 
 
 // Potensi
-Route::controller(TempatWisataController::class)->group(function () {
-    Route::get('/dataWisata/data',[DataController::class,'dataWisata'])->name('data-wisata');
-    Route::resource('wisata',(TempatWisataController::class));
-});
 
 Route::controller(SekolahController::class)->group(function () {
     Route::get('/dataSekolah/data',[DataController::class,'dataSekolah'])->name('data-sekolah');
@@ -71,6 +71,11 @@ Route::controller(SekolahController::class)->group(function () {
 Route::controller(PasarController::class)->group(function () {
     Route::get('/dataPasar/data',[DataController::class,'dataPasar'])->name('data-pasar');
     Route::resource('pasar',(PasarController::class));
+});
+
+Route::controller(WisataDesaController::class)->group(function () {
+    Route::get('/dataWisataDesa/data',[DataController::class,'dataWisataDesa'])->name('data-wisata-desa');
+    Route::resource('wisata-desa',(WisataDesaController::class));
 });
 
 Route::controller(RumahIbadahController::class)->group(function () {
