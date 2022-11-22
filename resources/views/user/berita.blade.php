@@ -4,7 +4,6 @@
 @section('content')
 <div class="container-xxl bg-white p-0">
 <div class="container px-lg-5">
-
     <div class="row g-4">
         @forelse ($berita as $berita)
         <div class="col-md-6 col-lg-4">
