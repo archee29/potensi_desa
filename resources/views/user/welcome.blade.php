@@ -90,7 +90,7 @@
                 ).addTo(map);
         @endforeach
 
-        @foreach ($tempat_wisata as $item)
+        @foreach ($wisata_desa as $item)
             L.marker([{{ $item->location }}])
                 .bindPopup(
                     "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
@@ -130,7 +130,7 @@
         ];
 
         var dataWisata = [
-            @foreach ($tempat_wisata as $key => $value)
+            @foreach ($wisata_desa as $key => $value)
                 {
                     "loc": [{{ $value->location }}],
                     "title": '{!! $value->name !!}'
@@ -228,7 +228,7 @@
             markersLayer.addLayer(marker);
 
             // melakukan looping data untuk memunculkan popup dari space yang dipilih
-            @foreach ($tempat_wisata as $item)
+            @foreach ($wisata_desa as $item)
                 L.marker([{{ $item->location }}])
                     .bindPopup(
                         "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
@@ -353,7 +353,7 @@
                             <h5 class="mb-3">Peta Desa</h5>
                             <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
                                 lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
+                            <a class="btn px-3 mt-auto mx-auto" href="{{ route('peta.index') }}">Read More</a>
                         </div>
                     </div>
 

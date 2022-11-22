@@ -67,7 +67,7 @@
             L.marker([{{ $item->location }}])
                 .bindPopup(
                     "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
-                    "<div class='my-2'><strong>Nama Space:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div class='my-2'><strong>Nama Pasar:</strong> <br>{{ $item->dusun }}</div>" +
                     "<div><a href='{{ route('peta.showPasar', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Pasar</a></div>" +
                     "<div class='my-2'></div>"
                 ).addTo(map);
@@ -77,7 +77,7 @@
             L.marker([{{ $item->location }}])
                 .bindPopup(
                     "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
-                    "<div class='my-2'><strong>Nama Space:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div class='my-2'><strong>Nama Sekolah:</strong> <br>{{ $item->dusun }}</div>" +
                     "<div><a href='{{ route('peta.showSekolah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Sekolah</a></div>" +
                     "<div class='my-2'></div>"
                 ).addTo(map);
@@ -87,17 +87,17 @@
             L.marker([{{ $item->location }}])
                 .bindPopup(
                     "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
-                    "<div class='my-2'><strong>Nama Space:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div class='my-2'><strong>Nama Rumah Ibadah:</strong> <br>{{ $item->dusun }}</div>" +
                     "<div><a href='{{ route('peta.showRumahIbadah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Rumah Ibadah</a></div>" +
                     "<div class='my-2'></div>"
                 ).addTo(map);
         @endforeach
 
-        @foreach ($tempat_wisata as $item)
+        @foreach ($wisata_desa as $item)
             L.marker([{{ $item->location }}])
                 .bindPopup(
                     "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
-                    "<div class='my-2'><strong>Nama Space:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div class='my-2'><strong>Nama Wisata:</strong> <br>{{ $item->dusun }}</div>" +
                     "<div><a href='{{ route('peta.showWisata', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Wisata</a></div>" +
                     "<div class='my-2'></div>"
                 ).addTo(map);
@@ -133,7 +133,7 @@
         ];
 
         var dataWisata = [
-            @foreach ($tempat_wisata as $key => $value)
+            @foreach ($wisata_desa as $key => $value)
                 {
                     "loc": [{{ $value->location }}],
                     "title": '{!! $value->name !!}'
@@ -231,7 +231,7 @@
             markersLayer.addLayer(marker);
 
             // melakukan looping data untuk memunculkan popup dari space yang dipilih
-            @foreach ($tempat_wisata as $item)
+            @foreach ($wisata_desa as $item)
                 L.marker([{{ $item->location }}])
                     .bindPopup(
                         "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
@@ -263,7 +263,8 @@
                         <div class="card-body">
                             <div id="map"></div>
                         </div>
-                        <div class="card-footer"><a href="#detail-potensi" class="btn btn-outline-primary">Detail Potensi
+                        <div class="card-footer"><a href="{{ route('detailPotensi.index') }}"
+                                class="btn btn-outline-primary">Detail Potensi
                                 Desa</a>
                         </div>
                     </div>

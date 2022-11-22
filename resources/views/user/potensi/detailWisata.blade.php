@@ -27,19 +27,19 @@
                     <div class="card-body">
                         <p>
                         <h4><strong>Author :</strong></h4>
-                        <h5>{{ $tempat_wisata->author }}</h5>
+                        <h5>{{ $wisata_desa->author }}</h5>
                         </p>
 
                         <p>
                         <h4><strong>Keterangan :</strong></h4>
-                        <p>{{ $tempat_wisata->keterangan }}</p>
+                        <p>{{ $wisata_desa->keterangan }}</p>
                         </p>
 
                         <p>
                         <h4>
                             <strong>Foto Wisata</strong>
                         </h4>
-                        <img class="img-fluid" width="200" src="{{ $tempat_wisata->getImage() }}" alt="gambar_wisata">
+                        <img class="img-fluid" width="200" src="{{ $wisata_desa->getImage() }}" alt="gambar_wisata">
                         </p>
                     </div>
                     <div class="card-footer">
@@ -87,15 +87,15 @@
             });
 
 
-        var data{{ $tempat_wisata->id }} = L.layerGroup()
+        var data{{ $wisata_desa->id }} = L.layerGroup()
 
         var map = L.map('map', {
-            center: [{{ $tempat_wisata->location }}],
+            center: [{{ $wisata_desa->location }}],
             zoom: 20,
             fullscreenControl: {
                 pseudoFullscreen: false
             },
-            layers: [streets, data{{ $tempat_wisata->id }}]
+            layers: [streets, data{{ $wisata_desa->id }}]
         });
 
         var baseLayers = {
@@ -106,13 +106,13 @@
 
         var overlays = {
             //"Streets": streets
-            "{{ $tempat_wisata->dusun }}": data{{ $tempat_wisata->id }},
+            "{{ $wisata_desa->dusun }}": data{{ $wisata_desa->id }},
         };
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
 
-        var curLocation = [{{ $tempat_wisata->location }}];
+        var curLocation = [{{ $wisata_desa->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {

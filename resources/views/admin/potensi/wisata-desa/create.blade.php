@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin-layout')
 
 @section('title')
-    Edit Data
+    Tambah Data
 @endsection
 
 @section('add_css')
@@ -23,23 +23,23 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
                 <li class="breadcrumb-item"><i class="fa fa-globe-asia me-2"></i>Wisata</li>
-                <li class="breadcrumb-item"><a href="/wisata/edit"><i class="fas fa-eye me-2"></i>Edit Data Wisata</a></li>
+                <li class="breadcrumb-item"><a href="/wisata/create"><i class="fas fa-plus-circle me-2"></i>Tambah Data
+                        Wisata</a>
+                </li>
             </ol>
         </nav>
+
         <div class="row vh-80 bg-light rounded mx-0">
-            <div id="edit" class="col-sm-12 col-xl-12">
+            <div id="create" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="card">
-                        <div class="card-header">Edit Data Wisata</div>
+                        <div class="card-header">Tambah Data Wisata</div>
                         <div class="card-body">
-                            <form action="{{ route('wisata.update', $tempat_wisata) }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form action="{{ route('wisata-desa.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('author') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" name="author"
-                                        value="{{ $tempat_wisata->author }}">
+                                        id="floatingInput" placeholder="Nama Desa" name="author">
                                     <label for="floatingInput">Author</label>
                                     @error('author')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -48,8 +48,7 @@
 
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('dusun') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" name="dusun"
-                                        value="{{ $tempat_wisata->dusun }}">
+                                        id="floatingInput" placeholder="Nama Desa" name="dusun">
                                     <label for="floatingInput">Dusun</label>
                                     @error('dusun')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -58,8 +57,7 @@
 
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control @error('nama_wisata') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" name="nama_wisata"
-                                        value="{{ $tempat_wisata->nama_wisata }}">
+                                        id="floatingInput" placeholder="Nama Desa" name="nama_wisata">
                                     <label for="floatingInput">Nama Wisata</label>
                                     @error('nama_wisata')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -68,7 +66,7 @@
 
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $tempat_wisata->keterangan }}</textarea>
+                                        id="floatingTextarea" style="height: 150px;" name="keterangan"></textarea>
                                     <label for="floatingTextarea">Keterangan</label>
                                     @error('keterangan')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -76,10 +74,10 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Poto Tempat Wisata</label>
-                                    <img id="previewImage" class="mb-3 mt-2  " src="{{ $tempat_wisata->getImage() }}"
-                                        width="20%" <input class="form-control @error('image') is-invalid @enderror"
-                                        type="file" id="image" name="image">
+                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
+                                        .png/.jpg</label>
+                                    <input class="form-control @error('image') is-invalid @enderror" type="file"
+                                        id="formFile" name="image">
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -88,8 +86,8 @@
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
-                                        class="form-control @error('location') is-invalid @enderror" readonly id=""
-                                        value="{{ $tempat_wisata->location }}">
+                                        class="form-control @error('location') is-invalid @enderror" readonly
+                                        id="">
                                     @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -97,16 +95,15 @@
                                 <div id="map"></div>
 
                                 <div class="md:w-2/3 mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan Tanggal Edit</label>
+                                    <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
                                     <input
                                         class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                        id="inline-full-name" name="created_at" type="datetime-local"
-                                        value="{{ $tempat_wisata->created_at }}">
+                                        id="inline-full-name" name="created_at" type="datetime-local" value="">
                                 </div>
 
                                 <div class="form-group mt-3">
-                                    <button type="submit" class="btn btn-outline-success m-2">Edit Data</button>
-                                    <a href="/wisata">
+                                    <button type="submit" class="btn btn-outline-success m-2">Tambah Data</button>
+                                    <a href="{{route('wisata-desa.index')}}">
                                         <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
                                     </a>
                                 </div>
@@ -127,6 +124,8 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
+        // fungsi ini akan berjalan ketika akan menambahkan gambar dimana fungsi ini
+        // akan membuat preview image sebelum kita simpan gambar tersebut.
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -139,6 +138,7 @@
             }
         }
 
+        // Ketika tag input file denghan class image di klik akan menjalankan fungsi di atas
         $("#image").change(function() {
             readURL(this);
         });
@@ -167,8 +167,12 @@
                 attribution: mbAttr
             });
 
+
         var map = L.map('map', {
-            center: [{{ $wisata->location }}],
+            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
+            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
+            // centrepoint
+            center: [-0.0837981240055652, 109.20594830173026],
             zoom: 14,
             layers: [streets]
         });
@@ -186,7 +190,11 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        var curLocation = [{{ $tempat_wisata->location }}];
+        // Begitu juga dengan curLocation titik koordinatnya dari tabel centrepoint
+        // lalu kita masukkan curLocation tersebut ke dalam variabel marker untuk menampilkan marker
+        // pada peta.
+
+        var curLocation = [-0.0837981240055652, 109.20594830173026];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {

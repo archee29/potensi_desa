@@ -7,6 +7,7 @@ use App\Models\TempatWisata;
 use App\Models\Artikel;
 use App\Models\Sekolah;
 use App\Models\RumahIbadah;
+use App\Models\WisataDesa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -38,6 +39,17 @@ class DataController extends Controller
     return datatables()->of($tempat_wisata)
     ->addColumn('action', function ($tempat_wisata){
         return view('admin.potensi.wisata.action',compact('tempat_wisata'))->render();
+    })
+    ->addIndexColumn()
+    ->rawColumns(['action'])
+    ->toJson();
+ }
+
+ public function dataWisataDesa(){
+    $wisata_desa = WisataDesa::orderBy('created_at','DESC');
+    return datatables()->of($wisata_desa)
+    ->addColumn('action', function($wisata_desa){
+        return view('admin.potensi.wisata-desa.action',compact('wisata_desa'))->render();
     })
     ->addIndexColumn()
     ->rawColumns(['action'])

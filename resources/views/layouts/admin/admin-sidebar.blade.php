@@ -26,18 +26,19 @@
                 <a href="/potensi" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                         class="fa fa-chart-line"></i>Potensi</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="/rumah-ibadah"
+                    <a href="{{ route('rumah-ibadah.index') }}"
                         class="dropdown-item nav-link {{ Request::path() == 'rumah-ibadah' ? 'active' : '' }}"><i
                             class="fa fa-place-of-worship"></i>Rumah
                         Ibadah</a>
-                    <a href="/wisata"
+                    <a href="{{ route('wisata-desa.index') }}"
                         class="dropdown-item nav-link {{ Request::path() == 'wisata' ? 'active' : '' }}"><i
                             class="fa fa-globe-asia"></i>Tempat
                         Wisata</a>
                     <a href="/sekolah"
                         class="dropdown-item nav-link {{ Request::path() == 'sekolah' ? 'active' : '' }}"><i
                             class="fa fa-school"></i>Sekolah</a>
-                    <a href="/pasar" class="dropdown-item nav-link {{ Request::path() == 'pasar' ? 'active' : '' }}"><i
+                    <a href="{{ route('pasar.index') }}"
+                        class="dropdown-item nav-link {{ Request::path() == 'pasar' ? 'active' : '' }}"><i
                             class="fa fa-store-alt"></i>Pasar</a>
                 </div>
             </div>
@@ -46,7 +47,8 @@
                     class="fa fa-newspaper"></i>Artikel</a>
             <a href="/profile" class="nav-item nav-link {{ Request::path() == 'profile' ? 'active' : '' }}"><i
                     class="fa fa-users"></i>Profile</a>
-            <a href="/pemerintahan" class="nav-item nav-link {{ Request::path() == 'pemerintahan' ? 'active' : '' }}"><i
+            <a href="/pemerintahan"
+                class="nav-item nav-link {{ Request::path() == 'pemerintahan' ? 'active' : '' }}"><i
                     class="fa fa-table me-2"></i>Pemerintahan</a>
             <a href="/data" class="nav-item nav-link {{ Request::path() == 'data' ? 'active' : '' }}"><i
                     class="fa fa-database"></i>Data Desa</a>

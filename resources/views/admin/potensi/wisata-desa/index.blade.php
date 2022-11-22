@@ -9,26 +9,26 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><a href="/wisata"><i class="fa fa-globe-asia me-2"></i>Wisata</a></li>
+                <li class="breadcrumb-item"><a href="/wisata-desa"><i class="fa fa-globe-asia me-2"></i>Wisata</a></li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="index" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="card">
-                        <div class="card-header">{{ __('Wisata') }}</div>
+                        <div class="card-header">{{ __('Wisata Desa') }}</div>
                         <div class="card-body">
                             @if (session('success'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <a href="{{ route('wisata.create') }}"
+                            <a href="{{ route('wisata-desa.create') }}"
                                 class="btn btn-outline-info btn-sm float-end mb-2"><i class="fas fa-plus-circle"></i>
                                 Tambah Data Wisata
                             </a>
 
-                            <table class="table" id="dataWisata">
+                            <table class="table" id="dataWisataDesa">
                                 <thead>
                                     <tr>
                                         <th>No. </th>
@@ -58,7 +58,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(function() {
-            $('#dataWisata').DataTable({
+            $('#dataWisataDesa').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
@@ -66,7 +66,7 @@
                 autoWidth: false,
 
                 // Route untuk menampilkan data space
-                ajax: '{{ route('data-wisata') }}',
+                ajax: '{{ route('data-wisata-desa') }}',
                 columns: [{
                         data: 'DT_RowIndex',
                         orderable: false,

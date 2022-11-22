@@ -1,5 +1,5 @@
-<a href="{{ route('wisata.edit', $tempat_wisata) }}" class="btn btn-warning btn-sm">Edit Data</a>
-<button href="{{ route('wisata.destroy', $tempat_wisata) }}" class="btn btn-danger btn-sm" id="delete">Hapus
+<a href="{{ route('wisata-desa.edit', $wisata_desa) }}" class="btn btn-warning btn-sm">Edit Data</a>
+<button href="{{ route('wisata-desa.destroy', $wisata_desa) }}" class="btn btn-danger btn-sm" id="delete">Hapus
     Data</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
