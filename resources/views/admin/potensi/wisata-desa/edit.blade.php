@@ -23,7 +23,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
                 <li class="breadcrumb-item"><i class="fa fa-globe-asia me-2"></i>Wisata</li>
-                <li class="breadcrumb-item"><a href="/wisata/edit"><i class="fas fa-eye me-2"></i>Edit Data Wisata</a></li>
+                <li class="breadcrumb-item"><a href="/wisata-desa/edit"><i class="fas fa-eye me-2"></i>Edit
+                        Data Wisata</a></li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
@@ -108,7 +109,7 @@
 
                                 <div class="form-group mt-3">
                                     <button type="submit" class="btn btn-outline-success m-2">Edit Data</button>
-                                    <a href="/wisata">
+                                    <a href="{{ route('wisata-desa.index') }}">
                                         <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
                                     </a>
                                 </div>

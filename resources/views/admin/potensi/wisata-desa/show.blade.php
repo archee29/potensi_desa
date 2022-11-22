@@ -86,8 +86,9 @@
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
+                                        class="form-control @error('location') is-invalid @enderror" readonly
+                                        id="">
+                                    @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -102,7 +103,7 @@
                                 </div>
 
                                 <div class="form-group mt-3">
-                                    <a href="/wisata">
+                                    <a href="{{ route('wisata-desa.index') }}">
                                         <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
                                     </a>
                                 </div>
@@ -149,7 +150,7 @@
 
 
         var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
+            // location koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
             // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
             // centrepoint
             center: [-0.0837981240055652, 109.20594830173026],
