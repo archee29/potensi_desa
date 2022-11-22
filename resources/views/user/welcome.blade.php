@@ -5,7 +5,7 @@
 @section('title')
     Home
 @endsection
-
+{{--
 @section('add_css')
     <style>
         #map {
@@ -14,7 +14,7 @@
     </style>
 @endsection
 
-{{-- @section('leaflet_script')
+@section('leaflet_script')
     <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -322,7 +322,7 @@
                     <h6 class="position-relative d-inline text-primary ps-4">Profile</h6>
                     <h2 class="mt-2">Profile Desa</h2>
                 </div>
-                {{-- <div class="row g-4">
+                <div class="row g-4">
                     <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                         <div class="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div class="service-icon flex-shrink-0">
@@ -357,7 +357,7 @@
                         </div>
                     </div>
 
-                </div> --}}
+                </div>
             </div>
 
             <div id="poto-kades" class="container-xxl py-5">
