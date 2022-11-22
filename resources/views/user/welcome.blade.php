@@ -1,5 +1,6 @@
 @extends('layouts.user.user-layout')
 @include('layouts.user.user-navbar')
+@include('layouts.user.isi-navbar')
 
 @section('title')
     Home
@@ -13,7 +14,7 @@
     </style>
 @endsection
 
-@section('leaflet_script')
+{{-- @section('leaflet_script')
     <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -241,7 +242,7 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
     </script>
-@endsection
+@endsection --}}
 
 @section('content')
     <div class="container-xxl bg-white p-0">
@@ -321,7 +322,7 @@
                     <h6 class="position-relative d-inline text-primary ps-4">Profile</h6>
                     <h2 class="mt-2">Profile Desa</h2>
                 </div>
-                <div class="row g-4">
+                {{-- <div class="row g-4">
                     <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                         <div class="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div class="service-icon flex-shrink-0">
@@ -356,7 +357,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
             </div>
 
             <div id="poto-kades" class="container-xxl py-5">
@@ -471,7 +472,7 @@
                     </div>
                 </div>
 
-                <div id="image-card" class="row g-4 portfolio-container">
+                <div id="image-card" class="row g-10 portfolio-container">
                     <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.1s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="user-rsc/img/portfolio-1.jpg" alt="">
