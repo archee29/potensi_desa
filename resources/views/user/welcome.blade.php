@@ -1,10 +1,11 @@
 @extends('layouts.user.user-layout')
 @include('layouts.user.user-navbar')
+@include('layouts.user.isi-navbar')
 
 @section('title')
     Home
 @endsection
-
+{{--
 @section('add_css')
     <style>
         #map {
@@ -241,10 +242,10 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
     </script>
-@endsection
+@endsection --}}
 
 @section('content')
-    <div class="container-xxl bg-white p-0">
+    {{-- <div class="container-xxl bg-white p-0"> --}}
         <div class="modal fade" id="searchModal" tabindex="-1">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content" style="background: rgba(29, 29, 39, 0.7);">
@@ -263,8 +264,10 @@
             </div>
         </div>
 
-        <div id="tentang-desa" class="container-xxl py-5">
-            <div class="container px-lg-5">
+
+        <div id="tentang-desa" class="container-xxl py-5 bg-white p-0">
+
+            <div class="container px-lg-5 ">
                 <div class="row g-5">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="section-title position-relative mb-4 pb-2">
@@ -274,27 +277,6 @@
                         <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
                             amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit.
                             Sanctus clita duo justo et tempor eirmod magna dolore erat amet</p>
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Text 1</h6>
-                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Text 2</h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Text 3</h6>
-                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Text 4</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mt-4">
-                            <a class="btn btn-primary rounded-pill px-4 me-3" href="">Read More</a>
-                            <a class="btn btn-outline-primary btn-square me-3" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary btn-square me-3" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary btn-square me-3" href=""><i
-                                    class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-primary btn-square" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                        </div>
                     </div>
                     <div class="col-lg-6">
                         <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="user-rsc/img/about.jpg">
@@ -307,19 +289,16 @@
             <div class="container px-lg-5">
                 <div class="row align-items-center" style="height: 250px;">
                     <div class="col-12 col-md-6">
-
-
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="profile-desa" class="container-xxl py-5">
-
-            <div class="container px-lg-5">
-                <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="position-relative d-inline text-primary ps-4">Profile</h6>
-                    <h2 class="mt-2">Profile Desa</h2>
+        <div id="profile-desa" class="container-xxl py-5  my-5 bg-white p-0 ">
+            <div class="container py-5 px-lg-5 ">
+                <div class="section-title position-relative  mb-4 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="position-relative d-inline text-primary ps-4">Motto Desa</h6>
+                    <h2 class="mt-2">Motto Desa</h2>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
@@ -358,74 +337,78 @@
 
                 </div>
             </div>
+        </div>
 
-            <div id="poto-kades" class="container-xxl py-5">
-                <div class="container px-lg-5">
-                    <div class="row g-4">
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="team-item">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
-                                        style="width: 75px;">
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-facebook-f"></i></a>
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-twitter"></i></a>
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-instagram"></i></a>
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                    <img class="img-fluid rounded w-100" src="user-rsc/img/team-1.jpg" alt="">
+        <div id="poto-kades" class="container-xxl py-5  my-5 bg-white p-0">
+            <div class="container px-lg-5">
+                <div class="section-title position-relative  mb-4 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="position-relative d-inline text-primary ps-4">Profile User </h6>
+                    <h2 class="mt-2">Profile User</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                    style="width: 75px;">
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-linkedin-in"></i></a>
                                 </div>
-                                <div class="px-4 py-3">
-                                    <h5 class="fw-bold m-0">Nama Kepala Desa</h5>
-                                    <small>Kepala Desa</small>
-                                </div>
+                                <img class="img-fluid rounded w-100" src="user-rsc/img/team-1.jpg" alt="">
+                            </div>
+                            <div class="px-4 py-3">
+                                <h5 class="fw-bold m-0">Nama Kepala Desa</h5>
+                                <small>Kepala Desa</small>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="team-item">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
-                                        style="width: 75px;">
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-facebook-f"></i></a>
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-twitter"></i></a>
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-instagram"></i></a>
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                    <img class="img-fluid rounded w-100" src="user-rsc/img/team-2.jpg" alt="">
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="team-item">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                    style="width: 75px;">
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-linkedin-in"></i></a>
                                 </div>
-                                <div class="px-4 py-3">
-                                    <h5 class="fw-bold m-0">Nama Sekretaris Desa</h5>
-                                    <small>Sekretaris Desa</small>
-                                </div>
+                                <img class="img-fluid rounded w-100" src="user-rsc/img/team-2.jpg" alt="">
+                            </div>
+                            <div class="px-4 py-3">
+                                <h5 class="fw-bold m-0">Nama Sekretaris Desa</h5>
+                                <small>Sekretaris Desa</small>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                            <div class="team-item">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
-                                        style="width: 75px;">
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-facebook-f"></i></a>
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-twitter"></i></a>
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-instagram"></i></a>
-                                        <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                                class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                    <img class="img-fluid rounded w-100" src="user-rsc/img/team-3.jpg" alt="">
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="team-item">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                    style="width: 75px;">
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-linkedin-in"></i></a>
                                 </div>
-                                <div class="px-4 py-3">
-                                    <h5 class="fw-bold m-0">Nama Ketua Badan Permusyawaratan Desa</h5>
-                                    <small>Ketua Badan Permusyawaratan Desa</small>
-                                </div>
+                                <img class="img-fluid rounded w-100" src="user-rsc/img/team-3.jpg" alt="">
+                            </div>
+                            <div class="px-4 py-3">
+                                <h5 class="fw-bold m-0">Nama Ketua Badan Permusyawaratan Desa</h5>
+                                <small>Ketua Badan Permusyawaratan Desa</small>
                             </div>
                         </div>
                     </div>
@@ -453,7 +436,7 @@
             </div>
         </div>
 
-        <div id="pemerintahan-desa" class="container-xxl py-5">
+        <div id="pemerintahan-desa" class="container-xxl py-5  my-5 bg-white p-0">
             <div class="container px-lg-5">
                 <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="position-relative d-inline text-primary ps-4">Pemerintahan</h6>
@@ -471,7 +454,7 @@
                     </div>
                 </div>
 
-                <div id="image-card" class="row g-4 portfolio-container">
+                <div id="image-card" class="row g-10 portfolio-container">
                     <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.1s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="user-rsc/img/portfolio-1.jpg" alt="">
@@ -649,7 +632,7 @@
             </div>
         </div>
 
-        <div id="data-desa" class="container-xxl py-5">
+        <div id="data-desa" class="container-xxl py-5  my-5 bg-white p-0">
             <div class="container px-lg-5">
                 <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="position-relative d-inline text-primary ps-4">Data Desa</h6>
@@ -692,13 +675,51 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div id="data-dana" class="container-xxl py-5  my-5 bg-white p-0">
             <div class="container px-lg-5">
                 <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                    <h2 class="mt-2">APBDes 2022</h2>
+                    <h6 class="position-relative d-inline text-primary ps-4">Data Dana Desa</h6>
+                    <h2 class="mt-2">Dana Desa</h2>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="position-relative d-inline text-primary ps-4">Data Desa</h6>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First</th>
+                                    <th scope="col">Last</th>
+                                    <th scope="col">Handle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td colspan="2">Larry the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -721,7 +742,7 @@
             </div>
         </div>
 
-        <div id="contact" class="container-xxl py-5">
+        <div id="contact" class="container-xxl py-5 bg-white p-0">
             <div class="container px-lg-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
@@ -791,7 +812,7 @@
             </div>
         </div>
 
-        <div id="peta-desa" class="container-xxl py-5">
+        <div id="peta-desa" class="container-xxl py-5 bg-white p-0">
             <div class="container px-lg-5">
                 <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="position-relative d-inline text-primary ps-4">Peta</h6>
@@ -807,7 +828,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    {{-- </div> --}}
 @endsection
 
 {{-- <div class="container-xxl bg-primary testimonial three py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">

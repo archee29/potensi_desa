@@ -22,11 +22,24 @@ class ArtikelController extends Controller
 
     }
 
-    public function depan(Artikel $artikel)
+    public function depanArtikel()
+    {
+         $posts = Artikel::latest();
+
+        if(request('search')){
+            $posts->where('title', 'like', '%' . request('search'). '%');
+        }
+
+        $berita = $posts->get();
+        return view('user.berita', ['berita' => $berita,]);
+    }
+
+
+    public function isiArtikel(Artikel $berita)
     {
             $count = DB::table('tb_artikel')->count();
-         $artikel = DB::table('tb_artikel') -> get();
-         return view('user.berita', ["artikel" => $artikel,"artikel" => $artikel,"count"=>$count]);
+         $beritaa = DB::table('tb_artikel') -> get();
+         return view('user.isi-berita', ["berita" => $berita,"beritaa" => $beritaa,"count"=>$count]);
     }
 
     public function create(){
