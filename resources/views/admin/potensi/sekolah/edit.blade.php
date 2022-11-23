@@ -35,7 +35,7 @@
                         <div class="card-header">Edit Data Sekolah</div>
                         <div class="card-body">
                             {{-- {{ route('lokasi.store') }} --}}
-                            <form action="{{ route('sekolah.DB::update('update users set votes = 100 where name = ?', ['John']);', $sekolah) }}" method="POST"
+                            <form action="{{ route('sekolah.update', $sekolah) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -129,7 +129,8 @@
                                     <label for="formFile" class="form-label mt-3">Masukkan Tanggal Edit</label>
                                     <input
                                         class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                        id="inline-full-name" name="created_at" type="datetime-local" value="{{ $sekolah->created_at }}">
+                                        id="inline-full-name" name="created_at" type="datetime-local"
+                                        value="{{ $sekolah->created_at }}">
                                 </div>
 
                                 <div class="form-group mt-3">

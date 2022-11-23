@@ -1,5 +1,5 @@
 @extends('layouts.user.user-layout')
-@include('layouts.user.user-navbar')
+@include('layouts.user.map-navbar')
 
 @section('title')
     Peta Desa
@@ -68,7 +68,7 @@
                 .bindPopup(
                     "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
                     "<div class='my-2'><strong>Nama Pasar:</strong> <br>{{ $item->dusun }}</div>" +
-                    "<div><a href='{{ route('peta.showPasar', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Pasar</a></div>" +
+                    "<div><a href='{{ route('peta.showSekolah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Pasar</a></div>" +
                     "<div class='my-2'></div>"
                 ).addTo(map);
         @endforeach
@@ -270,7 +270,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
@@ -278,78 +277,3 @@
 @push('scripts')
 @endpush
 
-{{-- <div class="row g-4">
-
-        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                    <i class="fa fa-home fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Rumah Ibadah</h5>
-                <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                    lorem.</p>
-                <a class="btn px-3 mt-auto mx-auto" href="{{ route('peta.index') }}">Read
-                    More</a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                    <i class="fa fa-home fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Sekolah</h5>
-                <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                    lorem.</p>
-                <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                    <i class="fa fa-home fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Pasar</h5>
-                <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                    lorem.</p>
-                <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                    <i class="fa fa-home fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Wisata</h5>
-                <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                    lorem.</p>
-                <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                    <i class="fa fa-home fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Hubungi Kami</h5>
-                <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                    lorem.</p>
-                <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                <div class="service-icon flex-shrink-0">
-                    <i class="fa fa-home fa-2x"></i>
-                </div>
-                <h5 class="mb-3">Home</h5>
-                <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                    lorem.</p>
-                <a class="btn px-3 mt-auto mx-auto" href="/">Read More</a>
-            </div>
-        </div>
-    </div> --}}

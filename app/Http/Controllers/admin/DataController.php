@@ -34,17 +34,6 @@ class DataController extends Controller
      ->toJson();
  }
 
- public function dataWisata(){
-    $tempat_wisata = TempatWisata::orderBy('created_at','DESC');
-    return datatables()->of($tempat_wisata)
-    ->addColumn('action', function ($tempat_wisata){
-        return view('admin.potensi.wisata.action',compact('tempat_wisata'))->render();
-    })
-    ->addIndexColumn()
-    ->rawColumns(['action'])
-    ->toJson();
- }
-
  public function dataWisataDesa(){
     $wisata_desa = WisataDesa::orderBy('created_at','DESC');
     return datatables()->of($wisata_desa)
@@ -77,8 +66,6 @@ class DataController extends Controller
     ->rawColumns(['action'])
     ->toJson();
  }
-
-
 
  public function dataSekolah(){
     $sekolah =Sekolah::orderBy('created_at','DESC');

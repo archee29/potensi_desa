@@ -27,10 +27,6 @@
         integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
     {{-- End --}}
 
-    {{-- datatable link --}}
-
-    {{-- end --}}
-
     {{-- Mapbox link --}}
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
     {{-- End --}}

@@ -31,7 +31,7 @@ class MapUserController extends Controller
     public function showPasar($slug){
         $lokasi = Lokasi::get()->first();
         $pasar = Pasar::where('slug', $slug)->first();
-        return view('user.potensi.detailPasar',[
+        return view('user.potensi.pasar.detailPasar',[
             'lokasi'=>$lokasi,
             'pasar'=>$pasar
         ]);
@@ -40,7 +40,7 @@ class MapUserController extends Controller
     public function showSekolah($slug){
         $lokasi = Lokasi::get()->first();
         $sekolah = Sekolah::where('slug', $slug)->first();
-        return view('user.potensi.detailSekolah',[
+        return view('user.potensi.sekolah.detailSekolah',[
             'lokasi'=>$lokasi,
             'sekolah'=>$sekolah
         ]);
@@ -49,7 +49,7 @@ class MapUserController extends Controller
     public function showRumahIbadah($slug){
         $lokasi = Lokasi::get()->first();
         $rumah_ibadah = RumahIbadah::where('slug', $slug)->first();
-        return view('user.potensi.detailRumahIbadah',[
+        return view('user.potensi.rumah-ibadah.detailRumahIbadah',[
             'lokasi'=>$lokasi,
             'rumah_ibadah'=>$rumah_ibadah
         ]);
@@ -58,7 +58,7 @@ class MapUserController extends Controller
     public function showWisata($slug){
         $lokasi = Lokasi::get()->first();
         $wisata_desa = WisataDesa::where('slug', $slug)->first();
-        return view('user.potensi.detailWisata',[
+        return view('user.potensi.wisata-desa.detailWisata',[
             'lokasi'=>$lokasi,
             'wisata_desa'=>$wisata_desa
         ]);
