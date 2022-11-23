@@ -1,6 +1,6 @@
   <div class="container-xxl position-relative p-0">
       <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-          <a href="" class="navbar-brand p-0">
+          <a href="/" class="navbar-brand p-0">
               <h1 class="m-0"><i class="fa fa-search me-2"></i>SI<span class="fs-5">Mas</span></h1>
               <!-- <img src="img/logo.png" alt="Logo"> -->
           </a>
@@ -9,7 +9,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
               <div class="navbar-nav ms-auto py-0">
-                  <a href="/welcome" class="nav-item nav-link {{ Request::path() == '/' ? 'active' : '' }}"></a>
+                  <a href="/" class="nav-item nav-link"></a>
               </div>
               <button type="button" class="btn text-secondary ms-3" data-bs-toggle="modal"
                   data-bs-target="#searchModal"></button>
@@ -46,8 +46,8 @@
                           Desa</a>
                   </div>
                   <div class="col-lg-4 text-center text-lg-start">
-                      <img class="img-fluid" src=" {{ asset('user-rsc/img/logo_2.png') }}" alt=""
-                          width="600rem" height="600rem">
+                      <img class="img-fluid" src=" {{ asset('user-rsc/img/logo_2.png') }}" alt="" width="600rem"
+                          height="600rem">
                   </div>
               </div>
           </div>

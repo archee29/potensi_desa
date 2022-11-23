@@ -12,6 +12,11 @@ use App\Models\Sekolah;
 
 class UserController extends Controller
 {
+
+    public function welcome(){
+        return view('user.welcome');
+    }
+
     public function index(){
         $lokasi = Lokasi::get()->first();
         $pasar = Pasar::get();

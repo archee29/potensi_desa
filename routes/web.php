@@ -31,6 +31,9 @@ Route::get('/', function () {
     return view('user.welcome');
 });
 
+
+
+
 Route::resource('user', UserController::class);
 
 // Route::get('/',[App\Http\Controllers\user\DataUserController::class,'index'])->name('index');
@@ -39,7 +42,7 @@ Route::controller(DataUserController::class)->group(function () {
     Route::get('/detailpotensi/detailSekolah',[App\Http\Controllers\user\DataUserController::class,'detailDataSekolah'])->name('detail-data-sekolah');
     Route::get('/detailpotensi/detailPasar',[App\Http\Controllers\user\DataUserController::class,'detailDataPasar'])->name('detail-data-pasar');
     Route::get('/detailpotensi/detailRumahIbadah',[App\Http\Controllers\user\DataUserController::class,'detailDataRumahIbadah'])->name('detail-data-rumah-ibadah');
-    Route::get('/detailpotensi/detailWisata',[App\Http\Controllers\user\DataUserController::class,'detailDataWisata'])->name('detail-data-wisata');
+    Route::get('/detailpotensi/detailWisata',[App\Http\Controllers\user\DataUserController::class,'detailDataWisataDesa'])->name('detail-data-wisata');
 });
 
 

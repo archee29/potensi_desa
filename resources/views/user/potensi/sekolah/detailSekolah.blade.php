@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>
+                            <a href="{{ route('detailPotensi.index') }}" class="btn btn-outline-primary">Kembali</a>
                         </div>
                     </div>
                 </div>
@@ -106,6 +106,9 @@
                         <div class="card-header">Detail Map</div>
                         <div class="card-body">
                             <div id="map"></div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ route('detailPotensi.index') }}" class="btn btn-outline-primary">Kembali</a>
                         </div>
                     </div>
                 </div>
