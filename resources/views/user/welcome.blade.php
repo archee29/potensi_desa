@@ -245,7 +245,7 @@
 @endsection --}}
 
 @section('content')
-    {{-- <div class="container-xxl bg-white p-0"> --}}
+    {{-- < class="container-xxl bg-white p-0"> --}}
         <div class="modal fade" id="searchModal" tabindex="-1">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content" style="background: rgba(29, 29, 39, 0.7);">
@@ -345,8 +345,8 @@
                     <h6 class="position-relative d-inline text-primary ps-4">Profile User </h6>
                     <h2 class="mt-2">Profile User</h2>
                 </div>
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="slider owl-carousel">
+                    <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
@@ -368,7 +368,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="team-item">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
@@ -390,7 +390,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="team-item">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
@@ -412,7 +412,15 @@
                             </div>
                         </div>
                     </div>
-                </div>
+            </div>
+            <script>
+                $(".slider").owlCarousel({
+                  loop: true,
+                  autoplay: true,
+                  autoplayTimeout: 2000, //2000ms = 2s;
+                  autoplayHoverPause: true,
+                });
+             </script>
             </div>
         </div>
 
@@ -435,6 +443,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
         <div id="pemerintahan-desa" class="container-xxl py-5  my-5 bg-white p-0">
             <div class="container px-lg-5">
