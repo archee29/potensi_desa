@@ -1,5 +1,5 @@
 @extends('layouts.user.user-layout')
-@include('layouts.user.user-navbar')
+@include('layouts.user.map-navbar')
 
 @section('title')
     Detail Sekolah
@@ -18,41 +18,49 @@
 @endsection
 
 @section('content')
-    <div class="container py-4 justify-content-center">
-        <div class="row">
-            <div class="col-md-6 col-xs-6 mb-2">
-                <div class="card">
-                    <div class="card-header">Detail Sekolah</div>
-                    <div class="card-body">
-                        <p>
-                        <h4><strong>Author :</strong></h4>
-                        <h5>{{ $sekolah->author }}</h5>
-                        </p>
+    <div id="detail-sekolah" class="container-xxl py-5">
+        <div class="container px-lg-5">
+            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
+                <h2 class="mt-2">Detail Sekolah</h2>
+            </div>
+            <div id="peta-desa" class="container-xxl py-5">
 
-                        <p>
-                        <h4><strong>Keterangan :</strong></h4>
-                        <p>{{ $sekolah->keterangan }}</p>
-                        </p>
+                <div class="container px-lg-5">
+                    <div class="card wow zoomIn" data-wow-delay="0.1s">
+                        <div class="card-header">Detail Sekolah</div>
+                        <div class="card-body">
+                            <p>
+                            <h4><strong>Author :</strong></h4>
+                            <h5>{{ $sekolah->author }}</h5>
+                            </p>
 
-                        <p>
-                        <h4>
-                            <strong>Foto Sekolah</strong>
-                        </h4>
-                        <img class="img-fluid" width="200" src="{{ $sekolah->getImage() }}" alt="gambar_sekolah">
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>
+                            <p>
+                            <h4><strong>Keterangan :</strong></h4>
+                            <p>{{ $sekolah->keterangan }}</p>
+                            </p>
+
+                            <p>
+                            <h4>
+                                <strong>Foto Sekolah</strong>
+                            </h4>
+                            <img class="img-fluid" width="200" src="{{ $sekolah->getImage() }}" alt="gambar_sekolah">
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-xs-6">
-                <div class="card">
-                    <div class="card-header">Detail Map</div>
-                    <div class="card-body">
-                        <div id="map"></div>
+                <div class="container px-lg-5 mt-3">
+                    <div class="card wow zoomIn" data-wow-delay="0.1s">
+                        <div class="card-header">Detail Map</div>
+                        <div class="card-body">
+                            <div id="map"></div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -17,12 +17,12 @@ class JenisPotensi extends Model
         return $this->belongsTo(Pasar::class, 'id');
     }
 
-    public function tempatibadah(){
-        return $this->belongsTo(TempatIbadah::class, 'id');
+    public function rumah_ibadah(){
+        return $this->belongsTo(RumahIbadah::class, 'id');
     }
 
-    public function tempatwisata(){
-        return $this->belongsTo(TempatWisata::class, 'id');
+    public function wisata_desa(){
+        return $this->belongsTo(WisataDesa::class, 'id');
     }
 
     use HasFactory;
