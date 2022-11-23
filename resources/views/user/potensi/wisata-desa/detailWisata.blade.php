@@ -25,22 +25,48 @@
                 <div class="card">
                     <div class="card-header">Detail Wisata</div>
                     <div class="card-body">
-                        <p>
-                        <h4><strong>Author :</strong></h4>
-                        <h5>{{ $wisata_desa->author }}</h5>
-                        </p>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control @error('author') is-invalid @enderror"
+                                id="floatingInput" placeholder="Nama Desa" name="author" value="{{ $wisata_desa->author }}"
+                                readonly>
+                            <label for="floatingInput">Author</label>
+                        </div>
 
-                        <p>
-                        <h4><strong>Keterangan :</strong></h4>
-                        <p>{{ $wisata_desa->keterangan }}</p>
-                        </p>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control @error('dusun') is-invalid @enderror"
+                                id="floatingInput" placeholder="Nama Desa" name="dusun" value="{{ $wisata_desa->dusun }}"
+                                readonly>
+                            <label for="floatingInput">Dusun</label>
+                        </div>
 
-                        <p>
-                        <h4>
-                            <strong>Foto Wisata</strong>
-                        </h4>
-                        <img class="img-fluid" width="200" src="{{ $wisata_desa->getImage() }}" alt="gambar_wisata">
-                        </p>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control @error('nama_wisata') is-invalid @enderror"
+                                id="floatingInput" placeholder="Nama Desa" name="nama_wisata"
+                                value="{{ $wisata_desa->nama_wisata }}" readonly>
+                            <label for="floatingInput">Nama Wisata</label>
+                        </div>
+
+                        <div class="form-floating">
+                            <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
+                                id="floatingTextarea" style="height: 150px;" name="keterangan" readonly>{{ $wisata_desa->keterangan }}</textarea>
+                            <label for="floatingTextarea">Keterangan</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label mt-3">Poto Tempat Wisata</label> <br>
+                            <img id="previewImage" class="mb-3 mt-2  " src="{{ $wisata_desa->getImage() }}" width="20%"
+                                <input class="form-control @error('image') is-invalid @enderror" type="file"
+                                id="image" name="image">
+                        </div>
+
+                        <div class="md:w-2/3 mb-3">
+                            <label for="formFile" class="form-label mt-3">Tanggal Upload</label>
+                            <input
+                                class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                id="inline-full-name" name="created_at" type="datetime-local"
+                                value="{{ $wisata_desa->created_at }}" readonly>
+                        </div>
+
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>

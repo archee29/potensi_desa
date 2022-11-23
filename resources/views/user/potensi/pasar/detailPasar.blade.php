@@ -24,22 +24,47 @@
                 <div class="card">
                     <div class="card-header">Detail Pasar</div>
                     <div class="card-body">
-                        <p>
-                        <h4><strong>Author :</strong></h4>
-                        <h5>{{ $pasar->author }}</h5>
-                        </p>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control @error('author') is-invalid @enderror"
+                                id="floatingInput" name="author" value="{{ $pasar->author }}" placeholder="Nama Desa"
+                                readonly>
+                            <label for="floatingInput">Author</label>
+                        </div>
 
-                        <p>
-                        <h4><strong>Keterangan Space :</strong></h4>
-                        <p>{{ $pasar->keterangan }}</p>
-                        </p>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="dusun" value="{{ $pasar->dusun }}"
+                                class="form-control @error('dusun') is-invalid @enderror" id="floatingInput"
+                                placeholder="Nama Desa" readonly>
+                            <label for="floatingInput">Nama Dusun</label>
+                        </div>
 
-                        <p>
-                        <h4>
-                            <strong>Foto Pasar</strong>
-                        </h4>
-                        <img class="img-fluid" width="200" src="{{ $pasar->getImage() }}" alt="gambar_pasar">
-                        </p>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="judul" value="{{ $pasar->judul }}"
+                                class="form-control @error('judul') is-invalid @enderror" id="floatingInput"
+                                placeholder="Nama Desa" readonly>
+                            <label for="floatingInput">Judul</label>
+                        </div>
+
+                        <div class="form-floating">
+                            <textarea name="keterangan" class="form-control @error('keterangan') is-invalid @enderror"
+                                placeholder="Masukkan Keterangan" id="floatingTextarea" style="height: 150px;" readonly>{{ $pasar->keterangan }}</textarea>
+                            <label for="floatingTextarea">Keterangan</label>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="formFile" class="form-label mt-3">Foto Pasar</label> <br>
+                            <img id="previewImage" class="mb-3 mt-2  " src="{{ $pasar->getImage() }}" width="20%"
+                                alt="poto_pasar">
+                        </div>
+
+                        <div class="md:w-2/3 mb-3">
+                            <label for="formFile" class="form-label mt-3">Tanggal Upload</label>
+                            <input
+                                class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                id="inline-full-name" name="created_at" type="datetime-local"
+                                value="{{ $pasar->created_at }}" readonly>
+                        </div>
+
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>
