@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Artikel;
+use App\Models\Pemerintahan;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,15 @@ class ArtikelController extends Controller
 
     }
 
+    public function depanProfil()
+    {
+
+        $posts = Pemerintahan::latest();
+        $profil = $posts->get();
+        return view('user.welcome', ['profil' => $profil,]);
+    }
+
+
     public function depanArtikel()
     {
          $posts = Artikel::latest();
@@ -36,9 +46,12 @@ class ArtikelController extends Controller
 
     public function depanHome()
     {
+
+        $posts = Pemerintahan::latest();
+        $profil = $posts->get();
         $count = DB::table('tb_artikel')->count();
          $beritaa = DB::table('tb_artikel') -> get();
-         return view('user.welcome', ["beritaa" => $beritaa,"count"=>$count]);
+         return view('user.welcome', ["beritaa" => $beritaa,"count"=>$count,'profil' => $profil]);
     }
 
 

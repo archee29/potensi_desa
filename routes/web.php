@@ -97,6 +97,7 @@ Route::controller(RumahIbadahController::class)->group(function () {
 Route::controller(PemerintahanController::class)->group(function () {
     Route::get('/dataPemerintahan/data',[DataController::class,'dataPemerintahan'])->name('data-Pemerintahan');
     Route::resource('pemerintahan',(PemerintahanController::class));
+    Route::get('/profil', 'depanArtikel');
 
 });
 

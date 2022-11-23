@@ -2,15 +2,27 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\RumahIbadah;
 use Illuminate\Support\Str;
 use App\Models\Pemerintahan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\RumahIbadah;
+use Illuminate\Support\Facades\File;
 
 class PemerintahanController extends Controller
 {
+
+
+    public function depanArtikel()
+    {
+
+        $posts = Pemerintahan::latest();
+        $profil = $posts->get();
+        return view('user.profil', ['profil' => $profil,]);
+    }
+
+
     public function index(){
 
         return view('admin.pemerintahan.index');

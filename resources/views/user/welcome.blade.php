@@ -378,6 +378,7 @@
                     <h2 class="mt-2">Profile User</h2>
                 </div>
                 <div class="slider owl-carousel">
+                    @forelse ($profil as $profil)
                     <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item">
                             <div class="d-flex">
@@ -392,67 +393,25 @@
                                     <a class="btn btn-square text-primary bg-white my-1" href=""><i
                                             class="fab fa-linkedin-in"></i></a>
                                 </div>
-                                <img class="img-fluid rounded w-100" src="user-rsc/img/team-1.jpg" alt="">
+                                <img class="img-fluid rounded w-60" src="images/poto-kalimas/Pemerintahan/{{ $profil->image }}" alt="{{ $profil->image }}">
                             </div>
                             <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">Nama Kepala Desa</h5>
-                                <small>Kepala Desa</small>
+                                <h5 class="fw-bold m-0">{{ $profil->name}}</h5>
+                                <span>{{ $profil->jabatan }}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
-                                    style="width: 75px;">
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="user-rsc/img/team-2.jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">Nama Sekretaris Desa</h5>
-                                <small>Sekretaris Desa</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
-                                    style="width: 75px;">
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="user-rsc/img/team-3.jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">Nama Ketua Badan Permusyawaratan Desa</h5>
-                                <small>Ketua Badan Permusyawaratan Desa</small>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            <script>
-                $(".slider").owlCarousel({
-                  loop: true,
-                  autoplay: true,
-                  autoplayTimeout: 2000, //2000ms = 2s;
-                  autoplayHoverPause: true,
-                });
-             </script>
+                    @empty
+                    @endforelse
+                </div>
+                <script>
+                    $(".slider").owlCarousel({
+                      loop: true,
+                      autoplay: true,
+                      autoplayTimeout: 2000, //2000ms = 2s;
+                      autoplayHoverPause: true,
+                    });
+                 </script>
             </div>
         </div>
 
