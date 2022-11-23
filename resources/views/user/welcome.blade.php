@@ -559,6 +559,192 @@
                             <small>Profession</small>
                         </div>
                     </div>
+<<<<<<< HEAD
+=======
+                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                            <div class="service-icon flex-shrink-0">
+                                <i class="fa fa-home fa-2x"></i>
+                            </div>
+                            <h5 class="mb-3">Berita Desa</h5>
+                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
+                                lorem.</p>
+                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                            <div class="service-icon flex-shrink-0">
+                                <i class="fa fa-home fa-2x"></i>
+                            </div>
+                            <h5 class="mb-3">Peta Desa</h5>
+                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
+                                lorem.</p>
+                            <a class="btn px-3 mt-auto mx-auto" href="{{ route('peta.index') }}">Read More</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-xxl py-5  my-5 bg-white p-0">
+            <div class="container px-lg-5">
+                <div class="row g-4">
+                    <div class="row g-4">
+                        @forelse (array_slice($beritaa->toArray(), 0, 3)  as $beritaa)
+                        <div class="col-md-6 col-lg-4">
+                            <div class="mb-5 max-h-60 overflow-hidden blog-image rounded-xl">
+                                <img class="w-full" width="250px" height="250px" src="/image/{{ $beritaa->image }}" />
+                              </div>
+                            <a href="javascript:void(0)">{{ $beritaa->author }}</a> &nbsp;&nbsp; &nbsp;&nbsp;<a >{{ date('d-m-Y', strtotime($beritaa->created_at)); }}</a>
+                            <br>
+                            <br>
+                            <h5 class="text-black mb-4"> {{ $beritaa->title }}</h5>
+                            <p>{{ Str::limit($beritaa->content, 40) }}</p>
+                            <a class="text-theme-color" href="/berita/{{ $beritaa->title }}">
+                                    Baca Selengkapnya ->
+                            </a>
+                        </div>
+                        @empty
+                                <h2 class="mt-20 text-2xl	font-extrabold	">Oh Tidak Halaman Masih Kosong ...</h2>
+                            @endforelse
+                </div>
+                <h1 class="text-center sm:text-3xl
+                      text-xl
+                      font-medium
+                      title-font
+                      mb-0 mt-20
+                      text-gray-900"> <a href="/berita">Lihat  {{ $count-1 }} Berita Lainnya</a> </h1>
+            </div>
+            </div>
+      </div>
+
+        <div id="poto-kades" class="container-xxl py-5  my-5 bg-white p-0">
+            <div class="container px-lg-5">
+                <div class="section-title position-relative  mb-4 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="position-relative d-inline text-primary ps-4">Profile User </h6>
+                    <h2 class="mt-2">Profile User</h2>
+                </div>
+                <div class="slider owl-carousel">
+                    <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                    style="width: 75px;">
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-linkedin-in"></i></a>
+                                </div>
+                                <img class="img-fluid rounded w-100" src="user-rsc/img/team-1.jpg" alt="">
+                            </div>
+                            <div class="px-4 py-3">
+                                <h5 class="fw-bold m-0">Nama Kepala Desa</h5>
+                                <small>Kepala Desa</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="team-item">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                    style="width: 75px;">
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-linkedin-in"></i></a>
+                                </div>
+                                <img class="img-fluid rounded w-100" src="user-rsc/img/team-2.jpg" alt="">
+                            </div>
+                            <div class="px-4 py-3">
+                                <h5 class="fw-bold m-0">Nama Sekretaris Desa</h5>
+                                <small>Sekretaris Desa</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="team-item">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                    style="width: 75px;">
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i
+                                            class="fab fa-linkedin-in"></i></a>
+                                </div>
+                                <img class="img-fluid rounded w-100" src="user-rsc/img/team-3.jpg" alt="">
+                            </div>
+                            <div class="px-4 py-3">
+                                <h5 class="fw-bold m-0">Nama Ketua Badan Permusyawaratan Desa</h5>
+                                <small>Ketua Badan Permusyawaratan Desa</small>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <script>
+                $(".slider").owlCarousel({
+                  loop: true,
+                  autoplay: true,
+                  autoplayTimeout: 2000, //2000ms = 2s;
+                  autoplayHoverPause: true,
+                });
+             </script>
+            </div>
+        </div>
+
+        <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container px-lg-5">
+                <div class="row align-items-center" style="height: 250px;">
+                    <div class="col-12 col-md-6">
+                        <h3 class="text-white">Ready to get started</h3>
+                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
+                        <div class="position-relative w-100 mt-3">
+                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                                placeholder="Enter Your Email" style="height: 48px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                        <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id="pemerintahan-desa" class="container-xxl py-5  my-5 bg-white p-0">
+            <div class="container px-lg-5">
+                <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="position-relative d-inline text-primary ps-4">Pemerintahan</h6>
+                    <h2 class="mt-2">Pemerintahan Desa</h2>
+                </div>
+
+                <div id="struktur" class="row mt-n2 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-12 text-center">
+                        <ul class="list-inline mb-5" id="portfolio-flters">
+                            <li class="btn px-3 pe-4 active" data-filter="*">Semua</li>
+                            <li class="btn px-3 pe-4" data-filter=".first">Aparatur Desa</li>
+                            <li class="btn px-3 pe-4" data-filter=".second">Badan Permusyawaratan Desa</li>
+                            <li class="btn px-3 pe-4" data-filter=".three">Visi dan Misi</li>
+                        </ul>
+                    </div>
+>>>>>>> 7fa7f99a998edf77b7a05c760426c15f29d4399d
                 </div>
 
                 <div class="testimonial-item bg-transparent border rounded text-white p-4">

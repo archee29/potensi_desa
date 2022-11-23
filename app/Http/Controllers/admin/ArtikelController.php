@@ -34,6 +34,13 @@ class ArtikelController extends Controller
         return view('user.berita', ['berita' => $berita,]);
     }
 
+    public function depanHome()
+    {
+        $count = DB::table('tb_artikel')->count();
+         $beritaa = DB::table('tb_artikel') -> get();
+         return view('user.welcome', ["beritaa" => $beritaa,"count"=>$count]);
+    }
+
 
     public function isiArtikel(Artikel $berita)
     {

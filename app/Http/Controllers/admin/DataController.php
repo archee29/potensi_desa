@@ -10,6 +10,7 @@ use App\Models\RumahIbadah;
 use App\Models\WisataDesa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Pemerintahan;
 
 class DataController extends Controller
 {
@@ -56,16 +57,19 @@ class DataController extends Controller
     ->toJson();
  }
 
- public function dataRumahArtikel(){
-    $data_artikel =Artikel::orderBy('created_at','DESC');
-    return datatables()->of($data_artikel)
-    ->addColumn('action', function ($data_artikel){
-        return view('admin.artikel.action',compact('artikel'))->render();
+ public function dataPemerintahan(){
+    $pemerintahan =Pemerintahan::orderBy('created_at','DESC');
+    return datatables()->of($pemerintahan)
+    ->addColumn('action', function ($pemerintahan){
+        return view('admin.pemerintahan.action',compact('pemerintahan'))->render();
     })
     ->addIndexColumn()
     ->rawColumns(['action'])
     ->toJson();
  }
+
+
+
 
  public function dataSekolah(){
     $sekolah =Sekolah::orderBy('created_at','DESC');

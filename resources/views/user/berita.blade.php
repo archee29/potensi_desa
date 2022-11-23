@@ -2,7 +2,7 @@
 @include('layouts.user.user-navbar')
 @include('layouts.user.isi-navbar')
 @section('content')
-<div class="container-xxl bg-white p-0">
+<div class="container-xxl py-5  my-5 bg-white p-0">
 <div class="container px-lg-5">
     <div class="row g-4">
         @forelse ($berita as $berita)

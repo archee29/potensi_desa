@@ -97,6 +97,13 @@ Route::controller(RumahIbadahController::class)->group(function () {
 
 });
 
+Route::controller(PemerintahanController::class)->group(function () {
+    Route::get('/dataPemerintahan/data',[DataController::class,'dataPemerintahan'])->name('data-Pemerintahan');
+    Route::resource('pemerintahan',(PemerintahanController::class));
+
+});
+
+
 //desa artikel
 Route::controller(ArtikelController::class)->group(function () {
 
@@ -108,6 +115,7 @@ Route::controller(ArtikelController::class)->group(function () {
     Route::put('/artikel/edit/{id}','update')->name('artikel.update');
     Route::get('/artikel/delete/{id}', 'destroy')->name('artikel.destroy');
     Route::get('/berita', 'depanArtikel');
+    Route::get('/', 'depanHome');
     Route::get('berita/{berita:title}', 'isiArtikel');
 
 });
@@ -124,12 +132,6 @@ Route::controller(ProfileController::class)->group(function () {
     Route::get('/profile/show', 'show');
 });
 
-Route::controller(PemerintahanController::class)->group(function () {
-    Route::get('/pemerintahan', 'index');
-    Route::get('/pemerintahan/create', 'create');
-    Route::get('/pemerintahan/edit', 'edit');
-    Route::get('/pemerintahan/show', 'show');
-});
 
 Route::controller(DataDesaController::class)->group(function () {
     Route::get('/data', 'index');
