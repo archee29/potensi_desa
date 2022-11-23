@@ -32,6 +32,9 @@ Route::get('/', function () {
 });
 
 
+Route::get('/contoh', function(){
+    return view('user.contoh');
+});
 
 
 Route::resource('user', UserController::class);
