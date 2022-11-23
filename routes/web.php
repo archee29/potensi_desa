@@ -94,6 +94,13 @@ Route::controller(RumahIbadahController::class)->group(function () {
 
 });
 
+Route::controller(PemerintahanController::class)->group(function () {
+    Route::get('/dataPemerintahan/data',[DataController::class,'dataPemerintahan'])->name('data-Pemerintahan');
+    Route::resource('pemerintahan',(PemerintahanController::class));
+
+});
+
+
 //desa artikel
 Route::controller(ArtikelController::class)->group(function () {
 
@@ -122,12 +129,6 @@ Route::controller(ProfileController::class)->group(function () {
     Route::get('/profile/show', 'show');
 });
 
-Route::controller(PemerintahanController::class)->group(function () {
-    Route::get('/pemerintahan', 'index');
-    Route::get('/pemerintahan/create', 'create');
-    Route::get('/pemerintahan/edit', 'edit');
-    Route::get('/pemerintahan/show', 'show');
-});
 
 Route::controller(DataDesaController::class)->group(function () {
     Route::get('/data', 'index');

@@ -23,7 +23,7 @@ class RumahIbadah extends Model
             return $this->image;
         }
         if($this->image){
-            return asset('/images/Poto-Kalimas/Rumah Ibadah/'.$this->image);
+            return asset('/images/Poto-Kalimas/Pemerintahan/'.$this->image);
         }
         return 'https://via.placeholder.com/500x500.png?text=No+Cover';
     }
