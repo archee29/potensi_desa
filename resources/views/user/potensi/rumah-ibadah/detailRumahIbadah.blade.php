@@ -18,81 +18,91 @@
 @endsection
 
 @section('content')
-    <div class="container py-4 justify-content-center">
-        <div class="row">
-            <div class="col-md-6 col-xs-6 mb-2">
-                <div class="card">
-                    <div class="card-header">Detail Rumah Ibadah</div>
-                    <div class="card-body">
-                        <div class="form-floating mb-3">
-                            <input type="text" name="author" class="form-control @error('author') is-invalid @enderror"
-                                id="floatingInput" placeholder="Nama Desa" value="{{ $rumah_ibadah->author }}" readonly>
-                            <label for="floatingInput">Author</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" name="dusun" class="form-control @error('dusun') is-invalid @enderror"
-                                id="floatingInput" placeholder="Nama Desa" value="{{ $rumah_ibadah->dusun }}" readonly>
-                            <label for="floatingInput">Dusun</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" name="nama_tempat_ibadah"
-                                class="form-control @error('nama_tempat_ibadah') is-invalid @enderror" id="floatingInput"
-                                placeholder="Nama Desa" value="{{ $rumah_ibadah->nama_rumah_ibadah }}" readonly>
-                            <label for="floatingInput">Nama Rumah Ibadah</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <select class="form-select @error('agama') is-invalid @enderror" id="floatingSelect"
-                                name="agama" aria-label="Floating label Pilih Jenis Potensi example" disabled>
-                                <option value=""{{ $rumah_ibadah->agama == null ? 'selected' : '' }}>Agama
-                                </option>
-                                <option value="islam"{{ $rumah_ibadah->agama == 'islam' ? 'selected' : '' }}>
-                                    Islam</option>
-                                <option value="kristen"{{ $rumah_ibadah->agama == 'kristen' ? 'selected' : '' }}>
-                                    Kristen</option>
-                                <option value="katolik"{{ $rumah_ibadah->agama == 'katolik' ? 'selected' : '' }}>
-                                    Katolik</option>
-                                <option value="budha"{{ $rumah_ibadah->agama == 'budha' ? 'selected' : '' }}>
-                                    Budha</option>
-                                <option value="hindu"{{ $rumah_ibadah->agama == 'hindu' ? 'selected' : '' }}>
-                                    Hindu</option>
-                            </select>
-                            <label for="floatingSelect">Silahkan Pilih</label>
-                        </div>
-
-                        <div class="form-floating">
-                            <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                id="floatingTextarea" style="height: 150px;" name="keterangan" readonly>{{ $rumah_ibadah->keterangan }}</textarea>
-                            <label for="floatingTextarea">Keterangan</label>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label mt-3">Poto Rumah Ibadah</label><br>
-                            <img id="previewImage" class="mb-3 mt-2  " src="{{ $rumah_ibadah->getImage() }}"
-                                width="20%">
-                        </div>
-
-                        <div class="md:w-2/3 mb-3">
-                            <label for="formFile" class="form-label mt-3">Tanggal Upload</label>
-                            <input
-                                class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                id="inline-full-name" name="created_at" type="datetime-local"
-                                value="{{ $rumah_ibadah->created_at }}" readonly>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>
-                    </div>
-                </div>
+    <div id="detail-pasar" class="container-xxl py-5 bg-white">
+        <div class="container px-lg-5">
+            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
+                <h2 class="mt-2">Detail Rumah Ibadah</h2>
             </div>
 
-            <div class="col-md-6 col-xs-6">
-                <div class="card">
-                    <div class="card-header">Detail Map</div>
-                    <div class="card-body">
-                        <div id="map"></div>
+            <div class="container-xxl py-5">
+                <div class="container px-lg-5">
+                    <div class="card wow zoomIn" data-wow-delay="0.1s">
+                        <div class="card-header">Detail Rumah Ibadah</div>
+                        <div class="card-body">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="author"
+                                    class="form-control @error('author') is-invalid @enderror" id="floatingInput"
+                                    placeholder="Nama Desa" value="{{ $rumah_ibadah->author }}" readonly>
+                                <label for="floatingInput">Author</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" name="dusun"
+                                    class="form-control @error('dusun') is-invalid @enderror" id="floatingInput"
+                                    placeholder="Nama Desa" value="{{ $rumah_ibadah->dusun }}" readonly>
+                                <label for="floatingInput">Dusun</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" name="nama_tempat_ibadah"
+                                    class="form-control @error('nama_tempat_ibadah') is-invalid @enderror"
+                                    id="floatingInput" placeholder="Nama Desa"
+                                    value="{{ $rumah_ibadah->nama_rumah_ibadah }}" readonly>
+                                <label for="floatingInput">Nama Rumah Ibadah</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <select class="form-select @error('agama') is-invalid @enderror" id="floatingSelect"
+                                    name="agama" aria-label="Floating label Pilih Jenis Potensi example" disabled>
+                                    <option value=""{{ $rumah_ibadah->agama == null ? 'selected' : '' }}>Agama
+                                    </option>
+                                    <option value="islam"{{ $rumah_ibadah->agama == 'islam' ? 'selected' : '' }}>
+                                        Islam</option>
+                                    <option value="kristen"{{ $rumah_ibadah->agama == 'kristen' ? 'selected' : '' }}>
+                                        Kristen</option>
+                                    <option value="katolik"{{ $rumah_ibadah->agama == 'katolik' ? 'selected' : '' }}>
+                                        Katolik</option>
+                                    <option value="budha"{{ $rumah_ibadah->agama == 'budha' ? 'selected' : '' }}>
+                                        Budha</option>
+                                    <option value="hindu"{{ $rumah_ibadah->agama == 'hindu' ? 'selected' : '' }}>
+                                        Hindu</option>
+                                </select>
+                                <label for="floatingSelect">Silahkan Pilih</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
+                                    id="floatingTextarea" style="height: 150px;" name="keterangan" readonly>{{ $rumah_ibadah->keterangan }}</textarea>
+                                <label for="floatingTextarea">Keterangan</label>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label mt-3">Poto Rumah Ibadah</label><br>
+                                <img id="previewImage" class="mb-3 mt-2  " src="{{ $rumah_ibadah->getImage() }}"
+                                    width="20%">
+                            </div>
+
+                            <div class="md:w-2/3 mb-3">
+                                <label for="formFile" class="form-label mt-3">Tanggal Upload</label>
+                                <input
+                                    class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                    id="inline-full-name" name="created_at" type="datetime-local"
+                                    value="{{ $rumah_ibadah->created_at }}" readonly>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container px-lg-5 mt-3">
+                    <div class="card wow zoomIn" data-wow-delay="0.1s">
+                        <div class="card-header">Detail Map</div>
+                        <div class="card-body">
+                            <div id="map"></div>
+                        </div>
                     </div>
                 </div>
             </div>

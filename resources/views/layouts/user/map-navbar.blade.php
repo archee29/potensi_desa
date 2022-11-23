@@ -46,8 +46,8 @@
                           Desa</a>
                   </div>
                   <div class="col-lg-4 text-center text-lg-start">
-                      <img class="img-fluid" src="user-rsc/img/logo_2.png" alt="" width="600rem"
-                          height="600rem">
+                      <img class="img-fluid" src=" {{ asset('user-rsc/img/logo_2.png') }}" alt=""
+                          width="600rem" height="600rem">
                   </div>
               </div>
           </div>

@@ -248,7 +248,7 @@
 @endsection
 
 @section('content')
-    <div id="data-sekolah" class="container-xxl py-5">
+    <div id="data-sekolah" class="container-xxl py-5 bg-white">
         <div class="container px-lg-5">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
@@ -297,7 +297,7 @@
         </div>
     </div>
 
-    <div id="data-pasar" class="container-xxl py-5">
+    <div id="data-pasar" class="container-xxl py-5 bg-white">
         <div class="container px-lg-5">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
@@ -346,7 +346,7 @@
         </div>
     </div>
 
-    <div id="data-rumah-ibadah" class="container-xxl py-5">
+    <div id="data-rumah-ibadah" class="container-xxl py-5 bg-white">
         <div class="container px-lg-5">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
@@ -395,7 +395,7 @@
         </div>
     </div>
 
-    <div id="data-wisata" class="container-xxl py-5">
+    <div id="data-wisata" class="container-xxl py-5 bg-white">
         <div class="container px-lg-5">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
