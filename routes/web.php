@@ -105,6 +105,7 @@ Route::controller(ArtikelController::class)->group(function () {
     Route::put('/artikel/edit/{id}','update')->name('artikel.update');
     Route::get('/artikel/delete/{id}', 'destroy')->name('artikel.destroy');
     Route::get('/berita', 'depanArtikel');
+    Route::get('/', 'depanHome');
     Route::get('berita/{berita:title}', 'isiArtikel');
 
 });
