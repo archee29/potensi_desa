@@ -54,7 +54,7 @@ class DataUserController extends Controller
         $rumah_ibadah = RumahIbadah::orderBy('created_at','DESC');
         return datatables()->of($rumah_ibadah)
         ->addColumn('show', function($rumah_ibadah){
-            return view('user.potensi.rumah-ibadah.show', compact('rumah-ibadah'))->render();
+            return view('user.potensi.rumah-ibadah.show', compact('rumah_ibadah'))->render();
         })
         ->addIndexColumn()
         ->rawColumns(['show'])
@@ -65,7 +65,7 @@ class DataUserController extends Controller
         $wisata_desa = WisataDesa::orderBy('created_at','DESC');
         return datatables()->of($wisata_desa)
         ->addColumn('show', function($wisata_desa){
-            return view('user.potensi.wisata-desa.show', compact('wisata-desa'))->render();
+            return view('user.potensi.wisata-desa.show', compact('wisata_desa'))->render();
         })
         ->addIndexColumn()
         ->rawColumns(['show'])

@@ -248,7 +248,7 @@
 @endsection
 
 @section('content')
-    <div id="peta-desa" class="container-xxl py-5">
+    <div id="peta-desa" class="container-xxl py-5 bg-white">
         <div class="container px-lg-5">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
@@ -276,4 +276,3 @@
 
 @push('scripts')
 @endpush
-
