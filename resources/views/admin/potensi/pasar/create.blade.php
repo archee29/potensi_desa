@@ -88,6 +88,10 @@
                                     <input type="text" name="location"
                                         class="form-control @error('location') is-invalid @enderror" readonly
                                         id="">
+                                        <div class="input-group mb-3 mt-3">
+                                        <button class="btn btn-outline-primary" type="button" id="button-addon1" onclick="getlokasi()">Dapatkan Titik</button>
+                                        <input name="location" type="text" class="form-control @error('location') is-invalid @enderror" placeholder="Klik Button Untuk Mendapatkan Titik" posisi = "sekarang" aria-label="posisi" aria-describedby="button-addon1" readonly>                                     
+                                    </div> 
                                     @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -224,5 +228,19 @@
             }
             loc.value = lat + "," + lng;
         });
+        var titik = document.querySelector("[posisi = sekarang]");
+        function getlokasi(){        
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        }
+
+        function showPosition(posisi){                        
+            titik.value = posisi.coords.latitude + " , "  + posisi.coords.longitude;
+            L.marker([posisi.coords.latitude, posisi.coords.longitude])
+                  .addTo(map)
+                  .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
+           
+        }
     </script>
 @endpush

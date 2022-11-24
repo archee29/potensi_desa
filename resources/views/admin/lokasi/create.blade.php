@@ -86,6 +86,11 @@
                                     <label for="">Lokasi</label>
                                     <input type="text" name="location"
                                         class="form-control @error('location') is-invalid @enderror" readonly>
+
+                                    <div class="input-group mb-3 mt-3">
+                                        <button class="btn btn-outline-primary" type="button" id="button-addon1" onclick="getlokasi()">Dapatkan Titik</button>
+                                        <input name="location" type="text" class="form-control @error('location') is-invalid @enderror" placeholder="Klik Button Untuk Mendapatkan Titik" posisi = "sekarang" aria-label="posisi" aria-describedby="button-addon1" readonly>                                     
+                                    </div>                                    
                                     @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -122,7 +127,7 @@
         crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <script>
+    <script>      
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             mbUrl =
@@ -147,11 +152,14 @@
                 attribution: mbAttr
             });
 
+
+
         var map = L.map('map', {
             center: [-0.0837981240055652, 109.20594830173026],
             zoom: 14,
             layers: [streets]
         });
+
 
         var baseLayers = {
             "Streets": streets,
@@ -169,9 +177,6 @@
         var curLocation = [-0.0837981240055652, 109.20594830173026];
         map.attributionControl.setPrefix(false);
 
-
-
-
         var marker = new L.marker(curLocation, {
             draggable: 'true',
         });
@@ -183,13 +188,13 @@
                 draggable: 'true',
             }).bindPopup(location).update();
 
-            $('#location').val(location.lat + "," + location.lng).keyup()
+            $('#location').val(location.lat + "," + location.lng).keyup()          
         });
 
         var loc = document.querySelector("[name=location]");
         map.on("click", function(e) {
             var lat = e.latlng.lat;
-            var lng = e.latlng.lng;
+            var lng = e.latlng.lng;           
 
             if (!marker) {
                 marker = L.marker(e.latlng).addTo(map);
@@ -197,6 +202,21 @@
                 marker.setLatLng(e.latlng);
             }
             loc.value = lat + "," + lng;
-        });
+        }); 
+        
+        var titik = document.querySelector("[posisi = sekarang]");
+        function getlokasi(){        
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        }
+
+        function showPosition(posisi){                        
+            titik.value = posisi.coords.latitude + " , "  + posisi.coords.longitude;
+            L.marker([posisi.coords.latitude, posisi.coords.longitude])
+                  .addTo(map)
+                  .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
+           
+        }
     </script>
 @endpush
