@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-    <div id="detail-sekolah" class="container-xxl py-5">
+    <div id="detail-sekolah" class="container-xxl py-5 bg-white">
         <div class="container px-lg-5">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('peta.index') }}" class="btn btn-outline-primary">Kembali</a>
+                            <a href="{{ route('detailPotensi.index') }}" class="btn btn-outline-primary">Kembali</a>
                         </div>
                     </div>
                 </div>
@@ -106,6 +106,9 @@
                         <div class="card-header">Detail Map</div>
                         <div class="card-body">
                             <div id="map"></div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ route('detailPotensi.index') }}" class="btn btn-outline-primary">Kembali</a>
                         </div>
                     </div>
                 </div>

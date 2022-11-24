@@ -248,175 +248,112 @@
 @endsection
 
 @section('content')
-    <div id="data-sekolah" class="container-xxl py-5">
+    <div id="pemerintahan-desa" class="container-xxl py-5  my-5 bg-white p-0">
         <div class="container px-lg-5">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
-                <h2 class="mt-2">Data Sekolah</h2>
+                <h2 class="mt-2">Detail Data</h2>
             </div>
-            <div id="peta-desa" class="container-xxl py-5">
-                <div class="container px-lg-5">
-                    <div class="card wow zoomIn" data-wow-delay="0.1s">
-                        <div class="card-header">{{ __('Data Sekolah') }}</div>
-                        <div class="card-body">
-                            <table class="table" id="detail_data_sekolah">
-                                <thead>
-                                    <tr>
-                                        <th>No. </th>
-                                        <th>Author </th>
-                                        <th>Opsi </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+
+            <div id="struktur" class="row mt-n2 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-12 text-center">
+                    <ul class="list-inline mb-5" id="portfolio-flters">
+                        {{-- <li class="btn px-3 pe-4 active" data-filter="*">Semua</li> --}}
+                        <li class="btn px-3 pe-4 active" data-bs-toggle="collapse" data-bs-target="#data_sekolah"
+                            data-filter=".first">
+                            Sekolah</li>
+                        <li class="btn px-3 pe-4" data-bs-toggle="collapse" data-bs-target="#data_rumah_ibadah"
+                            data-filter=".second">Rumah Ibadah
+                        </li>
+                        <li class="btn px-3 pe-4" data-bs-toggle="collapse" data-bs-target="#data_wisata"
+                            data-filter=".three">Wisata</li>
+                        <li class="btn px-3 pe-4" data-bs-toggle="collapse" data-bs-target="#data_pasar"
+                            data-filter=".four">Pasar</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row g-10">
+                <div id="data_sekolah" class="container-xxl py-5 bg-white collapse show first">
+                    <div class="container px-lg-5 overflow-hidden">
+                        <div class="card wow zoomIn" data-wow-delay="0.1s">
+                            <div class="card-header">{{ __('Data Sekolah') }}</div>
+                            <div class="card-body">
+                                <table class="table" id="detail_data_sekolah">
+                                    <thead>
+                                        <tr>
+                                            <th>No. </th>
+                                            <th>Author </th>
+                                            <th>Opsi </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container px-lg-5">
-            <div class="row align-items-center" style="height: 250px;">
-                <div class="col-12 col-md-6">
-                    <h3 class="text-white">Ready to get started</h3>
-                    <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
-                    <div class="position-relative w-100 mt-3">
-                        <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
-                            placeholder="Enter Your Email" style="height: 48px;">
-                        <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                                class="fa fa-paper-plane text-primary fs-4"></i></button>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                    <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="data-pasar" class="container-xxl py-5">
-        <div class="container px-lg-5">
-            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
-                <h2 class="mt-2">Data Pasar</h2>
-            </div>
-            <div id="peta-desa" class="container-xxl py-5">
-                <div class="container px-lg-5">
-                    <div class="card wow zoomIn" data-wow-delay="0.1s">
-                        <div class="card-header">{{ __('Data Pasar') }}</div>
-                        <div class="card-body">
-                            <table class="table" id="detail_data_pasar">
-                                <thead>
-                                    <tr>
-                                        <th>No. </th>
-                                        <th>Author </th>
-                                        <th>Opsi </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                <div id="data_pasar" class="container-xxl py-5 bg-white collapse second">
+                    <div class="container px-lg-5">
+                        <div class="card wow zoomIn" data-wow-delay="0.1s">
+                            <div class="card-header">{{ __('Data Pasar') }}</div>
+                            <div class="card-body">
+                                <table class="table" id="detail_data_pasar">
+                                    <thead>
+                                        <tr>
+                                            <th>No. </th>
+                                            <th>Author </th>
+                                            <th>Opsi </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container px-lg-5">
-            <div class="row align-items-center" style="height: 250px;">
-                <div class="col-12 col-md-6">
-                    <h3 class="text-white">Ready to get started</h3>
-                    <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
-                    <div class="position-relative w-100 mt-3">
-                        <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
-                            placeholder="Enter Your Email" style="height: 48px;">
-                        <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                                class="fa fa-paper-plane text-primary fs-4"></i></button>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                    <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="data-rumah-ibadah" class="container-xxl py-5">
-        <div class="container px-lg-5">
-            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
-                <h2 class="mt-2">Data Rumah Ibadah</h2>
-            </div>
-            <div id="peta-desa" class="container-xxl py-5">
-                <div class="container px-lg-5">
-                    <div class="card wow zoomIn" data-wow-delay="0.1s">
-                        <div class="card-header">{{ __('Data Rumah Ibadah') }}</div>
-                        <div class="card-body">
-                            <table class="table" id="detail_data_rumah_ibadah">
-                                <thead>
-                                    <tr>
-                                        <th>No. </th>
-                                        <th>Author </th>
-                                        <th>Opsi </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                <div id="data_rumah_ibadah" class="container-xxl py-5 bg-white collapse three">
+                    <div class="container px-lg-5">
+                        <div class="card wow zoomIn" data-wow-delay="0.1s">
+                            <div class="card-header">{{ __('Data Rumah Ibadah') }}</div>
+                            <div class="card-body">
+                                <table class="table" id="detail_data_rumah_ibadah">
+                                    <thead>
+                                        <tr>
+                                            <th>No. </th>
+                                            <th>Author </th>
+                                            <th>Opsi </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container px-lg-5">
-            <div class="row align-items-center" style="height: 250px;">
-                <div class="col-12 col-md-6">
-                    <h3 class="text-white">Ready to get started</h3>
-                    <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
-                    <div class="position-relative w-100 mt-3">
-                        <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
-                            placeholder="Enter Your Email" style="height: 48px;">
-                        <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                                class="fa fa-paper-plane text-primary fs-4"></i></button>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                    <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="data-wisata" class="container-xxl py-5">
-        <div class="container px-lg-5">
-            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="position-relative d-inline text-primary ps-4">Potensi Desa</h6>
-                <h2 class="mt-2">Data Wisata Desa</h2>
-            </div>
-            <div id="peta-desa" class="container-xxl py-5">
-                <div class="container px-lg-5">
-                    <div class="card wow zoomIn" data-wow-delay="0.1s">
-                        <div class="card-header">{{ __('Data Wisata Desa') }}</div>
-                        <div class="card-body">
-                            <table class="table" id="detail_data_wisata">
-                                <thead>
-                                    <tr>
-                                        <th>No. </th>
-                                        <th>Author </th>
-                                        <th>Opsi </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                <div id="data_wisata" class="container-xxl py-5 bg-white collapse four">
+                    <div class="container px-lg-5">
+                        <div class="card wow zoomIn" data-wow-delay="0.1s">
+                            <div class="card-header">{{ __('Data Wisata Desa') }}</div>
+                            <div class="card-body">
+                                <table class="table" id="detail_data_wisata_desa">
+                                    <thead>
+                                        <tr>
+                                            <th>No. </th>
+                                            <th>Author </th>
+                                            <th>Opsi </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -439,7 +376,6 @@
                 lengthChange: false,
                 autoWidth: false,
 
-                // Route untuk menampilkan data space
                 ajax: '{{ route('detail-data-sekolah') }}',
                 columns: [{
                         data: 'DT_RowIndex',
@@ -467,8 +403,7 @@
                 lengthChange: false,
                 autoWidth: false,
 
-                // Route untuk menampilkan data space
-                ajax: '{{ route('detail-data-sekolah') }}',
+                ajax: '{{ route('detail-data-pasar') }}',
                 columns: [{
                         data: 'DT_RowIndex',
                         orderable: false,
@@ -495,8 +430,7 @@
                 lengthChange: false,
                 autoWidth: false,
 
-                // Route untuk menampilkan data space
-                ajax: '{{ route('detail-data-sekolah') }}',
+                ajax: '{{ route('detail-data-rumah-ibadah') }}',
                 columns: [{
                         data: 'DT_RowIndex',
                         orderable: false,
@@ -516,15 +450,14 @@
     {{-- Wisata --}}
     <script>
         $(function() {
-            $('#detail_data_wisata').DataTable({
+            $('#detail_data_wisata_desa').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
                 lengthChange: false,
                 autoWidth: false,
 
-                // Route untuk menampilkan data space
-                ajax: '{{ route('detail-data-sekolah') }}',
+                ajax: '{{ route('detail-data-wisata') }}',
                 columns: [{
                         data: 'DT_RowIndex',
                         orderable: false,
