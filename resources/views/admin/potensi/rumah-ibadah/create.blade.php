@@ -105,38 +105,36 @@
 
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
-                                    <input type="text" name="location"
-                                        class="form-control @error('location') is-invalid @enderror" readonly
-                                        id="">
-                                        <div class="input-group mb-3 mt-3">
-                                        <button class="btn btn-outline-primary" type="button" id="button-addon1" onclick="getlokasi()">Dapatkan Titik</button>
-                                        <input name="location" type="text" class="form-control @error('location') is-invalid @enderror" placeholder="Klik Button Untuk Mendapatkan Titik" posisi = "sekarang" aria-label="posisi" aria-describedby="button-addon1" readonly>                                     
-                                    </div>                             
-                                    @error('location')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div id="map"></div>
-
-                                <div class="md:w-2/3 mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
-                                    <input
-                                        class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                        id="inline-full-name" name="created_at" type="datetime-local" value="">
-                                </div>
-
-                                <div class="form-group mt-3">
-                                    <button type="submit" class="btn btn-outline-success m-2">Tambah Data</button>
-                                    <a href="/sekolah">
-                                        <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
-                                    </a>
-                                </div>
-                            </form>
+                                    <input type="text" name="location" posisi="sekarang"
+                                        class="form-control @error('location') is-invalid @enderror" readonly id=""
+                                        aria-describedby="button-addon1">
+                                    <button class="btn btn-outline-primary btn-block mt-3 mb-3" type="button"
+                                        id="button-addon1" onclick="getlokasi()">Dapatkan Titik</button @error('location')
+                                            <div class="invalid-feedback">{{ $message }}
+                                    </div>
+                                @enderror
                         </div>
+                        <div id="map"></div>
+
+                        <div class="md:w-2/3 mb-3">
+                            <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
+                            <input
+                                class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                id="inline-full-name" name="created_at" type="datetime-local" value="">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <button type="submit" class="btn btn-outline-success m-2">Tambah Data</button>
+                            <a href="/sekolah">
+                                <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                            </a>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 
@@ -224,7 +222,7 @@
         var marker = new L.marker(curLocation, {
             draggable: 'true',
         });
-        map.addLayer(marker);
+        // map.addLayer(marker);
 
         marker.on('dragend', function(event) {
             var location = marker.getLatLng();
@@ -236,30 +234,33 @@
         });
 
         var loc = document.querySelector("[name=location]");
-        map.on("click", function(e) {
-            var lat = e.latlng.lat;
-            var lng = e.latlng.lng;
+        // map.on("click", function(e) {
+        //     var lat = e.latlng.lat;
+        //     var lng = e.latlng.lng;
 
-            if (!marker) {
-                marker = L.marker(e.latlng).addTo(map);
-            } else {
-                marker.setLatLng(e.latlng);
-            }
-            loc.value = lat + "," + lng;
-        });
+        //     if (!marker) {
+        //         marker = L.marker(e.latlng).addTo(map);
+        //     } else {
+        //         marker.setLatLng(e.latlng);
+        //     }
+        //     loc.value = lat + "," + lng;
+        // });
         var titik = document.querySelector("[posisi = sekarang]");
-        function getlokasi(){        
-            if (navigator.geolocation){
+        var ps = document.querySelector("[name=location]");
+
+        function getlokasi() {
+            if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
             }
         }
 
-        function showPosition(posisi){                        
-            titik.value = posisi.coords.latitude + " , "  + posisi.coords.longitude;
+        function showPosition(posisi) {
+            titik.value = posisi.coords.latitude + " , " + posisi.coords.longitude;
+            ps.value = posisi.coords.latitude + " , " + posisi.coords.longitude;
             L.marker([posisi.coords.latitude, posisi.coords.longitude])
-                  .addTo(map)
-                  .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
-           
+                .addTo(map)
+                .bindPopup("<b>Hai!</b><br />Ini adalah Lokasi Rumah Ibadah");
+
         }
     </script>
 @endpush

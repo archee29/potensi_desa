@@ -27,8 +27,7 @@
 
     <style>
         #map {
-            width: 800px;
-            height: 500px;
+            width: 100%
         }
 
         .info {
@@ -158,10 +157,21 @@
 @endsection
 
 @section('leaflet_script')
-    <script src="{{ asset('js/us-states.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/us-states.js') }}"></script>
+    <script src="{{ asset('js/batas-kuburaya.js') }}"></script>
+    <script src="{{ asset('js/batas-kalimas.js') }}"></script>
 @endsection
 
 @push('scripts')
+    {{-- <script type="text/javascript">
+        const map = L.map('map').setView([-0.08358354751581197, 109.20264382043983], 11);
+
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+    </script> --}}
+
     <script type="text/javascript">
         const map = L.map('map').setView([37.8, -96], 4);
 

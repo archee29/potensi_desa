@@ -27,6 +27,7 @@
                         Pasar</a></li>
             </ol>
         </nav>
+
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="create" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
@@ -74,8 +75,7 @@
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label>
-                                    {{-- <img id="previewImage" class="mb-2" src="#" width="100%" alt="foto_pasar"> --}}
+                                        .png/.jpg</label> <br>
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
                                         id="formFile" name="image">
                                     @error('image')
@@ -85,13 +85,11 @@
 
                                 <div class="form-group mb-3">
                                     <label for="">Lokasi</label>
-                                    <input type="text" name="location"
-                                        class="form-control @error('location') is-invalid @enderror" readonly
-                                        id="">
-                                        <div class="input-group mb-3 mt-3">
-                                        <button class="btn btn-outline-primary" type="button" id="button-addon1" onclick="getlokasi()">Dapatkan Titik</button>
-                                        <input name="location" type="text" class="form-control @error('location') is-invalid @enderror" placeholder="Klik Button Untuk Mendapatkan Titik" posisi = "sekarang" aria-label="posisi" aria-describedby="button-addon1" readonly>                                     
-                                    </div> 
+                                    <input type="text" name="location" posisi="sekarang"
+                                        class="form-control @error('location') is-invalid @enderror" readonly id=""
+                                        aria-describedby="button-addon1">
+                                    <button class="btn btn-outline-primary btn-block mt-3" type="button" id="button-addon1"
+                                        onclick="getlokasi()">Dapatkan Titik</button>
                                     @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -205,7 +203,8 @@
         var marker = new L.marker(curLocation, {
             draggable: 'true',
         });
-        map.addLayer(marker);
+
+        // map.addLayer(marker);
 
         marker.on('dragend', function(event) {
             var location = marker.getLatLng();
@@ -217,30 +216,35 @@
         });
 
         var loc = document.querySelector("[name=location]");
-        map.on("click", function(e) {
-            var lat = e.latlng.lat;
-            var lng = e.latlng.lng;
 
-            if (!marker) {
-                marker = L.marker(e.latlng).addTo(map);
-            } else {
-                marker.setLatLng(e.latlng);
-            }
-            loc.value = lat + "," + lng;
-        });
-        var titik = document.querySelector("[posisi = sekarang]");
-        function getlokasi(){        
-            if (navigator.geolocation){
+        // map.on("click", function(e) {
+        //     var lat = e.latlng.lat;
+        //     var lng = e.latlng.lng;
+
+        //     if (!marker) {
+        //         marker = L.marker(e.latlng).addTo(map);
+        //     } else {
+        //         marker.setLatLng(e.latlng);
+        //     }
+        //     loc.value = lat + "," + lng;
+        // });
+
+        var titik = document.querySelector("[posisi=sekarang]");
+        var ps = document.querySelector("[name=location]");
+
+        function getlokasi() {
+            if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
             }
         }
 
-        function showPosition(posisi){                        
-            titik.value = posisi.coords.latitude + " , "  + posisi.coords.longitude;
+        function showPosition(posisi) {
+            titik.value = posisi.coords.latitude + " , " + posisi.coords.longitude;
+            ps.value = posisi.coords.latitude + " , " + posisi.coords.longitude;
+
             L.marker([posisi.coords.latitude, posisi.coords.longitude])
-                  .addTo(map)
-                  .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
-           
+                .addTo(map)
+                .bindPopup("<b>Hai!</b><br />Ini adalah Lokasi Pasar");
         }
     </script>
 @endpush

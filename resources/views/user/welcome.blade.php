@@ -764,42 +764,7 @@
         </div>
     </div>
 
-    <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container px-lg-5">
-            <div class="row align-items-center" style="height: 250px;">
-                <div class="col-12 col-md-6">
-                    <h3 class="text-white">Ready to get started</h3>
-                    <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
-                    <div class="position-relative w-100 mt-3">
-                        <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
-                            placeholder="Enter Your Email" style="height: 48px;">
-                        <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                                class="fa fa-paper-plane text-primary fs-4"></i></button>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                    <img class="img-fluid mt-5" style="height: 250px;" src="user-rsc/img/newsletter.png">
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="peta-desa" class="container-xxl py-5 bg-white p-0">
-        <div class="container px-lg-5">
-            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="position-relative d-inline text-primary ps-4">Peta</h6>
-                <h2 class="mt-2">Peta Desa</h2>
-            </div>
-            <div class="card border-opacity-100 border-1">
-                <div class="card-header border-info ">
-                    <h4>Map Desa</h4>
-                </div>
-                <div class="card-body">
-                    <div id="map"></div>
-                </div>
-            </div>
-        </div>
-    </div>
     {{-- </div> --}}
 @endsection
 

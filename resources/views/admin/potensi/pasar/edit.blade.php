@@ -89,15 +89,13 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-
-                                    <input type="text" name="location"
-                                        class="form-control @error('location') is-invalid @enderror"
-                                        value="{{ $pasar->location }}" readonly id="">
                                     <label for="">Lokasi</label>
-                                    <div class="input-group mb-3 mt-3">
-                                        <button class="btn btn-outline-primary" type="button" id="button-addon1" onclick="getlokasi()">Dapatkan Titik</button>
-                                        <input name="location" type="text" value="{{ $pasar->location }}" class="form-control @error('location') is-invalid @enderror" placeholder="Klik Button Untuk Mendapatkan Titik" posisi = "sekarang" aria-label="posisi" aria-describedby="button-addon1" readonly>                                     
-                                    </div>  
+                                    <input type="text" name="location" posisi="sekarang"
+                                        class="form-control @error('location') is-invalid @enderror"
+                                        value="{{ $pasar->location }}" readonly id=""
+                                        aria-describedby="button-addon1">
+                                    <button class="btn btn-outline-primary btn-block mt-3" type="button" id="button-addon1"
+                                        onclick="getlokasi()">Dapatkan Titik</button>
                                     @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -200,7 +198,7 @@
         var marker = new L.marker(curLocation, {
             draggable: 'true',
         });
-        map.addLayer(marker);
+        // map.addLayer(marker);
 
         marker.on('dragend', function(event) {
             var location = marker.getLatLng();
@@ -212,30 +210,33 @@
         });
 
         var loc = document.querySelector("[name=location]");
-        map.on("click", function(e) {
-            var lat = e.latlng.lat;
-            var lng = e.latlng.lng;
+        // map.on("click", function(e) {
+        //     var lat = e.latlng.lat;
+        //     var lng = e.latlng.lng;
 
-            if (!marker) {
-                marker = L.marker(e.latlng).addTo(map);
-            } else {
-                marker.setLatLng(e.latlng);
-            }
-            loc.value = lat + "," + lng;
-        });
+        //     if (!marker) {
+        //         marker = L.marker(e.latlng).addTo(map);
+        //     } else {
+        //         marker.setLatLng(e.latlng);
+        //     }
+        //     loc.value = lat + "," + lng;
+        // });
         var titik = document.querySelector("[posisi = sekarang]");
-        function getlokasi(){        
-            if (navigator.geolocation){
+        var ps = document.querySelector("[name=location]");
+
+        function getlokasi() {
+            if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
             }
         }
 
-        function showPosition(posisi){                        
-            titik.value = posisi.coords.latitude + " , "  + posisi.coords.longitude;
+        function showPosition(posisi) {
+            titik.value = posisi.coords.latitude + " , " + posisi.coords.longitude;
+            ps.value = posisi.coords.latitude + " , " + posisi.coords.longitude;
             L.marker([posisi.coords.latitude, posisi.coords.longitude])
-                  .addTo(map)
-                  .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
-           
+                .addTo(map)
+                .bindPopup("<b>Hai!</b><br />Ini adalah Lokasi Pasar");
+
         }
     </script>
 @endpush

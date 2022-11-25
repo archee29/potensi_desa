@@ -38,7 +38,7 @@
                                 <thead>
                                     <tr>
                                         <th>No. </th>
-                                        <th>Name Space </th>
+                                        <th>Author </th>
                                         <th>Opsi </th>
                                     </tr>
                                 </thead>
