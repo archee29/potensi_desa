@@ -223,7 +223,7 @@
         var marker = new L.marker(curLocation, {
             draggable: 'true',
         });
-        // map.addLayer(marker);
+        map.addLayer(marker);
 
         marker.on('dragend', function(event) {
             var location = marker.getLatLng();

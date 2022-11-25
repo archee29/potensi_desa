@@ -88,22 +88,22 @@
                         <h5 class="text-white mb-4">Iklan Desa</h5>
                         <div class="row g-2">
                             <div class="col-4">
-                                <img class="img-fluid" src="user-rsc/img/portfolio-1.jpg" alt="Image">
+                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-1.jpg')}}" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="user-rsc/img/portfolio-2.jpg" alt="Image">
+                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-2.jpg')}}" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="user-rsc/img/portfolio-3.jpg" alt="Image">
+                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-3.jpg')}}" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="user-rsc/img/portfolio-4.jpg" alt="Image">
+                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-4.jpg')}}" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="user-rsc/img/portfolio-5.jpg" alt="Image">
+                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-5.jpg')}}" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="user-rsc/img/portfolio-6.jpg" alt="Image">
+                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-6.jpg')}}" alt="Image">
                             </div>
                         </div>
                     </div>

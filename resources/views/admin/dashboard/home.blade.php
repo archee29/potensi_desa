@@ -11,11 +11,11 @@
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
     <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-        }
+        /* html,
+                                                body {
+                                                    height: 100%;
+                                                    margin: 0;
+                                                } */
 
         .leaflet-container {
             height: 400px;
@@ -30,32 +30,41 @@
             width: 100%
         }
 
-        .info {
+        /*Legend specific*/
+        .legend {
             padding: 6px 8px;
-            font: 14px/16px Arial, Helvetica, sans-serif;
+            font: 14px Arial, Helvetica, sans-serif;
             background: white;
             background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
+            /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+            /*border-radius: 5px;*/
+            line-height: 24px;
+            color: #555;
         }
 
-        .info h4 {
-            margin: 0 0 5px;
+        .legend h4 {
+            text-align: center;
+            font-size: 16px;
+            margin: 2px 12px 8px;
             color: #777;
         }
 
-        .legend {
-            text-align: left;
-            line-height: 18px;
-            color: #555;
+        .legend span {
+            position: relative;
+            bottom: 3px;
         }
 
         .legend i {
             width: 18px;
             height: 18px;
             float: left;
-            margin-right: 8px;
+            margin: 0 8px 0 0;
             opacity: 0.7;
+        }
+
+        .legend i.icon {
+            background-size: 18px;
+            background-color: rgba(255, 255, 255, 1);
         }
     </style>
 @endsection
@@ -158,21 +167,37 @@
 
 @section('leaflet_script')
     <script type="text/javascript" src="{{ asset('js/us-states.js') }}"></script>
-    <script src="{{ asset('js/batas-kuburaya.js') }}"></script>
-    <script src="{{ asset('js/batas-kalimas.js') }}"></script>
+    {{-- <script src="{{ asset('js/batas-kuburaya.js') }}"></script>
+    <script src="{{ asset('js/batas-kalimas.js') }}"></script> --}}
 @endsection
 
 @push('scripts')
-    {{-- <script type="text/javascript">
-        const map = L.map('map').setView([-0.08358354751581197, 109.20264382043983], 11);
-
+    <script type="text/javascript">
+        var map = L.map("map").setView([-0.08461351464799957, 109.20281548180557], 12);
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-    </script> --}}
 
-    <script type="text/javascript">
+        /*Legend specific*/
+        var legend = L.control({
+            position: "bottomleft"
+        });
+
+        legend.onAdd = function(map) {
+            var div = L.DomUtil.create("div", "legend");
+            div.innerHTML += "<h4>Dusun Kalimas</h4>";
+            div.innerHTML += '<i style="background: #477AC2"></i><span>Dusun Beringin</span><br>';
+            div.innerHTML += '<i style="background: #448D40"></i><span>Dusun Melati</span><br>';
+            div.innerHTML += '<i style="background: #E6E696"></i><span>Dusun Mawar</span><br>';
+            div.innerHTML += '<i style="background: #E8E6E0"></i><span>Dusun Anggrek</span><br>';
+            return div;
+        };
+
+        legend.addTo(map);
+    </script>
+
+    {{-- <script type="text/javascript">
         const map = L.map('map').setView([37.8, -96], 4);
 
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -284,7 +309,8 @@
         };
 
         legend.addTo(map);
-    </script>
+    </script> --}}
+
 
     {{-- Kalimas --}}
 

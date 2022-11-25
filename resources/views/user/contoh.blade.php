@@ -64,88 +64,16 @@
 @endsection
 
 @section('content')
-    <div class="card">
-        <div class="card-header"><button class="btn btn-primary btn-block mt-3" onclick="getlokasi()"> Dapatkan Data
-                lokasi
-            </button></div>
-        <div class="card-body">
-            <p id="lokasi"></p>
-        </div>
+    <div id="map" class="container-xxl py-5 bg-white">
+
     </div>
-
-    {{-- <div id="map" class="container-xxl py-5 bg-white">
-
-    </div> --}}
 @endsection
 
 @section('leaflet_script')
-    <script src="{{ asset('js/us-state.js') }}"></script>
+    <script src="{{ asset('js/us-states.js') }}"></script>
 @endsection
 
 @push('scripts')
-
-<script>
-              //mengambil elemen lokasi dan memasukannya ke dalam variabel lokasi
-              var lokasi = document.getElementById("lokasi");
-        
-              function getlokasi() {
-                //jika browser mendukung navigator.geolocation maka akan menjalankan perintah di bawahnya
-                if (navigator.geolocation) {
-                  // getCurrentPosition digunakan untuk mendapatkan lokasi pengguna
-                  //showPosition adalah fungsi yang akan dijalankan
-                  navigator.geolocation.getCurrentPosition(showPosition);
-                }
-              }
-              function showPosition(position) {
-                // masukan kordinat latitude dan longitude ke dalam peta leaflet
-                // ini adalah format dan cara memasukan kordinat pada leaflet js
-                // jika kalian belum paham, bisa melihat tutorial yang saya buat tentang leaflet js di blog ini
-                var mymap = L.map("mapid").setView(
-                  [position.coords.latitude, position.coords.longitude],
-                  13
-                );
-        
-                //setting maps menggunakan api mapbox bukan google maps, daftar dan dapatkan token
-                L.tileLayer(
-                  "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
-                  {
-                    maxZoom: 18,
-                    attribution:
-                      'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                    id: "mapbox/streets-v11",
-                    tileSize: 512,
-                    zoomOffset: -1,
-                  }
-                ).addTo(mymap);
-                //menambahkan marker letak posisi dengan lat dan lng yang telah didapat sebelumnya
-                L.marker([position.coords.latitude, position.coords.longitude])
-                  .addTo(mymap)
-                  .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
-              }
-            </script>
-
-    <script>
-        //mengambil elemen lokasi dan memasukannya ke dalam variabel lokasi
-        var lokasi = document.getElementById("lokasi");
-
-        function getlokasi() {
-            //jika browser mendukung navigator.geolocation maka akan menjalankan perintah di bawahnya
-            if (navigator.geolocation) {
-                // getCurrentPosition digunakan untuk mendapatkan lokasi pengguna
-                //showPosition adalah fungsi yang akan dijalankan
-                navigator.geolocation.getCurrentPosition(showPosition);
-            }
-        }
-
-        function showPosition(posisi) {
-            // tampilkan kordinat di dalam elemen lokasi
-            lokasi.innerHTML = "Lat:" + posisi.coords.latitude +
-                "<br>Situs Bujur:" + posisi.coords.longitude;
-        }
-    </script>
-
     <script type="text/javascript">
         const map = L.map('map').setView([37.8, -96], 4);
 

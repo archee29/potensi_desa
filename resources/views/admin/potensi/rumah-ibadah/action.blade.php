@@ -1,5 +1,5 @@
 <a href="{{ route('rumah-ibadah.edit', $rumah_ibadah) }}" class="btn btn-warning btn-sm">Edit Data</a>
-<a href="{{ route('rumah-ibadah.show', $rumah_ibadah) }}" class="btn btn-warning btn-sm">Show</a>
+{{-- <a href="{{ route('rumah-ibadah.show', $rumah_ibadah) }}" class="btn btn-warning btn-sm">Show</a> --}}
 <button href="{{ route('rumah-ibadah.destroy', $rumah_ibadah) }}" class="btn btn-danger btn-sm" id="delete">Hapus
     Data</button>
 
