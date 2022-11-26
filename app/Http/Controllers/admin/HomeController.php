@@ -27,9 +27,4 @@ class HomeController extends Controller
         return view('admin.dashboard.home');
     }
 
-    public function mapDesa()
-    {
-    return view ('admin.dashboard.mapDesa');
-    }
-
 }

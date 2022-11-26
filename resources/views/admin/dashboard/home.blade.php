@@ -88,11 +88,12 @@
 @endsection
 
 @section('leaflet_script')
-    <script type="text/javascript" src="{{ asset('js/kalimas.js') }}"></script>
+    /
+    {{-- <script type="text/javascript" src="{{ asset('js/kalimas.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/belidak.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/pal.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/punggurKapuas.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/punggurKecil.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/punggurKecil.js') }}"></script> --}}
 @endsection
 
 @push('scripts')
@@ -110,41 +111,107 @@
 
         legend.onAdd = function(map) {
             var div = L.DomUtil.create("div", "legend");
-            div.innerHTML += "<h4>Dusun Kalimas</h4>";
-            div.innerHTML += '<i style="background: #477AC2"></i><span>Dusun Beringin</span><br>';
-            div.innerHTML += '<i style="background: #448D40"></i><span>Dusun Melati</span><br>';
-            div.innerHTML += '<i style="background: #E6E696"></i><span>Dusun Mawar</span><br>';
-            div.innerHTML += '<i style="background: #E8E6E0"></i><span>Dusun Anggrek</span><br>';
+            div.innerHTML += "<h4>Desa</h4>";
+            div.innerHTML += '<i style="background: #9CFF2E"></i><span>Desa Kalimas</span><br>';
+            div.innerHTML += '<i style="background: #EA047E"></i><span>Desa Pal Sembilan</span><br>';
+            div.innerHTML += '<i style="background: #645CAA"></i><span>Desa Punggur Besar</span><br>';
+            div.innerHTML += '<i style="background: #DC3535"></i><span>Desa Punggur Kecil</span><br>';
+            div.innerHTML += '<i style="background: #FED049"></i><span>Desa Punggur Kapuas</span><br>';
             return div;
         };
 
         legend.addTo(map);
 
+        // const info = L.control();
+
+        // info.onAdd() = function(map) {
+        //     this._div = L.DomUtil.create('div', 'info');
+        //     this.update();
+        //     return this._div;
+        // }
+
+        // info.update = function(props) {
+        //     const contents = props ? `<b>${props.nama_desa}</b><br />${props.batas} Batas Utara` :
+        //         'Click Map Untuk Mengetahui Batas Desa';
+        //     this._div.innerHTML = `<h4>Peta</h4>${contents}`;
+        // };
+
+        // info.addTo(map);
+
+        // function getColor(d) {
+        //     return d > 1000 ? '#800026' :
+        //         d > 500 ? '#BD0026' :
+        //         d > 200 ? '#E31A1C' :
+        //         d > 100 ? '#FC4E2A' :
+        //         d > 50 ? '#FD8D3C' :
+        //         d > 20 ? '#FEB24C' :
+        //         d > 10 ? '#FED976' : '#FFEDA0';
+        // }
+
+        function style(feature) {
+            return {
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7,
+                fillColor: getColor(feature.properties.batas)
+            };
+        }
+
+
+        function highlightFeature(e) {
+            const layer = e.target;
+            layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+            layer.bringToFront();
+            info.update(layer.feature.properties);
+        }
+
+        function resetHighlight(e) {
+            DesaKalimasLayer.resetStyle(e.target);
+            info.update();
+        }
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+
         function onEachFeature(feature, layer) {
             let popupContent = `<p>${feature.properties.popPupContent}</p>`;
-
             if (feature.properties && feature.properties.popupContent) {
                 popupContent += feature.properties.popupContent;
             }
 
-            layer.bindPopup(popupContent);
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: zoomToFeature
+            }).bindPopup(popupContent);
         }
 
         var batasKalimas = {
-            "type": "Feature",
-            "properties": {
-                "popPupContent": "Selamat Datang di Desa Kalimas",
-                "style": {
+            type: "Feature",
+            properties: {
+                popPupContent: "Selamat Datang di Desa Kalimas",
+                // nama_desa: "Desa Kalimas",
+                // batas: "Utara",
+                style: {
                     weight: 2,
-                    color: "#999",
+                    color: "white",
+                    dashArray: '3',
                     opacity: 1,
-                    fillColor: "#A10035",
+                    fillColor: "#9CFF2E",
                     fillOpacity: 0.8
                 }
             },
-            "geometry": {
-                "type": "MultiPolygon",
-                "coordinates": [
+            geometry: {
+                type: "MultiPolygon",
+                coordinates: [
                     [
                         [
                             [
@@ -1741,9 +1808,12 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Sungai Belidak",
+                // nama_desa: "Desa Kalimas",
+                // batas: "Utara",
                 style: {
                     weight: 2,
-                    color: "#999",
+                    color: "white",
+                    dashArray: '3',
                     opacity: 1,
                     fillColor: "#00E7FF",
                     fillOpacity: 0.8,
@@ -2124,9 +2194,12 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Punggur Kapuas",
+                // nama_desa: "Desa Kalimas",
+                // batas: "Utara",
                 style: {
                     weight: 2,
-                    color: "#999",
+                    color: "white",
+                    dashArray: '3',
                     opacity: 1,
                     fillColor: "#FED049",
                     fillOpacity: 0.8,
@@ -2916,9 +2989,12 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Punggur Kecil",
+                // nama_desa: "Desa Kalimas",
+                // batas: "Utara",
                 style: {
                     weight: 2,
-                    color: "#999",
+                    color: "white",
+                    dashArray: '3',
                     opacity: 1,
                     fillColor: "#DC3535",
                     fillOpacity: 0.8,
@@ -3356,11 +3432,14 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Pal Sembilan",
+                // nama_desa: "Desa Kalimas",
+                // batas: "Utara",
                 style: {
                     weight: 2,
-                    color: "#999",
+                    color: "white",
+                    dashArray: '3',
                     opacity: 1,
-                    fillColor: "#EB6440",
+                    fillColor: "#EA047E",
                     fillOpacity: 0.8,
                 },
             },
@@ -3501,9 +3580,12 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Punggur Besar",
+                // nama_desa: "Desa Kalimas",
+                // batas: "Utara",
                 style: {
                     weight: 2,
-                    color: "#999",
+                    color: "white",
+                    dashArray: '3',
                     opacity: 1,
                     fillColor: "#645CAA",
                     fillOpacity: 0.8,
@@ -4644,21 +4726,19 @@
         };
 
 
+        // const BatasDesaLayer = L.geoJson("{{ asset('js/batasDesa.js') }}", {
+        //     style(feature) {
+        //         return feature.properties && feature.properties.style;
+        //     },
+        //     onEachFeature
+        // }).addTo(map);
+
+
         const DesaKalimasLayer = L.geoJson(batasKalimas, {
             style(feature) {
                 return feature.properties && feature.properties.style;
             },
             onEachFeature,
-            // PointToLayer(feature, latlng) {
-            //     return L.circleMarker(latlng, {
-            //         radius: 8,
-            //         fillColor: '#ff7800',
-            //         color: '#000',
-            //         weight: 1,
-            //         opacity: 1,
-            //         fillOpacity: 0.8
-            //     });
-            // }
         }).addTo(map);
 
         const SungaiBelidakLayer = L.geoJson(batasSungaiBelidak, {
