@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <div class="form-floating mb-3">
                                 <input type="text" name="author" class="form-control" id="floatingInput"
-                                    placeholder="Nama Desa" value="{{ $rumah_ibadah->author }}">
+                                    placeholder="Nama Desa" value="{{ $rumah_ibadah->author }}" readonly>
                                 <label for="floatingInput">Author</label>
                             </div>
 
@@ -79,7 +79,7 @@
                             <div class="mb-3">
                                 <label for="formFile" class="form-label mt-3">Poto Rumah Ibadah</label><br>
                                 <img id="previewImage" class="mb-3 mt-2  " src="{{ $rumah_ibadah->getImage() }}"
-                                    width="20%">
+                                    width="20%" id="image">
                                 <input class="form-control" type="file" id="image" name="image" readonly disabled>
                             </div>
 
@@ -121,56 +121,6 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
-        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            mbUrl =
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-        var satellite = L.tileLayer(mbUrl, {
-                id: 'mapbox/satellite-v9',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            dark = L.tileLayer(mbUrl, {
-                id: 'mapbox/dark-v10',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            streets = L.tileLayer(mbUrl, {
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            });
-
-
-        var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [-0.0837981240055652, 109.20594830173026],
-            zoom: 14,
-            layers: [streets]
-        });
-
-        var baseLayers = {
-            //"Grayscale": grayscale,
-            "Streets": streets,
-            "Satellite": satellite
-        };
-
-        var overlays = {
-            "Streets": streets,
-            "Satellite": satellite,
-        };
-
-        L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
-    {{-- <script>
-        // fungsi ini akan berjalan ketika akan menambahkan gambar dimana fungsi ini
-        // akan membuat preview image sebelum kita simpan gambar tersebut.
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -183,7 +133,6 @@
             }
         }
 
-        // Ketika tag input file denghan class image di klik akan menjalankan fungsi di atas
         $("#image").change(function() {
             readURL(this);
         });
@@ -212,12 +161,8 @@
                 attribution: mbAttr
             });
 
-
         var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [{{ $lokasi->titik }}],
+            center: [{{ $rumah_ibadah->location }}],
             zoom: 14,
             layers: [streets]
         });
@@ -235,11 +180,7 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        // Begitu juga dengan curLocation titik koordinatnya dari tabel centrepoint
-        // lalu kita masukkan curLocation tersebut ke dalam variabel marker untuk menampilkan marker
-        // pada peta.
-
-        var curLocation = [{{ $lokasi->titik }}];
+        var curLocation = [{{ $rumah_ibadah->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {
@@ -248,25 +189,42 @@
         map.addLayer(marker);
 
         marker.on('dragend', function(event) {
-            var titik = marker.getLatLng();
-            marker.setLatLng(titik, {
+            var location = marker.getLatLng();
+            marker.setLatLng(location, {
                 draggable: 'true',
-            }).bindPopup(titik).update();
+            }).bindPopup(location).update();
 
-            $('#titik').val(titik.lat + "," + titik.lng).keyup()
+            $('#location').val(location.lat + "," + location.lng).keyup()
         });
 
-        var loc = document.querySelector("[desa=titik]");
-        map.on("click", function(e) {
-            var lat = e.latlng.lat;
-            var lng = e.latlng.lng;
+        var loc = document.querySelector("[name=location]");
+        // map.on("click", function(e) {
+        //     var lat = e.latlng.lat;
+        //     var lng = e.latlng.lng;
 
-            if (!marker) {
-                marker = L.marker(e.latlng).addTo(map);
-            } else {
-                marker.setLatLng(e.latlng);
+        //     if (!marker) {
+        //         marker = L.marker(e.latlng).addTo(map);
+        //     } else {
+        //         marker.setLatLng(e.latlng);
+        //     }
+        //     loc.value = lat + "," + lng;
+        // });
+        var titik = document.querySelector("[posisi = sekarang]");
+        var ps = document.querySelector("[name=location]");
+
+        function getlokasi() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
             }
-            loc.value = lat + "," + lng;
-        });
-    </script> --}}
+        }
+
+        function showPosition(posisi) {
+            titik.value = posisi.coords.latitude + " , " + posisi.coords.longitude;
+            ps.value = posisi.coords.latitude + " , " + posisi.coords.longitude;
+            L.marker([posisi.coords.latitude, posisi.coords.longitude])
+                .addTo(map)
+                .bindPopup("<b>Hai!</b><br />Ini adalah Lokasi Rumah Ibadah");
+
+        }
+    </script>
 @endpush
