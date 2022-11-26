@@ -66,10 +66,6 @@ Auth::routes();
 //dashboard
 Route::resource('home', HomeController::class);
 
-
-
-
-
 //lokasi
 Route::controller(LokasiController::class)->group(function () {
     Route::get('/dataLokasi/data',[DataController::class,'dataLokasi'])->name('data-lokasi');
@@ -123,10 +119,6 @@ Route::controller(ArtikelController::class)->group(function () {
     Route::get('berita/{berita:title}', 'isiArtikel');
 
 });
-
-
-
-
 
 
 Route::controller(ProfileController::class)->group(function () {

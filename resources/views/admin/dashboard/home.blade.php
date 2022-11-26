@@ -87,24 +87,51 @@
     </div>
 @endsection
 
-@section('leaflet_script')
-    /
-    {{-- <script type="text/javascript" src="{{ asset('js/kalimas.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/belidak.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/pal.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/punggurKapuas.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/punggurKecil.js') }}"></script> --}}
-@endsection
-
 @push('scripts')
-    <script type="text/javascript">
-        var map = L.map("map").setView([-0.08461351464799957, 109.20281548180557], 12);
-        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+    <script>
+        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            mbUrl =
+            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
 
-        /*Legend specific*/
+        var satellite = L.tileLayer(mbUrl, {
+                id: 'mapbox/satellite-v9',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mbAttr
+            }),
+            dark = L.tileLayer(mbUrl, {
+                id: 'mapbox/dark-v10',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mbAttr
+            }),
+            streets = L.tileLayer(mbUrl, {
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mbAttr
+            });
+
+        var map = L.map('map', {
+
+            center: [{{ $lokasi->location }}],
+            zoom: 14,
+            layers: [streets]
+        });
+
+        var baseLayers = {
+            "Grayscale": dark,
+            "Satellite": satellite,
+            "Streets": streets
+        };
+
+        var overlays = {
+            "Streets": streets,
+            "Grayscale": dark,
+            "Satellite": satellite,
+        };
+
         var legend = L.control({
             position: "bottomleft"
         });
@@ -122,43 +149,6 @@
 
         legend.addTo(map);
 
-        // const info = L.control();
-
-        // info.onAdd() = function(map) {
-        //     this._div = L.DomUtil.create('div', 'info');
-        //     this.update();
-        //     return this._div;
-        // }
-
-        // info.update = function(props) {
-        //     const contents = props ? `<b>${props.nama_desa}</b><br />${props.batas} Batas Utara` :
-        //         'Click Map Untuk Mengetahui Batas Desa';
-        //     this._div.innerHTML = `<h4>Peta</h4>${contents}`;
-        // };
-
-        // info.addTo(map);
-
-        // function getColor(d) {
-        //     return d > 1000 ? '#800026' :
-        //         d > 500 ? '#BD0026' :
-        //         d > 200 ? '#E31A1C' :
-        //         d > 100 ? '#FC4E2A' :
-        //         d > 50 ? '#FD8D3C' :
-        //         d > 20 ? '#FEB24C' :
-        //         d > 10 ? '#FED976' : '#FFEDA0';
-        // }
-
-        function style(feature) {
-            return {
-                weight: 2,
-                opacity: 1,
-                color: 'white',
-                dashArray: '3',
-                fillOpacity: 0.7,
-                fillColor: getColor(feature.properties.batas)
-            };
-        }
-
 
         function highlightFeature(e) {
             const layer = e.target;
@@ -169,7 +159,7 @@
                 fillOpacity: 0.7
             });
             layer.bringToFront();
-            info.update(layer.feature.properties);
+            info.update(layer.feature.properties.nama_desa.batas);
         }
 
         function resetHighlight(e) {
@@ -198,8 +188,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Selamat Datang di Desa Kalimas",
-                // nama_desa: "Desa Kalimas",
-                // batas: "Utara",
+                nama_desa: "Desa Kalimas",
+                batas: "Utara",
                 style: {
                     weight: 2,
                     color: "white",
@@ -1808,8 +1798,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Sungai Belidak",
-                // nama_desa: "Desa Kalimas",
-                // batas: "Utara",
+                nama_desa: "Desa Kalimas",
+                batas: "Utara",
                 style: {
                     weight: 2,
                     color: "white",
@@ -2194,8 +2184,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Punggur Kapuas",
-                // nama_desa: "Desa Kalimas",
-                // batas: "Utara",
+                nama_desa: "Desa Kalimas",
+                batas: "Utara",
                 style: {
                     weight: 2,
                     color: "white",
@@ -2989,8 +2979,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Punggur Kecil",
-                // nama_desa: "Desa Kalimas",
-                // batas: "Utara",
+                nama_desa: "Desa Kalimas",
+                batas: "Utara",
                 style: {
                     weight: 2,
                     color: "white",
@@ -3432,8 +3422,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Pal Sembilan",
-                // nama_desa: "Desa Kalimas",
-                // batas: "Utara",
+                nama_desa: "Desa Kalimas",
+                batas: "Utara",
                 style: {
                     weight: 2,
                     color: "white",
@@ -3580,8 +3570,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Punggur Besar",
-                // nama_desa: "Desa Kalimas",
-                // batas: "Utara",
+                nama_desa: "Desa Kalimas",
+                batas: "Utara",
                 style: {
                     weight: 2,
                     color: "white",
@@ -4725,15 +4715,6 @@
             },
         };
 
-
-        // const BatasDesaLayer = L.geoJson("{{ asset('js/batasDesa.js') }}", {
-        //     style(feature) {
-        //         return feature.properties && feature.properties.style;
-        //     },
-        //     onEachFeature
-        // }).addTo(map);
-
-
         const DesaKalimasLayer = L.geoJson(batasKalimas, {
             style(feature) {
                 return feature.properties && feature.properties.style;
@@ -4775,47 +4756,186 @@
             },
             onEachFeature,
         }).addTo(map);
+
+        // Menampilkan popup data ketika marker di klik
+        @foreach ($pasar as $item)
+            L.marker([{{ $item->location }}])
+                .bindPopup(
+                    "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                    "<div class='my-2'><strong>Nama Pasar:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div><a href='{{ route('peta.showSekolah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Pasar</a></div>" +
+                    "<div class='my-2'></div>"
+                ).addTo(map);
+        @endforeach
+
+        @foreach ($sekolah as $item)
+            L.marker([{{ $item->location }}])
+                .bindPopup(
+                    "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                    "<div class='my-2'><strong>Nama Sekolah:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div><a href='{{ route('peta.showSekolah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Sekolah</a></div>" +
+                    "<div class='my-2'></div>"
+                ).addTo(map);
+        @endforeach
+
+        @foreach ($rumah_ibadah as $item)
+            L.marker([{{ $item->location }}])
+                .bindPopup(
+                    "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                    "<div class='my-2'><strong>Nama Rumah Ibadah:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div><a href='{{ route('peta.showRumahIbadah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Rumah Ibadah</a></div>" +
+                    "<div class='my-2'></div>"
+                ).addTo(map);
+        @endforeach
+
+        @foreach ($wisata_desa as $item)
+            L.marker([{{ $item->location }}])
+                .bindPopup(
+                    "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                    "<div class='my-2'><strong>Nama Wisata:</strong> <br>{{ $item->dusun }}</div>" +
+                    "<div><a href='{{ route('peta.showWisata', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Wisata</a></div>" +
+                    "<div class='my-2'></div>"
+                ).addTo(map);
+        @endforeach
+
+
+        // Membuat variable data detail potensi
+        var dataPasar = [
+            @foreach ($pasar as $key => $value)
+                {
+                    "loc": [{{ $value->location }}],
+                    "title": '{!! $value->name !!}'
+                },
+            @endforeach
+        ];
+
+        var dataSekolah = [
+            @foreach ($sekolah as $key => $value)
+                {
+                    "loc": [{{ $value->location }}],
+                    "title": '{!! $value->name !!}'
+                },
+            @endforeach
+        ];
+
+        var dataRumahIbadah = [
+            @foreach ($rumah_ibadah as $key => $value)
+                {
+                    "loc": [{{ $value->location }}],
+                    "title": '{!! $value->name !!}'
+                },
+            @endforeach
+        ];
+
+        var dataWisata = [
+            @foreach ($wisata_desa as $key => $value)
+                {
+                    "loc": [{{ $value->location }}],
+                    "title": '{!! $value->name !!}'
+                },
+            @endforeach
+        ];
+
+        // pada koding ini kita menambahkan control pencarian data
+        var markersLayer = new L.LayerGroup();
+        map.addLayer(markersLayer);
+
+        var controlSearch = new L.Control.Search({
+            position: 'topleft',
+            layer: markersLayer,
+            initial: false,
+            zoom: 17,
+            markerLocation: true
+        })
+
+
+        //menambahkan variabel controlsearch pada addControl
+        map.addControl(controlSearch);
+
+        // looping variabel dataPasar utuk menampilkan data space ketika melakukan pencarian data
+        for (i in dataPasar) {
+
+            var title = dataPasar[i].title,
+                loc = dataPasar[i].loc,
+                marker = new L.Marker(new L.latLng(loc), {
+                    title: title
+                });
+            markersLayer.addLayer(marker);
+
+            // melakukan looping data untuk memunculkan popup dari space yang dipilih
+            @foreach ($pasar as $item)
+                L.marker([{{ $item->location }}])
+                    .bindPopup(
+                        "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<a href='{{ route('peta.showPasar', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Pasar</a></div>" +
+                        "<div class='my-2'></div>"
+                    ).addTo(map);
+            @endforeach
+        }
+
+        for (i in dataSekolah) {
+
+            var title = dataSekolah[i].title,
+                loc = dataSekolah[i].loc,
+                marker = new L.Marker(new L.latLng(loc), {
+                    title: title
+                });
+            markersLayer.addLayer(marker);
+
+            // melakukan looping data untuk memunculkan popup dari space yang dipilih
+            @foreach ($sekolah as $item)
+                L.marker([{{ $item->location }}])
+                    .bindPopup(
+                        "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<a href='{{ route('peta.showSekolah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Sekolah</a></div>" +
+                        "<div class='my-2'></div>"
+                    ).addTo(map);
+            @endforeach
+        }
+
+        for (i in dataRumahIbadah) {
+
+            var title = dataRumahIbadah[i].title,
+                loc = dataRumahIbadah[i].loc,
+                marker = new L.Marker(new L.latLng(loc), {
+                    title: title
+                });
+            markersLayer.addLayer(marker);
+
+            // melakukan looping data untuk memunculkan popup dari space yang dipilih
+            @foreach ($rumah_ibadah as $item)
+                L.marker([{{ $item->location }}])
+                    .bindPopup(
+                        "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<a href='{{ route('peta.showRumahIbadah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Rumah Ibadah</a></div>" +
+                        "<div class='my-2'></div>"
+                    ).addTo(map);
+            @endforeach
+        }
+
+        for (i in dataWisata) {
+
+            var title = dataWisata[i].title,
+                loc = dataWisata[i].loc,
+                marker = new L.Marker(new L.latLng(loc), {
+                    title: title
+                });
+            markersLayer.addLayer(marker);
+
+            // melakukan looping data untuk memunculkan popup dari space yang dipilih
+            @foreach ($wisata_desa as $item)
+                L.marker([{{ $item->location }}])
+                    .bindPopup(
+                        "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
+                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<a href='{{ route('peta.showWisata', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Wisata</a></div>" +
+                        "<div class='my-2'></div>"
+                    ).addTo(map);
+            @endforeach
+        }
+        L.control.layers(baseLayers, overlays).addTo(map);
     </script>
-
-
-    {{-- Kalimas --}}
 @endpush
-
-{{-- <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header bg-dark text-white">Map Box</div>
-                    <div class="card-body" style='width: 100%; height: 60vh;'>
-                        <div>a</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-{{-- <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <iframe class="position-relative rounded w-100 h-100"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                                frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-                                tabindex="0"></iframe>
-                        </div>
-                    </div>
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div> --}}
