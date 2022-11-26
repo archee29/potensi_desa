@@ -53,8 +53,11 @@ class WisataDesaController extends Controller
         }
     }
 
-    public function show(){
-        return view ('admin.potensi.wisata-desa.show');
+    public function show($id){
+        $wisata_desa = WisataDesa::findOrFail($id);
+        return view ('admin.potensi.wisata-desa.show',[
+            'wisata_desa'=>$wisata_desa
+        ]);
     }
 
     public function edit(WisataDesa $wisata_desa){

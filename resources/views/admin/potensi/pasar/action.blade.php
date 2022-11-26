@@ -1,4 +1,5 @@
 <a href="{{ route('pasar.edit', $pasar) }}" class="btn btn-warning btn-sm">Edit Data</a>
+<a href="{{ route('pasar.show', $pasar) }}" class="btn btn-info btn-sm">Detail Data</a>
 <button href="{{ route('pasar.destroy', $pasar) }}" class="btn btn-danger btn-sm" id="delete">Hapus Data</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

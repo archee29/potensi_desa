@@ -33,86 +33,83 @@
                     <div class="card">
                         <div class="card-header">Detail Data Sekolah</div>
                         <div class="card-body">
-                            {{-- {{ route('lokasi.store') }} --}}
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" readonly>
-                                    <label for="floatingInput">Author</label>
-                                    @error('desa')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="author"
+                                    class="form-control @error('author') is-invalid @enderror" id="floatingInput"
+                                    placeholder="Nama Desa" value="{{ $sekolah->author }}">
+                                <label for="floatingInput">Author</label>
+                                @error('author')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" readonly>
-                                    <label for="floatingInput">Judul</label>
-                                    @error('desa')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="dusun" value="{{ $sekolah->dusun }}" class="form-control"
+                                    id="floatingInput" placeholder="Nama Desa" readonly>
+                                <label for="floatingInput">Dusun</label>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <select class="form-select @error('jenis_potensi') is-invalid @enderror"
-                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example"
-                                        disabled>
-                                        <option selected>Sekolah</option>
-                                        <option value="1">Sekolah Dasar</option>
-                                        <option value="2">Sekolah Menengah Pertama</option>
-                                        <option value="3">Sekolah Menengah Atas</option>
-                                    </select>
-                                    <label for="floatingSelect">Silahkan Pilih</label>
-                                    @error('jenis_potensi')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="nama_sekolah" value="{{ $sekolah->nama_sekolah }}"
+                                    class="form-control" id="floatingInput" placeholder="Nama Desa" readonly>
+                                <label for="floatingInput">Nama Sekolah</label>
+                            </div>
 
-                                <div class="form-floating">
-                                    <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;" readonly></textarea>
-                                    <label for="floatingTextarea">Keterangan</label>
-                                    @error('keterangan')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="floatingSelect" name="jenis_sekolah"
+                                    aria-label="Floating label Pilih Jenis Potensi example" disabled>
+                                    <option value=""{{ $sekolah->jenis_sekolah == null ? 'selected' : '' }}>
+                                        Sekolah
+                                    </option>
+                                    <option value="PAUD"{{ $sekolah->jenis_sekolah == 'PAUD' ? 'selected' : '' }}>PAUD
+                                    </option>
+                                    <option value="TK"{{ $sekolah->jenis_sekolah == 'TK' ? 'selected' : '' }}>TK
+                                    </option>
+                                    <option value="SD" {{ $sekolah->jenis_sekolah == 'SD' ? 'selected' : '' }}>
+                                        Sekolah
+                                        Dasar</option>
+                                    <option value="SMP"{{ $sekolah->jenis_sekolah == 'SMP' ? 'selected' : '' }}>
+                                        Sekolah Menengah Pertama</option>
+                                    <option value="SMA"{{ $sekolah->jenis_sekolah == 'SMA' ? 'selected' : '' }}>
+                                        Sekolah Menengah Atas</option>
+                                </select>
+                                <label for="floatingSelect">Silahkan Pilih</label>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label>
-                                    <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile" disabled>
-                                    @error('image')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Masukkan Keterangan" id="floatingTextarea" readonly style="height: 150px;"
+                                    name="keterangan">{{ $sekolah->keterangan }}</textarea>
+                                <label for="floatingTextarea">Keterangan</label>
+                            </div>
 
-                                <div class="form-group mb-3">
-                                    <label for="">Lokasi</label>
-                                    <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div id="map"></div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label mt-3">Foto Sekolah</label> <br>
+                                <img id="previewImage" class="mb-3 mt-2  " src="{{ $sekolah->getImage() }}" width="20%"
+                                    alt="poto_sekolah">
+                                <input class="form-control" type="file" id="image" name="image" disabled readonly>
+                            </div>
 
-                                <div class="md:w-2/3 mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
-                                    <input
-                                        class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                        id="inline-full-name" name="created_at" type="datetime-local" value=""
-                                        readonly>
-                                </div>
+                            <div class="form-group mb-3">
+                                <label for="">Lokasi</label>
+                                <input type="text" name="location" posisi="sekarang" class="form-control" readonly
+                                    id="" value="{{ $sekolah->location }}" aria-describedby="button-addon1"
+                                    disabled>
+                            </div>
+                            <div id="map"></div>
 
-                                <div class="form-group mt-3">
-                                    <button type="submit" class="btn btn-outline-success m-2">Edit Data</button>
-                                    <a href="/sekolah">
-                                        <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
-                                    </a>
-                                </div>
-                            </form>
+                            <div class="md:w-2/3 mb-3">
+                                <label for="formFile" class="form-label mt-3">Masukkan Tanggal Edit</label>
+                                <input
+                                    class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                    id="inline-full-name" name="created_at" type="datetime-local"
+                                    value="{{ $sekolah->created_at }}" readonly>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <a href="/sekolah">
+                                    <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

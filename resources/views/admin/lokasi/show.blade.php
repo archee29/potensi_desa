@@ -15,8 +15,49 @@
             height: 500px;
         }
     </style>
-@endsection
+    <style>
+        #map {
+            width: 100%
+        }
 
+        /*Legend specific*/
+        .legend {
+            padding: 6px 8px;
+            font: 14px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+            /*border-radius: 5px;*/
+            line-height: 24px;
+            color: #555;
+        }
+
+        .legend h4 {
+            text-align: center;
+            font-size: 16px;
+            margin: 2px 12px 8px;
+            color: #777;
+        }
+
+        .legend span {
+            position: relative;
+            bottom: 3px;
+        }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin: 0 8px 0 0;
+            opacity: 0.7;
+        }
+
+        .legend i.icon {
+            background-size: 18px;
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+@endsection
 
 @section('content')
     <div class="container-fluid pt-4 px-4">
@@ -33,76 +74,64 @@
                     <div class="card">
                         <div class="card-header">Detail Data Lokasi</div>
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                @csrf
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Nama Desa"
+                                    name="nama_desa" value="{{ $lokasi->nama_desa }}" readonly>
+                                <label for="floatingInput">Nama Desa</label>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" readonly>
-                                    <label for="floatingInput">Nama Desa</label>
-                                    @error('desa')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="floatingSelect"
+                                    aria-label="Floating label Pilih Jenis Potensi example" name="jenis_potensi" disabled>
+                                    <option selected value=""{{ $lokasi->jenis_potensi == null ? 'selected' : '' }}>
+                                        Jenis
+                                        Potensi</option>
+                                    <option
+                                        value="rumah_ibadah"{{ $lokasi->jenis_potensi == 'rumah_ibadah' ? 'selected' : '' }}>
+                                        Rumah Ibadah</option>
+                                    <option value="sekolah"{{ $lokasi->jenis_potensi == 'sekolah' ? 'selected' : '' }}>
+                                        Sekolah</option>
+                                    <option value="wisata"{{ $lokasi->jenis_potensi == 'wisata' ? 'selected' : '' }}>
+                                        Wisata</option>
+                                    <option value="pasar"{{ $lokasi->jenis_potensi == 'pasar' ? 'selected' : '' }}>
+                                        Pasar</option>
+                                </select>
+                                <label for="floatingSelect">Silahkan Pilih Jenis Potensi</label>
+                            </div>
 
-                                {{-- <div class="form-floating mb-3">
-                                    <select class="form-select @error('jenis_potensi') is-invalid @enderror"
-                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example">
-                                        <option selected>Jenis Potensi</option>
-                                        <option value="1">Rumah Ibadah</option>
-                                        <option value="2">Sekolah</option>
-                                        <option value="3">Wisata</option>
-                                        <option value="3">Pasar</option>
-                                    </select>
-                                    <label for="floatingSelect">Silahkan Pilih Jenis Potensi</label>
-                                    @error('jenis_potensi')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div> --}}
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Masukkan Keterangan" id="floatingTextarea" style="height: 150px;"
+                                    name="keterangan" readonly>{{ $lokasi->keterangan }}</textarea>
+                                <label for="floatingTextarea">Keterangan</label>
+                            </div>
 
-                                <div class="form-floating">
-                                    <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;" readonly></textarea>
-                                    <label for="floatingTextarea">Keterangan</label>
-                                    @error('keterangan')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label mt-3">Poto Lokasi</label> <br>
+                                <img id="previewImage" class="mb-3 mt-2" src="{{ $lokasi->getImage() }}" width="20%"
+                                    alt="gambar_desa">
+                                <input class="form-control" type="file" id="image" name="image" readonly disabled>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label>
-                                    <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
-                                    @error('image')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-group mb-3">
+                                <label for="">Lokasi</label>
+                                <input type="text" name="location" value="{{ $lokasi->location }}" class="form-control"
+                                    readonly id="">
+                            </div>
+                            <div id="map"></div>
 
-                                <div class="form-group mb-3">
-                                    <label for="">Lokasi</label>
-                                    <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div id="map"></div>
+                            <div class="md:w-2/3 mb-3">
+                                <label for="formFile" class="form-label mt-3">Masukkan Tanggal Edit</label>
+                                <input
+                                    class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                    id="inline-full-name" name="created_at" type="datetime-local"
+                                    value="{{ $lokasi->created_at }}" readonly>
+                            </div>
 
-                                <div class="md:w-2/3 mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
-                                    <input
-                                        class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                        id="inline-full-name" name="created_at" type="datetime-local" value=""
-                                        readonly>
-                                </div>
-
-                                <div class="form-group mt-3">
-                                    <a href="/lokasi">
-                                        <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
-                                    </a>
-                                </div>
-                            </form>
+                            <div class="form-group mt-3">
+                                <a href="/lokasi">
+                                    <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,56 +148,6 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
-        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            mbUrl =
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-        var satellite = L.tileLayer(mbUrl, {
-                id: 'mapbox/satellite-v9',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            dark = L.tileLayer(mbUrl, {
-                id: 'mapbox/dark-v10',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            }),
-            streets = L.tileLayer(mbUrl, {
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                attribution: mbAttr
-            });
-
-
-        var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [-0.0837981240055652, 109.20594830173026],
-            zoom: 14,
-            layers: [streets]
-        });
-
-        var baseLayers = {
-            //"Grayscale": grayscale,
-            "Streets": streets,
-            "Satellite": satellite
-        };
-
-        var overlays = {
-            "Streets": streets,
-            "Satellite": satellite,
-        };
-
-        L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
-    {{-- <script>
-        // fungsi ini akan berjalan ketika akan menambahkan gambar dimana fungsi ini
-        // akan membuat preview image sebelum kita simpan gambar tersebut.
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -181,7 +160,6 @@
             }
         }
 
-        // Ketika tag input file denghan class image di klik akan menjalankan fungsi di atas
         $("#image").change(function() {
             readURL(this);
         });
@@ -210,12 +188,8 @@
                 attribution: mbAttr
             });
 
-
         var map = L.map('map', {
-            // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
-            // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
-            // centrepoint
-            center: [{{ $lokasi->titik }}],
+            center: [{{ $lokasi->location }}],
             zoom: 14,
             layers: [streets]
         });
@@ -233,11 +207,7 @@
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
-        // Begitu juga dengan curLocation titik koordinatnya dari tabel centrepoint
-        // lalu kita masukkan curLocation tersebut ke dalam variabel marker untuk menampilkan marker
-        // pada peta.
-
-        var curLocation = [{{ $lokasi->titik }}];
+        var curLocation = [{{ $lokasi->location }}];
         map.attributionControl.setPrefix(false);
 
         var marker = new L.marker(curLocation, {
@@ -246,15 +216,15 @@
         map.addLayer(marker);
 
         marker.on('dragend', function(event) {
-            var titik = marker.getLatLng();
-            marker.setLatLng(titik, {
+            var location = marker.getLatLng();
+            marker.setLatLng(location, {
                 draggable: 'true',
-            }).bindPopup(titik).update();
+            }).bindPopup(location).update();
 
-            $('#titik').val(titik.lat + "," + titik.lng).keyup()
+            $('#location').val(location.lat + "," + location.lng).keyup()
         });
 
-        var loc = document.querySelector("[desa=titik]");
+        var loc = document.querySelector("[name=location]");
         map.on("click", function(e) {
             var lat = e.latlng.lat;
             var lng = e.latlng.lng;
@@ -266,5 +236,20 @@
             }
             loc.value = lat + "," + lng;
         });
-    </script> --}}
+        var titik = document.querySelector("[posisi = sekarang]");
+
+        function getlokasi() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        }
+
+        function showPosition(posisi) {
+            titik.value = posisi.coords.latitude + " , " + posisi.coords.longitude;
+            L.marker([posisi.coords.latitude, posisi.coords.longitude])
+                .addTo(map)
+                .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
+
+        }
+    </script>
 @endpush

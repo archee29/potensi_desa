@@ -55,8 +55,11 @@ class SekolahController extends Controller
         }
     }
 
-    public function show(){
-        return view('admin.potensi.sekolah.show');
+    public function show($id){
+        $sekolah = Sekolah::findOrFail($id);
+        return view('admin.potensi.sekolah.show',[
+            'sekolah'=>$sekolah
+        ]);
     }
 
     public function edit(Sekolah $sekolah){

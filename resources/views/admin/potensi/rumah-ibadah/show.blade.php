@@ -33,87 +33,78 @@
                     <div class="card">
                         <div class="card-header">Detail Data Rumah Ibadah</div>
                         <div class="card-body">
-                            {{-- {{ route('lokasi.store') }} --}}
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                @csrf
+                            <div class="form-floating mb-3">
+                                <input type="text" name="author" class="form-control" id="floatingInput"
+                                    placeholder="Nama Desa" value="{{ $rumah_ibadah->author }}">
+                                <label for="floatingInput">Author</label>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" readonly>
-                                    <label for="floatingInput">Author</label>
-                                    @error('desa')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="dusun" class="form-control" id="floatingInput"
+                                    placeholder="Nama Desa" value="{{ $rumah_ibadah->dusun }}" readonly>
+                                <label for="floatingInput">Dusun</label>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" readonly>
-                                    <label for="floatingInput">Judul</label>
-                                    @error('desa')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="nama_tempat_ibadah" class="form-control" id="floatingInput"
+                                    placeholder="Nama Desa" value="{{ $rumah_ibadah->nama_rumah_ibadah }}" readonly>
+                                <label for="floatingInput">Nama Rumah Ibadah</label>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <select class="form-select @error('jenis_potensi') is-invalid @enderror"
-                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example"
-                                        disabled>
-                                        <option selected>Agama</option>
-                                        <option value="1">Islam</option>
-                                        <option value="2">Kristen</option>
-                                        <option value="3">Buddha</option>
-                                        <option value="3">Hindu</option>
-                                    </select>
-                                    <label for="floatingSelect">Silahkan Pilih</label>
-                                    @error('jenis_potensi')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="floatingSelect" name="agama"
+                                    aria-label="Floating label Pilih Jenis Potensi example" disabled>
+                                    <option value=""{{ $rumah_ibadah->agama == null ? 'selected' : '' }}>Agama
+                                    </option>
+                                    <option value="islam"{{ $rumah_ibadah->agama == 'islam' ? 'selected' : '' }}>
+                                        Islam</option>
+                                    <option value="kristen"{{ $rumah_ibadah->agama == 'kristen' ? 'selected' : '' }}>
+                                        Kristen</option>
+                                    <option value="katolik"{{ $rumah_ibadah->agama == 'katolik' ? 'selected' : '' }}>
+                                        Katolik</option>
+                                    <option value="budha"{{ $rumah_ibadah->agama == 'budha' ? 'selected' : '' }}>
+                                        Budha</option>
+                                    <option value="hindu"{{ $rumah_ibadah->agama == 'hindu' ? 'selected' : '' }}>
+                                        Hindu</option>
+                                </select>
+                                <label for="floatingSelect">Silahkan Pilih</label>
+                            </div>
 
-                                <div class="form-floating">
-                                    <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;" readonly></textarea>
-                                    <label for="floatingTextarea">Keterangan</label>
-                                    @error('keterangan')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Masukkan Keterangan" id="floatingTextarea" style="height: 150px;"
+                                    name="keterangan" readonly>{{ $rumah_ibadah->keterangan }}</textarea>
+                                <label for="floatingTextarea">Keterangan</label>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label>
-                                    <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
-                                    @error('image')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label mt-3">Poto Rumah Ibadah</label><br>
+                                <img id="previewImage" class="mb-3 mt-2  " src="{{ $rumah_ibadah->getImage() }}"
+                                    width="20%">
+                                <input class="form-control" type="file" id="image" name="image" readonly disabled>
+                            </div>
 
-                                <div class="form-group mb-3">
-                                    <label for="">Lokasi</label>
-                                    <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div id="map"></div>
+                            <div class="form-group mb-3">
+                                <label for="">Lokasi</label>
+                                <input type="text" name="location" posisi="sekarang" class="form-control"
+                                    aria-describedby="button-addon1" readonly id=""
+                                    value="{{ $rumah_ibadah->location }}">
+                            </div>
+                            <div id="map"></div>
 
-                                <div class="md:w-2/3 mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
-                                    <input
-                                        class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                        id="inline-full-name" name="created_at" type="datetime-local" value=""
-                                        readonly>
-                                </div>
+                            <div class="md:w-2/3 mb-3">
+                                <label for="formFile" class="form-label mt-3">Masukkan Tanggal Edit</label>
+                                <input
+                                    class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                    id="inline-full-name" name="created_at" type="datetime-local"
+                                    value="{{ $rumah_ibadah->created_at }}" readonly>
+                            </div>
 
-                                <div class="form-group mt-3">
-                                    <a href="/rumah-ibadah">
-                                        <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
-                                    </a>
-                                </div>
-                            </form>
+                            <div class="form-group mt-3">
+                                <a href="/rumah-ibadah">
+                                    <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                                </a>
+                            </div>
+
                         </div>
                     </div>
                 </div>

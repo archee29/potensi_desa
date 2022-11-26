@@ -1,4 +1,5 @@
 <a href="{{ route('wisata-desa.edit', $wisata_desa) }}" class="btn btn-warning btn-sm">Edit Data</a>
+<a href="{{ route('wisata-desa.show', $wisata_desa) }}" class="btn btn-info btn-sm">Detail Data</a>
 <button href="{{ route('wisata-desa.destroy', $wisata_desa) }}" class="btn btn-danger btn-sm" id="delete">Hapus
     Data</button>
 

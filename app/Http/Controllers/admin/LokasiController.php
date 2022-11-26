@@ -55,8 +55,11 @@ class LokasiController extends Controller
         }
     }
 
-    public function show(){
-        return view('admin.lokasi.show');
+    public function show($id){
+        $lokasi = Lokasi::findOrFail($id);
+        return view('admin.lokasi.show',[
+            'lokasi'=>$lokasi
+        ]);
     }
 
     public function edit(Lokasi $lokasi){

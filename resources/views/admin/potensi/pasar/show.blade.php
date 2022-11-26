@@ -32,71 +32,57 @@
                     <div class="card">
                         <div class="card-header">Detail Data Pasar</div>
                         <div class="card-body">
-                            <form action="{{ route('lokasi.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="author" readonly
+                                    value="{{ $pasar->author }}" placeholder="Nama Desa">
+                                <label for="floatingInput">Author</label>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" readonly>
-                                    <label for="floatingInput">Author</label>
-                                    @error('desa')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="dusun" value="{{ $pasar->dusun }}" class="form-control"
+                                    id="floatingInput" placeholder="Nama Desa" readonly>
+                                <label for="floatingInput">Nama Dusun</label>
+                            </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                        id="floatingInput" placeholder="Nama Desa" readonly>
-                                    <label for="floatingInput">Judul</label>
-                                    @error('desa')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="judul" value="{{ $pasar->judul }}" class="form-control"
+                                    id="floatingInput" placeholder="Nama Desa" readonly>
+                                <label for="floatingInput">Judul</label>
+                            </div>
 
-                                <div class="form-floating">
-                                    <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                                        id="floatingTextarea" style="height: 150px;" readonly></textarea>
-                                    <label for="floatingTextarea">Keterangan</label>
-                                    @error('keterangan')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-floating">
+                                <textarea name="keterangan" class="form-control" placeholder="Masukkan Keterangan" id="floatingTextarea" readonly
+                                    style="height: 150px;">{{ $pasar->keterangan }}</textarea>
+                                <label for="floatingTextarea">Keterangan</label>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan File dengan format
-                                        .png/.jpg</label>
-                                    <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                        id="formFile">
-                                    @error('image')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="form-group mb-3">
+                                <label for="formFile" class="form-label mt-3">Foto Pasar</label> <br>
+                                <img id="previewImage" class="mb-3 mt-2  " src="{{ $pasar->getImage() }}" width="20%"
+                                    alt="poto_pasar">
+                                <input class="form-control" name="image" type="file" id="image" disabled readonly>
+                            </div>
 
-                                <div class="form-group mb-3">
-                                    <label for="">Lokasi</label>
-                                    <input type="text" name="location"
-                                        class="form-control @error('titik') is-invalid @enderror" readonly id="">
-                                    @error('titik')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div id="map"></div>
+                            <div class="form-group mb-3">
+                                <label for="">Lokasi</label>
+                                <input type="text" name="location" posisi="sekarang" class="form-control"
+                                    value="{{ $pasar->location }}" readonly id="" aria-describedby="button-addon1">
+                            </div>
+                            <div id="map"></div>
 
-                                <div class="md:w-2/3 mb-3">
-                                    <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
-                                    <input
-                                        class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                        id="inline-full-name" name="created_at" type="datetime-local" value=""
-                                        readonly>
-                                </div>
+                            <div class="md:w-2/3 mb-3">
+                                <label for="formFile" class="form-label mt-3">Masukkan Tanggal Edit</label>
+                                <input
+                                    class=" form-control bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                    id="inline-full-name" name="created_at" type="datetime-local"
+                                    value="{{ $pasar->created_at }}">
+                            </div>
 
-                                <div class="form-group mt-3">
-
-                                    <a href="/pasar">
-                                        <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
-                                    </a>
-                                </div>
-                            </form>
+                            <div class="form-group mt-3">
+                                <a href="/pasar">
+                                    <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -81,7 +81,10 @@ class PasarController extends Controller
      */
     public function show($id)
     {
-        return view('admin.potensi.pasar.show');
+        $pasar = Pasar::findOrFail($id);
+        return view('admin.potensi.pasar.show',[
+            'pasar'=>$pasar
+        ]);
     }
 
     /**

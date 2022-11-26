@@ -56,8 +56,11 @@ class RumahIbadahController extends Controller
         }
     }
 
-    public function show(){
-        return view ('admin.potensi.rumah-ibadah.show');
+    public function show($id){
+        $rumah_ibadah = RumahIbadah::findOrFail($id);
+        return view ('admin.potensi.rumah-ibadah.show',[
+            'rumah_ibadah'=>$rumah_ibadah
+        ]);
     }
 
     public function edit(RumahIbadah $rumah_ibadah){
