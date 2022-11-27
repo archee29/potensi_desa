@@ -27,7 +27,7 @@ class LokasiController extends Controller
     public function store(Request $request){
         $this->validate($request,[
             'nama_desa'=>'required',
-            'jenis_potensi'=>'required',
+            // 'jenis_potensi'=>'required',
             'image'=>'image|mimes:png,jpg,jpeg',
             'location'=>'required',
             'keterangan'=>'required',
@@ -43,7 +43,7 @@ class LokasiController extends Controller
         };
 
         $lokasi->nama_desa =$request->input('nama_desa');
-        $lokasi->jenis_potensi =$request->input('jenis_potensi');
+        // $lokasi->jenis_potensi =$request->input('jenis_potensi');
         $lokasi->location=$request->input('location');
         $lokasi->keterangan=$request->input('keterangan');
         $lokasi->save();
@@ -73,7 +73,7 @@ class LokasiController extends Controller
     public function update (Request $request, Lokasi $lokasi){
         $this->validate($request,[
             'nama_desa'=>'required',
-            'jenis_potensi'=>'required',
+            // 'jenis_potensi'=>'required',
             'image'=>'image|mimes:png,jpg,jpeg',
             'location'=>'required',
             'keterangan'=>'required',
@@ -91,7 +91,7 @@ class LokasiController extends Controller
         }
         $lokasi->update([
             'nama_desa'=>$request->nama_desa,
-            'jenis_potensi'=>$request->jenis_potensi,
+            // 'jenis_potensi'=>$request->jenis_potensi,
             'location'=>$request->location,
             'keterangan'=>$request->keterangan,
         ]);

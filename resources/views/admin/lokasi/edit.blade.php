@@ -49,29 +49,6 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-floating mb-3">
-                                    <select class="form-select @error('jenis_potensi') is-invalid @enderror"
-                                        id="floatingSelect" aria-label="Floating label Pilih Jenis Potensi example"
-                                        name="jenis_potensi">
-                                        <option selected
-                                            value=""{{ $lokasi->jenis_potensi == null ? 'selected' : '' }}>Jenis
-                                            Potensi</option>
-                                        <option
-                                            value="rumah_ibadah"{{ $lokasi->jenis_potensi == 'rumah_ibadah' ? 'selected' : '' }}>
-                                            Rumah Ibadah</option>
-                                        <option value="sekolah"{{ $lokasi->jenis_potensi == 'sekolah' ? 'selected' : '' }}>
-                                            Sekolah</option>
-                                        <option value="wisata"{{ $lokasi->jenis_potensi == 'wisata' ? 'selected' : '' }}>
-                                            Wisata</option>
-                                        <option value="pasar"{{ $lokasi->jenis_potensi == 'pasar' ? 'selected' : '' }}>
-                                            Pasar</option>
-                                    </select>
-                                    <label for="floatingSelect">Silahkan Pilih Jenis Potensi</label>
-                                    @error('jenis_potensi')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
                                 <div class="form-floating">
                                     <textarea class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan"
                                         id="floatingTextarea" style="height: 150px;" name="keterangan">{{ $lokasi->keterangan }}</textarea>
@@ -99,8 +76,8 @@
                                         id="">
                                     <div class="input-group mb-3 mt-3">
                                         <button class="btn btn-outline-primary" type="button" id="button-addon1" onclick="getlokasi()">Dapatkan Titik</button>
-                                        <input name="location" type="text" value="{{ $lokasi->location }}" class="form-control @error('location') is-invalid @enderror" placeholder="Klik Button Untuk Mendapatkan Titik" posisi = "sekarang" aria-label="posisi" aria-describedby="button-addon1" readonly>                                     
-                                    </div>                             
+                                        <input name="location" type="text" value="{{ $lokasi->location }}" class="form-control @error('location') is-invalid @enderror" placeholder="Klik Button Untuk Mendapatkan Titik" posisi = "sekarang" aria-label="posisi" aria-describedby="button-addon1" readonly>
+                                    </div>
                                     @error('location')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -227,18 +204,18 @@
             loc.value = lat + "," + lng;
         });
          var titik = document.querySelector("[posisi = sekarang]");
-        function getlokasi(){        
+        function getlokasi(){
             if (navigator.geolocation){
                 navigator.geolocation.getCurrentPosition(showPosition);
             }
         }
 
-        function showPosition(posisi){                        
+        function showPosition(posisi){
             titik.value = posisi.coords.latitude + " , "  + posisi.coords.longitude;
             L.marker([posisi.coords.latitude, posisi.coords.longitude])
                   .addTo(map)
                   .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
-           
+
         }
     </script>
 @endpush

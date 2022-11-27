@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tb_lokasi', function (Blueprint $table) {
             $table->id();
             $table->string('nama_desa');
-            $table->enum('jenis_potensi',['rumah_ibadah','wisata','sekolah','pasar']);
+            // $table->enum('jenis_potensi',['rumah_ibadah','wisata','sekolah','pasar']);
             $table->string('image')->nullable();
             $table->string('location');
             $table->longText('keterangan');

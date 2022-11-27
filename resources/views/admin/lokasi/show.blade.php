@@ -80,25 +80,6 @@
                                 <label for="floatingInput">Nama Desa</label>
                             </div>
 
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label Pilih Jenis Potensi example" name="jenis_potensi" disabled>
-                                    <option selected value=""{{ $lokasi->jenis_potensi == null ? 'selected' : '' }}>
-                                        Jenis
-                                        Potensi</option>
-                                    <option
-                                        value="rumah_ibadah"{{ $lokasi->jenis_potensi == 'rumah_ibadah' ? 'selected' : '' }}>
-                                        Rumah Ibadah</option>
-                                    <option value="sekolah"{{ $lokasi->jenis_potensi == 'sekolah' ? 'selected' : '' }}>
-                                        Sekolah</option>
-                                    <option value="wisata"{{ $lokasi->jenis_potensi == 'wisata' ? 'selected' : '' }}>
-                                        Wisata</option>
-                                    <option value="pasar"{{ $lokasi->jenis_potensi == 'pasar' ? 'selected' : '' }}>
-                                        Pasar</option>
-                                </select>
-                                <label for="floatingSelect">Silahkan Pilih Jenis Potensi</label>
-                            </div>
-
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Masukkan Keterangan" id="floatingTextarea" style="height: 150px;"
                                     name="keterangan" readonly>{{ $lokasi->keterangan }}</textarea>
