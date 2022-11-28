@@ -45,24 +45,26 @@
 
             <a href="/artikel" class="nav-item nav-link {{ Request::path() == 'artikel' ? 'active' : '' }}"><i
                     class="fa fa-newspaper"></i>Artikel</a>
-            <a href="/profile" class="nav-item nav-link {{ Request::path() == 'profile' ? 'active' : '' }}"><i
-                    class="fa fa-users"></i>Profile</a>
+            <a href="/tentangdesa" class="nav-item nav-link {{ Request::path() == 'tentangdesa' ? 'active' : '' }}"><i
+                    class="fa fa-users"></i>Tentang Desa</a>
+            <a href="/albumdesa" class="nav-item nav-link {{ Request::path() == 'albumdesa' ? 'active' : '' }}"><i
+                    class="fa fa-users"></i>Album Desa</a>
             <a href="/pemerintahan"
                 class="nav-item nav-link {{ Request::path() == 'pemerintahan' ? 'active' : '' }}"><i
                     class="fa fa-table me-2"></i>Pemerintahan</a>
-                    <div class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                                class="fa fa-chart-line"></i>Data Desa</a>
-                        <div class="dropdown-menu bg-transparent border-0">
+            <div class="nav-item dropdown">
+                <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                        class="fa fa-chart-line"></i>Data Desa</a>
+                <div class="dropdown-menu bg-transparent border-0">
 
-                            <a href="/data-dana"
-                                class="dropdown-item nav-link {{ Request::path() == 'pasar' ? 'active' : '' }}"><i
-                                    class="fa fa-database"></i>Data Dana</a>
-                            <a href="/data-penduduk"
-                                class="dropdown-item nav-link {{ Request::path() == 'pasar' ? 'active' : '' }}"><i
-                                    class="fa fa-database"></i>Data Penduduk</a>
-                        </div>
-                    </div>
+                    <a href="/data-dana"
+                        class="dropdown-item nav-link {{ Request::path() == 'pasar' ? 'active' : '' }}"><i
+                            class="fa fa-database"></i>Data Dana</a>
+                    <a href="/data-penduduk"
+                        class="dropdown-item nav-link {{ Request::path() == 'pasar' ? 'active' : '' }}"><i
+                            class="fa fa-database"></i>Data Penduduk</a>
+                </div>
+            </div>
 
 
         </div>
