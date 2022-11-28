@@ -77,33 +77,38 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Popular Link</h5>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
+                        <h5 class="text-white mb-4">Websit Desa Kalimas</h5>
+                        <a class="btn btn-link" href="">Home</a>
+                        <a class="btn btn-link" href="">Tentang Desa</a>
+                        <a class="btn btn-link" href="">Peta Desa</a>
+                        <a class="btn btn-link" href="">Potensi Desa</a>
                         <a class="btn btn-link" href="">Career</a>
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <h5 class="text-white mb-4">Iklan Desa</h5>
                         <div class="row g-2">
                             <div class="col-4">
-                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-1.jpg')}}" alt="Image">
+                                <img class="img-fluid" src="{{ asset('user-rsc/img/portfolio-1.jpg') }}" alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-2.jpg')}}" alt="Image">
+                                <img class="img-fluid" src="{{ asset('user-rsc/img/portfolio-2.jpg') }}"
+                                    alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-3.jpg')}}" alt="Image">
+                                <img class="img-fluid" src="{{ asset('user-rsc/img/portfolio-3.jpg') }}"
+                                    alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-4.jpg')}}" alt="Image">
+                                <img class="img-fluid" src="{{ asset('user-rsc/img/portfolio-4.jpg') }}"
+                                    alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-5.jpg')}}" alt="Image">
+                                <img class="img-fluid" src="{{ asset('user-rsc/img/portfolio-5.jpg') }}"
+                                    alt="Image">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid" src="{{asset('user-rsc/img/portfolio-6.jpg')}}" alt="Image">
+                                <img class="img-fluid" src="{{ asset('user-rsc/img/portfolio-6.jpg') }}"
+                                    alt="Image">
                             </div>
                         </div>
                     </div>
