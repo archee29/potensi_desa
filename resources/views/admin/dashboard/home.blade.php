@@ -88,7 +88,7 @@
 @endsection
 
 @push('scripts')
-    <script type="text/javascript" src="{{asset('js/batasDesa.js')}}"></script>
+
     <script>
         var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -4716,7 +4716,7 @@
             },
         };
 
-        const DesaKalimasLayer = L.geoJson(, {
+        const DesaKalimasLayer = L.geoJson(batasKalimas, {
             style(feature) {
                 return feature.properties && feature.properties.style;
             },
