@@ -85,6 +85,7 @@
         }, 3000)
     </script>
 
+
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -96,6 +97,8 @@
     <script src="{{ asset('admin-rsc/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('admin-rsc/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ asset('admin-rsc/js/main.js') }}"></script>
+    <script src="{{ asset('js/batasDesa.js') }}"></script>
+
 </body>
 @stack('scripts')
 
