@@ -21,7 +21,7 @@ use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\SekolahController;
 use App\Http\Controllers\user\DataUserController;
 use App\Http\Controllers\admin\DataDesaController;
-
+use App\Http\Controllers\admin\MottoDesaController;
 // Model
 use App\Http\Controllers\admin\WisataDesaController;
 use App\Http\Controllers\admin\RumahIbadahController;
@@ -111,7 +111,11 @@ Route::controller(AlbumController::class)->group(function () {
     Route::resource('albumdesa', (AlbumController::class));
 });
 
-
+//Motto Desa
+Route::controller(MottoDesaController::class)->group(function () {
+    Route::get('/dataMottoDesa/data', [DataController::class, 'dataMottoDesa'])->name('data-MottoDesa');
+    Route::resource('mottodesa', (MottoDesaController::class));
+});
 
 //tentangDesaaa
 Route::controller(TentangDesaController::class)->group(function () {

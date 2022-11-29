@@ -10,6 +10,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Album;
+use App\Models\Motto;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -48,10 +49,11 @@ class ArtikelController extends Controller
 
     public function depanHome()
     {
+        $posts4 = Motto::latest();
+        $mottodesa = $posts4->get();
 
         $posts3 = Album::latest();
         $albumdesa = $posts3->get();
-
 
         $posts2 = Tentang::latest();
         $tentangdesa = $posts2->get();
@@ -60,7 +62,14 @@ class ArtikelController extends Controller
         $profil = $posts->get();
         $count = DB::table('tb_artikel')->count();
         $beritaa = DB::table('tb_artikel')->get();
-        return view('user.welcome', ["beritaa" => $beritaa, "count" => $count, 'profil' => $profil, 'tentangdesa' => $tentangdesa, 'albumdesa' => $albumdesa]);
+        return view('user.welcome', [
+            "beritaa" => $beritaa,
+            "count" => $count,
+            'profil' => $profil,
+            'tentangdesa' => $tentangdesa,
+            'albumdesa' => $albumdesa,
+            'mottodesa' => $mottodesa
+        ]);
     }
 
 

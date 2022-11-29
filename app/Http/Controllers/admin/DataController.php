@@ -12,6 +12,7 @@ use App\Models\WisataDesa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Album;
+use App\Models\Motto;
 use App\Models\Pemerintahan;
 use App\Models\Tentang;
 
@@ -75,6 +76,19 @@ class DataController extends Controller
             ->rawColumns(['action'])
             ->toJson();
     }
+
+    public function dataMottoDesa()
+    {
+        $mottodesa = Motto::orderBy('created_at', 'DESC');
+        return datatables()->of($mottodesa)
+            ->addColumn('action', function ($mottodesa) {
+                return view('admin.mottodesa.action', compact('mottodesa'))->render();
+            })
+            ->addIndexColumn()
+            ->rawColumns(['action'])
+            ->toJson();
+    }
+
 
     public function dataPemerintahan()
     {

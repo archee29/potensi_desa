@@ -270,40 +270,18 @@
                 <h2 class="mt-2">Motto Desa</h2>
             </div>
             <div class="row g-4">
+                 @forelse ($mottodesa as $mottodesa)
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                     <div class="service-item d-flex flex-column justify-content-center text-center rounded">
                         <div class="service-icon flex-shrink-0">
                             <i class="fa fa-home fa-2x"></i>
                         </div>
-                        <h5 class="mb-3">Aparatur Desa</h5>
-                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                            lorem.</p>
-                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
+                        <h5 class="mb-3">{{ $mottodesa->title }}</h5>
+                        <p>{{ $mottodesa->isi }}</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                        <div class="service-icon flex-shrink-0">
-                            <i class="fa fa-home fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">Berita Desa</h5>
-                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                            lorem.</p>
-                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                        <div class="service-icon flex-shrink-0">
-                            <i class="fa fa-home fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">Peta Desa</h5>
-                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet
-                            lorem.</p>
-                        <a class="btn px-3 mt-auto mx-auto" href="{{ route('peta.index') }}">Read More</a>
-                    </div>
-                </div>
-
+                @empty
+                @endforelse
             </div>
         </div>
     </div>
