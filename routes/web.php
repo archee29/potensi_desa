@@ -27,7 +27,7 @@ use App\Http\Controllers\admin\WisataDesaController;
 use App\Http\Controllers\admin\RumahIbadahController;
 use App\Http\Controllers\admin\TentangDesaController;
 use App\Http\Controllers\admin\PemerintahanController;
-
+use App\Http\Controllers\admin\VisimisiController;
 
 Route::get('/', function () {
     return view('user.welcome');
@@ -116,6 +116,19 @@ Route::controller(MottoDesaController::class)->group(function () {
     Route::get('/dataMottoDesa/data', [DataController::class, 'dataMottoDesa'])->name('data-MottoDesa');
     Route::resource('mottodesa', (MottoDesaController::class));
 });
+
+//visimisi
+Route::controller(VisimisiController::class)->group(function () {
+    Route::get('/dataVisimisiDesa/data', [DataController::class, 'dataVisimisiDesa'])->name('data-VisimisiDesa');
+    Route::resource('visimisi', (VisimisiController::class));
+});
+
+//tentangDesaaa
+Route::controller(TentangDesaController::class)->group(function () {
+    Route::get('/dataTentangDesa/data', [DataController::class, 'dataTentangDesa'])->name('data-TentangDesa');
+    Route::resource('tentangdesa', (TentangDesaController::class));
+});
+
 
 //tentangDesaaa
 Route::controller(TentangDesaController::class)->group(function () {

@@ -15,6 +15,7 @@ use App\Models\Album;
 use App\Models\Motto;
 use App\Models\Pemerintahan;
 use App\Models\Tentang;
+use App\Models\Visimisi;
 
 class DataController extends Controller
 {
@@ -71,6 +72,18 @@ class DataController extends Controller
         return datatables()->of($albumdesa)
             ->addColumn('action', function ($albumdesa) {
                 return view('admin.albumdesa.action', compact('albumdesa'))->render();
+            })
+            ->addIndexColumn()
+            ->rawColumns(['action'])
+            ->toJson();
+    }
+
+    public function dataVisimisiDesa()
+    {
+        $visimisi = Visimisi::orderBy('created_at', 'DESC');
+        return datatables()->of($visimisi)
+            ->addColumn('action', function ($visimisi) {
+                return view('admin.visimisi.action', compact('visimisi'))->render();
             })
             ->addIndexColumn()
             ->rawColumns(['action'])

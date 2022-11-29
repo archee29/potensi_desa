@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Album;
 use App\Models\Motto;
+use App\Models\Visimisi;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -49,6 +50,10 @@ class ArtikelController extends Controller
 
     public function depanHome()
     {
+
+        $posts5 = Visimisi::latest();
+        $visimisi = $posts5->get();
+
         $posts4 = Motto::latest();
         $mottodesa = $posts4->get();
 
@@ -68,7 +73,8 @@ class ArtikelController extends Controller
             'profil' => $profil,
             'tentangdesa' => $tentangdesa,
             'albumdesa' => $albumdesa,
-            'mottodesa' => $mottodesa
+            'mottodesa' => $mottodesa,
+            'visimisi' => $visimisi,
         ]);
     }
 

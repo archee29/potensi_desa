@@ -52,9 +52,10 @@
             <a href="/pemerintahan"
                 class="nav-item nav-link {{ Request::path() == 'pemerintahan' ? 'active' : '' }}"><i
                     class="fa fa-table me-2"></i>Pemerintahan</a>
-                    <a href="/mottodesa"
-                class="nav-item nav-link {{ Request::path() == 'mottodesa' ? 'active' : '' }}"><i
-                    class="fa fa-table me-2"></i>Motto Desa</a>
+            <a href="/mottodesa" class="nav-item nav-link {{ Request::path() == 'mottodesa' ? 'active' : '' }}"><i
+                    class="fa fa-table me-2"></i>Motto Desa </a>
+            <a href="/visimisi" class="nav-item nav-link {{ Request::path() == 'visimisi' ? 'active' : '' }}"><i
+                    class="fa fa-table me-2"></i>Visi - Misi </a>
             <div class="nav-item dropdown">
                 <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                         class="fa fa-chart-line"></i>Data Desa</a>

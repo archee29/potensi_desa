@@ -23,24 +23,53 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><i class="fa fa-place-of-worship me-2"></i>Tentang Desa</li>
+                <li class="breadcrumb-item"><i class="fa fa-place-of-worship me-2"></i>Visi - Misi</li>
                 <li class="breadcrumb-item"><a href=""><i class="fas fa-plus-circle me-2"></i>Tambah
-                        Tentang Desa</a></li>
+                        Data Visi -Misi</a></li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="create" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="card">
-                        <div class="card-header">Tambah Tentang Desa</div>
+                        <div class="card-header">Tambah Data Visi - Misi</div>
                         <div class="card-body">
-                            <form action="{{ route('tentangdesa.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('visimisi.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <textarea name="isi" class="form-control @error('isi') is-invalid @enderror" id="floatingTextarea2" style="height: 100px"
-                                        placeholder="Tentang Desa"></textarea>
-                                    <label for="floatingTextarea2">Tentang Desa</label>
-                                    @error('isi')
+                                    <input type="text" name="name"
+                                        class="form-control @error('name') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Desa">
+                                    <label for="floatingInput">Nama</label>
+                                    @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="jabatan"
+                                        class="form-control @error('jabatan') is-invalid @enderror" id="floatingInput"
+                                        placeholder="Nama Desa">
+                                    <label for="floatingInput">Jabatan</label>
+                                    @error('jabatan')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <textarea name="visi" class="form-control @error('visi') is-invalid @enderror" id="floatingTextarea2" style="height: 100px"
+                                        placeholder="Nama Desa"></textarea>
+                                    <label for="floatingTextarea2">Visi</label>
+                                    @error('visi')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <textarea name="misi" class="form-control @error('misi') is-invalid @enderror" id="floatingTextarea2" style="height: 100px"
+                                        placeholder="Nama Desa"></textarea>
+                                    <label for="floatingTextarea2">Misi</label>
+                                    @error('Misi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -56,6 +85,8 @@
                                 </div>
 
 
+
+
                                 <div class="md:w-2/3 mb-3">
                                     <label for="formFile" class="form-label mt-3">Masukkan Tanggal Upload</label>
                                     <input
@@ -65,7 +96,7 @@
 
                                 <div class="form-group mt-3">
                                     <button type="submit" class="btn btn-outline-success m-2">Tambah Data</button>
-                                    <a href="/tentangdesa">
+                                    <a href="/visimisi">
                                         <button type="button" class="btn btn-outline-danger m-2">Kembali</button>
                                     </a>
                                 </div>

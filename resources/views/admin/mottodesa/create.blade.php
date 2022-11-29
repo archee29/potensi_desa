@@ -48,7 +48,7 @@
 
                                 <div class="form-floating mb-3">
                                     <textarea name="isi"
-                                        class="form-control @error('isi') is-invalid @enderror" id="floatingInput"
+                                        class="form-control @error('isi') is-invalid @enderror" id="floatingInput" style="height: 100px"
                                         placeholder="Nama Desa"></textarea>
                                     <label for="floatingInput">Isi</label>
                                     @error('isi')

@@ -232,7 +232,6 @@
 
 
     <div id="tentang-desa" class="container-xxl py-5 bg-white p-0">
-
         <div class="container px-lg-5 ">
             <div class="row g-5">
                 @forelse ($tentangdesa as $tentangdesa)
@@ -253,7 +252,6 @@
             </div>
         </div>
     </div>
-
     <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container px-lg-5">
             <div class="row align-items-center" style="height: 250px;">
@@ -270,16 +268,16 @@
                 <h2 class="mt-2">Motto Desa</h2>
             </div>
             <div class="row g-4">
-                 @forelse ($mottodesa as $mottodesa)
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                        <div class="service-icon flex-shrink-0">
-                            <i class="fa fa-home fa-2x"></i>
+                @forelse ($mottodesa as $mottodesa)
+                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
+                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                            <div class="service-icon flex-shrink-0">
+                                <i class="fa fa-home fa-2x"></i>
+                            </div>
+                            <h5 class="mb-3">{{ $mottodesa->title }}</h5>
+                            <p>{{ $mottodesa->isi }}</p>
                         </div>
-                        <h5 class="mb-3">{{ $mottodesa->title }}</h5>
-                        <p>{{ $mottodesa->isi }}</p>
                     </div>
-                </div>
                 @empty
                 @endforelse
             </div>
@@ -288,6 +286,10 @@
 
     <div class="container-xxl py-5  my-5 bg-white p-0">
         <div class="container px-lg-5">
+            <div class="section-title position-relative mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="position-relative d-inline text-primary ps-4">Berita</h6>
+                <h2 class="mt-2">Berita Desa</h2>
+            </div>
             <div class="row g-4">
                 @forelse (array_slice($beritaa->toArray(), 0, 3)  as $beritaa)
                     <div class="col-md-6 col-lg-4">
@@ -326,7 +328,7 @@
                 <h6 class="position-relative d-inline text-primary ps-4">Pemerintahan </h6>
                 <h2 class="mt-2">Pemerintahan Desa</h2>
             </div>
-            <div class="slider owl-carousel">
+            <div class=" owl-carousel">
                 @forelse ($profil as $profil)
                     <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item">
@@ -356,7 +358,7 @@
                 @endforelse
             </div>
             <script>
-                $(".slider").owlCarousel({
+                $(".owl-carousel").owlCarousel({
                     loop: true,
                     autoplay: true,
                     autoplayTimeout: 2000, //2000ms = 2s;
@@ -389,39 +391,12 @@
 
 
 
-    {{-- <div id="album-desa" class="container-xxl py-5  my-5 bg-white p-0">
-        <div class="container px-lg-5">
-            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="position-relative d-inline text-primary ps-4">Album</h6>
-                <h2 class="mt-2">Album Desa</h2>
-            </div>
-            @forelse ($albumdesa as $albumdesa)
-                <div id="image-card" class="row g-10 portfolio-container">
-                    <div class="col-lg-4 col-md-6 portfolio-item wow zoomIn" data-wow-delay="0.1s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="images/poto-kalimas/Album/{{ $albumdesa->image }}"
-                                alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="images/poto-kalimas/Album/{{ $albumdesa->image }}"
-                                    data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i
-                                            class="fa fa-folder me-2"></i>{{ $albumdesa->title }}</small>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @empty
-            @endforelse
-
-        </div>
-    </div> --}}
 
     <div id="album-desa" class="container-xxl py-5  my-5 bg-white p-0">
         <div class="container px-lg-5">
-            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+
+            <div class="section-title position-relative mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="position-relative d-inline text-primary ps-4">Album</h6>
                 <h2 class="mt-2">Album Desa</h2>
             </div>
@@ -458,32 +433,34 @@
     <div id="visi-struktur" class="container-xxl bg-primary testimonial three py-5 my-5 wow fadeInUp"
         data-wow-delay="0.1s">
         <div class="container py-5 px-lg-5">
+            <div class="section-title position-relative mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="position-relative d-inline text-white ps-4">Visi - Misi</h6>
+                <h2 class="mt-2 text-white">Visi - Misi Desa</h2>
+            </div>
             <div class="owl-carousel testimonial-carousel">
-
-                <div class="testimonial-item bg-transparent border rounded text-white p-4">
-                    <i class="fa fa-quote-left fa-2x mb-4"></i>
-                    <p align="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi quo reiciendis in
-                        distinctio. Ea hic in laudantium, exercitationem doloribus aliquid autem quisquam officiis, vitae
-                        doloremque, possimus
-                        odit nisi dolorem architecto. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
-                        alias laboriosam possimus? Harum eveniet, illum veritatis beatae nobis praesentium, minima nisi eius
-                    </p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded-circle" src="user-rsc/img/testimonial-1.jpg"
-                            style="width: 50px; height: 50px;">
-                        <div class="ps-3">
-                            <h6 class="text-white mb-1">Client Name</h6>
-                            <small>Profession</small>
+                @forelse ($visimisi as $visimisi)
+                    <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                        <i class="fa fa-quote-left fa-2x mb-4"></i>
+                        <h4>Visi</h4>
+                        <p align="center">{{ $visimisi->visi }}</p>
+                        <h4>Misi</h4>
+                        <p align="center">{{ $visimisi->misi }}</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle"
+                                src="images/poto-kalimas/visimisi/{{ $visimisi->image }}"
+                                style="width: 50px; height: 50px;">
+                            <div class="ps-3">
+                                <h6 class="text-white mb-1">{{ $visimisi->jabatan }}</h6>
+                                <small>{{ $visimisi->name }}</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-
-
-
+                @empty
+                @endforelse
             </div>
         </div>
     </div>
+
 
     <div id="iklan-desa" class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container px-lg-5">

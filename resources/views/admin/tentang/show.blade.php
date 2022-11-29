@@ -26,7 +26,7 @@
                                 @method('PUT')
                                 <div class="form-floating mb-3">
                                     <textarea name="isi"
-                                        class="form-control @error('isi') is-invalid @enderror" id="floatingTextarea2"
+                                        class="form-control @error('isi') is-invalid @enderror" id="floatingTextarea2" style="height: 100px"
                                         placeholder="Nama Desa" readonly value="">{{ $tentangdesa->isi }}</textarea>
                                     <label for="floatingTextarea2">Tentang Desa</label>
                                     @error('isi')
