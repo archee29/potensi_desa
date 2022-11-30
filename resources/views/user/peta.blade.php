@@ -20,15 +20,19 @@
             width: 100%
         }
 
-         .info { padding: 6px 8px;
-                font: 14px/16px Arial, Helvetica, sans-serif;
-                background: white; background: rgba(255,255,255,0.8);
-                box-shadow: 0 0 15px rgba(0,0,0,0.2);
-                border-radius: 5px;
-            }
-        .info h4 { margin: 0 0 5px;
-                   color: #777;
-                }
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
 
         /*Legend specific*/
         .legend {
@@ -130,21 +134,22 @@
         };
 
         legend.addTo(map);
-          const info = L.control({
-        position :"bottomright"
-       });
+        const info = L.control({
+            position: "bottomright"
+        });
 
-        info.onAdd = function (map) {
+        info.onAdd = function(map) {
             this._div = L.DomUtil.create('div', 'info');
             this.update();
             return this._div;
-	    };
+        };
 
 
-        info.update = function (props) {
-		const contents = props ? `<b>${props.nama_desa}</b><br />Batas ${props.batas}` : 'Arahkan ke Layer Untuk Mengetahui Informasi Desa';
-		this._div.innerHTML = `<h4>Informasi Desa</h4>${contents}`;
-	    };
+        info.update = function(props) {
+            const contents = props ? `<b>${props.nama_desa}</b><br />Batas ${props.batas}` :
+                'Arahkan ke Layer Untuk Mengetahui Informasi Desa';
+            this._div.innerHTML = `<h4>Informasi Desa</h4>${contents}`;
+        };
 
         info.addTo(map);
 
@@ -4866,7 +4871,7 @@
                 L.marker([{{ $item->location }}])
                     .bindPopup(
                         "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
-                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<div class='my-2'><strong>Nama Dusun :</strong> <br>{{ $item->dusun }}</div>" +
                         "<a href='{{ route('peta.showPasar', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Pasar</a></div>" +
                         "<div class='my-2'></div>"
                     ).addTo(map);
@@ -4887,7 +4892,7 @@
                 L.marker([{{ $item->location }}])
                     .bindPopup(
                         "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
-                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<div class='my-2'><strong>Nama Dusun :</strong> <br>{{ $item->dusun }}</div>" +
                         "<a href='{{ route('peta.showSekolah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Sekolah</a></div>" +
                         "<div class='my-2'></div>"
                     ).addTo(map);
@@ -4908,7 +4913,7 @@
                 L.marker([{{ $item->location }}])
                     .bindPopup(
                         "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
-                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<div class='my-2'><strong>Nama Dusun :</strong> <br>{{ $item->dusun }}</div>" +
                         "<a href='{{ route('peta.showRumahIbadah', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Rumah Ibadah</a></div>" +
                         "<div class='my-2'></div>"
                     ).addTo(map);
@@ -4929,7 +4934,7 @@
                 L.marker([{{ $item->location }}])
                     .bindPopup(
                         "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
-                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->dusun }}</div>" +
+                        "<div class='my-2'><strong>Nama Dusun :</strong> <br>{{ $item->dusun }}</div>" +
                         "<a href='{{ route('peta.showWisata', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Wisata</a></div>" +
                         "<div class='my-2'></div>"
                     ).addTo(map);
