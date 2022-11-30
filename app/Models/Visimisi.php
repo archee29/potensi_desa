@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pemerintahan extends Model
+class Visimisi extends Model
 {
-    protected $table = 'tb_pemerintahan';
+    protected $table = 'tb_visimisi';
     protected $guarded = [];
 
     // public function jenispotensi(){
@@ -20,7 +20,7 @@ class Pemerintahan extends Model
             return $this->image;
         }
         if ($this->image) {
-            return asset('/images/Poto-Kalimas/Pemerintahan/' . $this->image);
+            return asset('images/poto-kalimas/visimisi/' . $this->image);
         }
         return 'https://via.placeholder.com/500x500.png?text=No+Cover';
     }

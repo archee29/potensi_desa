@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pemerintahan extends Model
-{
-    protected $table = 'tb_pemerintahan';
-    protected $guarded = [];
+class Tentang extends Model
 
-    // public function jenispotensi(){
-    //     return $this->hasMany(JenisPotensi::class, 'id_potensi');
-    // }
+{
+
+    protected $table = 'tb_tentang';
+    protected $guarded = [];
 
     public function getImage()
     {
@@ -20,7 +18,9 @@ class Pemerintahan extends Model
             return $this->image;
         }
         if ($this->image) {
-            return asset('/images/Poto-Kalimas/Pemerintahan/' . $this->image);
+            return asset(
+                'images/poto-kalimas/Tentang/' . $this->image
+            );
         }
         return 'https://via.placeholder.com/500x500.png?text=No+Cover';
     }

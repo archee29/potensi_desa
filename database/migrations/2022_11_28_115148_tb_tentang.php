@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tb_pemerintahan', function (Blueprint $table) {
+        //
+        Schema::create('tb_tentang', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('jabatan');
+            $table->longText('isi');
             $table->string('image')->nullable();
             $table->timestamps();
         });
@@ -29,6 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_pemerintahan');
+        //
+        Schema::dropIfExists('tb_tentang');
     }
 };

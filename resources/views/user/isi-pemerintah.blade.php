@@ -5,7 +5,7 @@
 <div class="container-xxl py-5  my-5 bg-white p-0">
 <div class="container px-lg-5">
     <div class="slider owl-carousel">
-        @forelse ($profil as $profil)
+        @forelse ($pemerintahan as $pemerintahan)
         <div class="col-lg-12 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="team-item">
                 <div class="d-flex">
@@ -20,11 +20,11 @@
                         <a class="btn btn-square text-primary bg-white my-1" href=""><i
                                 class="fab fa-linkedin-in"></i></a>
                     </div>
-                    <img class="img-fluid rounded w-60" src="images/poto-kalimas/Pemerintahan/{{ $profil->image }}" alt="{{ $profil->image }}">
+                    <img class="img-fluid rounded w-60" src="images/poto-kalimas/Pemerintahan/{{ $pemerintahan->image }}" alt="{{ $pemerintahan->image }}">
                 </div>
                 <div class="px-4 py-3">
-                    <h5 class="fw-bold m-0">{{ $profil->name}}</h5>
-                    <span>{{ $profil->jabatan }}</span>
+                    <h5 class="fw-bold m-0">{{ $pemerintahan->name}}</h5>
+                    <span>{{ $pemerintahan->jabatan }}</span>
                 </div>
             </div>
         </div>
