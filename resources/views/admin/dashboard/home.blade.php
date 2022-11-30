@@ -24,6 +24,16 @@
             width: 100%
         }
 
+        .info { padding: 6px 8px;
+                font: 14px/16px Arial, Helvetica, sans-serif;
+                background: white; background: rgba(255,255,255,0.8);
+                box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                border-radius: 5px;
+            }
+        .info h4 { margin: 0 0 5px;
+                   color: #777;
+                }
+
         /*Legend specific*/
         .legend {
             padding: 6px 8px;
@@ -117,7 +127,7 @@
         var map = L.map('map', {
 
             center: [{{ $lokasi->location }}],
-            zoom: 14,
+            zoom: 11,
             layers: [streets]
         });
 
@@ -132,6 +142,7 @@
             "Grayscale": dark,
             "Satellite": satellite,
         };
+         L.control.layers(baseLayers, overlays).addTo(map);
 
         var legend = L.control({
             position: "bottomleft"
@@ -150,6 +161,23 @@
 
         legend.addTo(map);
 
+       const info = L.control({
+        position :"bottomright"
+       });
+
+	    info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+	    };
+
+
+        info.update = function (props) {
+		const contents = props ? `<b>${props.nama_desa}</b><br />Batas ${props.batas}` : 'Arahkan ke Layer Untuk Mengetahui Informasi Desa';
+		this._div.innerHTML = `<h4>Informasi Desa</h4>${contents}`;
+	    };
+
+        info.addTo(map);
 
         function highlightFeature(e) {
             const layer = e.target;
@@ -160,7 +188,7 @@
                 fillOpacity: 0.7
             });
             layer.bringToFront();
-            info.update(layer.feature.properties.nama_desa.batas);
+            info.update(layer.feature.properties);
         }
 
         function resetHighlight(e) {
@@ -1799,8 +1827,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Sungai Belidak",
-                nama_desa: "Desa Kalimas",
-                batas: "Utara",
+                nama_desa: "Desa Sungai Belidak",
+                batas: "Barat",
                 style: {
                     weight: 2,
                     color: "white",
@@ -2185,8 +2213,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Punggur Kapuas",
-                nama_desa: "Desa Kalimas",
-                batas: "Utara",
+                nama_desa: "Desa Punggur Kapuas",
+                batas: "Selatan",
                 style: {
                     weight: 2,
                     color: "white",
@@ -2980,8 +3008,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Punggur Kecil",
-                nama_desa: "Desa Kalimas",
-                batas: "Utara",
+                nama_desa: "Desa Pungur Kecil",
+                batas: "Timur",
                 style: {
                     weight: 2,
                     color: "white",
@@ -3423,7 +3451,7 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Pal Sembilan",
-                nama_desa: "Desa Kalimas",
+                nama_desa: "Desa Pal Sembilan",
                 batas: "Utara",
                 style: {
                     weight: 2,
@@ -3571,8 +3599,8 @@
             type: "Feature",
             properties: {
                 popPupContent: "Desa Punggur Besar",
-                nama_desa: "Desa Kalimas",
-                batas: "Utara",
+                nama_desa: "Desa Pungur Besar",
+                batas: "Tenggara",
                 style: {
                     weight: 2,
                     color: "white",
@@ -4937,6 +4965,6 @@
         //             ).addTo(map);
         //     @endforeach
         // }
-        // L.control.layers(baseLayers, overlays).addTo(map);
+
     </script>
 @endpush

@@ -9,7 +9,7 @@ class Lokasi extends Model
 {
     protected $table = 'tb_lokasi';
 
-    protected $guarded = [];
+    protected $fillable = ['nama_desa','image', 'location','keterangan'];
 
     public function getImage(){
         if(substr($this->image,0, 5)=="https"){
