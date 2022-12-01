@@ -15,6 +15,15 @@ class MottoDesaController extends Controller
 {
 
 
+    public function depanMottoDesa()
+    {
+
+        $posts = Motto::latest();
+        $mottodesa = $posts->get();
+        return view('user.hal-mottodesa', ['mottodesa' => $mottodesa,]);
+    }
+
+
     public function index()
     {
 

@@ -14,6 +14,15 @@ class AlbumController extends Controller
 {
 
 
+
+    public function depanAlbumDesa()
+    {
+
+        $posts = Album::latest();
+        $albumdesa = $posts->get();
+        return view('user.hal-albumdesa', ['albumdesa' => $albumdesa,]);
+    }
+
     public function index()
     {
 

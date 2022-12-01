@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\File;
 class VisimisiController extends Controller
 {
 
+    public function depanVisiMisiDesa()
+    {
+
+        $posts = Visimisi::latest();
+        $visimisi = $posts->get();
+        return view('user.hal-visimisi', ['visimisi' => $visimisi,]);
+    }
+
+
 
     public function index()
     {

@@ -11,20 +11,20 @@
               <div class="navbar-nav  ms-auto py-0">
                   <a href="/" class="nav-item nav-link {{ Request::path() == '/' ? 'active' : '' }}">Home</a>
                   <a href="/berita" class="nav-item nav-link   ">Berita</a>
-                  <a href="#tentang-desa"
+                  <a href="/tentang-desa"
                       class="nav-item nav-link {{ Request::path() == 'tentang-desa' ? 'active' : '' }}">Tentang Desa</a>
-                  <a href="#profile-desa"
+                  <a href="/motto-desa"
                       class="nav-item nav-link {{ Request::path() == 'profile-desa' ? 'active' : '' }}">Motto Desa</a>
 
 
-        
+
 
                   <div class="nav-item dropdown">
                       <a href="#data-desa" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">Pemerintahan</a>
                       <div class="dropdown-menu m-0">
                           <a href="/pemerintahan-desa"
                               class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">Pemerintahan Desa</a>
-                          <a href="#data-desa"
+                          <a href="/visi-misi"
                               class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">Visi Dan Misi</a>
                       </div>
                   </div>

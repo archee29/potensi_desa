@@ -279,6 +279,7 @@
                         </div>
                     </div>
                 @empty
+                    <h2 class="mt-20 text-2xl	font-extrabold	">Oh Tidak Halaman Masih Kosong ...</h2>
                 @endforelse
             </div>
         </div>
@@ -355,7 +356,8 @@
                         </div>
                     </div>
                 @empty
-                @endforelse
+                <h2 class="mt-20 text-2xl	font-extrabold	">Oh Tidak Halaman Masih Kosong ...</h2>
+            @endforelse
             </div>
             <script>
                 $(".owl-carousel").owlCarousel({
@@ -423,7 +425,8 @@
 
                     </div>
                 @empty
-                @endforelse
+                <h2 class="mt-20 text-2xl	font-extrabold	">Oh Tidak Halaman Masih Kosong ...</h2>
+            @endforelse
             </div>
 
         </div>
@@ -456,7 +459,8 @@
                         </div>
                     </div>
                 @empty
-                @endforelse
+                <h2 class="mt-20 text-2xl	font-extrabold	">Oh Tidak Halaman Masih Kosong ...</h2>
+            @endforelse
             </div>
         </div>
     </div>

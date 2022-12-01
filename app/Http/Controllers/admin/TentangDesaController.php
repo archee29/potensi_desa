@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\File;
 class TentangDesaController extends Controller
 {
 
+    public function depanTentangDesa()
+    {
+
+        $posts = Tentang::latest();
+        $tentangdesa = $posts->get();
+        return view('user.hal-tentangdesa', ['tentangdesa' => $tentangdesa,]);
+    }
+
+
 
     public function index_fr()
     {

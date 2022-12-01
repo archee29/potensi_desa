@@ -108,33 +108,33 @@ Route::controller(PemerintahanController::class)->group(function () {
 //albumm
 Route::controller(AlbumController::class)->group(function () {
     Route::get('/dataAlbum/data', [DataController::class, 'dataAlbum'])->name('data-Album');
+    Route::get('/album-desa', 'depanAlbumDesa');
     Route::resource('albumdesa', (AlbumController::class));
 });
 
 //Motto Desa
 Route::controller(MottoDesaController::class)->group(function () {
     Route::get('/dataMottoDesa/data', [DataController::class, 'dataMottoDesa'])->name('data-MottoDesa');
+    Route::get('/motto-desa', 'depanMottoDesa');
     Route::resource('mottodesa', (MottoDesaController::class));
 });
 
 //visimisi
 Route::controller(VisimisiController::class)->group(function () {
     Route::get('/dataVisimisiDesa/data', [DataController::class, 'dataVisimisiDesa'])->name('data-VisimisiDesa');
+    Route::get('/visi-misi', 'depanVisiMisiDesa');
     Route::resource('visimisi', (VisimisiController::class));
 });
 
 //tentangDesaaa
 Route::controller(TentangDesaController::class)->group(function () {
     Route::get('/dataTentangDesa/data', [DataController::class, 'dataTentangDesa'])->name('data-TentangDesa');
+    Route::get('/tentang-desa', 'depanTentangDesa');
     Route::resource('tentangdesa', (TentangDesaController::class));
 });
 
 
-//tentangDesaaa
-Route::controller(TentangDesaController::class)->group(function () {
-    Route::get('/dataTentangDesa/data', [DataController::class, 'dataTentangDesa'])->name('data-TentangDesa');
-    Route::resource('tentangdesa', (TentangDesaController::class));
-});
+
 
 //desa artikel
 Route::controller(ArtikelController::class)->group(function () {

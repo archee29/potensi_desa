@@ -48,6 +48,19 @@ class ArtikelController extends Controller
         return view('user.hal-berita', ['berita' => $berita,]);
     }
 
+    public function depanTentangDesa()
+    {
+        $posts = Tentang::latest();
+
+        if (request('search')) {
+            $posts->where('title', 'like', '%' . request('search') . '%');
+        }
+
+        $tentangdesa = $posts->get();
+        return view('user.hal-tentangdesa', ['tentangdesa' => $tentangdesa,]);
+    }
+
+   
     public function depanHome()
     {
 
