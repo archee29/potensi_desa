@@ -17,10 +17,12 @@ use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\PasarController;
 use App\Http\Controllers\admin\LokasiController;
 use App\Http\Controllers\admin\ArtikelController;
+use App\Http\Controllers\admin\DataDanaController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\SekolahController;
 use App\Http\Controllers\user\DataUserController;
 use App\Http\Controllers\admin\DataDesaController;
+use App\Http\Controllers\admin\DataPendudukController;
 use App\Http\Controllers\admin\MottoDesaController;
 // Model
 use App\Http\Controllers\admin\WisataDesaController;
@@ -152,10 +154,8 @@ Route::controller(ArtikelController::class)->group(function () {
 });
 
 
-
-Route::controller(DataDesaController::class)->group(function () {
-    Route::get('/data', 'index');
-    Route::get('/data/create', 'create');
-    Route::get('/data/edit', 'edit');
-    Route::get('/data/show', 'show');
+//data penduduk
+Route::controller(DataDanaController::class)->group(function () {
+    Route::get('/dataPendudukDesa/data', [DataController::class, 'dataPendudukDesa'])->name('data-PendudukDesa');
+    Route::resource('datapenduduk', (DataPendudukController::class));
 });

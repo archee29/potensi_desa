@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Album;
 use App\Models\Motto;
+use App\Models\Penduduk;
 use App\Models\Visimisi;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -60,9 +61,11 @@ class ArtikelController extends Controller
         return view('user.hal-tentangdesa', ['tentangdesa' => $tentangdesa,]);
     }
 
-   
+
     public function depanHome()
     {
+        $posts6 = Penduduk::latest();
+        $datapenduduk = $posts6->get();
 
         $posts5 = Visimisi::latest();
         $visimisi = $posts5->get();
@@ -88,6 +91,7 @@ class ArtikelController extends Controller
             'albumdesa' => $albumdesa,
             'mottodesa' => $mottodesa,
             'visimisi' => $visimisi,
+            'datapenduduk' => $datapenduduk,
         ]);
     }
 

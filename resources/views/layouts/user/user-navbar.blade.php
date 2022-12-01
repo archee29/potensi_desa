@@ -33,11 +33,11 @@
                   <div class="nav-item dropdown">
                       <a href="#data-desa" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">Data Desa</a>
                       <div class="dropdown-menu m-0">
-                          <a href="#data-desa"
+                          <a href="/data-penduduk"
                               class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">Statistik
                               Kependudukan</a>
-                          <a href="#data-desa"
-                              class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">APBDes 2022</a>
+                          <a href="/data-dana"
+                              class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">APBDes</a>
                       </div>
                   </div>
 

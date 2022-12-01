@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Album;
 use App\Models\Motto;
 use App\Models\Pemerintahan;
+use App\Models\Penduduk;
 use App\Models\Tentang;
 use App\Models\Visimisi;
 
@@ -84,6 +85,18 @@ class DataController extends Controller
         return datatables()->of($visimisi)
             ->addColumn('action', function ($visimisi) {
                 return view('admin.visimisi.action', compact('visimisi'))->render();
+            })
+            ->addIndexColumn()
+            ->rawColumns(['action'])
+            ->toJson();
+    }
+
+    public function dataPendudukDesa()
+    {
+        $datapenduduk = Penduduk::orderBy('created_at', 'DESC');
+        return datatables()->of($datapenduduk)
+            ->addColumn('action', function ($datapenduduk) {
+                return view('admin.datapenduduk.action', compact('datapenduduk'))->render();
             })
             ->addIndexColumn()
             ->rawColumns(['action'])
