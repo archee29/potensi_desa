@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin-layout')
 
 @section('title')
-    Data Pemerintahan
+    Dana Desa
 @endsection
 
 @section('content')
@@ -9,55 +9,94 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><a href="/data"><i class="fa fa-database me-2"></i>Data Desa</a></li>
+                <li class="breadcrumb-item"><a href="/datadana"><i class="fa fa-place-of-worship me-2"></i>Dana Desa</a>
+                </li>
             </ol>
         </nav>
         <div class="row vh-80 bg-light rounded mx-0">
             <div id="index" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <a href="/data/create">
-                        <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
-                            Tambah
-                            Data Desa</button>
-                    </a>
+                    <div class="card">
+                        <div class="card-header">{{ __('Dana Desa') }}</div>
+                        <div class="card-body">
 
-                    <table class="table table-bordered mt-3">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Author</th>
-                                <th scope="col">Judul</th>
-                                <th scope="col">Isi</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>jhon@email.com</td>
-                                <td>
-                                    <a href="/data/show">
-                                        <button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i>
-                                            Detail</button>
-                                    </a>
-                                    <a href="/data/edit">
-                                        <button type="button" class="btn btn-outline-dark"><i
-                                                class="fas fa-pencil-alt"></i>
-                                            Edit
-                                            Data</button>
-                                    </a>
-                                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i>
-                                        Delete
-                                        Data</button>
-                                </td>
-                            </tr>
+                            <a href="/datadana/create" class="btn btn-outline-info btn-sm float-end mb-2"><i
+                                    class="fas fa-plus-circle"></i>
+                                Tambah Data Dana Desa
+                            </a>
 
-                        </tbody>
-                    </table>
+                            @if (session('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            <table class="table" id="data_dana">
+                                <thead>
+                                    <tr>
+                                        <th>No. </th>
+                                        <th>Bidang</th>
+                                        <th>Jumlah Pengeluaran (Rp.)</th>
+                                        <th>Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <form action="" method="POST" id="deleteForm">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Hapus" style="display: none">
+                            </form>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function() {
+            $('#data_dana').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                lengthChange: false,
+                autoWidth: false,
+
+
+
+                // Route untuk menampilkan data space
+                ajax: '{{ route('data-DanaDesa') }}',
+
+                columns: [{
+                        data: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false,
+
+                    },
+
+                    {
+                        data: 'bidang',
+
+                    },
+                    {
+                        data: 'jumlah',
+                        render: function(data) {
+                            return 'Rp. ' + data
+                        }
+
+                    },
+
+                    {
+                        data: 'action',
+                        name: 'action'
+                    },
+                ]
+            });
+        });
+    </script>
+@endpush

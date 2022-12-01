@@ -160,3 +160,10 @@ Route::controller(DataPendudukController::class)->group(function () {
     Route::get('/data-penduduk', 'depanPenduduk');
     Route::resource('datapenduduk', (DataPendudukController::class));
 });
+
+//data dana
+Route::controller(DataDanaController::class)->group(function () {
+    Route::get('/dataDanaDesa/data', [DataController::class, 'dataDanaDesa'])->name('data-DanaDesa');
+    Route::get('/data-dana', 'depanDana');
+    Route::resource('datadana', (DataDanaController::class));
+});

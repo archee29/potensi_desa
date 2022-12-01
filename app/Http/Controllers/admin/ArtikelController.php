@@ -10,6 +10,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Album;
+use App\Models\Dana;
 use App\Models\Motto;
 use App\Models\Penduduk;
 use App\Models\Visimisi;
@@ -64,6 +65,9 @@ class ArtikelController extends Controller
 
     public function depanHome()
     {
+        $posts7 = Dana::latest();
+        $datadana = $posts7->get();
+
         $posts6 = Penduduk::latest();
         $datapenduduk = $posts6->get();
 
@@ -92,6 +96,7 @@ class ArtikelController extends Controller
             'mottodesa' => $mottodesa,
             'visimisi' => $visimisi,
             'datapenduduk' => $datapenduduk,
+            'datadana' => $datadana,
         ]);
     }
 

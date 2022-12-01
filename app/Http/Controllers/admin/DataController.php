@@ -12,6 +12,7 @@ use App\Models\WisataDesa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Album;
+use App\Models\Dana;
 use App\Models\Motto;
 use App\Models\Pemerintahan;
 use App\Models\Penduduk;
@@ -97,6 +98,18 @@ class DataController extends Controller
         return datatables()->of($datapenduduk)
             ->addColumn('action', function ($datapenduduk) {
                 return view('admin.datapenduduk.action', compact('datapenduduk'))->render();
+            })
+            ->addIndexColumn()
+            ->rawColumns(['action'])
+            ->toJson();
+    }
+
+    public function dataDanaDesa()
+    {
+        $datadana = Dana::orderBy('created_at', 'DESC');
+        return datatables()->of($datadana)
+            ->addColumn('action', function ($datadana) {
+                return view('admin.datadana.action', compact('datadana'))->render();
             })
             ->addIndexColumn()
             ->rawColumns(['action'])
