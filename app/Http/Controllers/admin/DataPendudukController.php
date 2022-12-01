@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class DataPendudukController extends Controller
 {
+    public function depanPenduduk()
+    {
+
+        $posts = Penduduk::latest();
+        $datapenduduk = $posts->get();
+        return view('user.hal-penduduk', ['datapenduduk' => $datapenduduk,]);
+    }
+
+
     public function index()
     {
 

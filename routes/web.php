@@ -155,7 +155,8 @@ Route::controller(ArtikelController::class)->group(function () {
 
 
 //data penduduk
-Route::controller(DataDanaController::class)->group(function () {
+Route::controller(DataPendudukController::class)->group(function () {
     Route::get('/dataPendudukDesa/data', [DataController::class, 'dataPendudukDesa'])->name('data-PendudukDesa');
+    Route::get('/data-penduduk', 'depanPenduduk');
     Route::resource('datapenduduk', (DataPendudukController::class));
 });
