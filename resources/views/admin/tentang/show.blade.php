@@ -9,8 +9,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
-                <li class="breadcrumb-item"><i class="fa fa-newspaper me-2"></i>Pemerintahan</li>
-                <li class="breadcrumb-item"><a href=""><i class="fas fa-eye me-2"></i>Detail Pemerintahan</a>
+                <li class="breadcrumb-item"><i class="fa fa-newspaper me-2"></i>Tentang Desa</li>
+                <li class="breadcrumb-item"><a href=""><i class="fas fa-eye me-2"></i>Detail Tentang Desa</a>
                 </li>
             </ol>
         </nav>
@@ -18,16 +18,15 @@
             <div id="edit" class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="card">
-                        <div class="card-header">Edit Data Pemerintahan</div>
+                        <div class="card-header">Edit Data Tentang Desa</div>
                         <div class="card-body">
                             <form action="{{ route('pemerintahan.update', $tentangdesa) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-floating mb-3">
-                                    <textarea name="isi"
-                                        class="form-control @error('isi') is-invalid @enderror" id="floatingTextarea2" style="height: 100px"
-                                        placeholder="Nama Desa" readonly value="">{{ $tentangdesa->isi }}</textarea>
+                                    <textarea name="isi" class="form-control @error('isi') is-invalid @enderror" id="floatingTextarea2"
+                                        style="height: 100px" placeholder="Nama Desa" readonly value="">{{ $tentangdesa->isi }}</textarea>
                                     <label for="floatingTextarea2">Tentang Desa</label>
                                     @error('isi')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -38,7 +37,7 @@
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label mt-3">Poto Gambar</label><br>
                                     <img id="previewImage" class="mb-3 mt-2  " src="{{ $tentangdesa->getImage() }}"
-                                        width="20%" >
+                                        width="20%">
 
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
