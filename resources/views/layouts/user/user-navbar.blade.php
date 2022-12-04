@@ -10,11 +10,12 @@
           <div class="collapse navbar-collapse " id="navbarCollapse">
               <div class="navbar-nav  ms-auto py-0">
                   <a href="/" class="nav-item nav-link {{ Request::path() == '/' ? 'active' : '' }}">Home</a>
-                  <a href="/berita" class="nav-item nav-link   ">Berita</a>
+                  <a href="/berita"
+                      class="nav-item nav-link  {{ Request::path() == 'berita' ? 'active' : '' }} ">Berita</a>
                   <a href="/tentang-desa"
                       class="nav-item nav-link {{ Request::path() == 'tentang-desa' ? 'active' : '' }}">Tentang Desa</a>
                   <a href="/motto-desa"
-                      class="nav-item nav-link {{ Request::path() == 'profile-desa' ? 'active' : '' }}">Motto Desa</a>
+                      class="nav-item nav-link {{ Request::path() == 'motto-desa' ? 'active' : '' }}">Motto Desa</a>
 
 
 
@@ -23,10 +24,10 @@
                       <a href="#data-desa" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">Pemerintahan</a>
                       <div class="dropdown-menu m-0">
                           <a href="/pemerintahan-desa"
-                              class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">Pemerintahan
+                              class="dropdown-item {{ Request::path() == 'pemerintahan-desa' ? 'active' : '' }}">Pemerintahan
                               Desa</a>
                           <a href="/visi-misi"
-                              class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">Visi Dan
+                              class="dropdown-item {{ Request::path() == 'visi-misi' ? 'active' : '' }}">Visi Dan
                               Misi</a>
                       </div>
                   </div>
@@ -36,10 +37,10 @@
                       <a href="#data-desa" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">Data Desa</a>
                       <div class="dropdown-menu m-0">
                           <a href="/data-penduduk"
-                              class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">Statistik
+                              class="dropdown-item {{ Request::path() == 'data-penduduk' ? 'active' : '' }}">Statistik
                               Kependudukan</a>
                           <a href="/data-dana"
-                              class="dropdown-item {{ Request::path() == 'data-desa' ? 'active' : '' }}">APBDes</a>
+                              class="dropdown-item {{ Request::path() == 'data-dana' ? 'active' : '' }}">APBDes</a>
                       </div>
                   </div>
 
